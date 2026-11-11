@@ -1,0 +1,1809 @@
+{
+  "probe": 46,
+  "seed": 20260908,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "1bit",
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 6000,
+  "n_fit_pairs": 60000,
+  "n_queries": 160,
+  "pairs_per_query": 128,
+  "top_k": 32,
+  "local_pool_k": 256,
+  "probability_scope": "empirical data distribution with a shared globally fitted edge scorer",
+  "status": "mechanism comparison; covariance is empirical and is not an MGF certificate",
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "source_total": 1000000,
+      "quantizers": {
+        "1bit": {
+          "calibration": {
+            "intercept": 0.47804930892634706,
+            "slope": 0.0009396170801345199
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0011059004657868986,
+              "right_variance": 0.001076631940410176,
+              "pooled_covariance": 0.0003934458126801017,
+              "pooled_correlation": 0.36057306136036543,
+              "difference_variance": 0.001395640780836871,
+              "independence_variance": 0.0021825324061970743,
+              "independence_ratio": 1.5638210320053545,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.00039344581268010325,
+              "exact_covariance_identity_gap": -1.5720931501039814e-18,
+              "exact_difference_variance_from_components": 0.0013956407808368779,
+              "exact_difference_identity_gap": -6.938893903907228e-18,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.00039344581268010325,
+              "query_mean_left_sd": 0.03325508180394236,
+              "query_mean_right_sd": 0.032812070041528564,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.001094330141691764,
+              "right_variance": 0.0010673407867450538,
+              "pooled_covariance": 0.00039346893871633454,
+              "pooled_correlation": 0.36406985465348674,
+              "difference_variance": 0.0013747330510041485,
+              "independence_variance": 0.002161670928436818,
+              "independence_ratio": 1.572429590499672,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0003934689387163329,
+              "exact_covariance_identity_gap": 1.6263032587282567e-18,
+              "exact_difference_variance_from_components": 0.0013747330510041618,
+              "exact_difference_identity_gap": -1.3227266504323154e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0003934689387163329,
+              "query_mean_left_sd": 0.03308066114351048,
+              "query_mean_right_sd": 0.03267018192090539,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0010161929714936912,
+              "right_variance": 0.0010255626004973982,
+              "pooled_covariance": 0.0003186285485831751,
+              "pooled_correlation": 0.3121156205012733,
+              "difference_variance": 0.0014044984748247398,
+              "independence_variance": 0.002041755571991089,
+              "independence_ratio": 1.453725730991534,
+              "exact_weighted_within_covariance": 4.471929612497557e-06,
+              "exact_weighted_between_covariance": 0.0003141566189706774,
+              "exact_covariance_identity_gap": 1.0842021724855044e-19,
+              "exact_difference_variance_from_components": 0.00140449847482474,
+              "exact_difference_identity_gap": -2.168404344971009e-19,
+              "within_query_correlation": 0.00638084963240805,
+              "query_mean_covariance": 0.0003141566189706774,
+              "query_mean_left_sd": 0.017936352179467433,
+              "query_mean_right_sd": 0.017953758653820918,
+              "query_within_covariance_quantiles": [
+                -8.724344428212754e-05,
+                5.341442137198975e-06,
+                0.00011779992553972718
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.2669027282283175,
+                  0.3567485778979
+                ],
+                "independence_ratio_95_interval": [
+                  1.3640743666568877,
+                  1.554602515721165
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0008309423287565808,
+              "right_variance": 0.0008167568161844616,
+              "pooled_covariance": 0.00043190702155872766,
+              "pooled_correlation": 0.5242741433781105,
+              "difference_variance": 0.0007838851018235871,
+              "independence_variance": 0.0016476991449410423,
+              "independence_ratio": 2.1019651235977386,
+              "exact_weighted_within_covariance": -4.797368814789697e-07,
+              "exact_weighted_between_covariance": 0.00043238675844020684,
+              "exact_covariance_identity_gap": -2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0007838851018235864,
+              "exact_difference_identity_gap": 7.589415207398531e-19,
+              "within_query_correlation": -0.0012356334601973666,
+              "query_mean_covariance": 0.00043238675844020684,
+              "query_mean_left_sd": 0.021052979347523173,
+              "query_mean_right_sd": 0.02081805634419137,
+              "query_within_covariance_quantiles": [
+                -5.76152688943137e-05,
+                -1.0879976029217343e-06,
+                6.356749722086329e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.47142497677719297,
+                  0.5735998789131964
+                ],
+                "independence_ratio_95_interval": [
+                  1.8918180139436962,
+                  2.3446616744998514
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0007620983912348768,
+              "right_variance": 0.000761418794097123,
+              "pooled_covariance": 0.00040013043299112603,
+              "pooled_correlation": 0.5252720174768709,
+              "difference_variance": 0.000723256319349747,
+              "independence_variance": 0.0015235171853319998,
+              "independence_ratio": 2.1064692344502953,
+              "exact_weighted_within_covariance": -1.3918322785223527e-05,
+              "exact_weighted_between_covariance": 0.00041404875577634963,
+              "exact_covariance_identity_gap": -5.421010862427522e-20,
+              "exact_difference_variance_from_components": 0.000723256319349747,
+              "exact_difference_identity_gap": 0.0,
+              "within_query_correlation": -0.04034593696018731,
+              "query_mean_covariance": 0.00041404875577634963,
+              "query_mean_left_sd": 0.020445705330696468,
+              "query_mean_right_sd": 0.020511813121708074,
+              "query_within_covariance_quantiles": [
+                -6.47861866745305e-05,
+                -1.3869965799671681e-05,
+                3.582540187421222e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.4707049067847787,
+                  0.5734472225961709
+                ],
+                "independence_ratio_95_interval": [
+                  1.889297146344616,
+                  2.344236990483537
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.0007412901949827126,
+              "right_variance": 0.0007625542075451677,
+              "pooled_covariance": 0.0004087003725842305,
+              "pooled_correlation": 0.5435951144739789,
+              "difference_variance": 0.0006864436573594189,
+              "independence_variance": 0.0015038444025278802,
+              "independence_ratio": 2.190776164081408,
+              "exact_weighted_within_covariance": -5.2430034783681555e-37,
+              "exact_weighted_between_covariance": 0.00040870037258423073,
+              "exact_covariance_identity_gap": -2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0006864436573594188,
+              "exact_difference_identity_gap": 1.0842021724855044e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.00040870037258423073,
+              "query_mean_left_sd": 0.027309375749701038,
+              "query_mean_right_sd": 0.020432630183253028,
+              "query_within_covariance_quantiles": [
+                -6.580260643323055e-36,
+                0.0,
+                0.0
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.48421955098170316,
+                  0.5956818855530013
+                ],
+                "independence_ratio_95_interval": [
+                  1.9387142403660163,
+                  2.472728660636213
+                ]
+              }
+            }
+          }
+        },
+        "2bit": {
+          "calibration": {
+            "intercept": 0.40944141956991575,
+            "slope": 0.0004459562827348478
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0007859558081040378,
+              "right_variance": 0.0007855740845419788,
+              "pooled_covariance": 0.00030745453718127215,
+              "pooled_correlation": 0.3912805574872358,
+              "difference_variance": 0.0009566208182834718,
+              "independence_variance": 0.0015715298926460165,
+              "independence_ratio": 1.6427929045762528,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0003074545371812726,
+              "exact_covariance_identity_gap": -4.336808689942018e-19,
+              "exact_difference_variance_from_components": 0.0009566208182834713,
+              "exact_difference_identity_gap": 5.421010862427522e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0003074545371812726,
+              "query_mean_left_sd": 0.028034903390310402,
+              "query_mean_right_sd": 0.028028094557817854,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0007820300475133476,
+              "right_variance": 0.0007827174461475802,
+              "pooled_covariance": 0.00030775146962950525,
+              "pooled_correlation": 0.3933561172934718,
+              "difference_variance": 0.0009492445544019181,
+              "independence_variance": 0.0015647474936609277,
+              "independence_ratio": 1.6484134529976988,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0003077514696295038,
+              "exact_covariance_identity_gap": 1.463672932855431e-18,
+              "exact_difference_variance_from_components": 0.0009492445544019201,
+              "exact_difference_identity_gap": -2.0599841277224584e-18,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0003077514696295038,
+              "query_mean_left_sd": 0.02796480015150024,
+              "query_mean_right_sd": 0.0279770878782546,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0007140615907775597,
+              "right_variance": 0.0007256284094475089,
+              "pooled_covariance": 0.0002488054226132724,
+              "pooled_correlation": 0.3456486508073425,
+              "difference_variance": 0.0009420791549985239,
+              "independence_variance": 0.0014396900002250686,
+              "independence_ratio": 1.5282049205592756,
+              "exact_weighted_within_covariance": 8.416896249798871e-07,
+              "exact_weighted_between_covariance": 0.0002479637329882925,
+              "exact_covariance_identity_gap": 0.0,
+              "exact_difference_variance_from_components": 0.0009420791549985234,
+              "exact_difference_identity_gap": 4.336808689942018e-19,
+              "within_query_correlation": 0.0017970743201136785,
+              "query_mean_covariance": 0.0002479637329882925,
+              "query_mean_left_sd": 0.015909335562427403,
+              "query_mean_right_sd": 0.01590327267438752,
+              "query_within_covariance_quantiles": [
+                -5.998009718019293e-05,
+                1.0279800864886892e-07,
+                7.64843028924767e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.2966071616167231,
+                  0.39030309723572243
+                ],
+                "independence_ratio_95_interval": [
+                  1.4216515422639784,
+                  1.640158400462707
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0006901512261647324,
+              "right_variance": 0.0006869780002088375,
+              "pooled_covariance": 0.0003934429178771329,
+              "pooled_correlation": 0.5713973022088744,
+              "difference_variance": 0.000590243390619304,
+              "independence_variance": 0.00137712922637357,
+              "independence_ratio": 2.3331548446965886,
+              "exact_weighted_within_covariance": 1.992485163375054e-06,
+              "exact_weighted_between_covariance": 0.00039145043271375795,
+              "exact_covariance_identity_gap": -1.0842021724855044e-19,
+              "exact_difference_variance_from_components": 0.0005902433906193036,
+              "exact_difference_identity_gap": 4.336808689942018e-19,
+              "within_query_correlation": 0.006759115257053198,
+              "query_mean_covariance": 0.00039145043271375795,
+              "query_mean_left_sd": 0.019950591157088988,
+              "query_mean_right_sd": 0.0198607075999776,
+              "query_within_covariance_quantiles": [
+                -4.4459348229287e-05,
+                7.659369925247186e-07,
+                3.8535958493248485e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5218338532574436,
+                  0.6135790928118416
+                ],
+                "independence_ratio_95_interval": [
+                  2.09132165722294,
+                  2.5875387579827
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0006367090459430301,
+              "right_variance": 0.0006322146850570958,
+              "pooled_covariance": 0.0003802316144926685,
+              "pooled_correlation": 0.5993015816423566,
+              "difference_variance": 0.0005084605020147891,
+              "independence_variance": 0.0012689237310001258,
+              "independence_ratio": 2.4956190814664656,
+              "exact_weighted_within_covariance": -7.657830624977905e-06,
+              "exact_weighted_between_covariance": 0.00038788944511764634,
+              "exact_covariance_identity_gap": 1.0842021724855044e-19,
+              "exact_difference_variance_from_components": 0.0005084605020147894,
+              "exact_difference_identity_gap": -3.2526065174565133e-19,
+              "within_query_correlation": -0.03131491916100624,
+              "query_mean_covariance": 0.00038788944511764634,
+              "query_mean_left_sd": 0.019853691148083427,
+              "query_mean_right_sd": 0.019761960340918344,
+              "query_within_covariance_quantiles": [
+                -4.1863231032225735e-05,
+                -6.072327012226438e-06,
+                3.0146581470530466e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5506920954653126,
+                  0.6400897909896054
+                ],
+                "independence_ratio_95_interval": [
+                  2.2256336773789602,
+                  2.778429616441967
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.0006592868436677005,
+              "right_variance": 0.0006323100637574446,
+              "pooled_covariance": 0.00039604568840998617,
+              "pooled_correlation": 0.6133989637779469,
+              "difference_variance": 0.0004995055306051723,
+              "independence_variance": 0.0012915969074251451,
+              "independence_ratio": 2.5857509642792547,
+              "exact_weighted_within_covariance": 1.97583557008874e-36,
+              "exact_weighted_between_covariance": 0.0003960456884099862,
+              "exact_covariance_identity_gap": -5.421010862427522e-20,
+              "exact_difference_variance_from_components": 0.0004995055306051725,
+              "exact_difference_identity_gap": -1.0842021724855044e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.0003960456884099862,
+              "query_mean_left_sd": 0.025754602405975935,
+              "query_mean_right_sd": 0.019834317488787008,
+              "query_within_covariance_quantiles": [
+                -8.104955182629616e-36,
+                0.0,
+                0.0
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5482942352114477,
+                  0.6684716246230561
+                ],
+                "independence_ratio_95_interval": [
+                  2.2075899131509815,
+                  3.003890637542419
+                ]
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "intercept": 0.13348254964779144,
+            "slope": 0.0005186116649380361
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0002624734151750835,
+              "right_variance": 0.00026171475005696605,
+              "pooled_covariance": 6.777683025380331e-05,
+              "pooled_correlation": 0.2585976019150466,
+              "difference_variance": 0.00038863450472444286,
+              "independence_variance": 0.0005241881652320495,
+              "independence_ratio": 1.3487947129237006,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 6.777683025380312e-05,
+              "exact_covariance_identity_gap": 1.8973538018496328e-19,
+              "exact_difference_variance_from_components": 0.00038863450472444226,
+              "exact_difference_identity_gap": 5.963111948670274e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 6.777683025380312e-05,
+              "query_mean_left_sd": 0.01620103129973779,
+              "query_mean_right_sd": 0.016177600256433774,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0002623353205081259,
+              "right_variance": 0.00026162744984031924,
+              "pooled_covariance": 6.778021625619233e-05,
+              "pooled_correlation": 0.2587217334809139,
+              "difference_variance": 0.0003884023378360606,
+              "independence_variance": 0.0005239627703484452,
+              "independence_ratio": 1.3490206399571232,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 6.77802162561923e-05,
+              "exact_covariance_identity_gap": 4.0657581468206416e-20,
+              "exact_difference_variance_from_components": 0.00038840233783606103,
+              "exact_difference_identity_gap": -4.336808689942018e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 6.77802162561923e-05,
+              "query_mean_left_sd": 0.016196768829248812,
+              "query_mean_right_sd": 0.01617490184948024,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.000244658554133837,
+              "right_variance": 0.0002467945207379916,
+              "pooled_covariance": 5.206741051596769e-05,
+              "pooled_correlation": 0.21189368814145582,
+              "difference_variance": 0.00038731825383989327,
+              "independence_variance": 0.0004914530748718286,
+              "independence_ratio": 1.2688611238936902,
+              "exact_weighted_within_covariance": -1.068752751269809e-06,
+              "exact_weighted_between_covariance": 5.313616326723752e-05,
+              "exact_covariance_identity_gap": -2.0328790734103208e-20,
+              "exact_difference_variance_from_components": 0.0003873182538398931,
+              "exact_difference_identity_gap": 1.6263032587282567e-19,
+              "within_query_correlation": -0.005598237504585418,
+              "query_mean_covariance": 5.313616326723752e-05,
+              "query_mean_left_sd": 0.007481834244154543,
+              "query_mean_right_sd": 0.007370411207628869,
+              "query_within_covariance_quantiles": [
+                -2.9708013381356418e-05,
+                -1.1216772528227983e-06,
+                2.820058131668115e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.17002790872487694,
+                  0.2540952150072181
+                ],
+                "independence_ratio_95_interval": [
+                  1.2048399569685218,
+                  1.3406207631293057
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.00019886363744210853,
+              "right_variance": 0.00019866432557527869,
+              "pooled_covariance": 6.444254407841615e-05,
+              "pooled_correlation": 0.3242164485188008,
+              "difference_variance": 0.0002686428748605549,
+              "independence_variance": 0.00039752796301738725,
+              "independence_ratio": 1.479763657322879,
+              "exact_weighted_within_covariance": 1.7078474334329296e-08,
+              "exact_weighted_between_covariance": 6.442546560408179e-05,
+              "exact_covariance_identity_gap": 4.0657581468206416e-20,
+              "exact_difference_variance_from_components": 0.00026864287486055497,
+              "exact_difference_identity_gap": -5.421010862427522e-20,
+              "within_query_correlation": 0.00012804865424174535,
+              "query_mean_covariance": 6.442546560408179e-05,
+              "query_mean_left_sd": 0.008090589659901124,
+              "query_mean_right_sd": 0.008132354966053136,
+              "query_within_covariance_quantiles": [
+                -1.911705193248541e-05,
+                1.4505356038693184e-06,
+                2.102274061624337e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.2650573279108826,
+                  0.3729804337122542
+                ],
+                "independence_ratio_95_interval": [
+                  1.3606476876721432,
+                  1.594844911027029
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.000194408921015838,
+              "right_variance": 0.00019457203204724567,
+              "pooled_covariance": 6.608501839018216e-05,
+              "pooled_correlation": 0.339785399155817,
+              "difference_variance": 0.0002568109162827194,
+              "independence_variance": 0.00038898095306308367,
+              "independence_ratio": 1.5146589510037034,
+              "exact_weighted_within_covariance": -5.198624949837893e-06,
+              "exact_weighted_between_covariance": 7.128364334002001e-05,
+              "exact_covariance_identity_gap": 4.0657581468206416e-20,
+              "exact_difference_variance_from_components": 0.0002568109162827195,
+              "exact_difference_identity_gap": -1.0842021724855044e-19,
+              "within_query_correlation": -0.04250987258468038,
+              "query_mean_covariance": 7.128364334002001e-05,
+              "query_mean_left_sd": 0.00848365185660091,
+              "query_mean_right_sd": 0.008562852816593339,
+              "query_within_covariance_quantiles": [
+                -2.5306590854188717e-05,
+                -3.6164303617907126e-06,
+                1.411600180532734e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.2713628564399294,
+                  0.3937391576255645
+                ],
+                "independence_ratio_95_interval": [
+                  1.3723976800818967,
+                  1.6494429210806267
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.00017234155821853803,
+              "right_variance": 0.0001938586885772908,
+              "pooled_covariance": 6.653409503847756e-05,
+              "pooled_correlation": 0.3640043815616222,
+              "difference_variance": 0.00023313205671887362,
+              "independence_variance": 0.0003662002467958288,
+              "independence_ratio": 1.5707846100179084,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 6.653409503847753e-05,
+              "exact_covariance_identity_gap": 2.710505431213761e-20,
+              "exact_difference_variance_from_components": 0.00023313205671887378,
+              "exact_difference_identity_gap": -1.6263032587282567e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 6.653409503847753e-05,
+              "query_mean_left_sd": 0.013167782751008238,
+              "query_mean_right_sd": 0.008456051265364724,
+              "query_within_covariance_quantiles": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.2932867624147833,
+                  0.4366737070149811
+                ],
+                "independence_ratio_95_interval": [
+                  1.4121396965981265,
+                  1.7739319023668314
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "source_total": 1000000,
+      "quantizers": {
+        "1bit": {
+          "calibration": {
+            "intercept": 0.0027478574983757385,
+            "slope": 0.002732135334501528
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0025639381455736807,
+              "right_variance": 0.002595250493938896,
+              "pooled_covariance": 1.2278845055683886e-05,
+              "pooled_correlation": 0.004760078403637353,
+              "difference_variance": 0.005134630949401211,
+              "independence_variance": 0.005159188639512577,
+              "independence_ratio": 1.0047827566096508,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.2278845055683917e-05,
+              "exact_covariance_identity_gap": -3.049318610115481e-20,
+              "exact_difference_variance_from_components": 0.005134630949401224,
+              "exact_difference_identity_gap": -1.3010426069826053e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.2278845055683917e-05,
+              "query_mean_left_sd": 0.05063534482526688,
+              "query_mean_right_sd": 0.050943601108862493,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0025638686456775956,
+              "right_variance": 0.002594778302921638,
+              "pooled_covariance": 1.1794762588815565e-05,
+              "pooled_correlation": 0.00457289457445341,
+              "difference_variance": 0.005135057423421602,
+              "independence_variance": 0.005158646948599233,
+              "independence_ratio": 1.0045938191596528,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.17947625888155e-05,
+              "exact_covariance_identity_gap": 6.437450399132683e-20,
+              "exact_difference_variance_from_components": 0.005135057423421615,
+              "exact_difference_identity_gap": -1.3010426069826053e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.17947625888155e-05,
+              "query_mean_left_sd": 0.05063465854212503,
+              "query_mean_right_sd": 0.0509389664492875,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0025570864780417725,
+              "right_variance": 0.0026564543008016648,
+              "pooled_covariance": 4.46245232284202e-05,
+              "pooled_correlation": 0.017121811314030108,
+              "difference_variance": 0.005124291732386596,
+              "independence_variance": 0.005213540778843437,
+              "independence_ratio": 1.0174168550734082,
+              "exact_weighted_within_covariance": 3.8111010037964386e-06,
+              "exact_weighted_between_covariance": 4.081342222462375e-05,
+              "exact_covariance_identity_gap": 6.776263578034403e-21,
+              "exact_difference_variance_from_components": 0.005124291732386598,
+              "exact_difference_identity_gap": -1.734723475976807e-18,
+              "within_query_correlation": 0.0014979185922160804,
+              "query_mean_covariance": 4.081342222462375e-05,
+              "query_mean_left_sd": 0.007787479851734978,
+              "query_mean_right_sd": 0.008014980220267984,
+              "query_within_covariance_quantiles": [
+                -0.0003370019472865511,
+                -1.1651277622402664e-05,
+                0.0003726082298714652
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.0038368219128488337,
+                  0.030745458971015674
+                ],
+                "independence_ratio_95_interval": [
+                  1.0038505271266265,
+                  1.0317070429230617
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0020968735820745773,
+              "right_variance": 0.0021145190664242633,
+              "pooled_covariance": 0.00017495555624168552,
+              "pooled_correlation": 0.08308752310199648,
+              "difference_variance": 0.0038614815360154685,
+              "independence_variance": 0.004211392648498841,
+              "independence_ratio": 1.090615767347274,
+              "exact_weighted_within_covariance": -2.2827381137834035e-05,
+              "exact_weighted_between_covariance": 0.0001977829373795196,
+              "exact_covariance_identity_gap": -5.421010862427522e-20,
+              "exact_difference_variance_from_components": 0.003861481536015469,
+              "exact_difference_identity_gap": -4.336808689942018e-19,
+              "within_query_correlation": -0.012047158209801487,
+              "query_mean_covariance": 0.0001977829373795196,
+              "query_mean_left_sd": 0.014695189229392079,
+              "query_mean_right_sd": 0.014433312654559823,
+              "query_within_covariance_quantiles": [
+                -0.00028725652047931443,
+                -2.4228221825862413e-05,
+                0.0002452014596131256
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.06190447750686152,
+                  0.10808367475554649
+                ],
+                "independence_ratio_95_interval": [
+                  1.0659893038339656,
+                  1.1211800154500984
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.002166210114460916,
+              "right_variance": 0.0021370155391249855,
+              "pooled_covariance": 0.00036102538175213084,
+              "pooled_correlation": 0.16779677368815898,
+              "difference_variance": 0.0035811748900816394,
+              "independence_variance": 0.0043032256535859015,
+              "independence_ratio": 1.2016239881230155,
+              "exact_weighted_within_covariance": -4.186936289377832e-05,
+              "exact_weighted_between_covariance": 0.0004028947446459093,
+              "exact_covariance_identity_gap": -1.0842021724855044e-19,
+              "exact_difference_variance_from_components": 0.00358117489008164,
+              "exact_difference_identity_gap": -4.336808689942018e-19,
+              "within_query_correlation": -0.024173075071732022,
+              "query_mean_covariance": 0.0004028947446459093,
+              "query_mean_left_sd": 0.020864258284940585,
+              "query_mean_right_sd": 0.020224020286736442,
+              "query_within_covariance_quantiles": [
+                -0.00028781798521771145,
+                -2.7948043485387224e-05,
+                0.00018693198685038466
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.1360969772493824,
+                  0.20374904862139093
+                ],
+                "independence_ratio_95_interval": [
+                  1.1575366813294417,
+                  1.2558498976640273
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.0016274300282159222,
+              "right_variance": 0.002140765126567596,
+              "pooled_covariance": 0.00024774619576941237,
+              "pooled_correlation": 0.13273068057471402,
+              "difference_variance": 0.0032727027632446933,
+              "independence_variance": 0.0037681951547835183,
+              "independence_ratio": 1.151401586817977,
+              "exact_weighted_within_covariance": -1.5437732464084015e-35,
+              "exact_weighted_between_covariance": 0.00024774619576941226,
+              "exact_covariance_identity_gap": 1.0842021724855044e-19,
+              "exact_difference_variance_from_components": 0.0032727027632446963,
+              "exact_difference_identity_gap": -3.0357660829594124e-18,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.00024774619576941226,
+              "query_mean_left_sd": 0.040463999588709804,
+              "query_mean_right_sd": 0.020338762593204066,
+              "query_within_covariance_quantiles": [
+                -1.05219972628356e-33,
+                0.0,
+                9.82224271637488e-34
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.05846058754132418,
+                  0.20627466180334036
+                ],
+                "independence_ratio_95_interval": [
+                  1.0612762463951682,
+                  1.2559271457359806
+                ]
+              }
+            }
+          }
+        },
+        "2bit": {
+          "calibration": {
+            "intercept": 0.0006683950186728547,
+            "slope": 0.0011981290014751015
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0010179615537483854,
+              "right_variance": 0.0010195893999270125,
+              "pooled_covariance": 1.020695697616393e-05,
+              "pooled_correlation": 0.010018851518968029,
+              "difference_variance": 0.0020171370397230703,
+              "independence_variance": 0.002037550953675398,
+              "independence_ratio": 1.0101202414859878,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.0206956976163884e-05,
+              "exact_covariance_identity_gap": 4.573977915173222e-20,
+              "exact_difference_variance_from_components": 0.002017137039723071,
+              "exact_difference_identity_gap": -8.673617379884035e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.0206956976163884e-05,
+              "query_mean_left_sd": 0.03190550977101581,
+              "query_mean_right_sd": 0.031931010004805874,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0010171920671870763,
+              "right_variance": 0.0010195259143677365,
+              "pooled_covariance": 1.0300393310536246e-05,
+              "pooled_correlation": 0.010114704309894654,
+              "difference_variance": 0.00201611719493374,
+              "independence_variance": 0.0020367179815548126,
+              "independence_ratio": 1.0102180501574214,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.0300393310536288e-05,
+              "exact_covariance_identity_gap": -4.2351647362715017e-20,
+              "exact_difference_variance_from_components": 0.0020161171949337523,
+              "exact_difference_identity_gap": -1.214306433183765e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.0300393310536288e-05,
+              "query_mean_left_sd": 0.031893448656222116,
+              "query_mean_right_sd": 0.03193001588423871,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0010351637026543529,
+              "right_variance": 0.0010195437004626826,
+              "pooled_covariance": 2.01944741678438e-05,
+              "pooled_correlation": 0.019657356268456234,
+              "difference_variance": 0.0020143184547813477,
+              "independence_variance": 0.0020547074031170356,
+              "independence_ratio": 1.020050925036117,
+              "exact_weighted_within_covariance": 6.8727535071657335e-06,
+              "exact_weighted_between_covariance": 1.332172066067807e-05,
+              "exact_covariance_identity_gap": -3.3881317890172014e-21,
+              "exact_difference_variance_from_components": 0.002014318454781347,
+              "exact_difference_identity_gap": 8.673617379884035e-19,
+              "within_query_correlation": 0.006834412701943135,
+              "query_mean_covariance": 1.332172066067807e-05,
+              "query_mean_left_sd": 0.004687077765291268,
+              "query_mean_right_sd": 0.004661646352789423,
+              "query_within_covariance_quantiles": [
+                -0.00013469518913887188,
+                1.2966383016032259e-05,
+                0.00013294055166787237
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.007878125504803603,
+                  0.03226560603074243
+                ],
+                "independence_ratio_95_interval": [
+                  1.0079399478505364,
+                  1.033340885191097
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0009512732544816068,
+              "right_variance": 0.0009587748992480287,
+              "pooled_covariance": 6.353458548698079e-05,
+              "pooled_correlation": 0.06652719762918916,
+              "difference_variance": 0.0017829789827556734,
+              "independence_variance": 0.0019100481537296355,
+              "independence_ratio": 1.0712679017548323,
+              "exact_weighted_within_covariance": -7.09409846825497e-06,
+              "exact_weighted_between_covariance": 7.062868395523578e-05,
+              "exact_covariance_identity_gap": -2.710505431213761e-20,
+              "exact_difference_variance_from_components": 0.0017829789827556732,
+              "exact_difference_identity_gap": 2.168404344971009e-19,
+              "within_query_correlation": -0.008079591102522862,
+              "query_mean_covariance": 7.062868395523578e-05,
+              "query_mean_left_sd": 0.008678272176227231,
+              "query_mean_right_sd": 0.008924120511232442,
+              "query_within_covariance_quantiles": [
+                -0.00014085197466772662,
+                -5.499734040861092e-06,
+                0.00011614335319710602
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.04817276559079538,
+                  0.0881615952736778
+                ],
+                "independence_ratio_95_interval": [
+                  1.0506051144690487,
+                  1.0966819267450187
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0009775396430967088,
+              "right_variance": 0.0009623175697855015,
+              "pooled_covariance": 0.00010795678992577495,
+              "pooled_correlation": 0.11130727881422799,
+              "difference_variance": 0.0017239436330306597,
+              "independence_variance": 0.0019398572128822103,
+              "independence_ratio": 1.1252439904151499,
+              "exact_weighted_within_covariance": -2.58788930496167e-05,
+              "exact_weighted_between_covariance": 0.00013383568297539166,
+              "exact_covariance_identity_gap": -2.710505431213761e-20,
+              "exact_difference_variance_from_components": 0.0017239436330306586,
+              "exact_difference_identity_gap": 1.0842021724855044e-18,
+              "within_query_correlation": -0.03118378551396825,
+              "query_mean_covariance": 0.00013383568297539166,
+              "query_mean_left_sd": 0.012103306811783206,
+              "query_mean_right_sd": 0.011633736034435505,
+              "query_within_covariance_quantiles": [
+                -0.0001464468804003057,
+                -2.411863484199003e-05,
+                9.043242928468865e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.08414140326287921,
+                  0.14127089605608453
+                ],
+                "independence_ratio_95_interval": [
+                  1.0918697181783972,
+                  1.1645044693766453
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.0007881083618658209,
+              "right_variance": 0.000971626900851212,
+              "pooled_covariance": 0.00010362394374816662,
+              "pooled_correlation": 0.11841790784190827,
+              "difference_variance": 0.0015524873752207006,
+              "independence_variance": 0.001759735262717033,
+              "independence_ratio": 1.1334940887792213,
+              "exact_weighted_within_covariance": 2.5389729807282826e-36,
+              "exact_weighted_between_covariance": 0.00010362394374816669,
+              "exact_covariance_identity_gap": -6.776263578034403e-20,
+              "exact_difference_variance_from_components": 0.0015524873752207,
+              "exact_difference_identity_gap": 6.505213034913027e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.00010362394374816669,
+              "query_mean_left_sd": 0.028158571094588327,
+              "query_mean_right_sd": 0.011672924584337925,
+              "query_within_covariance_quantiles": [
+                -2.3143258165053284e-34,
+                0.0,
+                2.69630192214213e-34
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.06513929702648577,
+                  0.17557733195112132
+                ],
+                "independence_ratio_95_interval": [
+                  1.0685801534777972,
+                  1.2108577214203289
+                ]
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "intercept": 0.0024736381876375602,
+            "slope": 0.0011914391769477274
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0009885960643002953,
+              "right_variance": 0.0009897250168119753,
+              "pooled_covariance": 1.795036302827344e-05,
+              "pooled_correlation": 0.018147070384545393,
+              "difference_variance": 0.0019424203550557238,
+              "independence_variance": 0.0019783210811122704,
+              "independence_ratio": 1.0184824700601518,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.7950363028273478e-05,
+              "exact_covariance_identity_gap": -3.7269449679189215e-20,
+              "exact_difference_variance_from_components": 0.0019424203550557227,
+              "exact_difference_identity_gap": 1.0842021724855044e-18,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.7950363028273478e-05,
+              "query_mean_left_sd": 0.03144194752715384,
+              "query_mean_right_sd": 0.03145989537191717,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0009883709358800622,
+              "right_variance": 0.000989538838766688,
+              "pooled_covariance": 1.7409378934056624e-05,
+              "pooled_correlation": 0.017603818123738665,
+              "difference_variance": 0.001943091016778636,
+              "independence_variance": 0.0019779097746467503,
+              "independence_ratio": 1.0179192624367328,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 1.740937893405663e-05,
+              "exact_covariance_identity_gap": -6.776263578034403e-21,
+              "exact_difference_variance_from_components": 0.001943091016778634,
+              "exact_difference_identity_gap": 2.168404344971009e-18,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 1.740937893405663e-05,
+              "query_mean_left_sd": 0.03143836725849582,
+              "query_mean_right_sd": 0.03145693625842618,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.000993505143261085,
+              "right_variance": 0.0009887245574694006,
+              "pooled_covariance": 1.5103633490600176e-05,
+              "pooled_correlation": 0.015239078911605081,
+              "difference_variance": 0.0019520224337492853,
+              "independence_variance": 0.0019822297007304856,
+              "independence_ratio": 1.0154748564662655,
+              "exact_weighted_within_covariance": 6.74272344131421e-07,
+              "exact_weighted_between_covariance": 1.4429361146468755e-05,
+              "exact_covariance_identity_gap": 0.0,
+              "exact_difference_variance_from_components": 0.0019520224337492844,
+              "exact_difference_identity_gap": 8.673617379884035e-19,
+              "within_query_correlation": 0.0006957931872014743,
+              "query_mean_covariance": 1.4429361146468755e-05,
+              "query_mean_left_sd": 0.0048682059892363495,
+              "query_mean_right_sd": 0.0045458194043936796,
+              "query_within_covariance_quantiles": [
+                -0.00013866382416926582,
+                -1.5319042551579087e-06,
+                0.00012863598238947472
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.0007818772153332335,
+                  0.02974684210720288
+                ],
+                "independence_ratio_95_interval": [
+                  1.0007824730886181,
+                  1.0306587554388178
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0009383753797986434,
+              "right_variance": 0.0009334444637555909,
+              "pooled_covariance": 6.990407848549682e-05,
+              "pooled_correlation": 0.07469129176781182,
+              "difference_variance": 0.0017320116865832402,
+              "independence_variance": 0.001871819843554234,
+              "independence_ratio": 1.0807201002475884,
+              "exact_weighted_within_covariance": 1.1796160757817586e-06,
+              "exact_weighted_between_covariance": 6.872446240971504e-05,
+              "exact_covariance_identity_gap": 1.3552527156068805e-20,
+              "exact_difference_variance_from_components": 0.0017320116865832404,
+              "exact_difference_identity_gap": -2.168404344971009e-19,
+              "within_query_correlation": 0.001373529104219757,
+              "query_mean_covariance": 6.872446240971504e-05,
+              "query_mean_left_sd": 0.008891899889164556,
+              "query_mean_right_sd": 0.00872194333521328,
+              "query_within_covariance_quantiles": [
+                -0.0001410550285747248,
+                1.8798155191587152e-06,
+                0.00013263261626136774
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.05442980931351679,
+                  0.09181104268900869
+                ],
+                "independence_ratio_95_interval": [
+                  1.0575629049617243,
+                  1.1010921858563631
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0009298924913028944,
+              "right_variance": 0.0009419379376241038,
+              "pooled_covariance": 0.0001137719358769182,
+              "pooled_correlation": 0.121564742062906,
+              "difference_variance": 0.0016442865571731624,
+              "independence_variance": 0.0018718304289269982,
+              "independence_ratio": 1.138384560015516,
+              "exact_weighted_within_covariance": -1.960454067348277e-05,
+              "exact_weighted_between_covariance": 0.00013337647655040105,
+              "exact_covariance_identity_gap": -8.131516293641283e-20,
+              "exact_difference_variance_from_components": 0.0016442865571731622,
+              "exact_difference_identity_gap": 2.168404344971009e-19,
+              "within_query_correlation": -0.02459288507487865,
+              "query_mean_covariance": 0.00013337647655040105,
+              "query_mean_left_sd": 0.011794419912909115,
+              "query_mean_right_sd": 0.01183591443411213,
+              "query_within_covariance_quantiles": [
+                -0.00014463648392099888,
+                -1.5012012496409724e-05,
+                0.00010020515217424764
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.0870088502645988,
+                  0.1558534459095663
+                ],
+                "independence_ratio_95_interval": [
+                  1.0952978996731535,
+                  1.184627389476441
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.0008962299433167444,
+              "right_variance": 0.0009300001375472643,
+              "pooled_covariance": 0.0001093510464946605,
+              "pooled_correlation": 0.11977652591886347,
+              "difference_variance": 0.0016075279878746873,
+              "independence_variance": 0.0018262300808640087,
+              "independence_ratio": 1.1360487000157724,
+              "exact_weighted_within_covariance": 1.6275156630767817e-35,
+              "exact_weighted_between_covariance": 0.00010935104649466052,
+              "exact_covariance_identity_gap": -1.3552527156068805e-20,
+              "exact_difference_variance_from_components": 0.0016075279878746867,
+              "exact_difference_identity_gap": 6.505213034913027e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.00010935104649466052,
+              "query_mean_left_sd": 0.030028066565821767,
+              "query_mean_right_sd": 0.011455756939490745,
+              "query_within_covariance_quantiles": [
+                -1.5407439555097888e-34,
+                0.0,
+                2.574326358997603e-34
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.061925540781648546,
+                  0.1730316004526451
+                ],
+                "independence_ratio_95_interval": [
+                  1.0657335366722183,
+                  1.209223855905456
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "source_total": 1000000,
+      "quantizers": {
+        "1bit": {
+          "calibration": {
+            "intercept": 8.153638226432727e-07,
+            "slope": 0.0007827492697375459
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.006533071869662607,
+              "right_variance": 0.0063191688946018345,
+              "pooled_covariance": 0.002478099404143912,
+              "pooled_correlation": 0.3856825801301084,
+              "difference_variance": 0.007896041955976619,
+              "independence_variance": 0.01285224076426444,
+              "independence_ratio": 1.6276814175913048,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0024780994041439203,
+              "exact_covariance_identity_gap": -8.239936510889834e-18,
+              "exact_difference_variance_from_components": 0.007896041955976558,
+              "exact_difference_identity_gap": 6.071532165918825e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0024780994041439203,
+              "query_mean_left_sd": 0.0808274202833581,
+              "query_mean_right_sd": 0.0794932003041885,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.006523654704030258,
+              "right_variance": 0.006307116108274481,
+              "pooled_covariance": 0.0024796557415783078,
+              "pooled_correlation": 0.3865720893521893,
+              "difference_variance": 0.007871459329148124,
+              "independence_variance": 0.012830770812304739,
+              "independence_ratio": 1.6300371094839066,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0024796557415783013,
+              "exact_covariance_identity_gap": 6.5052130349130266e-18,
+              "exact_difference_variance_from_components": 0.007871459329148168,
+              "exact_difference_identity_gap": -4.336808689942018e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0024796557415783013,
+              "query_mean_left_sd": 0.08076914450475664,
+              "query_mean_right_sd": 0.07941735394908647,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0063116231216243475,
+              "right_variance": 0.006358261973699272,
+              "pooled_covariance": 0.0023422496239020366,
+              "pooled_correlation": 0.36973744838034334,
+              "difference_variance": 0.007985385847519545,
+              "independence_variance": 0.01266988509532362,
+              "independence_ratio": 1.5866340509092862,
+              "exact_weighted_within_covariance": -1.4708179987806527e-05,
+              "exact_weighted_between_covariance": 0.0023569578038898434,
+              "exact_covariance_identity_gap": -4.336808689942018e-19,
+              "exact_difference_variance_from_components": 0.007985385847519542,
+              "exact_difference_identity_gap": 3.469446951953614e-18,
+              "within_query_correlation": -0.0037256774017549324,
+              "query_mean_covariance": 0.0023569578038898434,
+              "query_mean_left_sd": 0.04894710538783045,
+              "query_mean_right_sd": 0.04907351490669627,
+              "query_within_covariance_quantiles": [
+                -0.0006244534294762398,
+                -1.200999021965943e-05,
+                0.0006133608638610387
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.29109538872569546,
+                  0.4334135185738637
+                ],
+                "independence_ratio_95_interval": [
+                  1.4106262242984733,
+                  1.7644741244012452
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0015466452017504017,
+              "right_variance": 0.0015478794131353955,
+              "pooled_covariance": 0.0014316965864272853,
+              "pooled_correlation": 0.9253096216530773,
+              "difference_variance": 0.00023113144203122709,
+              "independence_variance": 0.003094524614885797,
+              "independence_ratio": 13.388592169418951,
+              "exact_weighted_within_covariance": -1.8407379803320053e-07,
+              "exact_weighted_between_covariance": 0.0014318806602253186,
+              "exact_covariance_identity_gap": 0.0,
+              "exact_difference_variance_from_components": 0.0002311314420312266,
+              "exact_difference_identity_gap": 4.87890977618477e-19,
+              "within_query_correlation": -0.0016073373227623554,
+              "query_mean_covariance": 0.0014318806602253186,
+              "query_mean_left_sd": 0.03795067080926886,
+              "query_mean_right_sd": 0.03798821905598014,
+              "query_within_covariance_quantiles": [
+                -1.744116512658884e-05,
+                -7.333990775456045e-07,
+                1.9976444118982147e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.9032512073317579,
+                  0.9406026320003217
+                ],
+                "independence_ratio_95_interval": [
+                  10.336002314229498,
+                  16.835259956216
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0010623863910809135,
+              "right_variance": 0.0010700346646266663,
+              "pooled_covariance": 0.0009958824500941224,
+              "pooled_correlation": 0.9340452281486257,
+              "difference_variance": 0.0001406561555193348,
+              "independence_variance": 0.00213242105570758,
+              "independence_ratio": 15.160524243209917,
+              "exact_weighted_within_covariance": -2.99515126908474e-06,
+              "exact_weighted_between_covariance": 0.0009988776013632066,
+              "exact_covariance_identity_gap": 4.336808689942018e-19,
+              "exact_difference_variance_from_components": 0.00014065615551933598,
+              "exact_difference_identity_gap": -1.1655173354219173e-18,
+              "within_query_correlation": -0.0447664109016384,
+              "query_mean_covariance": 0.0009988776013632066,
+              "query_mean_left_sd": 0.0316455346983015,
+              "query_mean_right_sd": 0.03177482453190995,
+              "query_within_covariance_quantiles": [
+                -1.6157818829893516e-05,
+                -9.93592857520625e-07,
+                5.055735705744126e-06
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.907245598361193,
+                  0.9501829278116151
+                ],
+                "independence_ratio_95_interval": [
+                  10.780687169756172,
+                  20.066770453502755
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.000614033179363249,
+              "right_variance": 0.00106089079465811,
+              "pooled_covariance": 0.0007023868745280179,
+              "pooled_correlation": 0.8702521949534082,
+              "difference_variance": 0.0002701502249653236,
+              "independence_variance": 0.001674923974021359,
+              "independence_ratio": 6.199972530973653,
+              "exact_weighted_within_covariance": 6.148683782927751e-34,
+              "exact_weighted_between_covariance": 0.0007023868745280169,
+              "exact_covariance_identity_gap": 9.75781955236954e-19,
+              "exact_difference_variance_from_components": 0.00027015022496532375,
+              "exact_difference_identity_gap": -1.6263032587282567e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.0007023868745280169,
+              "query_mean_left_sd": 0.024854988385615603,
+              "query_mean_right_sd": 0.031962140780232705,
+              "query_within_covariance_quantiles": [
+                -9.88644038118781e-34,
+                0.0,
+                4.550330481938899e-33
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.7498515417787182,
+                  0.9363824525973123
+                ],
+                "independence_ratio_95_interval": [
+                  3.5825923451195623,
+                  10.977342763677267
+                ]
+              }
+            }
+          }
+        },
+        "2bit": {
+          "calibration": {
+            "intercept": -0.9770459581979403,
+            "slope": 0.0009114016375399342
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.002475513179184571,
+              "right_variance": 0.002456339115603906,
+              "pooled_covariance": 0.0009991017048066918,
+              "pooled_correlation": 0.405165927884781,
+              "difference_variance": 0.002933648885175094,
+              "independence_variance": 0.004931852294788477,
+              "independence_ratio": 1.6811324353473613,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0009991017048066938,
+              "exact_covariance_identity_gap": -1.951563910473908e-18,
+              "exact_difference_variance_from_components": 0.0029336488851750757,
+              "exact_difference_identity_gap": 1.8214596497756474e-17,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0009991017048066938,
+              "query_mean_left_sd": 0.04975452923287056,
+              "query_mean_right_sd": 0.04956146805335679,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.0024752679858167184,
+              "right_variance": 0.002456475781469323,
+              "pooled_covariance": 0.0009991820264229415,
+              "pooled_correlation": 0.4052072968543495,
+              "difference_variance": 0.0029333797144401566,
+              "independence_variance": 0.004931743767286041,
+              "independence_ratio": 1.6812497008172969,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 0.0009991820264229417,
+              "exact_covariance_identity_gap": -2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0029333797144401592,
+              "exact_difference_identity_gap": -2.6020852139652106e-18,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 0.0009991820264229417,
+              "query_mean_left_sd": 0.04975206514122522,
+              "query_mean_right_sd": 0.04956284678536254,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.002441678207120508,
+              "right_variance": 0.0024213215453336035,
+              "pooled_covariance": 0.0010268032918536987,
+              "pooled_correlation": 0.4222958422777549,
+              "difference_variance": 0.0028093931687467144,
+              "independence_variance": 0.004862999752454111,
+              "independence_ratio": 1.73097870620349,
+              "exact_weighted_within_covariance": -1.8212490484305248e-05,
+              "exact_weighted_between_covariance": 0.0010450157823380039,
+              "exact_covariance_identity_gap": 0.0,
+              "exact_difference_variance_from_components": 0.0028093931687467153,
+              "exact_difference_identity_gap": -8.673617379884035e-19,
+              "within_query_correlation": -0.013234473513266514,
+              "query_mean_covariance": 0.0010450157823380039,
+              "query_mean_left_sd": 0.03275084075303971,
+              "query_mean_right_sd": 0.03242334012758832,
+              "query_within_covariance_quantiles": [
+                -0.00020636267457875549,
+                -3.3622843506874724e-06,
+                0.00015501530597529747
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.3548896199551667,
+                  0.4923417026603933
+                ],
+                "independence_ratio_95_interval": [
+                  1.5501139578081478,
+                  1.9698048324797997
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0017313846726657533,
+              "right_variance": 0.001779466776550387,
+              "pooled_covariance": 0.0010117137387186013,
+              "pooled_correlation": 0.5763893150189161,
+              "difference_variance": 0.0014874239717789378,
+              "independence_variance": 0.0035108514492161406,
+              "independence_ratio": 2.360356909548266,
+              "exact_weighted_within_covariance": 2.699483208586413e-06,
+              "exact_weighted_between_covariance": 0.0010090142555100148,
+              "exact_covariance_identity_gap": 2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0014874239717789384,
+              "exact_difference_identity_gap": -6.505213034913027e-19,
+              "within_query_correlation": 0.003644744197058788,
+              "query_mean_covariance": 0.0010090142555100148,
+              "query_mean_left_sd": 0.031681099175614534,
+              "query_mean_right_sd": 0.03222514696162221,
+              "query_within_covariance_quantiles": [
+                -8.79384300284368e-05,
+                7.432206813993787e-07,
+                0.00011821453135879654
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5067941675327714,
+                  0.6272990023025571
+                ],
+                "independence_ratio_95_interval": [
+                  2.0274812177645916,
+                  2.682872831600201
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.002176822430107475,
+              "right_variance": 0.0022001654137515036,
+              "pooled_covariance": 0.0014010294223720935,
+              "pooled_correlation": 0.6401888224982176,
+              "difference_variance": 0.001574928999114791,
+              "independence_variance": 0.004376987843858978,
+              "independence_ratio": 2.7791651854268475,
+              "exact_weighted_within_covariance": -2.141828895589718e-05,
+              "exact_weighted_between_covariance": 0.0014224477113279905,
+              "exact_covariance_identity_gap": 2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0015749289991147924,
+              "exact_difference_identity_gap": -1.3010426069826053e-18,
+              "within_query_correlation": -0.02821815210865014,
+              "query_mean_covariance": 0.0014224477113279905,
+              "query_mean_left_sd": 0.03779407024179321,
+              "query_mean_right_sd": 0.03805761326199701,
+              "query_within_covariance_quantiles": [
+                -0.00015917183899551417,
+                -1.7544234179398522e-05,
+                7.998433374508163e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5832979265807559,
+                  0.6836060797709795
+                ],
+                "independence_ratio_95_interval": [
+                  2.399687528895131,
+                  3.160567538441581
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.002670996337135513,
+              "right_variance": 0.0021546405896906333,
+              "pooled_covariance": 0.0014783233428173415,
+              "pooled_correlation": 0.6162335934163106,
+              "difference_variance": 0.0018689902411914646,
+              "independence_variance": 0.0048256369268261465,
+              "independence_ratio": 2.581948701749157,
+              "exact_weighted_within_covariance": -4.724528689951749e-35,
+              "exact_weighted_between_covariance": 0.0014783233428173417,
+              "exact_covariance_identity_gap": -2.168404344971009e-19,
+              "exact_difference_variance_from_components": 0.0018689902411914631,
+              "exact_difference_identity_gap": 1.5178830414797062e-18,
+              "within_query_correlation": null,
+              "query_mean_covariance": 0.0014783233428173417,
+              "query_mean_left_sd": 0.05183872261227538,
+              "query_mean_right_sd": 0.037624228344749704,
+              "query_within_covariance_quantiles": [
+                -5.700752635386217e-34,
+                0.0,
+                2.6000054249227573e-35
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.5412113546387161,
+                  0.6712574436566262
+                ],
+                "independence_ratio_95_interval": [
+                  2.166178219594364,
+                  2.992165665948928
+                ]
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "intercept": 0.09161989264427539,
+            "slope": 0.0004472280756303254
+          },
+          "regimes": {
+            "iid_with_replacement": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.00019354069017542296,
+              "right_variance": 0.00019701305459002944,
+              "pooled_covariance": 5.287482107427062e-05,
+              "pooled_correlation": 0.2707791781394411,
+              "difference_variance": 0.0002848041026169112,
+              "independence_variance": 0.0003905537447654524,
+              "independence_ratio": 1.3713065969796951,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 5.2874821074270534e-05,
+              "exact_covariance_identity_gap": 8.809142651444724e-20,
+              "exact_difference_variance_from_components": 0.00028480410261691187,
+              "exact_difference_identity_gap": -6.505213034913027e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 5.2874821074270534e-05,
+              "query_mean_left_sd": 0.01391189024451469,
+              "query_mean_right_sd": 0.01403613389042829,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "distinct_random_triples": {
+              "pair_count": 20480,
+              "query_count": 20480,
+              "left_variance": 0.00019293633231017338,
+              "right_variance": 0.0001955703393943729,
+              "pooled_covariance": 5.2856475880210695e-05,
+              "pooled_correlation": 0.2721069910647004,
+              "difference_variance": 0.00028279371994412487,
+              "independence_variance": 0.0003885066717045463,
+              "independence_ratio": 1.373816475773608,
+              "exact_weighted_within_covariance": 0.0,
+              "exact_weighted_between_covariance": 5.2856475880210756e-05,
+              "exact_covariance_identity_gap": -6.098637220230962e-20,
+              "exact_difference_variance_from_components": 0.0002827937199441245,
+              "exact_difference_identity_gap": 3.7947076036992655e-19,
+              "within_query_correlation": 0.0,
+              "query_mean_covariance": 5.2856475880210756e-05,
+              "query_mean_left_sd": 0.01389015235014265,
+              "query_mean_right_sd": 0.0139846465595085,
+              "query_within_covariance_quantiles": null,
+              "query_block_bootstrap": null
+            },
+            "shared_query_random": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.00018446078925557147,
+              "right_variance": 0.00018590401995608518,
+              "pooled_covariance": 4.54795812026903e-05,
+              "pooled_correlation": 0.24559529078908066,
+              "difference_variance": 0.000279405646806276,
+              "independence_variance": 0.00037036480921165665,
+              "independence_ratio": 1.3255451829448763,
+              "exact_weighted_within_covariance": 2.184956779611587e-06,
+              "exact_weighted_between_covariance": 4.329462442307872e-05,
+              "exact_covariance_identity_gap": -6.776263578034403e-21,
+              "exact_difference_variance_from_components": 0.0002794056468062759,
+              "exact_difference_identity_gap": 1.0842021724855044e-19,
+              "within_query_correlation": 0.015497703704441168,
+              "query_mean_covariance": 4.329462442307872e-05,
+              "query_mean_left_sd": 0.006663943003797402,
+              "query_mean_right_sd": 0.006673340841935326,
+              "query_within_covariance_quantiles": [
+                -1.6192726019223263e-05,
+                2.0125105934037052e-06,
+                2.4606857999505683e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.20361465817202898,
+                  0.28642819012250265
+                ],
+                "independence_ratio_95_interval": [
+                  1.2556732925125054,
+                  1.4013996536361537
+                ]
+              }
+            },
+            "local_top256": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.00015958102407610228,
+              "right_variance": 0.00016129665691102672,
+              "pooled_covariance": 6.118082579949773e-05,
+              "pooled_correlation": 0.38133970627295466,
+              "difference_variance": 0.0001985160293881335,
+              "independence_variance": 0.000320877680987129,
+              "independence_ratio": 1.6163817197842352,
+              "exact_weighted_within_covariance": -1.3119033124929345e-06,
+              "exact_weighted_between_covariance": 6.249272911199066e-05,
+              "exact_covariance_identity_gap": 1.3552527156068805e-20,
+              "exact_difference_variance_from_components": 0.0001985160293881335,
+              "exact_difference_identity_gap": 0.0,
+              "within_query_correlation": -0.013516666188599062,
+              "query_mean_covariance": 6.249272911199066e-05,
+              "query_mean_left_sd": 0.007991375737695972,
+              "query_mean_right_sd": 0.007980030683842662,
+              "query_within_covariance_quantiles": [
+                -1.8236116078263242e-05,
+                -6.389776340271185e-09,
+                1.0488209220396342e-05
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.3227333056872291,
+                  0.4318472547030813
+                ],
+                "independence_ratio_95_interval": [
+                  1.4764436661620253,
+                  1.7600082183029386
+                ]
+              }
+            },
+            "selected_top32": {
+              "pair_count": 20480,
+              "query_count": 160,
+              "left_variance": 0.0001617968610780553,
+              "right_variance": 0.00016085772069788913,
+              "pooled_covariance": 6.675320655689893e-05,
+              "pooled_correlation": 0.4137767947225238,
+              "difference_variance": 0.0001891481686621465,
+              "independence_variance": 0.0003226545817759444,
+              "independence_ratio": 1.7058297950125278,
+              "exact_weighted_within_covariance": -3.708594251864015e-06,
+              "exact_weighted_between_covariance": 7.046180080876292e-05,
+              "exact_covariance_identity_gap": 2.710505431213761e-20,
+              "exact_difference_variance_from_components": 0.00018914816866214646,
+              "exact_difference_identity_gap": 2.710505431213761e-20,
+              "within_query_correlation": -0.04107793810684907,
+              "query_mean_covariance": 7.046180080876292e-05,
+              "query_mean_left_sd": 0.008446393903842527,
+              "query_mean_right_sd": 0.008463550505466102,
+              "query_within_covariance_quantiles": [
+                -1.8130881011897934e-05,
+                -2.6809234121899105e-06,
+                8.258400386685896e-06
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.3543911739117191,
+                  0.47207745117752964
+                ],
+                "independence_ratio_95_interval": [
+                  1.548914459148854,
+                  1.8941800176980583
+                ]
+              }
+            },
+            "top_anchor": {
+              "pair_count": 4960,
+              "query_count": 160,
+              "left_variance": 0.00014938642954840408,
+              "right_variance": 0.000161438161184977,
+              "pooled_covariance": 7.542369304509093e-05,
+              "pooled_correlation": 0.4856787683997641,
+              "difference_variance": 0.00015997720464319947,
+              "independence_variance": 0.00031082459073338107,
+              "independence_ratio": 1.9429305032965147,
+              "exact_weighted_within_covariance": -2.912779710204531e-38,
+              "exact_weighted_between_covariance": 7.542369304509095e-05,
+              "exact_covariance_identity_gap": -1.3552527156068805e-20,
+              "exact_difference_variance_from_components": 0.00015997720464319934,
+              "exact_difference_identity_gap": 1.3552527156068805e-19,
+              "within_query_correlation": null,
+              "query_mean_covariance": 7.542369304509095e-05,
+              "query_mean_left_sd": 0.0122595130077241,
+              "query_mean_right_sd": 0.008395340575623496,
+              "query_within_covariance_quantiles": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "query_block_bootstrap": {
+                "repeats": 400,
+                "correlation_95_interval": [
+                  0.4133378224444122,
+                  0.5470421150166674
+                ],
+                "independence_ratio_95_interval": [
+                  1.703348589032881,
+                  2.207357174340543
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "ranking": {
+    "records": [
+      {
+        "dataset": "cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.17375886524822695,
+        "tail": 0.13164893617021275,
+        "combined": 0.3054078014184397,
+        "flip": 0.16279069767441862,
+        "tau": 0.024209260940551758
+      },
+      {
+        "dataset": "cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.17375886524822695,
+        "tail": 0.1325354609929078,
+        "combined": 0.30629432624113473,
+        "flip": 0.15946843853820597,
+        "tau": 0.024209260940551758
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.12632978723404256,
+        "tail": 0.11502659574468085,
+        "combined": 0.24135638297872342,
+        "flip": 0.10963455149501661,
+        "tau": 0.08285354375839234
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.12632978723404256,
+        "tail": 0.11391843971631206,
+        "combined": 0.24024822695035464,
+        "flip": 0.12513842746400886,
+        "tau": 0.08285354375839234
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.06892730496453901,
+        "tail": 0.0062056737588652485,
+        "combined": 0.07513297872340426,
+        "flip": 0.031007751937984496,
+        "tau": 0.04183626174926758
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.06892730496453901,
+        "tail": 0.028590425531914893,
+        "combined": 0.0975177304964539,
+        "flip": 0.05094130675526024,
+        "tau": 0.04183626174926758
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.21653368794326242,
+        "tail": 0.09463652482269504,
+        "combined": 0.31117021276595747,
+        "flip": 0.09302325581395349,
+        "tau": 0.03851060271263122
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.21653368794326242,
+        "tail": 0.06914893617021277,
+        "combined": 0.28568262411347517,
+        "flip": 0.12513842746400886,
+        "tau": 0.03851060271263122
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.10172872340425532,
+        "tail": 0.025487588652482268,
+        "combined": 0.12721631205673758,
+        "flip": 0.05426356589147287,
+        "tau": 0.08361150026321411
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.10172872340425532,
+        "tail": 0.022384751773049646,
+        "combined": 0.12411347517730496,
+        "flip": 0.04318936877076412,
+        "tau": 0.08361150026321411
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.14162234042553193,
+        "tail": 0.03280141843971631,
+        "combined": 0.17442375886524825,
+        "flip": 0.06090808416389812,
+        "tau": 0.07404601573944092
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.0851063829787234,
+        "tail": 0.031914893617021274,
+        "combined": 0.11702127659574468,
+        "flip": 0.03211517165005537,
+        "tau": 0.05768063068389893
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.25731382978723405,
+        "tail": 0.311613475177305,
+        "combined": 0.568927304964539,
+        "flip": 0.25692137320044295,
+        "tau": 0.08644288778305054
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.19437056737588654,
+        "tail": 0.3807624113475177,
+        "combined": 0.5751329787234043,
+        "flip": 0.33111849390919157,
+        "tau": 0.07617532610893249
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "2bit",
+        "eligible": false,
+        "boundary": 0.016400709219858155,
+        "tail": 0.9840425531914894,
+        "combined": 1,
+        "flip": 0.5570321151716501,
+        "tau": 0.010971784591674805
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.24445921985815602,
+        "tail": 0.24157801418439717,
+        "combined": 0.48603723404255317,
+        "flip": 0.22259136212624583,
+        "tau": 0.04967281222343445
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.18572695035460993,
+        "tail": 0.600177304964539,
+        "combined": 0.785904255319149,
+        "flip": 0.3875968992248062,
+        "tau": 0.014657771587371827
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.18572695035460993,
+        "tail": 0.19570035460992907,
+        "combined": 0.381427304964539,
+        "flip": 0.17718715393134,
+        "tau": 0.014657771587371827
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.3991578014184397,
+        "tail": 0.3497340425531915,
+        "combined": 0.7488918439716312,
+        "flip": 0.2724252491694352,
+        "tau": 0.03565281629562378
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.3991578014184397,
+        "tail": 0.36192375886524825,
+        "combined": 0.761081560283688,
+        "flip": 0.32447397563676633,
+        "tau": 0.03565281629562378
+      },
+      {
+        "dataset": "random",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.14428191489361702,
+        "tail": 0.08599290780141844,
+        "combined": 0.23027482269503546,
+        "flip": 0.10852713178294573,
+        "tau": 0.05465500354766845
+      },
+      {
+        "dataset": "random",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.14428191489361702,
+        "tail": 0.08067375886524823,
+        "combined": 0.22495567375886527,
+        "flip": 0.13178294573643412,
+        "tau": 0.05465500354766845
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.12034574468085106,
+        "tail": 0.017065602836879433,
+        "combined": 0.1374113475177305,
+        "flip": 0.07198228128460686,
+        "tau": 0.0684274673461914
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.12034574468085106,
+        "tail": 0.00576241134751773,
+        "combined": 0.12610815602836878,
+        "flip": 0.035437430786267994,
+        "tau": 0.0684274673461914
+      }
+    ],
+    "metrics": {
+      "boundary": {
+        "spearman": 0.6265804724009447,
+        "eligible_spearman": 0.8489367824638013,
+        "dataset_cluster_95": [
+          0.13078088836473076,
+          0.9322868552862585
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.6011899714197483,
+          "minilm": 0.6066795397359231,
+          "bge_m3": 0.5768480045920183,
+          "wolt_clip": 0.6757232933252726,
+          "codesearch_jina": 0.5762819123402108,
+          "landmark_dino": 0.5821079484478942,
+          "glove100": 0.6183481320088525,
+          "sift128": 0.8425842677922825,
+          "gist960": 0.6300606762619397,
+          "sphere": 0.5943968643980563,
+          "random": 0.6023221559233637,
+          "msmarco_cohere": 0.5802445581028645
+        }
+      },
+      "tail": {
+        "spearman": 0.9532507292099892,
+        "eligible_spearman": 0.9468742567296056,
+        "dataset_cluster_95": [
+          0.7877179457454209,
+          0.9912203687445127
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.9404123504064092,
+          "minilm": 0.9559570863918693,
+          "bge_m3": 0.9528382193006681,
+          "wolt_clip": 0.9582156973461323,
+          "codesearch_jina": 0.9584863415253313,
+          "landmark_dino": 0.9630048393050618,
+          "glove100": 0.9392827259614766,
+          "sift128": 0.9392827259614766,
+          "gist960": 0.9392827259614766,
+          "sphere": 0.9392827259614766,
+          "random": 0.9596159659702638,
+          "msmarco_cohere": 0.9641344637499942
+        }
+      },
+      "combined": {
+        "spearman": 0.9549902378399344,
+        "eligible_spearman": 0.9488510297081643,
+        "dataset_cluster_95": [
+          0.7491368056638539,
+          0.9886665106177235
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.9573567170803986,
+          "minilm": 0.9661208356860531,
+          "bge_m3": 0.9483197215209377,
+          "wolt_clip": 0.9785431959345003,
+          "codesearch_jina": 0.9460604726310724,
+          "landmark_dino": 0.9460604726310724,
+          "glove100": 0.9449308481861397,
+          "sift128": 0.941541974851342,
+          "gist960": 0.941541974851342,
+          "sphere": 0.9449308481861397,
+          "random": 0.9675233370847922,
+          "msmarco_cohere": 0.9471900970760049
+        }
+      }
+    },
+    "combined_minus_component_95": {
+      "boundary": [
+        0.012509494922482427,
+        0.8123275700933714
+      ],
+      "tail": [
+        -0.09175812455711531,
+        0.09711286089238846
+      ]
+    }
+  },
+  "pruning": {
+    "records": [
+      {
+        "dataset": "cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.3426445002899671,
+        "tail": 0.20292866808428378,
+        "combined": 0.5455731683742508,
+        "flip": 0.3319962246342614,
+        "tau": 0.031803268194198604
+      },
+      {
+        "dataset": "cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.3426445002899671,
+        "tail": 0.06601585153682582,
+        "combined": 0.40866035182679294,
+        "flip": 0.26238791882963663,
+        "tau": 0.031803268194198604
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.12326541223879627,
+        "tail": 0.01553410678885964,
+        "combined": 0.13879951902765592,
+        "flip": 0.051149616794401866,
+        "tau": 0.13002727031707761
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.12326541223879627,
+        "tail": 0.016379058204153262,
+        "combined": 0.13964447044294953,
+        "flip": 0.052815728090636456,
+        "tau": 0.13002727031707761
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.19059934442005233,
+        "tail": 0.015547469401257029,
+        "combined": 0.20614681382130937,
+        "flip": 0.10158730158730159,
+        "tau": 0.04910995578765868
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.19059934442005233,
+        "tail": 0.03575617237542477,
+        "combined": 0.2263555167954771,
+        "flip": 0.11670445956160241,
+        "tau": 0.04910995578765868
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.33249805581958003,
+        "tail": 0.07353322388317636,
+        "combined": 0.4060312797027564,
+        "flip": 0.2487990392313851,
+        "tau": 0.043301179409027106
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.33249805581958003,
+        "tail": 0.05309772746910913,
+        "combined": 0.38559578328868915,
+        "flip": 0.261208967173739,
+        "tau": 0.043301179409027106
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.07569864356921066,
+        "tail": 0.003922209511358065,
+        "combined": 0.07962085308056872,
+        "flip": 0.039742558326629124,
+        "tau": 0.11533581304550174
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.07569864356921066,
+        "tail": 0.002026474914201667,
+        "combined": 0.07772511848341233,
+        "flip": 0.042638777152051485,
+        "tau": 0.11533581304550174
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.18774665200232904,
+        "tail": 0.056317526039981886,
+        "combined": 0.24406417804231093,
+        "flip": 0.14032829095590602,
+        "tau": 0.08183210372924798
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.1246684350132626,
+        "tail": 0.06049039270233551,
+        "combined": 0.1851588277155981,
+        "flip": 0.11055680720952688,
+        "tau": 0.05713052511215212
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.2404229722028747,
+        "tail": 0.11242322547964288,
+        "combined": 0.35284619768251757,
+        "flip": 0.13142857142857142,
+        "tau": 0.1504893273115158
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.2404229722028747,
+        "tail": 0.10539479516241372,
+        "combined": 0.3458177673652884,
+        "flip": 0.13158730158730159,
+        "tau": 0.1504893273115158
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "2bit",
+        "eligible": false,
+        "boundary": 0.4869258597792737,
+        "tail": 0.34675092732518203,
+        "combined": 0.8336767871044557,
+        "flip": 0.38829151732377537,
+        "tau": 0.0706564962863922
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.4869258597792737,
+        "tail": 0.10857718551083025,
+        "combined": 0.595503045290104,
+        "flip": 0.34814814814814815,
+        "tau": 0.0706564962863922
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.3434483957916703,
+        "tail": 0.31862446743761413,
+        "combined": 0.6620728632292845,
+        "flip": 0.3279522335249889,
+        "tau": 0.024510273337364188
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.3434483957916703,
+        "tail": 0.061429440918181026,
+        "combined": 0.40487783670985134,
+        "flip": 0.30008845643520565,
+        "tau": 0.024510273337364188
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.020003019323671496,
+        "tail": 0.00037741545893719806,
+        "combined": 0.020380434782608696,
+        "flip": 0.0,
+        "tau": 0.18756284689903263
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.020003019323671496,
+        "tail": 0.0004528985507246377,
+        "combined": 0.020455917874396132,
+        "flip": 0.0,
+        "tau": 0.18756284689903263
+      },
+      {
+        "dataset": "random",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.0476521357519017,
+        "tail": 0.023332358104154478,
+        "combined": 0.07098449385605618,
+        "flip": 0.012286814597469282,
+        "tau": 0.09971927404403684
+      },
+      {
+        "dataset": "random",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.0476521357519017,
+        "tail": 0.03068314803978935,
+        "combined": 0.07833528379169105,
+        "flip": 0.013570511644966074,
+        "tau": 0.09971927404403684
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "boundary": 0.07199763068265956,
+        "tail": 0.03690211757737302,
+        "combined": 0.10889974826003258,
+        "flip": 0.052942916296953565,
+        "tau": 0.07386169910430909
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "boundary": 0.07199763068265956,
+        "tail": 0.008973789426921367,
+        "combined": 0.08097142010958093,
+        "flip": 0.04466134279798876,
+        "tau": 0.07386169910430909
+      }
+    ],
+    "metrics": {
+      "boundary": {
+        "spearman": 0.9694879174993029,
+        "eligible_spearman": 0.9655708909621961,
+        "dataset_cluster_95": [
+          0.8366247656125483,
+          0.9914746863343671
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.9651688106339376,
+          "minilm": 0.96970011960405,
+          "bge_m3": 0.9713993604678421,
+          "wolt_clip": 0.9606375016638252,
+          "codesearch_jina": 0.9742314285741625,
+          "landmark_dino": 0.9745081595635737,
+          "glove100": 0.968567292361522,
+          "sift128": 0.9606375016638252,
+          "gist960": 0.9651688106339376,
+          "sphere": 0.9603662500696378,
+          "random": 0.9606375016638252,
+          "msmarco_cohere": 0.9787627375442748
+        }
+      },
+      "tail": {
+        "spearman": 0.8901935413744744,
+        "eligible_spearman": 0.8752162362568535,
+        "dataset_cluster_95": [
+          0.6316687387760741,
+          0.9640811577177316
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.8799774426025139,
+          "minilm": 0.8867551892721096,
+          "bge_m3": 0.8844959403822443,
+          "wolt_clip": 0.8980514337214358,
+          "codesearch_jina": 0.8856255648271769,
+          "landmark_dino": 0.8867551892721096,
+          "glove100": 0.91273655150556,
+          "sift128": 0.870940447043053,
+          "gist960": 0.8799774426025139,
+          "sphere": 0.8577075098814231,
+          "random": 0.9138661759504925,
+          "msmarco_cohere": 0.8799774426025139
+        }
+      },
+      "combined": {
+        "spearman": 0.9832572530765445,
+        "eligible_spearman": 0.9809735906097427,
+        "dataset_cluster_95": [
+          0.9077309232923979,
+          0.992105608811872
+        ],
+        "undefined_bootstrap_replicates": 0,
+        "leave_one_dataset_out": {
+          "cohere": 0.9827732670913826,
+          "minilm": 0.9816436426464501,
+          "bge_m3": 0.9793843937565847,
+          "wolt_clip": 0.9827732670913826,
+          "codesearch_jina": 0.9816436426464501,
+          "landmark_dino": 0.9827732670913826,
+          "glove100": 0.9827732670913826,
+          "sift128": 0.9805140182015173,
+          "gist960": 0.9861621404261806,
+          "sphere": 0.9785431959345003,
+          "random": 0.9805140182015173,
+          "msmarco_cohere": 0.9816436426464501
+        }
+      }
+    },
+    "combined_minus_component_95": {
+      "boundary": [
+        -0.0472514829973404,
+        0.11098417182947207
+      ],
+      "tail": [
+        0.007853274738516547,
+        0.2972027972027972
+      ]
+    }
+  },
+  "protocol": {
+    "source_sha256": "2e05828469f01ba81a09e3dfc2b98717784957f7d94f17245e03f5a25345cecb",
+    "coefficient_and_tau_pool": "原calibration池2000向量，48个target",
+    "component_estimation_pool": "原validation池2000向量，96个target",
+    "evaluation_pool": "原stress池2000向量，96个target，预定最小20%精确margin",
+    "parameter_selection": "沿用首池冻结评分及tau，不使用第三池结果选择预测器或阈值",
+    "bootstrap_clusters": 12,
+    "bootstrap_replicates": 2000,
+    "seed": 20261109
+  }
+}

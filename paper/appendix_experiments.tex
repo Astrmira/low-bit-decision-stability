@@ -1,0 +1,685 @@
+\section{Datasets, Protocols, and Experiment Inventory}
+\label{app:experiments}
+
+% TODO：上传实验代码后核验预留仓库链接与复现附件清单。
+\noindent\url{https://github.com/Astrmira/low-bit-decision-stability}
+
+
+Decision experiments use bounded memory-mapped samples, and E8 builds complete 200{,}000-vector graphs. Fixed seeds, disjoint pools, and independent block streams retain the stated fitting, certification, and validation roles. The repository pairs programs with frozen results and hashes. Scripts \texttt{calibration\_cross.py}, \texttt{matched\_fidelity.py}, \texttt{diagnostic\_reanalysis.py}, and \texttt{observable\_certificates.py} reproduce the controls. E8 retains graphs, labels, traces, clocks, fitted constants, and source/input identities. Wolt evidence includes three instrumented rebuilds, 12 entry-prune replays, 72 fixed-pool variants, and seven entry or adjacency interventions with byte-level patch manifests. Independent checks verify scores, selection outputs, event counts, and cluster bootstraps.
+
+
+
+\begin{table}[!htbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+& & & & \multicolumn{4}{c}{Recall@10 (\%)} & \multicolumn{2}{c}{Native search} \\
+Data & Order & Axes & Width & Native & SM & FP32 & Cross & L0 scores & QPS \\
+\midrule
+Cohere & A+B & Orig. & 64 & 93.29 & 94.86 & 96.95 & 90.17 & 2,386 & 2,726 \\
+Cohere & A+B & Orig. & 128 & 95.69 & 95.34 & 98.69 & 91.82 & 3,920 & 1,715 \\
+Cohere & A+B & Orig. & 256 & 96.10 & 95.50 & 99.50 & 92.19 & 6,602 & 984 \\
+Cohere & A+B & Rot. & 64 & 86.23 & 84.95 & 90.24 & 89.81 & 1,991 & 3,172 \\
+Cohere & A+B & Rot. & 128 & 88.70 & 87.62 & 93.71 & 92.24 & 3,189 & 2,062 \\
+Cohere & A+B & Rot. & 256 & 89.96 & 89.05 & 95.47 & 93.98 & 5,194 & 1,250 \\
+\midrule
+Wolt & B & Orig. & 64 & 88.23 & 87.45 & 91.75 & 82.39 & 1,727 & 2,588 \\
+Wolt & B & Orig. & 128 & 89.94 & 89.37 & 93.54 & 84.76 & 2,539 & 1,902 \\
+Wolt & B & Orig. & 256 & 90.70 & 90.62 & 95.08 & 86.54 & 3,867 & 1,271 \\
+Wolt & B & Rot. & 64 & 86.44 & 82.63 & 90.55 & 84.87 & 1,667 & 2,596 \\
+Wolt & B & Rot. & 128 & 87.47 & 86.14 & 92.45 & 88.05 & 2,490 & 2,013 \\
+Wolt & B & Rot. & 256 & 87.31 & 87.08 & 93.73 & 89.95 & 3,851 & 1,212 \\
+\midrule
+Wolt & A & Orig. & 64 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 24,649 \\
+Wolt & A & Orig. & 128 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 22,937 \\
+Wolt & A & Orig. & 256 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 23,068 \\
+Wolt & A & Rot. & 64 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 26,773 \\
+Wolt & A & Rot. & 128 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 25,182 \\
+Wolt & A & Rot. & 256 & 0.00 & 0.00 & 0.00 & 0.00 & 68 & 26,273 \\
+\bottomrule
+\end{tabular}
+\caption{Complete E8 width sweep on the eight 200{,}000-vector graphs. Scoring controls use the same graph, entry, and FP32 budget 64. Work and five-round single-CPU QPS refer to native search. The last block has 68 reachable nodes.}
+\label{tab:actual-graph}
+\end{table}
+
+% ============================================================
+\section{Representation Diagnostics}
+\label{app:foundational}
+
+The diagnostics in this appendix motivated the Gaussian model of Section~\ref{sec:bridge} and the applicability check of Section~\ref{sec:applicability}. Table~\ref{tab:app-coordinate-qq} reports directly recomputed coordinate fits.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Dataset & $D$ & Mean coordinate QQ $R^2$ & Norm CV \\
+\midrule
+Cohere & 768 & .9984 & .0439 \\
+MiniLM & 384 & .9993 & $3.31\times10^{-8}$ \\
+Wolt-CLIP & 512 & .9969 & $3.29\times10^{-8}$ \\
+GIST & 960 & .9181 & $3.31\times10^{-8}$ \\
+\bottomrule
+\end{tabular}
+\caption{Direct representation diagnostics on 4{,}000 archived vectors per dataset. Each coordinate is sorted and regressed, with an intercept, on normal Blom quantiles $(i-0.375)/(n+0.25)$. The table averages coordinate-wise $R^2$. Cohere retains its archived radii. The other three inputs are unit-normalized, so their norm CV describes that input convention. These are coordinate QQ fits, distinct from the sign-entropy fits below.}
+\label{tab:app-coordinate-qq}
+\end{table}
+
+
+
+Coarse geometry summaries vary across representations. The fraction of principal components explaining 90\% of variance is 0.309 for Cohere, 0.497 for MiniLM, and 0.181 for GIST. Their representative nearest-neighbour angular gaps are $0.125^\circ$, $0.277^\circ$, and $0.091^\circ$. The analysis uses decision margins and the errors relative to them.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Dataset & Coord.\ sign & Random hyperplane & GW & KL & $H_{\mathrm{sign}}$ \\
+\midrule
+Cohere & .650 & .744 & .746 & .0229 & .747 \\
+BGE-M3 & .677 & .701 & .692 & .0022 & .700 \\
+MiniLM & .508 & .506 & .506 & .0021 & .987 \\
+GIST & .9999 & .768 & .774 & .2648 & .0004 \\
+Random & .513 & .513 & .513 & .0010 & .981 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Coordinate signs versus random hyperplanes: collision rate of coordinate signs, collision rate of random-hyperplane signs, the angular prediction $1-\theta/\pi$ (GW), the KL divergence between the two collision laws, and the sign entropy $H_{\mathrm{sign}}$.}
+\label{tab:app-foundational-sign}
+\end{table}
+
+GIST is the key negative control: almost all coordinate signs agree whatever the angle between two vectors, whereas random hyperplanes keep the angular collision law. This is the origin of both the effect of rotation and the applicability check.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+Dataset & $D$ & $R^2$ & MAE & Mean $|\mathrm{SNR}|$ & Measured / predicted entropy \\
+\midrule
+Cohere & 768 & .9996 & .004 & .884 & .747 / .748 \\
+BGE-M3 & 1024 & .9989 & .007 & .908 & .700 / .699 \\
+MiniLM & 384 & .9222 & .002 & .127 & .987 / .988 \\
+Random & 768 & .9967 & .001 & .164 & .981 / .982 \\
+GIST & 960 & not fitted & .240 & 1.763 & .000 / .240 \\
+MSMARCO-Cohere & 1024 & .9995 & .0019 & .370 & .910 / .910 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Gaussian model of sign entropy: the entropy of each coordinate predicted from its signal-to-noise ratio $\mu_i/\sigma_i$. $R^2$ is unstable when the entropy barely varies across coordinates, so the mean absolute error (MAE) is reported alongside.}
+\label{tab:app-foundational-gaussian}
+\end{table}
+
+For the sign-entropy prediction fits in nine 768-dimensional regimes, eight had $R^2\ge0.9965$; the near-isotropic RoBERTa regime had a low $R^2$ because its entropy barely varies across coordinates, with a mean absolute error of 0.00166. These checks are coordinate-wise; the joint test of Section~\ref{sec:exp-eligibility} is stronger.
+
+% ============================================================
+\section{Representation Mechanisms}
+\label{app:mechanisms}
+
+Tables~\ref{tab:app-magnitude} to~\ref{tab:app-rotation-drivers} collect the measurements behind Section~\ref{sec:bridge}: the gain from the magnitude bit, a controlled change of coordinate heterogeneity, the response of the two-bit code to rotation, and the predictors of that response.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrr}
+\toprule
+Dataset & $\mathrm{CV}(\sigma)$ & $\Delta F$ & $\Delta$ Recall \\
+\midrule
+MiniLM & .118 & +.132 & +.174 \\
+Cohere & .182 & +.091 & +.144 \\
+CodeSearch & .098 & +.088 & +.143 \\
+Landmark & .110 & +.088 & +.110 \\
+Arxiv & .108 & +.071 & +.159 \\
+Random & .070 & +.049 & +.210 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Gain from the magnitude bit in distance rank correlation ($\Delta F$) and in simulated recall. $\mathrm{CV}(\sigma)$ is the coefficient of variation of the coordinate standard deviations.}
+\label{tab:app-magnitude}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Intervention & $\mathrm{CV}(\sigma)$ & $F_{1\mathrm{bit}}$ & $F_{2\mathrm{bit}}$ & $\Delta F_{\mathrm{mag}}$ \\
+\midrule
+Amplify, $\gamma=2$ & .316 & .682 & .719 & .036 \\
+Amplify, $\gamma=1.5$ & .252 & .694 & .728 & .034 \\
+Original & .182 & .706 & .738 & .032 \\
+Whiten, $.50$ & .091 & .720 & .746 & .026 \\
+Flatten & .002 & .736 & .757 & .022 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Controlled change of coordinate heterogeneity on Cohere. The rank correlations of the codes and the gain from the magnitude bit move in opposite directions.}
+\label{tab:app-intervention}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrl}
+\toprule
+Dataset & Sign entropy before $\to$ after & Recall response & Regime \\
+\midrule
+GIST & .000 $\to$ .511 & +307\% & signs nearly fixed \\
+Wolt-CLIP & .836 $\to$ .616 & +3.2 pp & over-spread \\
+Cohere & .747 $\to$ .563 & $-0.5$ pp & coordinate signal \\
+MiniLM & approximately unchanged & approximately zero & near-isotropic \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Response of the two-bit code to rotation. Recall changes are taken from the original experiment reports.}
+\label{tab:app-rotation}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrr}
+\toprule
+Predictor & Spearman $\rho$ & $p$ \\
+\midrule
+$\mathrm{CV}(\sigma)$ & $+.657$ & $.020$ \\
+$H_{\mathrm{sign}}$ & $-.909$ & $<.001$ \\
+$1-H_{\mathrm{sign}}$ & $+.909$ & $<.001$ \\
+$(1-H_{\mathrm{sign}})\times\mathrm{CV}(\sigma)$ & $\mathbf{+.930}$ & $<.001$ \\
+$\log D$ & $-.080$ & $.805$ \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Predictors of the change $\Delta F_{\mathrm{rot}}$ in the two-bit code's distance rank correlation under rotation, over 12 datasets.}
+\label{tab:app-rotation-drivers}
+\end{table}
+
+Excluding the one non-Gaussian outlier, Landmark-Nomic, raises the correlation of the entropy gap to 0.964 and that of heterogeneity to 0.746; the response does not depend on dimension. In the heterogeneity intervention, the correlation between heterogeneity and the gain from the magnitude bit was $+1.0$ in four of five datasets.
+
+% ============================================================
+\section{Details for E1: Margins Predict Flips}
+\label{app:ranking}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Code & Passes check & Flip rate & Query failure & Near-tie exponent \\
+\midrule
+Cohere & 1-bit & yes & 8.89\% & 63.12\% & 1.526 \\
+Cohere & 2-bit & yes & 5.83\% & 47.50\% & 1.526 \\
+MiniLM & 1-bit & yes & 11.21\% & 59.38\% & 1.500 \\
+MiniLM & 2-bit & yes & 4.19\% & 43.75\% & 1.500 \\
+GIST & 1-bit & no & 100.00\% & 100.00\% & 1.595 \\
+GIST & 2-bit & no & 35.83\% & 91.88\% & 1.595 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Nearest-vs-rest decisions on 32-neighbour sets. ``Passes check'' uses the first three criteria of Section~\ref{sec:applicability}. Query failure means at least one comparison flips.}
+\label{tab:app-probe24}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+MNR & Cohere 1-bit & Cohere 2-bit & MiniLM 1-bit & MiniLM 2-bit & GIST 2-bit \\
+\midrule
+$[0,.25)$    & 33.3\% (93)  & 48.6\% (70)   & 48.1\% (104) & 50.0\% (72)   & 41.1\% (158) \\
+$[.25,.5)$   & 31.3\% (150) & 35.3\% (102)  & 36.0\% (125) & 39.6\% (53)   & 37.5\% (301) \\
+$[.5,.75)$   & 30.2\% (182) & 24.8\% (121)  & 37.4\% (227) & 29.5\% (78)   & 39.2\% (551) \\
+$[.75,1)$    & 21.3\% (286) & 20.3\% (158)  & 24.7\% (312) & 23.9\% (138)  & 35.7\% (762) \\
+$[1,1.5)$    & 13.2\% (832) & 11.9\% (520)  & 15.8\% (991) & 11.5\% (355)  & 28.2\% (1389) \\
+$[1.5,2)$    & 8.49\% (1083)& 7.68\% (690)  & 10.2\% (1064)& 5.95\% (571)  & 34.2\% (803) \\
+$[2,3)$      & 3.02\% (1458)& 2.54\% (1577) & 2.53\% (1227)& 1.29\% (1393) & 40.8\% (622) \\
+$[3,5)$      & 0.12\% (804) & 0.14\% (1413) & 0.28\% (718) & 0.13\% (1531) & 42.9\% (231) \\
+$[5,\infty)$ & 0.00\% (72)  & 0.00\% (309)  & 0.00\% (192) & 0.00\% (769)  & 63.6\% (143) \\
+\midrule
+Share with MNR $\ge2$ & 47.1\% & 66.5\% & 43.1\% & 74.5\% & 20.1\% \\
+Share with MNR $<1$   & 14.3\% & 9.1\% & 15.5\% & 6.9\% & 35.7\% \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Flip rates by MNR for $4{,}960$ comparisons per configuration, with counts in parentheses. Figure~\ref{fig:margin-bins} pools the three two-bit columns into six bins. GIST fails the applicability check and shows no decreasing trend.}
+\label{tab:app-margin-bins}
+\end{table}
+
+\subsection{Predictor Robustness and Components}
+\label{app:predictor}
+
+All statistics in Table~\ref{tab:predictor-controls} use saved calibration summaries. The margin quantile is the 20th percentile, recorded as the threshold for 80\% retention, and $v$ is the calibrated comparison-error standard deviation. For full score minus margin quantile, paired dataset-cluster 95\% intervals are $[.041,.730]$ for ranking and $[.014,.263]$ for pruning. The full-score-minus-MNR intervals appear in Section~\ref{sec:exp-margins}. Each bootstrap uses 2{,}000 replicates with seed 20261109 and resamples the twelve dataset clusters, keeping both codes together. Leave-one-dataset-out analyses likewise remove both codes.
+
+Table~\ref{tab:predictor-controls} compares the direction of the original-to-rotated change within each dataset. The denominator excludes exact ties in held-out flip rates, occurring only for sphere pruning. All three statistics are oriented toward increasing risk. Across configurations, the full score exceeds observed flips by 25.49 percentage points on average for ranking (range 7.96--61.33) and 23.60 for pruning (2.04--70.54).
+
+
+
+The second control separates the two terms of the bound with the original three disjoint pools. The first pool of 2{,}000 vectors fixes the distance-fitted calibration on 48 target blocks and fixes $\tau$ on the original nine-quantile grid. The second pool of 2{,}000 vectors and 96 target blocks estimates
+\[
+\widehat B(\tau)=\widehat{\Pr}\{g\le\tau\},\qquad
+\widehat T(\tau)=\widehat{\Pr}\{|Z|\ge\tau\},\qquad
+\widehat R(\tau)=\min\{1,\widehat B(\tau)+\widehat T(\tau)\},
+\]
+where $g$ is the non-negative exact margin and $Z$ its comparison error. The prediction target is the flip rate on the prespecified fifth of decisions with the smallest margins in the third pool, which also contains 2{,}000 vectors and 96 target blocks. The second pool serves only to estimate the terms and the third only to measure the outcome; scoring, thresholds, and the hardest fraction stay fixed.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Predictor & Ranking $\rho$ & 95\% interval & Pruning $\rho$ & 95\% interval \\
+\midrule
+Close-call probability $\widehat B$ & 0.627 & [0.131, 0.932] & 0.969 & [0.837, 0.991] \\
+Large-error probability $\widehat T$ & 0.953 & [0.788, 0.991] & 0.890 & [0.632, 0.964] \\
+Combined $\widehat R$ & 0.955 & [0.749, 0.989] & 0.983 & [0.908, 0.992] \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Second-pool components predicting third-pool hardest-fifth flip rates over 24 configurations. Intervals are 95\% dataset-cluster bootstrap intervals retaining both rotations.}
+\label{tab:app-direct-components}
+\end{table}
+
+For ranking, the paired intervals for the combined estimate minus the close-call term and minus the large-error term are $[.013,.812]$ and $[-.092,.097]$; for pruning they are $[-.047,.111]$ and $[.008,.297]$. The strongest single term therefore differs between decision types. Excluding the configuration with a nonpositive slope gives combined correlations of 0.949 and 0.981, and leaving out one dataset cluster gives 0.942 to 0.979 for ranking and 0.979 to 0.986 for pruning.
+
+For Cohere, MiniLM, and GIST we also reconstruct the first-pool decisions from the original sampled vector indices. The selected thresholds, combined estimates, error scales, and decision counts reproduce the saved results exactly for both codes and both decision types. Table~\ref{tab:app-calibration-components} reports the frequencies of the two terms.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{llrrrrrr}
+\toprule
+& & \multicolumn{3}{c}{Ranking} & \multicolumn{3}{c}{Pruning} \\
+Dataset & Code & $\widehat B$ & $\widehat T$ & $\widehat R$ & $\widehat B$ & $\widehat T$ & $\widehat R$ \\
+\midrule
+Cohere & 2-bit & 18.00 & 13.92 & 31.91 & 35.00 & 20.35 & 55.35 \\
+ & Rotated & 18.00 & 12.63 & 30.63 & 35.00 & 5.72 & 40.72 \\
+MiniLM & 2-bit & 12.01 & 10.24 & 22.25 & 12.01 & 1.37 & 13.38 \\
+ & Rotated & 12.01 & 9.13 & 21.14 & 12.01 & 1.34 & 13.34 \\
+GIST & 2-bit & 18.00 & 58.02 & 76.02 & 35.00 & 29.39 & 64.39 \\
+ & Rotated & 18.00 & 23.40 & 41.40 & 35.00 & 5.97 & 40.97 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Replay of the first-pool calibration at the original fixed thresholds, in percent. Each row reproduces the original combined estimate for both decision types.}
+\label{tab:app-calibration-components}
+\end{table}
+
+\subsection{Calibration Direction and Same-Dataset Code Choice}
+\label{app:calibration-direction}
+
+The E1 grid is the $.02,.04,.08,.12,.18,.25,.35,.50,.70$ quantiles of positive fitting margins. Ranking orients the exact winner against each alternative. Pruning uses signed $\Psi=d(t,c)-\alpha d(s,c)$, with nonnegative values pruned. The score $\widehat r_2$ uses $|R|$, while $\widehat r_{\mathrm{opp}}$ uses $-\sign(\Psi)R$. Exact ties enter the close-call mass. Both use empirical tails. Appendix~\ref{app:covariance} evaluates the one-sided Gaussian plug-in.
+
+Distance fitting estimates $b,a$ from individual distance pairs. In E1 these are target--candidate pairs from the fitting pools. E2's distance control uses independent random pairs and its comparison fit uses the original 80 blocks. E8's original diagnostic fits comparison differences through the origin on 128 queries. Its distance control fits individual distances in the same FP32-visited pools. For the E1 and six-code comparison controls, set $\widehat\Psi_C=g\widehat\Psi_D$, with
+\begin{equation}
+g=\frac{\sum_{\mathrm{fit}}\widehat\Psi_D\Psi}{\sum_{\mathrm{fit}}\widehat\Psi_D^2}.
+\end{equation}
+A positive $g$ preserves all comparison decisions. The residual $\widehat\Psi_C-\Psi$ and its empirical ordering score change with the fitted map. Nonpositive gains receive score one. Every map and threshold is fixed on fitting blocks, and all four fitting/event variants are reported.
+
+On the 160-query Cohere set, distance-fitted $\widehat r_2$ falls from .659 to .378 under rotation while flips rise from 5.83\% to 8.81\%. The opposing score rises from .146 to .291. Comparison fitting gives .309 to .372 for $\widehat r_2$ and .265 to .325 for the opposing score. In the E1 48-candidate ranking pools, distance-fitted scores change from .319 to .306 (two-sided) and .227 to .301 (opposing), with flips 4.43\% to 4.48\%. For E1 pruning, the two-sided score falls from .553 to .407 as flips fall from 10.25\% to 6.93\%, whereas the distance-fitted opposing score changes from .358 to .367. The release records all 48 calibration positions in \texttt{calibration-comparison.csv}.
+
+The six-code experiment uses the four data sources and code implementations of Section~\ref{sec:instantiations} with shared exact-neighbour pools. A fixed permutation of 4{,}000 rows assigns 1{,}200 to code fitting, 800 to calibration, and 2{,}000 to evaluation. All codes share 24{,}000 calibration distance pairs, 96 calibration targets, 160 evaluation targets, exact 48-neighbour pools, $\alpha=1.2$, and degree 24. The code-fitting rows determine centroids, scalar ranges, and PQ codebooks. Calibration fixes the maps and thresholds. For constant SIFT/GIST sign scores, the distance estimate equals the calibration mean. Ranking uses lexicographic ties and pruning uses the nonnegative action convention. Five hundred shared evaluation-target bootstraps keep fitting statistics fixed. Local controls use unique directed endpoints of these fitting decisions with frozen maps. Endpoint-frequency-weighted controls are retained in \texttt{local-distance-controls.csv}.
+
+\begin{table}[tbp]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{llrrrrrrr}
+\toprule
+Data & Role & $D_2$ & $D_o$ & $C_2$ & $C_o$ & MNR & MSE G/L & Fidelity G/L \\
+\midrule
+Cohere & Rank & 0.600 & 0.943 & 1.000 & 1.000 & 0.314 & 0.714/0.886 & 0.714/0.143 \\
+Cohere & Prune & 0.771 & 1.000 & 0.943 & 0.943 & 0.943 & 0.714/0.714 & 0.714/0.371 \\
+MiniLM & Rank & 0.943 & 0.943 & 0.943 & 0.943 & 0.943 & 0.943/0.943 & 0.943/1.000 \\
+MiniLM & Prune & 0.943 & 0.943 & 0.943 & 0.943 & 0.943 & 0.943/0.943 & 0.943/0.943 \\
+SIFT & Rank & 1.000 & 0.943 & 1.000 & 1.000 & 0.657 & 1.000/0.943 & 1.000/0.943 \\
+SIFT & Prune & 0.829 & 0.371 & 0.829 & 0.943 & 0.943 & 0.657/0.657 & 0.657/0.829 \\
+GIST & Rank & 1.000 & 0.943 & 1.000 & 1.000 & 0.829 & 0.943/0.943 & 0.943/0.943 \\
+GIST & Prune & 0.829 & 0.943 & 0.829 & 0.943 & 0.829 & 0.600/0.600 & 0.600/0.600 \\
+\bottomrule
+\end{tabular}
+\caption{Within-dataset Spearman correlations across six codes. $D/C$ fit distances/comparisons, and $2/o$ use two-sided/opposing errors. MNR is $-q_{.2}/v$. MSE and $1-\rho_{\mathrm{distance}}$ give global/local endpoint controls (G/L). All metrics use calibration data. Query-cluster intervals and all 15 code-pair comparisons are retained.}
+\label{tab:app-six-code-choice}
+\end{table}
+
+% ============================================================
+\section{Details for E2: Correlated Errors}
+\label{app:covariance}
+
+\noindent\emph{Close-call plug-in.}\quad
+For Table~\ref{tab:covariance}, the positive comparison fit uses 80 query blocks (2{,}480 comparisons) and fixes $a$, $\widehat\mu_R$, and $\widehat\nu^2$. It selects $\widehat\tau$ by minimizing the empirical close-call mass plus the one-sided tail over fitting-margin quantiles $.02,.04,.08,.12,.18,.25,.35,.50$. The 160 held-out blocks (4{,}960 positive-margin comparisons) then give
+\begin{equation}
+\widehat B=\min\!\left\{1,\frac1N\sum_{i=1}^N\mathbf1\{\Gamma_i\le\widehat\tau\}
++\exp\!\left[-\frac{(\widehat\tau+\widehat\mu_R)_+^2}{2\widehat\nu^2}\right]\right\}.
+\label{eq:app-covariance-plugin}
+\end{equation}
+Cohere two-bit codes have $a=2.71821\times10^{-4}$, $c_Q=1$ in metric units, $\widehat\mu_R=-0.00354069$, $\widehat\nu^2=0.000178638$, and $\widehat\tau=0.02777196$. The two terms are $0.360887+0.193318=0.554205$. Replacing the variance by the sum of marginal variances, $0.00132533$, and keeping the threshold fixed gives one after clipping. These are empirical plug-ins of the close-call and one-sided-tail formulas. Block certificates use the separate procedure of Section~\ref{sec:heldout}.
+
+\noindent\emph{Selection regimes.}\quad
+The experiment of Table~\ref{tab:selection-covariance} keeps one distance-fitted calibration fixed and varies how comparisons are generated, using 6{,}000 sampled vectors, 60{,}000 independent fitting pairs, 160 query blocks, and 128 candidate pairs per query. The independent control samples all three endpoints independently with replacement, and a second control rejects repeated endpoints; the two differ by at most 0.003. In every regime, the within/between identity~\eqref{eq:app-anova-covariance} reproduces the pooled covariance and the variance of the difference to floating-point precision. Query-block bootstrap intervals accompany the grouped regimes, together with the 5th, 50th, and 95th percentiles of the within-query covariance, since a small weighted average need not describe every query. For nearest-vs-rest comparisons the nearest neighbour's error is constant within a query, so the within-query correlation is undefined.
+
+\noindent\emph{Calibration and sampling.}\quad
+The original covariance experiment samples 4{,}000 vectors, fits on 80 query blocks, and measures flips on 160 further blocks. The selection experiment uses a separate 6{,}000-vector population and 160 query blocks. Table~\ref{tab:app-crossed-calibration} evaluates both fixed calibrations on both axes and all three populations, with coordinate-wise FP64 accumulation. The rotated distance fit uses 60{,}000 independent random pairs in the same rotated coordinates. An intercept cancels in the ranking residual, while the fitted slope changes its covariance and bias.
+
+\begin{table}[tbp]
+\centering
+\small
+\setlength{\tabcolsep}{3.4pt}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+Population & Axis & Fit & $10^4a$ & $\rho$ & $I$ & $10^4C$ & $10^4V_\Delta$ & $10^2\mu_R$ & $10^2v/c_Q$ \\
+\midrule
+4K, fit 80 & Orig. & Comp. & 2.718 & 0.870 & 7.42 & 5.733 & 1.786 & -0.354 & 1.337 \\
+4K, fit 80 & Orig. & Dist. & 4.460 & 0.584 & 2.36 & 3.511 & 5.162 & +1.795 & 2.272 \\
+4K, fit 80 & Rot. & Comp. & 4.769 & 0.435 & 1.77 & 0.845 & 2.195 & -0.531 & 1.481 \\
+4K, fit 80 & Rot. & Dist. & 5.180 & 0.405 & 1.68 & 0.858 & 2.524 & -0.257 & 1.589 \\
+\midrule
+4K, held-out 160 & Orig. & Comp. & 2.718 & 0.824 & 5.31 & 4.361 & 2.023 & -0.414 & 1.422 \\
+4K, held-out 160 & Orig. & Dist. & 4.460 & 0.524 & 2.08 & 3.176 & 5.875 & +1.607 & 2.424 \\
+4K, held-out 160 & Rot. & Comp. & 4.769 & 0.459 & 1.85 & 0.875 & 2.066 & -0.743 & 1.437 \\
+4K, held-out 160 & Rot. & Dist. & 5.180 & 0.427 & 1.74 & 0.881 & 2.368 & -0.499 & 1.539 \\
+\midrule
+6K, 160 & Orig. & Comp. & 2.718 & 0.843 & 6.30 & 4.505 & 1.701 & -0.590 & 1.304 \\
+6K, 160 & Orig. & Dist. & 4.460 & 0.613 & 2.59 & 3.960 & 4.995 & +1.268 & 2.235 \\
+6K, 160 & Rot. & Comp. & 4.769 & 0.463 & 1.86 & 0.879 & 2.041 & -0.584 & 1.429 \\
+6K, 160 & Rot. & Dist. & 5.180 & 0.436 & 1.77 & 0.901 & 2.336 & -0.333 & 1.528 \\
+\bottomrule
+\end{tabular}
+\caption{The full calibration cross for Cohere two-bit codes, using the same signed-DCT rotation in all three populations. $a$ maps native scores to exact-distance units, in which $c_Q=1$. In native units $c_Q=1/a$, $\mu_{R,\mathrm{raw}}=\mu_R/a$, and $v_{\rm raw}/c_Q=v_{\rm metric}$. $I$ is the cancellation factor, $C$ the covariance, and $V_\Delta$ the comparison-error variance. Comp.\ fits comparisons through the origin. Dist.\ fits 60{,}000 independent random pairs. All fitted constants stay frozen across populations. Standardized bias is $\mu_R/v$ in these metric units, computed from the bias and effective-noise columns.}
+\label{tab:app-crossed-calibration}
+\end{table}
+
+For the comparison-fitted calibration on the 80-query sample, the within-query variance components of the two distance errors are $0$ and $0.967\times10^{-4}$, and the between-query components are $5.909\times10^{-4}$ and $6.377\times10^{-4}$. The between-query covariance is $5.733\times10^{-4}$, and the variance of the difference splits into $0.967\times10^{-4}$ within queries and $0.820\times10^{-4}$ between queries. The fixed nearest neighbour makes its error constant within a query, which explains the zero within-query covariance. An intercept alone leaves the covariance unchanged, so the effect of the calibration acts through the fitted slope.
+
+On the 160 held-out queries, the unrotated cancellation factor is 5.31 under comparison fitting and 2.08 under distance fitting. Rotation lowers these to 1.85 and 1.74. Under distance fitting, the residual standard deviation falls from 0.02424 to 0.01539, but its bias shifts from $+0.01607$ to $-0.00499$. The exact signed-margin distribution is unchanged, and the flip rate rises from 5.83\% to 8.81\% under either positive calibration. Bias, scale, and the joint distribution of error and margin enter the event together.
+
+% ============================================================
+\section{Details for E3: First Divergence}
+\label{app:trace}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\setlength{\tabcolsep}{5.5pt}
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Code & Pruning flip rate & Outputs differ & Jaccard, fixed & Jaccard, re-sorted \\
+\midrule
+Cohere & 2-bit & 13.06\% & 100.0\% & .322 & .395 \\
+Cohere & rotated 2-bit & 13.07\% & 100.0\% & .322 & .289 \\
+MiniLM & 2-bit & 1.92\% & 100.0\% & .654 & .529 \\
+MiniLM & rotated 2-bit & 1.92\% & 100.0\% & .656 & .529 \\
+GIST & 2-bit & 7.91\% & 99.4\% & .458 & .260 \\
+GIST & rotated 2-bit & 7.90\% & 99.4\% & .458 & .359 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{RobustPrune without backfill on exact candidate pools ($\alpha=1.2$, $\Delta=32$, 64 candidates, 160 targets) with scale-only calibration. ``Outputs differ'' counts calls with at least one action mismatch under the fixed exact order; the re-sorted replay also includes the change of order.}
+\label{tab:app-probe27}
+\end{table}
+
+With the scale-only calibration, every observed pruning flip is a missed prune; the matched calibration controls below separate the role of the intercept. In this experiment, rotation leaves the fixed-order pruning statistics nearly unchanged, while the re-sorted replay also reflects the change in candidate order.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Data & Edges & Actions & Loss & All-pairs & Blocker & $\ge1$ & $\rho$ \\
+\midrule
+Cohere & 3{,}054 & 24.7 & 34.3\% & 92.96 & 18.03 & 89.0\% & .81 \\
+MiniLM & 5{,}118 & 21.0 & 21.5\% & 41.91 & 12.71 & 89.4\% & .69 \\
+GIST & 3{,}701 & 21.7 & 24.7\% & 131.75 & 18.23 & 91.6\% & .73 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Two-bit RobustPrune edge scores. Actions is the mean prefix-action count and Loss is fixed-order edge loss. All-pairs and Blocker are mean sums from the coarse double sum and~\eqref{eq:action-bound}. The last two columns give blocker-sum saturation and its correlation with edge loss.}
+\label{tab:app-edge-cert}
+\end{table}
+
+The edge and path tables use the blocker-aware action bounds~\eqref{eq:action-bound}. Independent replay preserves all six edge configurations' counts, failure rates, and saturation rates. Mean all-pairs sums fall by factors 3.3--7.2 under blocker aggregation, while edge saturation remains 89--92\%. All 960 candidate permutations change under quantized sorting. Original-axis inversion fractions are .291, .229, and .443 for Cohere, MiniLM, and GIST. Fixed-order and re-sorted Jaccards in Table~\ref{tab:app-probe27} measure the corresponding output changes. Full per-code edge and four-length path comparisons appear in \texttt{blocker-comparison.csv}.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrrrrrr}
+\toprule
+& \multicolumn{2}{c}{1 hop} & \multicolumn{2}{c}{2 hops} & \multicolumn{2}{c}{3 hops} & \multicolumn{2}{c}{4 hops}\\
+Dataset & lost & exceeds & lost & exceeds & lost & exceeds & lost & exceeds \\
+\midrule
+Cohere & 33.8 & 88.2 & 50.0 & 98.8 & 68.2 & 99.8 & 78.7 & 100.0 \\
+MiniLM & 17.7 & 89.5 & 35.5 & 98.3 & 46.3 & 99.8 & 58.7 & 100.0 \\
+GIST & 24.0 & 84.7 & 46.0 & 98.7 & 60.8 & 99.8 & 72.3 & 100.0 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Diversity-selected paths under unrotated two-bit codes, 600 per length. Percentages report loss of any path edge (``lost'') and blocker-aware action sums at least one (``exceeds'').}
+\label{tab:app-paths}
+\end{table}
+
+Path bounds exceed one within two hops, and the observed rate of path loss grows with length as the union of its edge losses. On every path, agreement of the listed actions implied survival, as Corollary~\ref{cor:path} states.
+
+\noindent\emph{Matched pruning calibration.}\quad
+For Cohere, MiniLM, and GIST we reproduce the original 4{,}000-vector sample, 80 calibration targets, 160 evaluation targets, 64 candidates, $\alpha=1.2$, and $\Delta=32$. All fits use the same calibration pairs, consisting of target--candidate pairs and sampled candidate--candidate pairs. A positive fit through the origin, $a_0d_Q$, reproduces the original replay. An affine fit $b+ad_Q$ is compared with its slope-only counterpart $ad_Q$, which isolates the intercept at a fixed slope. Positive scaling leaves raw pruning and candidate order unchanged.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllrrrrr}
+\toprule
+Dataset & Code & Calibration & MP (\%) & SP (\%) & Fixed & Re-sorted & $\overline Z/s_Z$ \\
+\midrule
+Cohere & 2-bit & scale-only & 13.06 & 0.00 & 0.322 & 0.395 & 0.014 \\
+ &  & affine, slope only & 13.06 & 0.00 & 0.322 & 0.395 & -5.467 \\
+ &  & full affine & 7.85 & 0.98 & 0.497 & 0.460 & -0.428 \\
+ & Rotated & scale-only & 13.07 & 0.00 & 0.322 & 0.289 & 0.100 \\
+ &  & affine, slope only & 13.07 & 0.00 & 0.322 & 0.289 & -7.518 \\
+ &  & full affine & 4.10 & 2.54 & 0.563 & 0.475 & 0.046 \\
+\addlinespace
+MiniLM & 2-bit & scale-only & 1.92 & 0.00 & 0.654 & 0.529 & 0.825 \\
+ &  & affine, slope only & 1.92 & 0.00 & 0.654 & 0.529 & -3.901 \\
+ &  & full affine & 0.49 & 0.63 & 0.820 & 0.590 & 0.208 \\
+ & Rotated & scale-only & 1.92 & 0.00 & 0.656 & 0.529 & 0.818 \\
+ &  & affine, slope only & 1.92 & 0.00 & 0.656 & 0.529 & -4.040 \\
+ &  & full affine & 0.49 & 0.62 & 0.820 & 0.599 & 0.163 \\
+\addlinespace
+GIST & 2-bit & scale-only & 7.91 & 0.00 & 0.458 & 0.260 & 0.294 \\
+ &  & affine, slope only & 7.91 & 0.00 & 0.458 & 0.260 & -3.720 \\
+ &  & full affine & 6.35 & 2.34 & 0.457 & 0.239 & 0.326 \\
+ & Rotated & scale-only & 7.90 & 0.00 & 0.458 & 0.359 & 0.271 \\
+ &  & affine, slope only & 7.90 & 0.00 & 0.458 & 0.359 & -10.325 \\
+ &  & full affine & 2.39 & 3.46 & 0.571 & 0.462 & 0.047 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Matched pruning calibration. MP and SP are missed-prune and spurious-prune rates over the exact run, with 53{,}844 comparisons on Cohere, 96{,}160 on MiniLM, and 67{,}993 on GIST per code. ``Fixed'' and ``re-sorted'' are output Jaccards under fixed and re-sorted candidate order; $\overline Z/s_Z$ is the mean comparison error over its standard deviation.}
+\label{tab:app-pruning-calibration}
+\end{table}
+
+On Cohere the unrotated affine fit has $(a,b)=(3.3283\times10^{-4},-0.54483)$ and the rotated fit $(4.7478\times10^{-4},-0.65066)$. At a fixed affine slope, the intercept shifts $\widehat\Psi_\alpha$ by $(1-\alpha)b$ and leaves the standard deviation of the error unchanged. The mean error under the scale-only calibration can be small even when every flip goes in one direction, so the mean alone does not describe the distribution of actions. The full affine calibration produces both kinds of pruning error in all six configurations. It raises fixed-order overlap on Cohere, MiniLM, and rotated GIST, while unrotated GIST changes from 0.458 to 0.457. An independent implementation of integer scoring and of the selection rule reproduces all 2{,}880 fixed-order outputs and their action-mismatch events across the three calibrations.
+
+% ============================================================
+\section{Details for E4: Held-Out Certificates}
+\label{app:heldout}
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+Decision type & Issued & \shortstack{Below\\certificate} & Accepted & \shortstack{Validation\\failure} & Certificate & \shortstack{Hardest-fifth\\failure} \\
+\midrule
+Ranking & 24 & 24 & 66.54\% & .370\% & 19.76\% & 13.02\% \\
+Pruning & 24 & 24 & 67.26\% & .848\% & 22.75\% & 21.47\% \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Five-pool protocol at 512 certification blocks ($\delta=0.05$), using the separate-bounds certificate. ``Below certificate'' counts configurations whose validation failure rate stayed below the fixed certificate.}
+\label{tab:app-p6}
+\end{table}
+
+This protocol uses 128 fitting, 512 certification, 512 validation, 256 cutoff-selection, and 512 hardest-fifth evaluation blocks per configuration. Five acceptance cutoffs and seven thresholds give 35 candidate pairs. The separate-bounds certificate uses 35 upper-tail events for their numerators and five lower-tail events for coverage, hence 40 concentration events. With $n=512$ and $\delta=.05$, the common width is $\epsilon_n=\sqrt{\log(40/\delta)/(2n)}=0.0808$. The certificate is the separate-bounds form $(\widehat U+\epsilon_n)/(\widehat C-\epsilon_n)$, which Appendix~\ref{app:p6-selective} shows to be a looser consequence of the event behind the mechanism certificate whenever its denominator is positive. Ranking certificates range from 11.23 to 58.25\% and pruning certificates from 11.17 to 46.46\%. The last column applies the fixed cutoff to the hardest fifth of margins in a separate pool.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{llrrr}
+\toprule
+Blocks & Certificate & Value & Acceptance rate & Failure rate \\
+\midrule
+128 & separate bounds & 40.22\% / 43.96\% & 76.8\% / 73.4\% & 0.99\% / 1.91\% \\
+128 & mechanism & 29.08\% / 31.32\% & 70.4\% / 68.4\% & 0.45\% / 0.94\% \\
+128 & mechanism, variance-adaptive & 28.60\% / 29.52\% & 67.9\% / 68.4\% & 0.37\% / 0.94\% \\
+128 & failure & 16.29\% / 18.62\% & 95.1\% / 88.5\% & 2.18\% / 3.31\% \\
+\midrule
+256 & separate bounds & 28.58\% / 31.39\% & 70.4\% / 70.1\% & 0.45\% / 1.26\% \\
+256 & mechanism & 22.26\% / 24.07\% & 66.2\% / 67.6\% & 0.35\% / 0.86\% \\
+256 & mechanism, variance-adaptive & 16.44\% / 17.64\% & 62.0\% / 61.0\% & 0.26\% / 0.75\% \\
+256 & failure & 12.18\% / 13.96\% & 93.5\% / 82.7\% & 1.95\% / 2.32\% \\
+\midrule
+512 & separate bounds & 20.59\% / 22.95\% & 67.0\% / 67.6\% & 0.42\% / 0.86\% \\
+512 & mechanism & 16.74\% / 18.65\% & 64.6\% / 63.5\% & 0.33\% / 0.75\% \\
+512 & mechanism, variance-adaptive & 9.49\% / 10.91\% & 61.2\% / 56.8\% & 0.26\% / 0.72\% \\
+512 & failure & 9.07\% / 10.45\% & 87.8\% / 80.2\% & 1.34\% / 2.01\% \\
+\midrule
+1{,}024 & separate bounds & 15.13\% / 17.36\% & 63.7\% / 61.0\% & 0.32\% / 0.75\% \\
+1{,}024 & mechanism & 12.74\% / 14.65\% & 61.2\% / 61.0\% & 0.26\% / 0.75\% \\
+1{,}024 & mechanism, variance-adaptive & 6.13\% / 7.27\% & 57.7\% / 51.1\% & 0.22\% / 0.44\% \\
+1{,}024 & failure & 6.75\% / 7.99\% & 81.9\% / 75.2\% & 0.94\% / 1.44\% \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Certificates over prespecified sample sizes ($\delta=0.05$). Each entry averages 24 configurations, and each certificate selects its own acceptance rule. Acceptance and failure rates are measured on 1{,}024 independent blocks. Entries are ranking / pruning.}
+\label{tab:app-d-certificates}
+\end{table}
+
+All 48 configurations satisfy the block-level ordering $0\le F_i\le U_i\le C_i\le1$. Certificates decrease as the number of certification blocks grows, while validation failure rates change little; each certificate may select a different acceptance rule at each sample size. Ranking flips use the same lexicographic tie-breaking as candidate ordering, and pruning treats a non-negative score as pruned.
+
+% ============================================================
+\section{Details for E6: When the Gaussian Model Applies}
+\label{app:eligibility}
+
+We vary the minimum score correlation over $\{0.05,0.10,0.15\}$, the maximum absolute error--margin correlation over $\{0.4,0.5,0.6\}$, and the maximum Gaussian left-tail multiplier over $\{1.5,2,3\}$, retaining the positive-slope requirement. Across all 27 screens, unrotated GIST one- and two-bit codes pass zero, all four MiniLM variants pass 27, and rotated Cohere one-bit passes 27. The other three Cohere variants pass 18, failing at the 1.5 tail cutoff. Rotated GIST one-bit passes 18 and two-bit passes 27. These measurements locate sensitivity to the heuristic tail screen separately from the assumptions of the analytical inequalities.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Coordinates & \shortstack{Magnitude\\flips} & \shortstack{Threshold-error\\share} & \shortstack{Formula error\\(R / P)} & \shortstack{Coarse\\bound} \\
+\midrule
+Cohere & original & 1.834\% & 4.66\% & 3.1\% / 4.6\% & 11{,}420 \\
+Cohere & rotated & .313\% & 2.09\% & 0.7\% / 2.1\% & 51{,}130 \\
+MiniLM & original & .509\% & 1.31\% & 0.3\% / 1.0\% & 13{,}876 \\
+MiniLM & rotated & .516\% & 1.37\% & 0.9\% / 1.5\% & 13{,}969 \\
+GIST & original & 3.446\% & 100.73\% & 0.0\% / 0.7\% & 19{,}016 \\
+GIST & rotated & .267\% & 2.30\% & 2.3\% / 1.4\% & 77{,}414 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Error decomposition and variance formula for two-bit codes. ``Magnitude flips'' counts the fraction of bits that change between per-vector and population thresholds. ``Threshold-error share'' is $\mathrm{Var}(R_{\mathrm{thr}})/\mathrm{Var}(R)$ and may exceed 100\% because components are correlated. ``Formula error'' is the relative error of~\eqref{eq:oracle-variance} against measured ranking / pruning variance. ``Coarse bound'' is the range bound divided by measured idealized variance.}
+\label{tab:app-p5}
+\end{table}
+
+The MiniLM and GIST source files are unit-normalized, which removes their original radial information. Cohere keeps radial information, with a coefficient of variation of the norm of 4.4\% and 2.03\% of vectors outside a 10\% relative shell.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Bound & Minimum & Median & Mean & Maximum \\
+\midrule
+Coarse range & 403 & 22{,}044 & 27{,}109 & 73{,}572 \\
+Componentwise Cauchy--Schwarz & 5.91 & 40.84 & 47.59 & 93.13 \\
+Replacement (Efron--Stein) & 1.21 & 1.67 & 1.72 & 2.04 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Ratio of three variance bounds to the measured variance over 28 configurations (seven datasets, two coordinate systems, two decision types).}
+\label{tab:app-proxies}
+\end{table}
+
+All 28 covariances between the bounded-code and bilinear components are negative, with a median cancellation ratio of 0.947. In dimension stress tests from $D=64$ to $2048$, clean, equicorrelated, and block-correlated Gaussian regimes keep the idealized ratio $b_\star/\mathrm{sd}$ between about 0.19 and 0.25. A dense global shock raises it towards 0.88 and is detected at the same time by the Gaussian, shell, and spectrum diagnostics. The rare-spike construction of Theorem~\ref{thm:counterexample} is designed to pass those diagnostics, which makes it the relevant obstruction.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrr}
+\toprule
+Quantity & Minimum & Median & Maximum \\
+\midrule
+Scale $b_\star/\mathrm{sd}$, unclipped & .133 & .158 & .324 \\
+Sum of increment variances / total variance & 1.047 & 1.086 & 1.102 \\
+Validation / calibration variance & .945 & .994 & 1.075 \\
+Scale $b_\star/\mathrm{sd}$, clipped at 1\% mass & .130 & .147 & .258 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Parameters of the conditional tail and clipping routes over 24 configurations (six datasets, two codes, two decision types).}
+\label{tab:app-cm}
+\end{table}
+
+The four disjoint pools contain 900 fitting, 1{,}200 reference, 1{,}200 calibration, and 1{,}200 validation vectors. Nested integration uses 160 first-node groups, 16 second nodes, 12 observed third nodes, and separate reference completions; the clipping cutoffs are the 0.95, 0.975, and 0.99 calibration quantiles. No held-out tail exceeded its bound.

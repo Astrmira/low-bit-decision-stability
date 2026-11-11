@@ -1,0 +1,1088 @@
+[
+  {
+    "dataset": "cohere",
+    "dimension": 768,
+    "quantizers": {
+      "1bit": {
+        "calibration_slope": 0.0005770604397071992,
+        "global_residual_scale": 0.017213313615949626,
+        "conditional_edges": [
+          3.737211227416992e-05,
+          0.020043760538101196,
+          0.02709329128265381,
+          0.03398585319519043,
+          0.04116731882095337,
+          0.05242431163787842,
+          0.1174391508102417
+        ],
+        "conditional_scales": [
+          0.015378931225812529,
+          0.01607900002140475,
+          0.016508244973625096,
+          0.01672272974767253,
+          0.01790151717373271,
+          0.016866443907018868
+        ],
+        "score_margin_spearman": 0.5574875929392341,
+        "residual_margin_spearman": -0.2429240489104012,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.08891129032258065,
+        "global_margin_flip_spearman": -0.2892146203368885,
+        "conditional_margin_flip_spearman": -0.2887203847895839,
+        "tail": {
+          "standardized_mean": 5.730183352904034e-17,
+          "standardized_kurtosis": 3.2319800159792234,
+          "ks_statistic": 0.020671438816354304,
+          "ks_pvalue": 0.23651215489255006,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.30524193548387096,
+            0.13185483870967743,
+            0.04717741935483871,
+            0.01653225806451613,
+            0.00564516129032258
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9619660487756141,
+            0.9868310317254754,
+            1.0368603457399839,
+            1.3311714236748966,
+            2.0909584124312173
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.63125,
+          "correlations": {
+            "min_margin": 0.3145514619828928,
+            "mean_margin": 0.3605491791163698,
+            "top_1_logrisk": 0.3145514619828928,
+            "top_3_logrisk": 0.3605491791163698,
+            "top_5_logrisk": 0.3692438695501367,
+            "top_10_logrisk": 0.36700007847045496,
+            "top_all_logrisk": 0.36840244789525606
+          },
+          "best_metric": "top_5_logrisk",
+          "best_spearman": 0.3692438695501367
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.63125,
+          "correlations": {
+            "min_margin": 0.3145514619828928,
+            "mean_margin": 0.35942728357652887,
+            "top_1_logrisk": 0.3145514619828928,
+            "top_3_logrisk": 0.3585858619216482,
+            "top_5_logrisk": 0.3709267128598981,
+            "top_10_logrisk": 0.36700007847045496,
+            "top_all_logrisk": 0.3667196045854947
+          },
+          "best_metric": "top_5_logrisk",
+          "best_spearman": 0.3709267128598981
+        }
+      },
+      "2bit": {
+        "calibration_slope": 0.00027182079250641914,
+        "global_residual_scale": 0.013365555826267651,
+        "conditional_edges": [
+          3.737211227416992e-05,
+          0.020043760538101196,
+          0.02709329128265381,
+          0.03398585319519043,
+          0.04116731882095337,
+          0.05242431163787842,
+          0.1174391508102417
+        ],
+        "conditional_scales": [
+          0.012459675600663791,
+          0.012455886467895463,
+          0.012970730160615434,
+          0.01353493838502161,
+          0.014014804988615648,
+          0.012378312149375226
+        ],
+        "score_margin_spearman": 0.7258765112408685,
+        "residual_margin_spearman": -0.19391736759976852,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.058266129032258064,
+        "global_margin_flip_spearman": -0.29186402115641913,
+        "conditional_margin_flip_spearman": -0.2917702477486387,
+        "tail": {
+          "standardized_mean": 1.1460366705808068e-17,
+          "standardized_kurtosis": 3.095564272298074,
+          "ks_statistic": 0.0163396339904599,
+          "ks_pvalue": 0.5166993502493116,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.3153225806451613,
+            0.1350806451612903,
+            0.0467741935483871,
+            0.012903225806451613,
+            0.00282258064516129
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9937350728435009,
+            1.0109736869358845,
+            1.02799829150289,
+            1.0389630623804071,
+            1.0454792062156086
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.475,
+          "correlations": {
+            "min_margin": 0.4300407498262887,
+            "mean_margin": 0.45903530573770196,
+            "top_1_logrisk": 0.4300407498262887,
+            "top_3_logrisk": 0.4801715240656481,
+            "top_5_logrisk": 0.4744810037465857,
+            "top_10_logrisk": 0.4763778438529399,
+            "top_all_logrisk": 0.47068732353387743
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.4801715240656481
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.475,
+          "correlations": {
+            "min_margin": 0.4300407498262887,
+            "mean_margin": 0.46228703163430906,
+            "top_1_logrisk": 0.4300407498262887,
+            "top_3_logrisk": 0.47962956974954696,
+            "top_5_logrisk": 0.4763778438529399,
+            "top_10_logrisk": 0.47177123216607975,
+            "top_all_logrisk": 0.47285514079828217
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.47962956974954696
+        }
+      },
+      "rotated_1bit": {
+        "calibration_slope": 0.0008468305798937945,
+        "global_residual_scale": 0.019280227652389913,
+        "conditional_edges": [
+          3.737211227416992e-05,
+          0.020043760538101196,
+          0.02709329128265381,
+          0.03398585319519043,
+          0.04116731882095337,
+          0.05242431163787842,
+          0.1174391508102417
+        ],
+        "conditional_scales": [
+          0.019629727035046275,
+          0.018893381791791092,
+          0.017967796655167033,
+          0.01695765684563595,
+          0.01789766063678504,
+          0.01781329857135595
+        ],
+        "score_margin_spearman": 0.5741755612877101,
+        "residual_margin_spearman": -0.31862063043413047,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.1558467741935484,
+        "global_margin_flip_spearman": -0.3495635367413606,
+        "conditional_margin_flip_spearman": -0.34941601659836313,
+        "tail": {
+          "standardized_mean": -5.730183352904034e-17,
+          "standardized_kurtosis": 3.3047207291533707,
+          "ks_statistic": 0.011844867735054332,
+          "ks_pvalue": 0.8731909092213148,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.31693548387096776,
+            0.12338709677419354,
+            0.0467741935483871,
+            0.014112903225806451,
+            0.0036290322580645163
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9988181166943629,
+            0.9234565617981512,
+            1.02799829150289,
+            1.1363658494785702,
+            1.3441875508486396
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.6875,
+          "correlations": {
+            "min_margin": 0.3310631421448292,
+            "mean_margin": 0.3660962788797317,
+            "top_1_logrisk": 0.3310631421448292,
+            "top_3_logrisk": 0.3707673637777187,
+            "top_5_logrisk": 0.3847806184716798,
+            "top_10_logrisk": 0.385072561277804,
+            "top_all_logrisk": 0.38127730479818955
+          },
+          "best_metric": "top_10_logrisk",
+          "best_spearman": 0.385072561277804
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.6875,
+          "correlations": {
+            "min_margin": 0.3310631421448292,
+            "mean_margin": 0.3704754209715945,
+            "top_1_logrisk": 0.3310631421448292,
+            "top_3_logrisk": 0.37018347816547037,
+            "top_5_logrisk": 0.3841967328594314,
+            "top_10_logrisk": 0.3833209044410588,
+            "top_all_logrisk": 0.3879919893390458
+          },
+          "best_metric": "top_all_logrisk",
+          "best_spearman": 0.3879919893390458
+        }
+      },
+      "rotated_2bit": {
+        "calibration_slope": 0.00047685643099002086,
+        "global_residual_scale": 0.014813943336261853,
+        "conditional_edges": [
+          3.737211227416992e-05,
+          0.020043760538101196,
+          0.02709329128265381,
+          0.03398585319519043,
+          0.04116731882095337,
+          0.05242431163787842,
+          0.1174391508102417
+        ],
+        "conditional_scales": [
+          0.013964758508607712,
+          0.01433532308685387,
+          0.01446976482892079,
+          0.014115347722282508,
+          0.014066217366045443,
+          0.015451626204518077
+        ],
+        "score_margin_spearman": 0.7120899126429642,
+        "residual_margin_spearman": -0.2294687908541367,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.08810483870967742,
+        "global_margin_flip_spearman": -0.3440779709034907,
+        "conditional_margin_flip_spearman": -0.34387727601653784,
+        "tail": {
+          "standardized_mean": 2.2920733411616135e-17,
+          "standardized_kurtosis": 2.8972829753394858,
+          "ks_statistic": 0.022693299400571354,
+          "ks_pvalue": 0.1530754611908719,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.32379032258064516,
+            0.13991935483870968,
+            0.044758064516129036,
+            0.008870967741935484,
+            0.0024193548387096775
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            1.020421053060526,
+            1.0471876697514984,
+            0.9836880203174206,
+            0.7142871053865298,
+            0.8961250338990931
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.55,
+          "correlations": {
+            "min_margin": 0.4490747241745767,
+            "mean_margin": 0.5108190987279558,
+            "top_1_logrisk": 0.4490747241745767,
+            "top_3_logrisk": 0.5195231515284322,
+            "top_5_logrisk": 0.5284992059789234,
+            "top_10_logrisk": 0.529315210928968,
+            "top_all_logrisk": 0.5255071878287596
+          },
+          "best_metric": "top_10_logrisk",
+          "best_spearman": 0.529315210928968
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.55,
+          "correlations": {
+            "min_margin": 0.4490747241745767,
+            "mean_margin": 0.5124511086280452,
+            "top_1_logrisk": 0.4490747241745767,
+            "top_3_logrisk": 0.5178911416283428,
+            "top_5_logrisk": 0.5263231927788043,
+            "top_10_logrisk": 0.5276832010288788,
+            "top_all_logrisk": 0.5263231927788043
+          },
+          "best_metric": "top_10_logrisk",
+          "best_spearman": 0.5276832010288788
+        }
+      }
+    }
+  },
+  {
+    "dataset": "minilm",
+    "dimension": 384,
+    "quantizers": {
+      "1bit": {
+        "calibration_slope": 0.0031691227196652965,
+        "global_residual_scale": 0.06676378986729628,
+        "conditional_edges": [
+          0.0001195669174194336,
+          0.06773796180884044,
+          0.09582635760307312,
+          0.12320317327976227,
+          0.1612426439921061,
+          0.21153880655765528,
+          0.4355522394180298
+        ],
+        "conditional_scales": [
+          0.07145334324213563,
+          0.06072924939325149,
+          0.06275774816294961,
+          0.07079320900899164,
+          0.06332322195667038,
+          0.059770605160837285
+        ],
+        "score_margin_spearman": 0.6228488679752621,
+        "residual_margin_spearman": -0.21454020780624264,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.11209677419354838,
+        "global_margin_flip_spearman": -0.33622923554061523,
+        "conditional_margin_flip_spearman": -0.3337200155104436,
+        "tail": {
+          "standardized_mean": 2.865091676452017e-17,
+          "standardized_kurtosis": 3.0698643277376942,
+          "ks_statistic": 0.017240646331448173,
+          "ks_pvalue": 0.44741676689271015,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.3133064516129032,
+            0.1310483870967742,
+            0.04596774193548387,
+            0.012096774193548387,
+            0.004032258064516129
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9873812680299235,
+            0.980795367922873,
+            1.0102741830287023,
+            0.9740278709816316,
+            1.493541723165155
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.59375,
+          "correlations": {
+            "min_margin": 0.44896760584604944,
+            "mean_margin": 0.43849766474623364,
+            "top_1_logrisk": 0.44896760584604944,
+            "top_3_logrisk": 0.50021521228199,
+            "top_5_logrisk": 0.49112289501109735,
+            "top_10_logrisk": 0.4795508548481431,
+            "top_all_logrisk": 0.45943754694586525
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.50021521228199
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.59375,
+          "correlations": {
+            "min_margin": 0.44896760584604944,
+            "mean_margin": 0.440426338106726,
+            "top_1_logrisk": 0.44896760584604944,
+            "top_3_logrisk": 0.4955312912636514,
+            "top_5_logrisk": 0.48588792446118945,
+            "top_10_logrisk": 0.47789770625343525,
+            "top_all_logrisk": 0.46219279460371154
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.4955312912636514
+        }
+      },
+      "2bit": {
+        "calibration_slope": 0.0012496685049217062,
+        "global_residual_scale": 0.04241464321938415,
+        "conditional_edges": [
+          0.0001195669174194336,
+          0.06773796180884044,
+          0.09582635760307312,
+          0.12320317327976227,
+          0.1612426439921061,
+          0.21153880655765528,
+          0.4355522394180298
+        ],
+        "conditional_scales": [
+          0.04375251705293835,
+          0.04226323737828311,
+          0.04328236910611252,
+          0.041673317260399835,
+          0.03843642156436453,
+          0.04265257835384587
+        ],
+        "score_margin_spearman": 0.8082380365416227,
+        "residual_margin_spearman": -0.10408010000550243,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.041935483870967745,
+        "global_margin_flip_spearman": -0.2881789497389451,
+        "conditional_margin_flip_spearman": -0.28823374382337574,
+        "tail": {
+          "standardized_mean": 1.7190550058712102e-17,
+          "standardized_kurtosis": 3.2461827788635094,
+          "ks_statistic": 0.021946953743756437,
+          "ks_pvalue": 0.18062343119648472,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.31088709677419357,
+            0.13064516129032258,
+            0.05,
+            0.013306451612903225,
+            0.0032258064516129032
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9797567022536309,
+            0.9777775360215719,
+            1.098894725399641,
+            1.0714306580797948,
+            1.1948333785321241
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.4375,
+          "correlations": {
+            "min_margin": 0.48854484375049184,
+            "mean_margin": 0.41216709040033117,
+            "top_1_logrisk": 0.48854484375049184,
+            "top_3_logrisk": 0.5043659498015965,
+            "top_5_logrisk": 0.4860898445356652,
+            "top_10_logrisk": 0.4656315177454436,
+            "top_all_logrisk": 0.4599031862441815
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5043659498015965
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.4375,
+          "correlations": {
+            "min_margin": 0.48854484375049184,
+            "mean_margin": 0.41243986809086747,
+            "top_1_logrisk": 0.48854484375049184,
+            "top_3_logrisk": 0.5043659498015965,
+            "top_5_logrisk": 0.48445317839244756,
+            "top_10_logrisk": 0.46426762929276216,
+            "top_all_logrisk": 0.45772096471989127
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5043659498015965
+        }
+      },
+      "rotated_1bit": {
+        "calibration_slope": 0.0032056911471130783,
+        "global_residual_scale": 0.0649807524632385,
+        "conditional_edges": [
+          0.0001195669174194336,
+          0.06773796180884044,
+          0.09582635760307312,
+          0.12320317327976227,
+          0.1612426439921061,
+          0.21153880655765528,
+          0.4355522394180298
+        ],
+        "conditional_scales": [
+          0.0644507616311621,
+          0.06395972800456493,
+          0.06199020872460638,
+          0.05927161328211559,
+          0.06687353014909184,
+          0.062410496936553206
+        ],
+        "score_margin_spearman": 0.6779671701157624,
+        "residual_margin_spearman": -0.21322109118444646,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.10866935483870968,
+        "global_margin_flip_spearman": -0.35425665588610633,
+        "conditional_margin_flip_spearman": -0.3545982428332834,
+        "tail": {
+          "standardized_mean": 1.1460366705808068e-17,
+          "standardized_kurtosis": 2.8783773269480735,
+          "ks_statistic": 0.014173905827820188,
+          "ks_pvalue": 0.695922663450351,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.31814516129032255,
+            0.13024193548387097,
+            0.04516129032258064,
+            0.009274193548387096,
+            0.0020161290322580645
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            1.0026303995825092,
+            0.9747597041202708,
+            0.9925500745545145,
+            0.7467547010859175,
+            0.7467708615825775
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.575,
+          "correlations": {
+            "min_margin": 0.5042203606235505,
+            "mean_margin": 0.5294040051280926,
+            "top_1_logrisk": 0.5042203606235505,
+            "top_3_logrisk": 0.5606098254924166,
+            "top_5_logrisk": 0.5359736515205819,
+            "top_10_logrisk": 0.5315938872589223,
+            "top_all_logrisk": 0.5389847394504728
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5606098254924166
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.575,
+          "correlations": {
+            "min_margin": 0.5042203606235505,
+            "mean_margin": 0.5272141229972628,
+            "top_1_logrisk": 0.5042203606235505,
+            "top_3_logrisk": 0.5600623549597091,
+            "top_5_logrisk": 0.5365211220532893,
+            "top_10_logrisk": 0.5302252109271537,
+            "top_all_logrisk": 0.5381635336514117
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5600623549597091
+        }
+      },
+      "rotated_2bit": {
+        "calibration_slope": 0.001248478695038398,
+        "global_residual_scale": 0.04046919923480638,
+        "conditional_edges": [
+          0.0001195669174194336,
+          0.06773796180884044,
+          0.09582635760307312,
+          0.12320317327976227,
+          0.1612426439921061,
+          0.21153880655765528,
+          0.4355522394180298
+        ],
+        "conditional_scales": [
+          0.03958562730584811,
+          0.039022534294976555,
+          0.039604292917829916,
+          0.03666064954594293,
+          0.04143430023561294,
+          0.04328799762899409
+        ],
+        "score_margin_spearman": 0.8438569662994119,
+        "residual_margin_spearman": -0.10611785057049637,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.0467741935483871,
+        "global_margin_flip_spearman": -0.31811004546096106,
+        "conditional_margin_flip_spearman": -0.31811004546096106,
+        "tail": {
+          "standardized_mean": -4.0111283470328234e-17,
+          "standardized_kurtosis": 2.7259557553164906,
+          "ks_statistic": 0.016674085970834196,
+          "ks_pvalue": 0.4904284100341346,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.3334677419354839,
+            0.13064516129032258,
+            0.04112903225806452,
+            0.01129032258064516,
+            0.0016129032258064516
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            1.0509193161656973,
+            0.9777775360215719,
+            0.9039295321835757,
+            0.9090926795828561,
+            0.5974166892660621
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.3875,
+          "correlations": {
+            "min_margin": 0.5407993883876713,
+            "mean_margin": 0.5205228833274247,
+            "top_1_logrisk": 0.5407993883876713,
+            "top_3_logrisk": 0.5885741674337316,
+            "top_5_logrisk": 0.5646867779107014,
+            "top_10_logrisk": 0.5463545952534923,
+            "top_all_logrisk": 0.544410272850455
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5885741674337316
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.3875,
+          "correlations": {
+            "min_margin": 0.5407993883876713,
+            "mean_margin": 0.5202451229841337,
+            "top_1_logrisk": 0.5407993883876713,
+            "top_3_logrisk": 0.5885741674337316,
+            "top_5_logrisk": 0.5644090175674105,
+            "top_10_logrisk": 0.5477433969699476,
+            "top_all_logrisk": 0.5466323555967834
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5885741674337316
+        }
+      }
+    }
+  },
+  {
+    "dataset": "gist960",
+    "dimension": 960,
+    "quantizers": {
+      "1bit": {
+        "calibration_slope": 0.0,
+        "global_residual_scale": 0.013623356420645978,
+        "conditional_edges": [
+          2.1755695343017578e-05,
+          0.010106414556503296,
+          0.014411528905232748,
+          0.018566787242889404,
+          0.023140410582224526,
+          0.033042808373769085,
+          0.09246337413787842
+        ],
+        "conditional_scales": [
+          0.0028170318158054516,
+          0.0012378112570118852,
+          0.001166459165513228,
+          0.0013364427442511784,
+          0.0028816195799768705,
+          0.011967818384267614
+        ],
+        "score_margin_spearman": 0.0,
+        "residual_margin_spearman": -1.0,
+        "calibration_eligible": false,
+        "decision_flip_rate": 1.0,
+        "global_margin_flip_spearman": 0.0,
+        "conditional_margin_flip_spearman": 0.0,
+        "tail": {
+          "standardized_mean": 4.0111283470328234e-17,
+          "standardized_kurtosis": 6.197592961247172,
+          "ks_statistic": 0.12633838544480996,
+          "ks_pvalue": 5.780138441471698e-35,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.24556451612903227,
+            0.08951612903225807,
+            0.05040322580645161,
+            0.032661290322580645,
+            0.013306451612903225
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.7738934262937239,
+            0.6699586820888549,
+            1.107756779636735,
+            2.629875251650405,
+            4.928687686445012
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 1.0,
+          "correlations": {
+            "min_margin": 0.0,
+            "mean_margin": 0.0,
+            "top_1_logrisk": 0.0,
+            "top_3_logrisk": 0.0,
+            "top_5_logrisk": 0.0,
+            "top_10_logrisk": 0.0,
+            "top_all_logrisk": 0.0
+          },
+          "best_metric": "min_margin",
+          "best_spearman": 0.0
+        },
+        "conditional_certificate": {
+          "failure_rate": 1.0,
+          "correlations": {
+            "min_margin": 0.0,
+            "mean_margin": 0.0,
+            "top_1_logrisk": 0.0,
+            "top_3_logrisk": 0.0,
+            "top_5_logrisk": 0.0,
+            "top_10_logrisk": 0.0,
+            "top_all_logrisk": 0.0
+          },
+          "best_metric": "min_margin",
+          "best_spearman": 0.0
+        }
+      },
+      "2bit": {
+        "calibration_slope": 0.00014867784490739977,
+        "global_residual_scale": 0.014855672486092186,
+        "conditional_edges": [
+          2.1755695343017578e-05,
+          0.010106414556503296,
+          0.014411528905232748,
+          0.018566787242889404,
+          0.023140410582224526,
+          0.033042808373769085,
+          0.09246337413787842
+        ],
+        "conditional_scales": [
+          0.006362891342096962,
+          0.005511793968068127,
+          0.006092274132061804,
+          0.006516399264082569,
+          0.007614304454444449,
+          0.013530096219230377
+        ],
+        "score_margin_spearman": -0.013160606769760257,
+        "residual_margin_spearman": -0.834057933516783,
+        "calibration_eligible": false,
+        "decision_flip_rate": 0.3582661290322581,
+        "global_margin_flip_spearman": 0.030099563328723433,
+        "conditional_margin_flip_spearman": 0.013367321865819425,
+        "tail": {
+          "standardized_mean": -1.174687587345327e-16,
+          "standardized_kurtosis": 5.232245309725099,
+          "ks_statistic": 0.11624476209117152,
+          "ks_pvalue": 1.1851924328640124e-29,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.255241935483871,
+            0.10564516129032259,
+            0.05241935483870968,
+            0.02620967741935484,
+            0.012903225806451613
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.8043916893988954,
+            0.7906719581409007,
+            1.1520670508222044,
+            2.110393720460202,
+            4.7793335141284965
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.91875,
+          "correlations": {
+            "min_margin": 0.018572913968666817,
+            "mean_margin": -0.07453929472758283,
+            "top_1_logrisk": 0.018572913968666817,
+            "top_3_logrisk": -0.0572045750234938,
+            "top_5_logrisk": -0.05274707567101376,
+            "top_10_logrisk": -0.0606715189643116,
+            "top_all_logrisk": -0.07602512784507617
+          },
+          "best_metric": "min_margin",
+          "best_spearman": 0.018572913968666817
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.91875,
+          "correlations": {
+            "min_margin": 0.018572913968666817,
+            "mean_margin": -0.048289576318533735,
+            "top_1_logrisk": 0.018572913968666817,
+            "top_3_logrisk": -0.050765964847689304,
+            "top_5_logrisk": -0.05027068714185819,
+            "top_10_logrisk": -0.044822632377715915,
+            "top_all_logrisk": -0.04284152155439146
+          },
+          "best_metric": "min_margin",
+          "best_spearman": 0.018572913968666817
+        }
+      },
+      "rotated_1bit": {
+        "calibration_slope": 0.0005158082169476746,
+        "global_residual_scale": 0.013817744141396091,
+        "conditional_edges": [
+          2.1755695343017578e-05,
+          0.010106414556503296,
+          0.014411528905232748,
+          0.018566787242889404,
+          0.023140410582224526,
+          0.033042808373769085,
+          0.09246337413787842
+        ],
+        "conditional_scales": [
+          0.012137630639285149,
+          0.01258084693446255,
+          0.012574185973833089,
+          0.012133514294410586,
+          0.013519937777495617,
+          0.014071326525154235
+        ],
+        "score_margin_spearman": 0.5096658916877879,
+        "residual_margin_spearman": -0.34315585880366717,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.14798387096774193,
+        "global_margin_flip_spearman": -0.2889802693959249,
+        "conditional_margin_flip_spearman": -0.289212250197826,
+        "tail": {
+          "standardized_mean": 6.876220023484841e-17,
+          "standardized_kurtosis": 3.2868556297888523,
+          "ks_statistic": 0.023930857081342127,
+          "ks_pvalue": 0.11490759041274834,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.30685483870967745,
+            0.12258064516129032,
+            0.04879032258064516,
+            0.014919354838709677,
+            0.0064516129032258064
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9670490926264761,
+            0.9174208979955489,
+            1.0723085626883595,
+            1.2013010408773457,
+            2.3896667570642482
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.6875,
+          "correlations": {
+            "min_margin": 0.2785134370424753,
+            "mean_margin": 0.34507639683879016,
+            "top_1_logrisk": 0.2785134370424753,
+            "top_3_logrisk": 0.35325079541026744,
+            "top_5_logrisk": 0.34916359612452885,
+            "top_10_logrisk": 0.35675410908375765,
+            "top_all_logrisk": 0.35237496699189486
+          },
+          "best_metric": "top_10_logrisk",
+          "best_spearman": 0.35675410908375765
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.6875,
+          "correlations": {
+            "min_margin": 0.2776376086241028,
+            "mean_margin": 0.34536833964491437,
+            "top_1_logrisk": 0.2776376086241028,
+            "top_3_logrisk": 0.35062331015514975,
+            "top_5_logrisk": 0.3497474817367772,
+            "top_10_logrisk": 0.35762993750213035,
+            "top_all_logrisk": 0.35383468102251586
+          },
+          "best_metric": "top_10_logrisk",
+          "best_spearman": 0.35762993750213035
+        }
+      },
+      "rotated_2bit": {
+        "calibration_slope": 0.000344684219700819,
+        "global_residual_scale": 0.010971476905109287,
+        "conditional_edges": [
+          2.1755695343017578e-05,
+          0.010106414556503296,
+          0.014411528905232748,
+          0.018566787242889404,
+          0.023140410582224526,
+          0.033042808373769085,
+          0.09246337413787842
+        ],
+        "conditional_scales": [
+          0.01034213642636,
+          0.010372444688794134,
+          0.010754177120245276,
+          0.010742264624839315,
+          0.010425243885426387,
+          0.011475845997734824
+        ],
+        "score_margin_spearman": 0.6687671004475703,
+        "residual_margin_spearman": -0.19776033303054166,
+        "calibration_eligible": true,
+        "decision_flip_rate": 0.09334677419354839,
+        "global_margin_flip_spearman": -0.30666724155540004,
+        "conditional_margin_flip_spearman": -0.3066740177372419,
+        "tail": {
+          "standardized_mean": 0.0,
+          "standardized_kurtosis": 3.0652882882613772,
+          "ks_statistic": 0.016874526198077056,
+          "ks_pvalue": 0.47498604355635143,
+          "thresholds": [
+            1.0,
+            1.5,
+            2.0,
+            2.5,
+            3.0
+          ],
+          "empirical_two_sided_survival": [
+            0.30806451612903224,
+            0.13266129032258064,
+            0.05241935483870968,
+            0.014112903225806451,
+            0.0020161290322580645
+          ],
+          "gaussian_two_sided_survival": [
+            0.31731050786291415,
+            0.13361440253771617,
+            0.04550026389635843,
+            0.01241933065155228,
+            0.0026997960632601918
+          ],
+          "empirical_gaussian_ratio": [
+            0.9708613755146224,
+            0.9928666955280776,
+            1.1520670508222044,
+            1.1363658494785702,
+            0.7467708615825775
+          ]
+        },
+        "global_certificate": {
+          "failure_rate": 0.5875,
+          "correlations": {
+            "min_margin": 0.4634477719071628,
+            "mean_margin": 0.45795017081692363,
+            "top_1_logrisk": 0.4634477719071628,
+            "top_3_logrisk": 0.5022058595933491,
+            "top_5_logrisk": 0.4782912948508086,
+            "top_10_logrisk": 0.48351401588653586,
+            "top_all_logrisk": 0.469220253051914
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.5022058595933491
+        },
+        "conditional_certificate": {
+          "failure_rate": 0.5875,
+          "correlations": {
+            "min_margin": 0.4634477719071628,
+            "mean_margin": 0.45987433119850735,
+            "top_1_logrisk": 0.4634477719071628,
+            "top_3_logrisk": 0.501930979538837,
+            "top_5_logrisk": 0.47884105495983253,
+            "top_10_logrisk": 0.4840637759955597,
+            "top_all_logrisk": 0.47526761425117703
+          },
+          "best_metric": "top_3_logrisk",
+          "best_spearman": 0.501930979538837
+        }
+      }
+    }
+  }
+]

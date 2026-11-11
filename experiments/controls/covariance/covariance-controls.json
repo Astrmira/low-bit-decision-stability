@@ -1,0 +1,128 @@
+{
+  "calibration_models": {
+    "margin_fit": [
+      0.0,
+      0.00027182079250641914
+    ],
+    "edge_affine_fit": [
+      0.47558501740636006,
+      0.00037044505477461346
+    ]
+  },
+  "splits": {
+    "fit": {
+      "margin_fit": {
+        "pair_count": 2480,
+        "query_count": 80,
+        "left_variance": 0.0005909350837155222,
+        "right_variance": 0.0007343963488501443,
+        "pooled_covariance": 0.0005733466750102947,
+        "pooled_correlation": 0.8703263979985126,
+        "difference_variance": 0.00017863808254507725,
+        "independence_variance": 0.0013253314325656664,
+        "independence_ratio": 7.419086757333696,
+        "exact_weighted_within_covariance": 2.0684130229675583e-33,
+        "exact_weighted_between_covariance": 0.0005733466750102946,
+        "exact_covariance_identity_gap": 1.0842021724855044e-19,
+        "exact_difference_variance_from_components": 0.00017863808254507717,
+        "exact_difference_identity_gap": 8.131516293641283e-20,
+        "within_query_correlation": null,
+        "query_mean_covariance": 0.0005733466750102946,
+        "query_mean_left_sd": 0.02445759551073892,
+        "query_mean_right_sd": 0.025407111027254778,
+        "query_within_covariance_quantiles": [
+          -1.0703034677608e-32,
+          0.0,
+          1.9762609136005555e-32
+        ],
+        "query_block_bootstrap": null,
+        "between_covariance_share": 0.9999999999999998
+      },
+      "edge_affine_fit": {
+        "pair_count": 2480,
+        "query_count": 80,
+        "left_variance": 0.0004960986763889093,
+        "right_variance": 0.0006858008433697784,
+        "pooled_covariance": 0.00042879349539010775,
+        "pooled_correlation": 0.735131694064891,
+        "difference_variance": 0.0003243125289784716,
+        "independence_variance": 0.0011818995197586876,
+        "independence_ratio": 3.6443227262340643,
+        "exact_weighted_within_covariance": 1.786865216656169e-36,
+        "exact_weighted_between_covariance": 0.00042879349539010775,
+        "exact_covariance_identity_gap": 0.0,
+        "exact_difference_variance_from_components": 0.0003243125289784717,
+        "exact_difference_identity_gap": -1.0842021724855044e-19,
+        "within_query_correlation": null,
+        "query_mean_covariance": 0.00042879349539010775,
+        "query_mean_left_sd": 0.022409280098470104,
+        "query_mean_right_sd": 0.022667162427756384,
+        "query_within_covariance_quantiles": [
+          0.0,
+          0.0,
+          7.222237291451723e-37
+        ],
+        "query_block_bootstrap": null,
+        "between_covariance_share": 1.0
+      }
+    },
+    "heldout": {
+      "margin_fit": {
+        "pair_count": 4960,
+        "query_count": 160,
+        "left_variance": 0.0004452088052778435,
+        "right_variance": 0.0006293920940654304,
+        "pooled_covariance": 0.0004361368682716883,
+        "pooled_correlation": 0.8239109722212732,
+        "difference_variance": 0.00020232716279989813,
+        "independence_variance": 0.0010746008993432739,
+        "independence_ratio": 5.311204311237517,
+        "exact_weighted_within_covariance": -2.5352834597620236e-34,
+        "exact_weighted_between_covariance": 0.0004361368682716887,
+        "exact_covariance_identity_gap": -3.7947076036992655e-19,
+        "exact_difference_variance_from_components": 0.00020232716279989843,
+        "exact_difference_identity_gap": -2.981555974335137e-19,
+        "within_query_correlation": null,
+        "query_mean_covariance": 0.0004361368682716887,
+        "query_mean_left_sd": 0.02116408600175975,
+        "query_mean_right_sd": 0.02308965551270031,
+        "query_within_covariance_quantiles": [
+          -1.561287208249919e-32,
+          0.0,
+          1.8509470718857587e-32
+        ],
+        "query_block_bootstrap": null,
+        "between_covariance_share": 1.0000000000000009
+      },
+      "edge_affine_fit": {
+        "pair_count": 4960,
+        "query_count": 160,
+        "left_variance": 0.0004527044325710718,
+        "right_variance": 0.0006358222347106034,
+        "pooled_covariance": 0.0003570428952658085,
+        "pooled_correlation": 0.6654955664959769,
+        "difference_variance": 0.0003744408767500575,
+        "independence_variance": 0.001088526667281675,
+        "independence_ratio": 2.907072210516898,
+        "exact_weighted_within_covariance": -3.009872367211349e-37,
+        "exact_weighted_between_covariance": 0.00035704289526580855,
+        "exact_covariance_identity_gap": -5.421010862427522e-20,
+        "exact_difference_variance_from_components": 0.0003744408767500573,
+        "exact_difference_identity_gap": 2.168404344971009e-19,
+        "within_query_correlation": null,
+        "query_mean_covariance": 0.00035704289526580855,
+        "query_mean_left_sd": 0.021341503817056833,
+        "query_mean_right_sd": 0.021359564257852567,
+        "query_within_covariance_quantiles": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "query_block_bootstrap": null,
+        "between_covariance_share": 1.0000000000000002
+      }
+    }
+  },
+  "original_ratio": 7.419086757333696,
+  "original_reproduction_absolute_gap": 0.0
+}

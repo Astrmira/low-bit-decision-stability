@@ -1,0 +1,387 @@
+{
+  "probe": 29,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 9.16522304963386e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0007199511126820017,
+              "residual_scale": 0.03192423373313049,
+              "distance_spearman": 0.7254232271569472
+            },
+            "sorting_mean": -0.000633799675432861,
+            "sorting_scale": 0.005233513701626665,
+            "pruning_mean": 0.0017765758938847308,
+            "pruning_scale": 0.03099907976126365,
+            "sorting_count": 5040,
+            "pruning_count": 31068
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 3054,
+              "mean_pruning_event_count": 24.698755730189916,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.34315651604453173,
+              "free_order_failure_rate": 0.23772102161100198,
+              "order_conditional_certificate_pass_rate": 0.17223313686967912,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8899803536345776,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.8059076507734387,
+              "full_risk_failure_spearman": 0.425950949153934,
+              "mean_pruning_risk_sum": 18.026373018923568,
+              "mean_full_risk_sum": 79.41805135773583,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 3054,
+              "mean_pruning_event_count": 24.698755730189916,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.34315651604453173,
+              "free_order_failure_rate": 0.23772102161100198,
+              "order_conditional_certificate_pass_rate": 0.17223313686967912,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8899803536345776,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.8059076507734387,
+              "full_risk_failure_spearman": 0.425950949153934,
+              "mean_pruning_risk_sum": 18.026373018923568,
+              "mean_full_risk_sum": 79.41805135773583,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.00011477355859477075,
+              "distance_count": 25308,
+              "residual_mean": 0.0010504072277937467,
+              "residual_scale": 0.029479068675644454,
+              "distance_spearman": 0.920656382932306
+            },
+            "sorting_mean": -0.0007221798975970765,
+            "sorting_scale": 0.004200173363985613,
+            "pruning_mean": 0.005005057530310045,
+            "pruning_scale": 0.030955516219594796,
+            "sorting_count": 5040,
+            "pruning_count": 31068
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 3054,
+              "mean_pruning_event_count": 24.698755730189916,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.3434839554682384,
+              "free_order_failure_rate": 0.3942370661427636,
+              "order_conditional_certificate_pass_rate": 0.17223313686967912,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8919449901768173,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.80357289149233,
+              "full_risk_failure_spearman": 0.5341594832006347,
+              "mean_pruning_risk_sum": 17.572100981711905,
+              "mean_full_risk_sum": 78.63587503112626,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 3054,
+              "mean_pruning_event_count": 24.698755730189916,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.3434839554682384,
+              "free_order_failure_rate": 0.3942370661427636,
+              "order_conditional_certificate_pass_rate": 0.17223313686967912,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8919449901768173,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.80357289149233,
+              "full_risk_failure_spearman": 0.5341594832006347,
+              "mean_pruning_risk_sum": 17.572100981711905,
+              "mean_full_risk_sum": 78.63587503112626,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005852305268160636,
+              "distance_count": 25308,
+              "residual_mean": 0.0037434743668005605,
+              "residual_scale": 0.06732075924620098,
+              "distance_spearman": 0.9584921853955465
+            },
+            "sorting_mean": -0.0019507038293642015,
+            "sorting_scale": 0.020682677760178587,
+            "pruning_mean": 0.06035840127878438,
+            "pruning_scale": 0.07248474553201101,
+            "sorting_count": 5040,
+            "pruning_count": 47213
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5118,
+              "mean_pruning_event_count": 20.9736225087925,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.21512309495896834,
+              "free_order_failure_rate": 0.3104728409534975,
+              "order_conditional_certificate_pass_rate": 0.2543962485345838,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8937084798749512,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.6881014817394333,
+              "full_risk_failure_spearman": 0.5291711343236764,
+              "mean_pruning_risk_sum": 12.711580160750586,
+              "mean_full_risk_sum": 74.0234101365508,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 5118,
+              "mean_pruning_event_count": 20.9736225087925,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.21512309495896834,
+              "free_order_failure_rate": 0.3104728409534975,
+              "order_conditional_certificate_pass_rate": 0.2543962485345838,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8937084798749512,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.6881014817394333,
+              "full_risk_failure_spearman": 0.5291711343236764,
+              "mean_pruning_risk_sum": 12.711580160750586,
+              "mean_full_risk_sum": 74.0234101365508,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005851423581531199,
+              "distance_count": 25308,
+              "residual_mean": 0.0037491411694736635,
+              "residual_scale": 0.06720605037526813,
+              "distance_spearman": 0.9585331030370119
+            },
+            "sorting_mean": -0.0019259654976093602,
+            "sorting_scale": 0.020260039227275803,
+            "pruning_mean": 0.060750731580971336,
+            "pruning_scale": 0.07176502366778333,
+            "sorting_count": 5040,
+            "pruning_count": 47213
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5118,
+              "mean_pruning_event_count": 20.9736225087925,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.21395076201641267,
+              "free_order_failure_rate": 0.310863618601016,
+              "order_conditional_certificate_pass_rate": 0.2565455255959359,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8929269245799141,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.6897515721974036,
+              "full_risk_failure_spearman": 0.5210573985010666,
+              "mean_pruning_risk_sum": 12.637022995789724,
+              "mean_full_risk_sum": 73.90676984209489,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 5118,
+              "mean_pruning_event_count": 20.9736225087925,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.21395076201641267,
+              "free_order_failure_rate": 0.310863618601016,
+              "order_conditional_certificate_pass_rate": 0.2565455255959359,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.8929269245799141,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.6897515721974036,
+              "full_risk_failure_spearman": 0.5210573985010666,
+              "mean_pruning_risk_sum": 12.637022995789724,
+              "mean_full_risk_sum": 73.90676984209489,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 7.610122110278672e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0004555052545026191,
+              "residual_scale": 0.029311477847560025,
+              "distance_spearman": 0.5999328543554413
+            },
+            "sorting_mean": -0.0005470637632463526,
+            "sorting_scale": 0.003286696126289438,
+            "pruning_mean": 0.007302076030462389,
+            "pruning_scale": 0.027601040210570086,
+            "sorting_count": 5040,
+            "pruning_count": 32925
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 3701,
+              "mean_pruning_event_count": 21.733585517427723,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.24723047824912187,
+              "free_order_failure_rate": 0.4977033234261011,
+              "order_conditional_certificate_pass_rate": 0.2688462577681708,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.9159686571196973,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.7301502133626221,
+              "full_risk_failure_spearman": 0.20017009267456254,
+              "mean_pruning_risk_sum": 18.233148134523613,
+              "mean_full_risk_sum": 79.88521598067,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 3701,
+              "mean_pruning_event_count": 21.733585517427723,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.24723047824912187,
+              "free_order_failure_rate": 0.4977033234261011,
+              "order_conditional_certificate_pass_rate": 0.2688462577681708,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.9159686571196973,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.7301502133626221,
+              "full_risk_failure_spearman": 0.20017009267456254,
+              "mean_pruning_risk_sum": 18.233148134523613,
+              "mean_full_risk_sum": 79.88521598067,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 6.541331112116326e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0008673189723532053,
+              "residual_scale": 0.027085727447076106,
+              "distance_spearman": 0.9086388718852892
+            },
+            "sorting_mean": -0.0004886509156186745,
+            "sorting_scale": 0.0024014907393500535,
+            "pruning_mean": 0.005635880861803978,
+            "pruning_scale": 0.024803232500469147,
+            "sorting_count": 5040,
+            "pruning_count": 32925
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 3701,
+              "mean_pruning_event_count": 21.733585517427723,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.24723047824912187,
+              "free_order_failure_rate": 0.3599027289921643,
+              "order_conditional_certificate_pass_rate": 0.2688462577681708,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.91272629019184,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.7276920261286822,
+              "full_risk_failure_spearman": 0.4438246770538363,
+              "mean_pruning_risk_sum": 17.94682018161012,
+              "mean_full_risk_sum": 78.9873658703537,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 3701,
+              "mean_pruning_event_count": 21.733585517427723,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.24723047824912187,
+              "free_order_failure_rate": 0.3599027289921643,
+              "order_conditional_certificate_pass_rate": 0.2688462577681708,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.91272629019184,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.7276920261286822,
+              "full_risk_failure_spearman": 0.4438246770538363,
+              "mean_pruning_risk_sum": 17.94682018161012,
+              "mean_full_risk_sum": 78.9873658703537,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 0,
+              "status": "该标准非饱和运行不存在此类边",
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

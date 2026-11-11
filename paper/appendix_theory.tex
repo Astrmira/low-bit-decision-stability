@@ -1,0 +1,381 @@
+\section{Proofs for Section~\ref{sec:flip}}
+\label{app:p1}
+
+The close-call bound uses a sign argument at each comparison, while its optimized rate balances the close-call probability against the error tail.
+
+\subsection{Ties and the Flip Event}
+
+Write $\widehat\Psi_Q=c_Q\Psi+R$ with $c_Q>0$. If $\Psi>0$ and a flip occurs, then $\widehat\Psi_Q\le0$ and
+$R\le-c_Q\Psi=-c_Q\Gamma$.
+If $\Psi<0$, a flip gives $R\ge c_Q\Gamma$. Hence
+\begin{equation}
+\{\text{flip}\}\subseteq\{\Gamma=0\}\cup\{\Gamma>0,\ |R|\ge c_Q\Gamma\},
+\label{eq:app-p1-inclusion}
+\end{equation}
+and multiplying by $-\sign(\Psi)$ gives $R_{\mathrm{opp}}\ge c_Q\Gamma$. Splitting at $\tau$ proves both parts of Theorem~\ref{thm:main}. Exact ties lie in the close-call term. Quantized ties are covered by the non-strict error event under every fixed tie rule.
+
+\subsection{Explicit Rate}
+
+Under Corollary~\ref{cor:subgaussian} write $r=\nu/c_Q$ and $A=Cr^\beta$. When $0<A<2$, let $L=\log(2/A)$ and $\tau_r=r\sqrt{2L}$. If $\tau_r\le\tau_0$, substituting $\tau_r$ into~\eqref{eq:small-ball-bound} gives
+\begin{equation}
+\Pp(\text{flip})\le Cr^\beta(2L)^{\beta/2}+Cr^\beta,
+\label{eq:app-p1-rate}
+\end{equation}
+so the worst case over the class of distributions allowed by the two assumptions is
+$O\!\left(r^\beta[\log(1/r)]^{\beta/2}\right)$.
+The logarithm reflects the worst case over this class. When the error tail is controlled conditionally on the margin, direct integration gives $O(r^\beta)$. Corollary~\ref{cor:subgaussian} assumes zero mass at exact ties. More generally, if $\Pp(\Gamma\le\tau)\le p_0+C\tau^\beta$ with $p_0=\Pp(\Gamma=0)$, the same argument adds $p_0$ to the rate.
+
+\subsection{Ranking Error and Bias}
+\label{app:ranking-proof}
+
+Let $X=(\xi_x,\xi_y)^\top$, $m=\E X$, and $u=(-1,1)^\top$. The joint MGF proxy gives
+$\E\exp\{\lambda u^\top(X-m)\}\le\exp\{\lambda^2u^\top Ku/2\}$,
+so $R_{\mathrm{rank}}-\mu_R$ is sub-Gaussian with
+$\mu_R=u^\top m,\qquad \nu_{\mathrm{rank}}^2=u^\top Ku=K_{xx}+K_{yy}-2K_{xy}$.
+For a fixed positive exact margin $\gamma$ the flip event is $R_{\mathrm{rank}}\le-c_Q\gamma$, and Chernoff's method gives Proposition~\ref{prop:ranking}. For the opposite orientation the relevant right tail has effective margin $c_Q\gamma-\mu_R$. If $\nu_{\mathrm{rank}}=0$, Jensen's inequality and the MGF bound give $R_{\mathrm{rank}}=\mu_R$ almost surely, and the decision is deterministic.
+
+\subsection{Shared-Endpoint Covariance}
+\label{app:p2p3}
+
+\noindent\emph{Independent endpoints.}\quad
+Let $X,Y,Z$ be i.i.d.\ and let $h\in L^2(P\otimes P)$ be symmetric, with Hoeffding decomposition
+$h(x,y)-\mu=h_1(x)+h_1(y)+h_2(x,y)$,
+where $h_2$ is degenerate in each argument. Put $a=\Var(h_1(X))$ and $b=\Var(h_2(X,Y))$. Orthogonality gives
+$\Var(h(X,Y))=2a+b,\qquad\Cov(h(X,Y),h(X,Z))=a$,
+so that, with $R_1=h(X,Y)$, $R_2=h(X,Z)$, and positive marginal variance,
+\begin{equation}
+0\le\Corr(R_1,R_2)=\frac{a}{2a+b}\le\frac12,
+\qquad
+1\le\frac{\Var(R_1)+\Var(R_2)}{\Var(R_1-R_2)}=\frac{2a+b}{a+b}\le2.
+\label{eq:app-iid-half}
+\end{equation}
+The lower bounds are attained at $a=0,b>0$ and the upper bounds at $b=0,a>0$; if $a=b=0$, both ratios are undefined. The second ratio is the cancellation factor of Section~\ref{sec:ranking}.
+
+\noindent\emph{Search-selected comparisons.}\quad
+Let $R_L$ and $R_R$ be the two distance errors of a comparison with query $Q$, and write $m_L(Q)=\E[R_L\mid Q]$, $v_L(Q)=\Var(R_L\mid Q)$, analogous quantities for $R_R$, and $c(Q)=\Cov(R_L,R_R\mid Q)$. The laws of total covariance and total variance give
+\begin{align}
+\Cov(R_L,R_R)&=\E c(Q)+\Cov(m_L(Q),m_R(Q)),\\
+\Var(R_L-R_R)&=\E[v_L(Q)+v_R(Q)-2c(Q)]+\Var(m_L(Q)-m_R(Q)).
+\label{eq:app-selected-covariance}
+\end{align}
+When the candidates of a query are conditionally independent draws from a fixed selection kernel, $c(Q)=0$, and the pooled correlation comes entirely from the second term; it approaches one when query-specific means dominate the conditional variances. Selection changes the law of the candidates, and with it the conditional means and variances; it changes the weights of the queries only if query sampling, retention, or row weighting also changes. For uniform sampling without replacement from a pool of size $N_{\mathrm{pool}}$,
+\begin{equation}
+\Cov(f_I,g_J\mid Q)=-\frac{c_{fg}(Q)}{N_{\mathrm{pool}}-1}.
+\end{equation}
+The error of a fixed nearest neighbour is constant given the query, so it has zero conditional covariance, and its within-query correlation is undefined. These identities concern second moments; the MGF proxy $K$ of Proposition~\ref{prop:ranking} is a separate input.
+
+\subsection{Within- and Between-Query Identity}
+\label{app:within-between}
+
+For query group $g$ with $n_g$ observed pairs $(\ell_{gi},r_{gi})$, let $N=\sum_gn_g$, let $\bar\ell_g,\bar r_g$ be the group means, and let $\bar\ell,\bar r$ be the row-weighted grand means. Expanding each centred product gives the deterministic identity
+\begin{equation}
+\sum_{g,i}(\ell_{gi}-\bar\ell)(r_{gi}-\bar r)
+=\sum_{g,i}(\ell_{gi}-\bar\ell_g)(r_{gi}-\bar r_g)
++\sum_gn_g(\bar\ell_g-\bar\ell)(\bar r_g-\bar r),
+\label{eq:app-anova-covariance}
+\end{equation}
+so that, with the pooled denominator $N-1$,
+\begin{equation}
+s_{\mathrm{pool}}=\sum_{g:n_g\ge2}\frac{n_g-1}{N-1}s_g+\frac1{N-1}\sum_gn_g(\bar\ell_g-\bar\ell)(\bar r_g-\bar r).
+\end{equation}
+The same identity decomposes both marginal variances and therefore $\Var(R_L-R_R)$. It holds for any dependence between rows; reading its two parts as unbiased estimators of the population terms in~\eqref{eq:app-selected-covariance} requires a sampling model.
+
+\subsection{Top-$K$ Selection}
+
+Let $C$ be fixed before the randomness of the code, let $A$ be the exact top-$K$ subset, and suppose that no exact tie crosses the boundary of $A$. The quantized top-$K$ set equals $A$ if every $x\in A$ stays ahead of every $y\in C\setminus A$, so
+\begin{equation}
+\Pq(\widehat A\ne A)\le\sum_{x\in A}\sum_{y\notin A}\Pq\{\widehat d_Q(q,y)\le\widehat d_Q(q,x)\},
+\label{eq:app-topk}
+\end{equation}
+and any fixed set of comparisons that determines the top-$K$ set can replace the full cross product.
+
+\subsection{Pruning}
+\label{app:pruning}
+
+RobustPrune drops candidate $c$ when a selected neighbour $s$ satisfies $\alpha d(s,c)\le d(t,c)$ with $\alpha\ge1$. Define
+\begin{equation}
+\Psi_\alpha=d(t,c)-\alpha d(s,c),\qquad
+\widehat\Psi_{\alpha,Q}=c_Q\Psi_\alpha+Z_\alpha,\qquad
+Z_\alpha=\xi_{tc}-\alpha\xi_{sc},
+\end{equation}
+with action $\mathbf 1\{\Psi_\alpha\ge0\}$. For nonzero margins, the missed-prune and spurious-prune events are
+\begin{equation}
+\{\Psi_\alpha>0,\ \widehat\Psi_{\alpha,Q}<0\},\qquad
+\{\Psi_\alpha<0,\ \widehat\Psi_{\alpha,Q}\ge0\},
+\end{equation}
+and at an exact tie the actions differ on $\{\Psi_\alpha=0,\ Z_\alpha<0\}$. A continuous distribution of $Z_\alpha$ rules out quantized ties but leaves the probability of this event unconstrained, so it enters the risk as a term of its own.
+
+With $w=(1,-\alpha)^\top$, a joint MGF proxy $K^{(3)}$ for the errors of the two distances gives
+$\nu_\alpha^2=w^\top K^{(3)}w=K_{tc,tc}+\alpha^2K_{sc,sc}-2\alpha K_{tc,sc}$.
+Writing $\mu_Z=\E Z_\alpha$, the two orientations have effective one-sided margins $c_Q\gamma+\mu_Z$ and $c_Q\gamma-\mu_Z$. A calibration through the origin does not make $\mu_Z$ vanish, and a shared intercept $b$ in the distance calibration enters $Z_\alpha$ as $(1-\alpha)b$. If both distance errors are bounded by $\epsilon$ deterministically, then $|Z_\alpha|\le(1+\alpha)\epsilon$.
+
+% ============================================================
+\section{Proofs for Section~\ref{sec:trace}}
+\label{app:p4}
+
+Append-only selection preserves the first action mismatch because a distinct candidate appended in only one run cannot be removed later.
+
+\subsection{Selection as a Sequence of Actions}
+
+Fix distinct candidate labels in an order $\pi=(c_{(1)},\ldots,c_{(N)})$ sorted by exact distance with a fixed tie-breaking rule, a target $t$, a degree budget $\Delta$, and $\alpha\ge1$. Starting from $S_1=()$, define at each visited position
+\begin{equation}
+a_i=\bigvee_{s\in S_i}\mathbf 1\{d(t,c_{(i)})-\alpha d(s,c_{(i)})\ge0\}.
+\end{equation}
+Append $c_{(i)}$ exactly when $a_i=0$, and stop when the order is exhausted or the degree budget is reached. The call only appends and has no backfill. For a fixed sorted order it is equivalent to repeatedly selecting the nearest remaining candidate and deleting the candidates it blocks.
+
+For each state visited by the exact call, evaluate the quantized action $\hat a_i^*$ on the exact list $S_i$ and write $E_i=\{\hat a_i^*\ne a_i\}$. Induction on the first mismatch gives the deterministic identity
+\begin{equation}
+\{\widehat T\ne T\}=\{\widehat S_{\mathrm{out}}\ne S_{\mathrm{out}}\}=\bigcup_{i\in\mathcal V}E_i.
+\label{eq:app-trace-identity}
+\end{equation}
+The step from a difference in output back to some $E_i$ uses distinct labels, append-only selection, and the absence of backfill: the first candidate with an action mismatch belongs to exactly one of the two final lists.
+
+\subsection{Blocking Neighbours and the Risk Sum}
+
+For $s\in S_i$ let
+\begin{equation}
+A_{i,s}=\bigl\{\mathbf 1\{\Psi_{i,s}\ge0\}\ne\mathbf 1\{\widehat\Psi_{i,s}\ge0\}\bigr\}
+\end{equation}
+be the event that the pruning comparison flips. If the exact action keeps the candidate, $E_i=\bigcup_{s\in S_i}A_{i,s}$. If it prunes, the blocker set $B_i=\{s\in S_i:\Psi_{i,s}\ge0\}$ is nonempty and $E_i\subseteq\bigcap_{s\in B_i}A_{i,s}$. Thus $\Pp(E_i)$ is bounded by the sum in the first case and by the smallest blocker probability in the second. For $\widehat\Psi=c_Q\Psi+R$ and nonzero margins,
+\begin{equation}
+A\cap\{\Psi\ne0\}\subseteq\{\Psi\ne0,\ \Psi\widehat\Psi\le0\}\subseteq\{\Psi\ne0,\ |R|\ge c_Q|\Psi|\},
+\end{equation}
+where the first inclusion can be strict at a quantized tie. Exact ties flip when $R<0$. Valid pairwise bounds therefore come from
+\begin{equation}
+p_{i,s}=\begin{cases}
+\Pp(-R_{i,s}\ge c_Q\Psi_{i,s}),&\Psi_{i,s}>0,\\
+\Pp(R_{i,s}\ge c_Q|\Psi_{i,s}|),&\Psi_{i,s}<0,\\
+\Pp(R_{i,s}<0),&\Psi_{i,s}=0.
+\end{cases}
+\label{eq:app-trace-risk}
+\end{equation}
+Applying~\eqref{eq:action-bound} and summing $q_i$ over exact-run states proves~\eqref{eq:trace-bound}, with no independence assumption. The coarser double sum follows from $q_i\le\sum_{s\in S_i}p_{i,s}$.
+
+\subsection{Edges, Paths, Reordering, and Backfill}
+
+If the exact output edge $(t,c)$ is selected at position $j_c$, agreement of all actions up to $j_c$ suffices for its survival. Bounds for the edges of a fixed path, each computed for its own source, combine by a union bound without independence across sources; the resulting statement concerns the retention of the listed edges.
+
+If quantization also changes the candidate order, the event that the order changes is added:
+\begin{equation}
+\Pp(\text{the outputs differ})\le\Pp(\widehat\pi\ne\pi)+\sum_{i\in\mathcal V}\Pp(E_i).
+\end{equation}
+The same deterministic backfill map $B_\pi$, which appends unselected candidates in the shared order $\pi$, satisfies
+\begin{equation}
+\{\text{the backfilled outputs differ}\}\subseteq\{\text{the decision records without backfill differ}\},
+\end{equation}
+and the reverse inclusion fails in general, because different decision records can be backfilled to the same list. If the runs use different backfill orders, the order-change event must also be included as above.
+
+% ============================================================
+\section{Derivations for Section~\ref{sec:bridge}}
+\label{app:p5}
+
+The Gaussian model separates the idealized coordinate error from errors due to empirical thresholds and vector normalization.
+
+\subsection{Decomposition of the Error}
+
+Let $G_u\overset{\mathrm{i.i.d.}}\sim\mathcal N(\mu_D,\Sigma_D)$ and $X_u=G_u/\|G_u\|$. Define the per-vector threshold and the two-bit code
+\begin{equation}
+T(g)=D^{-1}\sum_i|g_i|,\qquad q_i(g)=\sign(g_i)[1+\mathbf 1\{|g_i|>T(g)\}].
+\end{equation}
+The code is invariant to positive scaling, so $q_i(X)=q_i(G)$. Replacing $T(G)$ by $\overline T_D=\E T(G)$ and $\|G\|$ by $r_D=\E\|G\|$ defines the idealized error, and for every fixed combination of node pairs
+$R_a=R_a^\circ+R_{a,\mathrm{thr}}+R_{a,\mathrm{norm}}$,
+where $a$ indexes the decision type. The threshold error is nonzero only when some coordinate falls on different sides of the vector's own threshold and the population threshold. The normalization error is the difference between exact cosine normalization and the bilinear form with the fixed radius $r_D$.
+
+\subsection{Magnitude-Bit Gain}
+
+Let $G,H$ be independent with independent coordinates $G_i,H_i\sim\mathcal N(0,\sigma_i^2)$. Put $m=\sqrt{2/\pi}$, $z_i=\tau/\sigma_i$, $p_i=2[1-\Phi(z_i)]$, $k_i=m+2\varphi(z_i)$, and $v_i=1+3p_i$. Independence across coordinates gives
+\begin{align}
+\Var(T)&=\sum_i\sigma_i^4,&\Cov(S_1,T)&=m^2\sum_i\sigma_i^2,&\Var(S_1)&=D,\\
+\Cov(S_2,T)&=\sum_i\sigma_i^2k_i^2,&\Var(S_2)&=\sum_iv_i^2.
+\end{align}
+For every finite $z>0$,
+\begin{equation}
+k(z)^2>m^2v(z).
+\label{eq:app-magnitude-scalar}
+\end{equation}
+To see this, write $a=e^{-z^2/2}$ and $h(z)=k(z)^2/m^2-v(z)=2a+a^2-6[1-\Phi(z)]$. Then $h(0)=\lim_{z\to\infty}h(z)=0$ and $h'(z)=a\{3m-2z(1+a)\}$; since $2z(1+a)$ is strictly increasing, $h$ first rises and then falls, and it stays strictly positive on $(0,\infty)$.
+
+Now set $t_i=\sigma_i^2$ and regard $v_i=v(t_i)$. Both $v(t)$ and $t/v(t)$ increase, because $tv'(t)=3z\varphi(z)<1\le v(t)$. Pairwise expansion and the Cauchy--Schwarz inequality give
+\begin{equation}
+\frac{\sum_it_iv_i}{\sum_it_i}\ge\frac{\sum_iv_i^2}{\sum_iv_i}\ge\sqrt{\frac1D\sum_iv_i^2},
+\end{equation}
+and combining this with~\eqref{eq:app-magnitude-scalar} proves $\rho(S_2,T)>\rho(S_1,T)$.
+
+The match between target and scorer is what makes the inequality hold. In the linear-target model $T=\sum_iw_iG_i$, define the single-vector readouts $S_1=\sum_i\sign(G_i)$ and $S_2=\sum_iq_i(G)$, and take $D=8$, $w=(1,1,1,1,0,0,0,0)$, coordinate standard deviations $(1,1,1,1,L,L,L,L)$, and $\tau=m(1+L)/2$. For $L=8$ the two-bit minus one-bit Pearson correlation is $-0.162687\ldots$: the second bit amplifies four coordinates that the target ignores, and a fixed readout loses. For independent equal-variance coordinates and the per-vector threshold $D^{-1}\sum_i|G_i|$, the strong law of large numbers and dominated convergence recover the fixed-threshold correlations as $D\to\infty$.
+
+\subsection{Variance of the Idealized Error}
+
+For the symmetric idealized kernel $H_D$ let
+\begin{equation}
+h_{1,D}(u)=\E[H_D(u,V)]-\theta_D,\qquad
+h_{2,D}(u,v)=H_D(u,v)-\theta_D-h_{1,D}(u)-h_{1,D}(v),
+\end{equation}
+and $\kappa_j=\E h_j^2$. Aggregate directed or repeated pairs into coefficients $A_p$ on unordered pairs and net node coefficients $d_u=\sum_{p\ni u}A_p$. Hoeffding orthogonality gives
+\begin{equation}
+\Var(R_a^\circ)=\kappa_1\sum_ud_u^2+\kappa_2\sum_pA_p^2.
+\label{eq:app-oracle-variance}
+\end{equation}
+Disjoint pairs have zero covariance, pairs that share exactly one node have covariance $\kappa_1$, and identical or reversed pairs have variance $2\kappa_1+\kappa_2$.
+
+\subsection{Analytical Routes to the Tail}
+
+A coarse route combines a Gaussian quadratic-form MGF with a bounded score range; it needs no independence between coordinates, and on real embeddings it is loose by four orders of magnitude (Appendix~\ref{app:eligibility}). The exact-covariance route keeps~\eqref{eq:app-oracle-variance} and adds a cumulant or conditional-MGF condition. The held-out route calibrates the error of each decision type on independent blocks. The three routes bound the same error tail with different inputs, and the close-call bound accepts any of them.
+
+\subsection{The Rare-Spike Counterexample}
+\label{app:p8}
+
+Let $p_D=D^{-4}$, $a_D=D^{3/2}$, and
+$G_D=(1-J_D)Z_D+J_Da_DS_D$,
+where $J_D\sim\mathrm{Bernoulli}(p_D)$, $Z_D\sim\mathcal N(0,I_D)$, and $S_D$ has independent random-sign coordinates; independent nodes use independent copies. Then $\Cov(G_D)=(1+D^{-1}-D^{-4})I_D$. For every fixed block of $k$ coordinates, a mixture decomposition and a Gaussian scale comparison give total-variation distance $O_k(D^{-1})$ from the standardized Gaussian law. With $r_D=\E\|G_D\|\sim\sqrt D$,
+\begin{equation}
+\E\left(\frac{\|G_D\|}{r_D}-1\right)^2=O(D^{-1}),
+\end{equation}
+a relative mean-square statement whose $L^2$ norm is $O(D^{-1/2})$. Set $\tau_D=\E|G_{D1}|\sim\sqrt{2/\pi}$ and $\epsilon_D=D^{-1/4}$. The spikes eventually lie outside the band $[\tau_D-\epsilon_D,\tau_D+\epsilon_D]$. Since the density of $|Z_{D1}|$ is at most $2/\sqrt{2\pi}$, the expected fraction of coordinates with $\bigl||G_{Di}|-\tau_D\bigr|\le\epsilon_D$ is at most $4\epsilon_D/\sqrt{2\pi}=O(D^{-1/4})$.
+
+Fix $0<\eta\le1/8$ and define the idealized ranking error with a fixed threshold,
+\begin{align}
+R_D^\circ&=Q_D+B_D,\\
+Q_D&=\frac{G_1^\top(G_3-G_2)}{r_D^2},\\
+B_D&=-\frac{\eta}{D}\sum_iq_i^\circ(G_1)\{q_i^\circ(G_3)-q_i^\circ(G_2)\},
+\end{align}
+where $q^\circ$ is the code with the population threshold. The coefficient $\eta/D$ has the same order $\Theta(D^{-1})$ as the population regression slope that relates the unscaled code sum to $Q_D$. Conditioning on the three spike indicators and combining the two pairs that share an endpoint coordinate by coordinate gives independent centred summands, whence
+$\E B_D^2\le32\eta^2/D,\qquad\E B_D^4\le3072\eta^4/D^2$,
+while $\Var(Q_D)=2D\sigma_D^4/r_D^4\sim2/D$. The reverse triangle inequality in $L^2$ gives $V_D=\Var(R_D^\circ)=\Theta(D^{-1})$.
+
+On the spike event $\mathcal S_D=\{J_1=J_2=1,J_3=0\}$, whose probability is $p_D^2(1-p_D)=\Theta(D^{-8})$,
+\begin{equation}
+Q_D=\frac{a_DS_1^\top Z_3-a_D^2S_1^\top S_2}{r_D^2}.
+\end{equation}
+Since $\E(S_1^\top S_2)^4=3D^2-2D$,
+\begin{equation}
+\E[Q_D^4;\mathcal S_D]\ge\frac{p_D^2(1-p_D)a_D^8(3D^2-2D)}{r_D^8}=(3+o(1))D^2.
+\end{equation}
+The reverse triangle inequality in $L^4$ and the bound on $B_D$ give $\E(R_D^\circ)^4=\Omega(D^2)$, hence
+$\kappa_4(R_D^\circ)=\Omega(D^2),\qquad\kappa_4(R_D^\circ)/V_D^2=\Omega(D^4)$.
+
+For a cumulant condition $|\kappa_j(R_D^\circ)|\le(j!/2)V_Db_D^{j-2}$, the case $j=4$ forces $b_D/\sqrt{V_D}=\Omega(D^2)$. For a two-sided MGF bound
+\begin{equation}
+\log\E e^{\lambda X}\le\frac{\lambda^2v}{2(1-b|\lambda|)},\qquad|\lambda|<1/b,
+\end{equation}
+evaluating both signs at $\lambda=[2\max\{\sqrt v,b\}]^{-1}$ and using $\cosh y-1\ge y^4/24$ gives $\E X^4\le192v\max\{v,b^2\}$, so $v_D=O(V_D)$ again forces $b_D/\sqrt{V_D}=\Omega(D^2)$. The construction uses a fixed threshold, population radius, and idealized slope. Under per-vector unit normalization the spike amplitude cancels, so this construction establishes an obstruction for $R_D^\circ$. A conclusion for the cosine error $R$ also requires controlling $R_{\mathrm{norm}}$.
+
+\subsection{Replacement Variance}
+
+For the Hoeffding decomposition of the error $R_a^\circ$, independent replacement of node $u$ gives
+\begin{equation}
+\tfrac12\E\bigl(R_a^\circ-R_a^{\circ(u)}\bigr)^2=\E\Var(R_a^\circ\mid G_{-u}).
+\end{equation}
+Summing over nodes counts every first-order component once and every degenerate pair component twice,
+\begin{equation}
+V_{\mathrm{ES}}=\kappa_1\sum_ud_u^2+2\kappa_2\sum_pA_p^2,
+\end{equation}
+hence $\Var(R_a^\circ)\le V_{\mathrm{ES}}\le2\Var(R_a^\circ)$, with equality at two when $h_1=0$ and $h_2\ne0$.
+
+\subsection{Conditional Tail and Clipping Routes}
+
+Let $Y_1,Y_2,Y_3$ be the martingale increments of $R_a^\circ$ obtained by revealing the three nodes of a comparison in turn. If deterministic $v_j,b_j$ satisfy
+\begin{equation}
+\log\E[e^{\lambda Y_j}\mid\mathcal F_{j-1}]\le\frac{\lambda^2v_j}{2(1-b_j|\lambda|)},
+\end{equation}
+iterated conditioning gives the tail~\eqref{eq:conditional-mgf-tail} with $v_\star=\sum_jv_j$ and $b_\star=\max_jb_j$. Freedman's inequality needs these conditional bounds almost surely; an expected replacement proxy is not a substitute.
+
+The clipping route constructs an error $R_L$ on the full input space with
+$\Pp(R_L\ne R_a^\circ)\le\varepsilon_L,\qquad|\E R_a^\circ-\E R_L|\le d_L$.
+If $R_L$ has a sub-gamma tail with parameters $(v_L,b_L)$, then
+\begin{equation}
+\Pp(|R_a^\circ-\E R_a^\circ|\ge z+d_L)\le2\exp\left[-\frac{z^2}{2(v_L+b_Lz)}\right]+\varepsilon_L.
+\end{equation}
+Bounding replacements only on a good event suffices when that event is stable under every single-node replacement, which the construction of $R_L$ on the full space provides.
+
+\subsection{Negative Covariance of the Two Error Components}
+
+For zero-mean Gaussian nodes of arbitrary covariance, define $M_{ij}=\E[q_i^\circ(G)G_j]$, and write the idealized error as the sum of a bounded-code part $B_a$ with coefficient $\eta_1$ and a bilinear part $Q_a$. Independence of the endpoints gives
+\begin{equation}
+\Cov(B_a,Q_a)=-\frac{\eta_1}{r_D^2}\Bigl(\sum_pA_p^2\Bigr)\|M\|_F^2\le0,
+\end{equation}
+without any symmetry or positive semidefiniteness of $M$. At nonzero mean, first-order projections reappear, and the sign of the covariance depends on separate cross-Hoeffding conditions.
+
+% ============================================================
+\section{Proofs for Section~\ref{sec:heldout}}
+\label{app:p6}
+
+Independent blocks allow the accepted failure rate to be bounded even when comparisons within a block are dependent.
+
+\subsection{A Single Threshold}
+
+Condition on the parameters fitted on the independent split. Let $Z_1,\ldots,Z_n$ be independent blocks, with arbitrary dependence among the decisions inside a block. For threshold $\tau$ let $u(Z,\tau)$ be the fraction of decisions in block $Z$ that are close calls or large errors, so that $0\le f(Z)\le u(Z,\tau)\le1$, with $f(Z)$ the fraction that flip. For a fixed $\tau$, one-sided Hoeffding gives
+\begin{equation}
+\E f(Z)\le\widehat U_n(\tau)+\sqrt{\frac{\log(1/\delta)}{2n}}
+\end{equation}
+with probability at least $1-\delta$. For a prespecified grid of $M$ thresholds, a union bound replaces $\delta$ by $\delta/M$ and allows any minimizer over the grid that depends only on calibration data.
+
+\subsection{Certificates for Accepted Decisions}
+\label{app:p6-selective}
+
+Condition on the fitting split. For acceptance rule $s$ and threshold $\tau$, let $C_{i,s}$, $U_{i,s,\tau}$, and $F_{i,s}$ be the fractions of block $i$ that are accepted; accepted and close calls ($\Gamma\le\tau$, including ties) or large errors; and accepted and flipped. Empty blocks contribute zero, and $0\le F_{i,s}\le U_{i,s,\tau}\le C_{i,s}\le1$. The target is the ratio of expectations
+\begin{equation}
+p_s=\frac{\E F_{i,s}}{\E C_{i,s}},\qquad q_{s,\tau}=\frac{\E U_{i,s,\tau}}{\E C_{i,s}},
+\end{equation}
+which is the failure rate among accepted decisions when a block and then a decision within it are drawn uniformly; it is not the average of within-block ratios, and it requires $\E C_{i,s}>0$.
+
+The proof of Theorem~\ref{thm:heldout} fixes $q=q_{s,\tau}$ and uses $W_i(q)=U_{i,s,\tau}-qC_{i,s}\in[-q,1-q]$ with $\E W_i(q)=0$. The interval has length one, so a one-sided Hoeffding bound and a union bound over the $G=|\mathcal G|$ grid pairs give
+\begin{equation}
+q_{s,\tau}\le\frac{\widehat U_{s,\tau}+\sqrt{\log(G/\delta)/(2n)}}{\widehat C_s}
+\end{equation}
+simultaneously whenever $\widehat C_s>0$. Replacing $U$ by $F$ and paying only for the family of acceptance rules proves Corollary~\ref{cor:direct-failure}. No independence between comparisons is assumed.
+
+\noindent\emph{Separate-bounds variant.}\quad
+A variant bounds $\E U$ from above and $\E C$ from below separately. With $\epsilon_2=\sqrt{\log(2G/\delta)/(2n)}$ it gives
+\begin{equation}
+q_{s,\tau}\le\frac{\widehat U_{s,\tau}+\epsilon_2}{\widehat C_s-\epsilon_2}
+\end{equation}
+when the denominator is positive; if only $S_0$ distinct acceptance rules occur, $2G$ may be replaced by $G+S_0$. Using $\log(G/\delta)$ for both separate events would establish only a failure probability of $2\delta$. Whenever its denominator is positive, this expression is a looser consequence of the event behind~\eqref{eq:certificate}.
+
+\noindent\emph{Variance-adaptive variant.}\quad
+Let $n\ge2$, let $\widehat V_W(t)$ be the unbiased sample variance of $W_i(t)=U_i-tC_i$, and define
+\begin{align}
+L&=\log(2G/\delta),\qquad a=\sqrt{2L/n},\qquad b=\frac{7L}{3(n-1)},\\
+H(t)&=\widehat U-t\widehat C+a\sqrt{\widehat V_W(t)}+b,\qquad t\in[0,1].
+\end{align}
+Set
+\begin{equation}
+B_{\mathrm{EB}}=
+\begin{cases}
+\inf\{t\in[0,1]:H(t)\le0\},&\text{if the set is nonempty},\\
+1,&\text{otherwise}.
+\end{cases}
+\label{eq:app-eb-ratio}
+\end{equation}
+Then $q_{s,\tau}\le B_{\mathrm{EB},s,\tau}$ simultaneously over the grid with probability at least $1-\delta$.
+
+At the population value $q$, the empirical Bernstein inequality for variables of range one gives $\Pp\{H(q)<0\}\le\delta/G$. The function $H$ need not be monotone, but it crosses zero only once. Write $s_U=\sqrt{\widehat V_U}$ and $\eta=b+\widehat U-as_U$. Since $0\le U_i\le1$,
+\begin{equation}
+s_U^2\le\frac{n}{n-1}\widehat U,\qquad as_U-\widehat U\le\frac{L}{2(n-1)},
+\end{equation}
+so $\eta\ge11L/[6(n-1)]>0$. For $0<r<t\le1$ put $\lambda=t/r$. From $W(t)=\lambda W(r)-(\lambda-1)U$ and the triangle inequality for sample standard deviations,
+$H(t)\le\lambda H(r)-(\lambda-1)\eta$,
+so $H(r)\le0$ implies $H(t)<0$ for every $t>r$. Since $H(0)>0$ and $H$ is continuous, the first crossing in~\eqref{eq:app-eb-ratio} is a valid upper confidence endpoint, and no grid over $t$ is needed. Numerically, if $H(1)\ge0$ the implementation returns one; otherwise bisection returns the upper end of the bracket.
+
+\subsection{Choosing Among Certificates}
+
+If the block budget is split before observation into selection blocks and certification blocks, a grid pair and a certificate may be chosen on the first part and, given that choice, certified on the second with the single-rule width $\sqrt{\log(1/\delta)/(2n_{\mathrm{cert}})}$ and no grid factor. Choosing again after viewing several certification results requires a simultaneous guarantee. Likewise, each prespecified method and sample size carries its own guarantee, and selecting the smallest certificate along a curve requires allocating the confidence across the points eligible for selection.
+
+% ============================================================
+\section{Other Quantizers}
+\label{app:p7}
+
+Different quantizer families induce different comparison errors under the common ranking and pruning interface.
+
+\subsection{RaBitQ}
+
+For a fixed unit data direction $o$ and query direction $q$, RaBitQ uses
+\begin{equation}
+\widehat s_R(o,q)=\frac{\langle\bar o(P),q\rangle}{\langle\bar o(P),o\rangle},
+\end{equation}
+whose denominator is positive for every orthogonal $P$, because $\langle\bar o(P),o\rangle=\|P^\top o\|_1/\sqrt D\ge1/\sqrt D$. With a fixed tie rule, the event that the error exceeds the random radius is measurable. A shared rotation couples the distances of a comparison, so ranking and pruning statements go through the joint event, the triangle inequality, and a union bound rather than independence, and conditioning on the realized radius does not create conditional coverage. For raw squared distance,
+$\xi_R^{d^2}(u_r,v_r)=-2r_ur_v\,\varepsilon_R(u,v)$,
+and a pruning rule stated in Euclidean distance becomes an $\alpha^2$ rule after squaring, with a different radial factor for each of the two distances. A rule stated directly in squared distance or cosine dissimilarity keeps its own parameter.
+
+\subsection{BBQ and Block Estimators}
+
+Lucene BBQ scores in two directions that both shape the graph: stored vectors are one-bit, and temporary int4 query-side vectors support construction. Candidate collection, diversity pruning, and reverse-link scoring each need their own calibration of the error. Our reference scorer implements these scoring directions. Product quantizers and related block estimators enter through sums of block errors, whose tails come from bounded blocks, block covariance, or held-out calibration. The formulation assumes a floating-point reference metric; embeddings that are binary by construction have no such reference.

@@ -1,0 +1,74 @@
+{
+  "2bit": {
+    "model": {
+      "intercept": -0.5240614783953739,
+      "slope": 0.00035741098417976124,
+      "distance_mse": 0.0005880221679574798,
+      "distance_spearman": 0.5703536838511436
+    },
+    "roles": {
+      "ranking": {
+        "boundary": 0.1799645390070922,
+        "tail": 0.5802304964539007,
+        "combined": 0.7601950354609929,
+        "tau": 0.014657771587371827,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.3395390070921986
+      },
+      "pruning": {
+        "boundary": 0.35,
+        "tail": 0.2938879456706282,
+        "combined": 0.6438879456706281,
+        "tau": 0.024510273337364188,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.10594730892965828
+      }
+    }
+  },
+  "rotated_2bit": {
+    "model": {
+      "intercept": -0.683697553534241,
+      "slope": 0.00038374209421943197,
+      "distance_mse": 0.00012288128150602024,
+      "distance_spearman": 0.9013752455256964
+    },
+    "roles": {
+      "ranking": {
+        "boundary": 0.1799645390070922,
+        "tail": 0.23404255319148937,
+        "combined": 0.41400709219858156,
+        "tau": 0.014657771587371827,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.06382978723404255
+      },
+      "pruning": {
+        "boundary": 0.35,
+        "tail": 0.05967741935483871,
+        "combined": 0.4096774193548387,
+        "tau": 0.024510273337364188,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.06325536909833927
+      }
+    }
+  }
+}

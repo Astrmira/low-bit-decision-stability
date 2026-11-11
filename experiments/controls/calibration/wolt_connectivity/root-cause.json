@@ -1,0 +1,86 @@
+{
+  "status": "completed",
+  "scope": "冻结v0.8.8的flat BQ构图路径，归一化Wolt-200K，插入顺序A，最大度64",
+  "mechanism": [
+    "入口位于68节点有向闭合集合，包含63份和5份两种近重复向量，二者余弦约0.99994886",
+    "原轴单线程最终入口剪枝有104个候选、37个外部点，四线程为103个候选、36个外部点",
+    "剪枝只保留1点，再按原始分数回填63点，外部出口全部被删除",
+    "原轴首个被选点与目标向量完全相同，使d(c,s)=d(c,t)，当前d(c,s)<1.2*d(c,t)会剪去正距离候选",
+    "原始SM自距948，单独翻转剪枝方向的固定池对照仍有0个外部邻居"
+  ],
+  "replication": {
+    "instrumented_builds": 3,
+    "all_reachable_counts": [
+      68,
+      68,
+      68
+    ],
+    "actual_prunes_replayed": 12,
+    "fixed_pool_controls": 72
+  },
+  "entry_and_single_edge_controls": [
+    {
+      "axis": "original",
+      "mode": "bridge1",
+      "recall10": 0.8801948051948053,
+      "rounds_verified": 5,
+      "modified_sha256_matched": true
+    },
+    {
+      "axis": "original",
+      "mode": "entry1",
+      "recall10": 0.8875000000000001,
+      "rounds_verified": 5,
+      "modified_sha256_matched": true
+    },
+    {
+      "axis": "rotated",
+      "mode": "bridge1",
+      "recall10": 0.8522727272727273,
+      "rounds_verified": 5,
+      "modified_sha256_matched": true
+    },
+    {
+      "axis": "rotated",
+      "mode": "entry1",
+      "recall10": 0.8516233766233765,
+      "rounds_verified": 5,
+      "modified_sha256_matched": true
+    }
+  ],
+  "fixed_pool_code_l2_standard_inclusive_external_counts": [
+    11,
+    12,
+    13
+  ],
+  "root_row_repairs": [
+    {
+      "case": "original-1t",
+      "metric": "code_squared_l2",
+      "recall10": 0.7577922077922078,
+      "five_rounds_verified": true,
+      "index_delta_sha256_verified": true
+    },
+    {
+      "case": "original-1t",
+      "metric": "fp64_cosine",
+      "recall10": 0.7665584415584417,
+      "five_rounds_verified": true,
+      "index_delta_sha256_verified": true
+    },
+    {
+      "case": "rotated-1t",
+      "metric": "code_squared_l2",
+      "recall10": 0.8227272727272729,
+      "five_rounds_verified": true,
+      "index_delta_sha256_verified": true
+    }
+  ],
+  "validation_scope": "局部固定候选池、入口单字段/单边及入口一行修复对照，全图修复质量和性能尚待验证",
+  "archives_local_verified": [
+    "c7495df23fdc74715eb87d1475bf3de6a16e229b46356b66c13461400bfee365",
+    "5cc5f95e5e53ab844668e307c27014983cc57753678458539f06e19ba3d0d975"
+  ],
+  "source_protection": "诊断队列编译前后对原查询二进制的SHA256相等断言通过，新增源码副本只增加剪枝日志",
+  "paper_action": "已写入JMLR正文E8及附录实验清单，编译与导出通过，PDF50页"
+}

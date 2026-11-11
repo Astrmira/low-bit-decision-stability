@@ -1,0 +1,574 @@
+{
+  "probe": 27,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "saturate": false,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "slope": 9.16522304963386e-05,
+            "distance_count": 25308,
+            "residual_mean": 0.0007199511126820017,
+            "residual_scale": 0.03192423373313049,
+            "distance_spearman": 0.7254232271569472
+          },
+          "evaluation": {
+            "comparison_count": 53844,
+            "false_keep_rate": 0.13056236535175691,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.13056236535175691,
+            "exact_dominated_rate": 0.13067379838050666,
+            "approx_dominated_on_exact_trace_rate": 0.00011143302874972142,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.048394393920898435,
+            "standardized_margin_flip_spearman": -0.35936695923051076,
+            "residual": {
+              "xi_tc_variance": 0.0007894652812515674,
+              "xi_cs_variance": 0.0011241366310377264,
+              "cross_covariance": 0.0005462971186924173,
+              "correlation": 0.5798996440831667,
+              "empirical_z_variance": 0.0010971089450840913,
+              "covariance_formula_variance": 0.0009498535511781819,
+              "independence_variance": 0.0024082220299458936,
+              "tail": {
+                "mean": 0.00047518222561339493,
+                "scale": 0.0331226349357066,
+                "kurtosis": 3.2025423611312904,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.30831661837902086,
+                  0.1307666592377981,
+                  0.04826907362008766,
+                  0.015080603224128965,
+                  0.004141594235197979
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.9716558725254101,
+                  0.9786868537685207,
+                  1.0608526080208256,
+                  1.2142847023920773,
+                  1.5340396600907389
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 9930,
+              "mismatch_count": 7030,
+              "mismatch_rate": 0.7079556898288016
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.32214462800762095,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 1.0
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.39530975765181003,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.1,
+              "approx_degree_cap_rate": 1.0
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "slope": 0.00011477355859477075,
+            "distance_count": 25308,
+            "residual_mean": 0.0010504072277937467,
+            "residual_scale": 0.029479068675644454,
+            "distance_spearman": 0.920656382932306
+          },
+          "evaluation": {
+            "comparison_count": 53844,
+            "false_keep_rate": 0.13065522620904838,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.13065522620904838,
+            "exact_dominated_rate": 0.13067379838050666,
+            "approx_dominated_on_exact_trace_rate": 1.8572171458286904e-05,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.048394393920898435,
+            "standardized_margin_flip_spearman": -0.35882515337006166,
+            "residual": {
+              "xi_tc_variance": 0.0006036130969258853,
+              "xi_cs_variance": 0.0009913748844653824,
+              "cross_covariance": 0.00039489904410333653,
+              "correlation": 0.5104906583392209,
+              "empirical_z_variance": 0.0010834352247080282,
+              "covariance_formula_variance": 0.0009128200381906494,
+              "independence_variance": 0.002031192930556036,
+              "tail": {
+                "mean": 0.003295223949249193,
+                "scale": 0.032915577234920675,
+                "kurtosis": 3.1298479032958193,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.3118453309560954,
+                  0.13111953049550554,
+                  0.04724760418988188,
+                  0.014207711165589481,
+                  0.0035472847485327986
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.982776565000552,
+                  0.981327820992154,
+                  1.0384028606406235,
+                  1.143999750406329,
+                  1.3139084084185253
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 9930,
+              "mismatch_count": 7035,
+              "mismatch_rate": 0.7084592145015106
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.3219720215514026,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 1.0
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.28893509983214594,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.1,
+              "approx_degree_cap_rate": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "slope": 0.0005852305268160636,
+            "distance_count": 25308,
+            "residual_mean": 0.0037434743668005605,
+            "residual_scale": 0.06732075924620098,
+            "distance_spearman": 0.9584921853955465
+          },
+          "evaluation": {
+            "comparison_count": 96160,
+            "false_keep_rate": 0.019197171381031615,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.019197171381031615,
+            "exact_dominated_rate": 0.020663477537437604,
+            "approx_dominated_on_exact_trace_rate": 0.00146630615640599,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.27547819614410396,
+            "standardized_margin_flip_spearman": -0.21957301800000825,
+            "residual": {
+              "xi_tc_variance": 0.0010613362446467336,
+              "xi_cs_variance": 0.004478487812664396,
+              "cross_covariance": 0.0009197883538608398,
+              "correlation": 0.42188657927472123,
+              "empirical_z_variance": 0.005302866645617447,
+              "covariance_formula_variance": 0.003799319955689677,
+              "independence_variance": 0.007510358694883463,
+              "tail": {
+                "mean": 0.060073129248445385,
+                "scale": 0.07282078443423586,
+                "kurtosis": 3.3198093294974234,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.31386231281198,
+                  0.12854617304492513,
+                  0.04304284525790349,
+                  0.013248752079866888,
+                  0.0044093178036605655
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.9891330574768616,
+                  0.9620682396767789,
+                  0.945991112402062,
+                  1.06678471260534,
+                  1.6332040273945756
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 6945,
+              "mismatch_count": 1846,
+              "mismatch_rate": 0.2658027357811375
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.653665823703995,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 1.0
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.5294512502499282,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.95625,
+              "approx_degree_cap_rate": 1.0
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "slope": 0.0005851423581531199,
+            "distance_count": 25308,
+            "residual_mean": 0.0037491411694736635,
+            "residual_scale": 0.06720605037526813,
+            "distance_spearman": 0.9585331030370119
+          },
+          "evaluation": {
+            "comparison_count": 96160,
+            "false_keep_rate": 0.019197171381031615,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.019197171381031615,
+            "exact_dominated_rate": 0.020663477537437604,
+            "approx_dominated_on_exact_trace_rate": 0.00146630615640599,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.27547819614410396,
+            "standardized_margin_flip_spearman": -0.21930638530349655,
+            "residual": {
+              "xi_tc_variance": 0.0010579539244450207,
+              "xi_cs_variance": 0.004412761138005135,
+              "cross_covariance": 0.0009188783618839253,
+              "correlation": 0.42527459323215866,
+              "empirical_z_variance": 0.0052070218946509966,
+              "covariance_formula_variance": 0.003730906720684544,
+              "independence_variance": 0.007412329963172416,
+              "tail": {
+                "mean": 0.05900771712548353,
+                "scale": 0.07215969716296623,
+                "kurtosis": 3.3340352309392345,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.3127391846921797,
+                  0.12847337770382697,
+                  0.04310524126455907,
+                  0.01363352745424293,
+                  0.00447171381031614
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.9855935335973514,
+                  0.9615234231022511,
+                  0.9473624452540583,
+                  1.0977666862053381,
+                  1.6563154051407254
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 6945,
+              "mismatch_count": 1846,
+              "mismatch_rate": 0.2658027357811375
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.655509929033045,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 1.0
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.5286774195387774,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.95625,
+              "approx_degree_cap_rate": 1.0
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "slope": 7.610122110278672e-05,
+            "distance_count": 25308,
+            "residual_mean": 0.0004555052545026191,
+            "residual_scale": 0.029311477847560025,
+            "distance_spearman": 0.5999328543554413
+          },
+          "evaluation": {
+            "comparison_count": 67993,
+            "false_keep_rate": 0.07909637756827909,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.07909637756827909,
+            "exact_dominated_rate": 0.07909637756827909,
+            "approx_dominated_on_exact_trace_rate": 0.0,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.03579344749450683,
+            "standardized_margin_flip_spearman": -0.29351229656739575,
+            "residual": {
+              "xi_tc_variance": 0.0006194520816366212,
+              "xi_cs_variance": 0.0008688732389920395,
+              "cross_covariance": 0.00044231907746634567,
+              "correlation": 0.6029115477623227,
+              "empirical_z_variance": 0.0008090637598659286,
+              "covariance_formula_variance": 0.0006993184506295443,
+              "independence_variance": 0.0018706295457851581,
+              "tail": {
+                "mean": 0.008368593739591298,
+                "scale": 0.028444046123326558,
+                "kurtosis": 6.182690059948937,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.2530113394025856,
+                  0.11021722824408395,
+                  0.04982865883252688,
+                  0.02414954480608298,
+                  0.012442457311782095
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.79736199442816,
+                  0.8248903273206063,
+                  1.0951290072960405,
+                  1.944512589578614,
+                  4.608665625194283
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 8919,
+              "mismatch_count": 5378,
+              "mismatch_rate": 0.602982397129723
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 0.99375,
+              "final_output_divergence_rate": 0.99375,
+              "mean_final_jaccard": 0.45796445623314763,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 1.0
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.259517271212667,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.38125,
+              "approx_degree_cap_rate": 1.0
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "slope": 6.541331112116326e-05,
+            "distance_count": 25308,
+            "residual_mean": 0.0008673189723532053,
+            "residual_scale": 0.027085727447076106,
+            "distance_spearman": 0.9086388718852892
+          },
+          "evaluation": {
+            "comparison_count": 67993,
+            "false_keep_rate": 0.07897871839748209,
+            "false_prune_rate": 0.0,
+            "local_disagreement_rate": 0.07897871839748209,
+            "exact_dominated_rate": 0.07909637756827909,
+            "approx_dominated_on_exact_trace_rate": 0.00011765917079699381,
+            "exact_tie_rate": 0.0,
+            "structural_margin_abs_median": 0.03579344749450683,
+            "standardized_margin_flip_spearman": -0.2944645413236132,
+            "residual": {
+              "xi_tc_variance": 0.000532719296900663,
+              "xi_cs_variance": 0.000738782275249413,
+              "cross_covariance": 0.0003928598233269716,
+              "correlation": 0.6262246648232145,
+              "empirical_z_variance": 0.0006537021972750867,
+              "covariance_formula_variance": 0.0005630344868016357,
+              "independence_variance": 0.0015965657732598176,
+              "tail": {
+                "mean": 0.006938736199736692,
+                "scale": 0.025567600538085045,
+                "kurtosis": 6.1468260911133585,
+                "thresholds": [
+                  1.0,
+                  1.5,
+                  2.0,
+                  2.5,
+                  3.0
+                ],
+                "empirical_two_sided_survival": [
+                  0.2554527671966232,
+                  0.10924654008500875,
+                  0.049107996411395294,
+                  0.024031885635285986,
+                  0.012486579500830968
+                ],
+                "gaussian_two_sided_survival": [
+                  0.31731050786291415,
+                  0.13361440253771617,
+                  0.04550026389635843,
+                  0.01241933065155228,
+                  0.0026997960632601918
+                ],
+                "empirical_gaussian_ratio": [
+                  0.8050561228403599,
+                  0.8176254805627788,
+                  1.079290364628536,
+                  1.9350387158169642,
+                  4.625008411099227
+                ]
+              }
+            },
+            "candidate_level": {
+              "candidate_count": 8919,
+              "mismatch_count": 5370,
+              "mismatch_rate": 0.6020854355869492
+            },
+            "fixed_order_replay": {
+              "target_count": 160,
+              "diversity_output_divergence_rate": 0.99375,
+              "final_output_divergence_rate": 0.99375,
+              "mean_final_jaccard": 0.45807383123314765,
+              "mean_fallback_count": 0.0,
+              "reintroduced_count": 0,
+              "degree_cap_rate": 0.99375
+            },
+            "free_replay": {
+              "target_count": 160,
+              "order_divergence_rate": 1.0,
+              "diversity_output_divergence_rate": 1.0,
+              "final_output_divergence_rate": 1.0,
+              "mean_final_jaccard": 0.35865833790386664,
+              "mean_exact_fallback_count": 0.0,
+              "mean_approx_fallback_count": 0.0,
+              "exact_reintroduced_count": 0,
+              "approx_reintroduced_count": 0,
+              "exact_degree_cap_rate": 0.38125,
+              "approx_degree_cap_rate": 0.99375
+            }
+          }
+        }
+      }
+    }
+  ]
+}

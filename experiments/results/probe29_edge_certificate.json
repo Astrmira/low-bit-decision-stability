@@ -1,0 +1,459 @@
+{
+  "probe": 29,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 9.16522304963386e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0007199511126820017,
+              "residual_scale": 0.03192423373313049,
+              "distance_spearman": 0.7254232271569472
+            },
+            "sorting_mean": -0.000633799675432861,
+            "sorting_scale": 0.005233513701626665,
+            "pruning_mean": -0.01371162472699521,
+            "pruning_scale": 0.03308720501348185,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 60.8064453125,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.003125,
+              "free_order_failure_rate": 0.2927734375,
+              "order_conditional_certificate_pass_rate": 0.5458984375,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.957421875,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.03443996621748602,
+              "full_risk_failure_spearman": 0.05173682789712688,
+              "mean_pruning_risk_sum": 23.30716213534907,
+              "mean_full_risk_sum": 84.65951121449282,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 285,
+              "mean_pruning_event_count": 6.628070175438596,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.056140350877192984,
+              "free_order_failure_rate": 0.042105263157894736,
+              "order_conditional_certificate_pass_rate": 0.5614035087719298,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.34385964912280703,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.43355603126140924,
+              "full_risk_failure_spearman": 0.2696995431841668,
+              "mean_pruning_risk_sum": 4.013056149716057,
+              "mean_full_risk_sum": 65.40807563004785,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4835,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0,
+              "free_order_failure_rate": 0.3075491209927611,
+              "order_conditional_certificate_pass_rate": 0.5449844881075491,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.99358841778697,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.0,
+              "full_risk_failure_spearman": 0.00012523307800448163,
+              "mean_pruning_risk_sum": 24.44445690389207,
+              "mean_full_risk_sum": 85.79429076807436,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.00011477355859477075,
+              "distance_count": 25308,
+              "residual_mean": 0.0010504072277937467,
+              "residual_scale": 0.029479068675644454,
+              "distance_spearman": 0.920656382932306
+            },
+            "sorting_mean": -0.0007221798975970765,
+            "sorting_scale": 0.004200173363985613,
+            "pruning_mean": -0.009186371097904109,
+            "pruning_scale": 0.0317366117146913,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 60.8064453125,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.003125,
+              "free_order_failure_rate": 0.296875,
+              "order_conditional_certificate_pass_rate": 0.5458984375,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.957421875,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.04291855270344899,
+              "full_risk_failure_spearman": 0.04236203176805708,
+              "mean_pruning_risk_sum": 19.62668494794493,
+              "mean_full_risk_sum": 80.64631862383649,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 285,
+              "mean_pruning_event_count": 6.628070175438596,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.056140350877192984,
+              "free_order_failure_rate": 0.09824561403508772,
+              "order_conditional_certificate_pass_rate": 0.5614035087719298,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.34385964912280703,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.4325349383945665,
+              "full_risk_failure_spearman": 0.41323596773697696,
+              "mean_pruning_risk_sum": 3.6999919214587567,
+              "mean_full_risk_sum": 64.76311054933993,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4835,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0,
+              "free_order_failure_rate": 0.30858324715615304,
+              "order_conditional_certificate_pass_rate": 0.5449844881075491,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.99358841778697,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.0,
+              "full_risk_failure_spearman": -0.004915475263662223,
+              "mean_pruning_risk_sum": 20.565486915380003,
+              "mean_full_risk_sum": 81.58255736245728,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005852305268160636,
+              "distance_count": 25308,
+              "residual_mean": 0.0037434743668005605,
+              "residual_scale": 0.06732075924620098,
+              "distance_spearman": 0.9584921853955465
+            },
+            "sorting_mean": -0.0019507038293642015,
+            "sorting_scale": 0.020682677760178587,
+            "pruning_mean": 0.05567925471405392,
+            "pruning_scale": 0.06005734147777704,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 57.859375,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0083984375,
+              "free_order_failure_rate": 0.2306640625,
+              "order_conditional_certificate_pass_rate": 0.037890625,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.95703125,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.02379863251108098,
+              "full_risk_failure_spearman": 0.10535833771789958,
+              "mean_pruning_risk_sum": 5.319876774615266,
+              "mean_full_risk_sum": 66.63136421515519,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 573,
+              "mean_pruning_event_count": 9.13089005235602,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.07329842931937172,
+              "free_order_failure_rate": 0.11169284467713787,
+              "order_conditional_certificate_pass_rate": 0.2844677137870855,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.6160558464223386,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.4130306370914063,
+              "full_risk_failure_spearman": 0.45600912217282225,
+              "mean_pruning_risk_sum": 1.9011874355375653,
+              "mean_full_risk_sum": 63.29480068483178,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4547,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.00021992522542335605,
+              "free_order_failure_rate": 0.2456564767978887,
+              "order_conditional_certificate_pass_rate": 0.006817681988124038,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 1.0,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.020237415680402486,
+              "full_risk_failure_spearman": 0.033381867383961095,
+              "mean_pruning_risk_sum": 5.750690276108893,
+              "mean_full_risk_sum": 67.05182845594588,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005851423581531199,
+              "distance_count": 25308,
+              "residual_mean": 0.0037491411694736635,
+              "residual_scale": 0.06720605037526813,
+              "distance_spearman": 0.9585331030370119
+            },
+            "sorting_mean": -0.0019259654976093602,
+            "sorting_scale": 0.020260039227275803,
+            "pruning_mean": 0.05668683025022288,
+            "pruning_scale": 0.060178177971411895,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 57.859375,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.008203125,
+              "free_order_failure_rate": 0.228125,
+              "order_conditional_certificate_pass_rate": 0.0380859375,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.9572265625,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.026898930064761198,
+              "full_risk_failure_spearman": 0.09569632970827144,
+              "mean_pruning_risk_sum": 5.256146696003015,
+              "mean_full_risk_sum": 66.52553920058212,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 573,
+              "mean_pruning_event_count": 9.13089005235602,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.07329842931937172,
+              "free_order_failure_rate": 0.08551483420593368,
+              "order_conditional_certificate_pass_rate": 0.2862129144851658,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.6178010471204188,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.41802872004324126,
+              "full_risk_failure_spearman": 0.3575180978070656,
+              "mean_pruning_risk_sum": 1.891168249375441,
+              "mean_full_risk_sum": 63.24297976127345,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4547,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0,
+              "free_order_failure_rate": 0.24609632724873542,
+              "order_conditional_certificate_pass_rate": 0.006817681988124038,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 1.0,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.0,
+              "full_risk_failure_spearman": 0.022684939756204583,
+              "mean_pruning_risk_sum": 5.680191703682277,
+              "mean_full_risk_sum": 66.93919799950972,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 7.610122110278672e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0004555052545026191,
+              "residual_scale": 0.029311477847560025,
+              "distance_spearman": 0.5999328543554413
+            },
+            "sorting_mean": -0.0005470637632463526,
+            "sorting_scale": 0.003286696126289438,
+            "pruning_mean": -0.005763284937764371,
+            "pruning_scale": 0.028904960311902938,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 59.7541015625,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0095703125,
+              "free_order_failure_rate": 0.4400390625,
+              "order_conditional_certificate_pass_rate": 0.225,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.949609375,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": -0.017173083256055648,
+              "full_risk_failure_spearman": -0.0017620784885405071,
+              "mean_pruning_risk_sum": 30.879515731376735,
+              "mean_full_risk_sum": 92.22377727964735,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 410,
+              "mean_pruning_event_count": 10.978048780487805,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.11951219512195121,
+              "free_order_failure_rate": 0.424390243902439,
+              "order_conditional_certificate_pass_rate": 0.3902439024390244,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.5195121951219512,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.5634231389052522,
+              "full_risk_failure_spearman": 0.22652552076570512,
+              "mean_pruning_risk_sum": 6.99452094036582,
+              "mean_full_risk_sum": 68.42911671927696,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4710,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0,
+              "free_order_failure_rate": 0.44140127388535033,
+              "order_conditional_certificate_pass_rate": 0.21061571125265394,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.9870488322717622,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.0,
+              "full_risk_failure_spearman": -0.01745259788921518,
+              "mean_pruning_risk_sum": 32.958676636751356,
+              "mean_full_risk_sum": 94.29507469573055,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 6.541331112116326e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0008673189723532053,
+              "residual_scale": 0.027085727447076106,
+              "distance_spearman": 0.9086388718852892
+            },
+            "sorting_mean": -0.0004886509156186745,
+            "sorting_scale": 0.0024014907393500535,
+            "pruning_mean": -0.006239652637557451,
+            "pruning_scale": 0.02619010005382658,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "all": {
+              "edge_count": 5120,
+              "mean_pruning_event_count": 59.7541015625,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0095703125,
+              "free_order_failure_rate": 0.2966796875,
+              "order_conditional_certificate_pass_rate": 0.225,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.949609375,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": -0.010617124346258876,
+              "full_risk_failure_spearman": 0.10524482528399894,
+              "mean_pruning_risk_sum": 28.887714013345896,
+              "mean_full_risk_sum": 89.50352531275652,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "diversity": {
+              "edge_count": 410,
+              "mean_pruning_event_count": 10.978048780487805,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.11951219512195121,
+              "free_order_failure_rate": 0.17804878048780487,
+              "order_conditional_certificate_pass_rate": 0.3902439024390244,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.5195121951219512,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.5596894739726708,
+              "full_risk_failure_spearman": 0.5019699128716518,
+              "mean_pruning_risk_sum": 6.707203859006704,
+              "mean_full_risk_sum": 67.43994580029482,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            },
+            "fallback": {
+              "edge_count": 4710,
+              "mean_pruning_event_count": 64.0,
+              "mean_sorting_event_count": 63.0,
+              "fixed_order_failure_rate": 0.0,
+              "free_order_failure_rate": 0.3070063694267516,
+              "order_conditional_certificate_pass_rate": 0.21061571125265394,
+              "full_certificate_pass_rate": 0.0,
+              "pruning_certificate_saturation": 0.9870488322717622,
+              "full_certificate_saturation": 1.0,
+              "pruning_risk_failure_spearman": 0.0,
+              "full_risk_failure_spearman": 0.06420239945717467,
+              "mean_pruning_risk_sum": 30.818501521473088,
+              "mean_full_risk_sum": 91.42413414505148,
+              "tie_event_mean": 0.0,
+              "certificate_sufficiency_holds": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

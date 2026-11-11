@@ -1,0 +1,26 @@
+[
+  {
+    "case": "original-1t",
+    "metric": "code_squared_l2",
+    "recall10": 0.7577922077922078,
+    "degree": 64,
+    "entry": 0,
+    "root_neighbors_only": true
+  },
+  {
+    "case": "original-1t",
+    "metric": "fp64_cosine",
+    "recall10": 0.7665584415584417,
+    "degree": 64,
+    "entry": 0,
+    "root_neighbors_only": true
+  },
+  {
+    "case": "rotated-1t",
+    "metric": "code_squared_l2",
+    "recall10": 0.8227272727272729,
+    "degree": 64,
+    "entry": 0,
+    "root_neighbors_only": true
+  }
+]

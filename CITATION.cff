@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite the accompanying paper when using these materials."
+title: "When Does Low-Bit Quantization Preserve the Decisions of Vector Search?"
+type: software
+authors:
+  - family-names: Xiao
+    given-names: Wenxuan
+  - family-names: Cao
+    given-names: Xu
+repository-code: "https://github.com/Astrmira/low-bit-decision-stability"
+url: "https://arxiv.org/abs/2609.09854"
+preferred-citation:
+  type: article
+  title: "When Does Low-Bit Quantization Preserve the Decisions of Vector Search?"
+  authors:
+    - family-names: Xiao
+      given-names: Wenxuan
+    - family-names: Cao
+      given-names: Xu
+  year: 2026
+  url: "https://arxiv.org/abs/2609.09854"
+

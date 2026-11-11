@@ -1,0 +1,1098 @@
+{
+  "probe": 37,
+  "seed": 20260827,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "sift128",
+    "gist960"
+  ],
+  "quantizers": [
+    "sign",
+    "shared_2bit",
+    "rabitq",
+    "bbq_like",
+    "scalar_int4",
+    "pq4x16"
+  ],
+  "results": [
+    {
+      "dataset": "cohere",
+      "kind": "contrastive",
+      "dimension": 768,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2000,
+      "quantizers": [
+        {
+          "quantizer": "sign",
+          "calibration": {
+            "intercept": 0.47525928890522456,
+            "slope": 0.0009437503810567543,
+            "edge_spearman": 0.7083156963812237,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.23523333333333332,
+            "hard_20_flip_rate": 0.44633333333333336,
+            "residual_sd": 0.03691789135336876,
+            "residual_abs_p99": 0.09534704685211182,
+            "margin_to_flip_spearman": -0.34589916523875325,
+            "standardized_margin_bin_flip": [
+              0.44633333333333336,
+              0.3329166666666667,
+              0.22591666666666665,
+              0.13133333333333333,
+              0.03966666666666667
+            ],
+            "minimum_empirical_p1_risk": 0.8380666666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.12118333333333334,
+            "hard_20_flip_rate": 0.3715833333333333,
+            "residual_sd": 0.04074595496058464,
+            "residual_abs_p99": 0.10499417781829834,
+            "margin_to_flip_spearman": -0.3948411108916825,
+            "standardized_margin_bin_flip": [
+              0.3715833333333333,
+              0.16083333333333333,
+              0.057916666666666665,
+              0.013833333333333333,
+              0.00175
+            ],
+            "minimum_empirical_p1_risk": 0.6049333333333333,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "shared_2bit",
+          "calibration": {
+            "intercept": 0.40361938710027795,
+            "slope": 0.00045144293829889,
+            "edge_spearman": 0.7993289590897674,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.18693333333333334,
+            "hard_20_flip_rate": 0.42525,
+            "residual_sd": 0.03021162670463904,
+            "residual_abs_p99": 0.07719031252443806,
+            "margin_to_flip_spearman": -0.387584568545479,
+            "standardized_margin_bin_flip": [
+              0.42525,
+              0.27675,
+              0.16158333333333333,
+              0.06208333333333333,
+              0.009
+            ],
+            "minimum_empirical_p1_risk": 0.7531000000000001,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.10328333333333334,
+            "hard_20_flip_rate": 0.34958333333333336,
+            "residual_sd": 0.033419901965632125,
+            "residual_abs_p99": 0.08566139502342747,
+            "margin_to_flip_spearman": -0.39343939546484913,
+            "standardized_margin_bin_flip": [
+              0.34958333333333336,
+              0.12941666666666668,
+              0.032916666666666664,
+              0.004333333333333333,
+              0.00016666666666666666
+            ],
+            "minimum_empirical_p1_risk": 0.5278,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "rabitq",
+          "calibration": {
+            "intercept": 0.10391738477323399,
+            "slope": 0.8553818967162323,
+            "edge_spearman": 0.9264641762134752,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.14386666666666667,
+            "hard_20_flip_rate": 0.399966669444213,
+            "residual_sd": 0.02360676974839982,
+            "residual_abs_p99": 0.06102681087701007,
+            "margin_to_flip_spearman": -0.40793776482694877,
+            "standardized_margin_bin_flip": [
+              0.399966669444213,
+              0.21039913340554953,
+              0.08666666666666667,
+              0.021166666666666667,
+              0.0011666666666666668
+            ],
+            "minimum_empirical_p1_risk": 0.63645,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.07885,
+            "hard_20_flip_rate": 0.3080833333333333,
+            "residual_sd": 0.026476232783911608,
+            "residual_abs_p99": 0.068035816569227,
+            "margin_to_flip_spearman": -0.3768753181567269,
+            "standardized_margin_bin_flip": [
+              0.3080833333333333,
+              0.077,
+              0.008833333333333334,
+              0.0003333333333333333,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.4526,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "bbq_like",
+          "calibration": {
+            "intercept": 0.031197053532515256,
+            "slope": 0.9533259400661815,
+            "edge_spearman": 0.9032544526716639,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.1613,
+            "hard_20_flip_rate": 0.40791666666666665,
+            "residual_sd": 0.02662748470902443,
+            "residual_abs_p99": 0.0700594037771225,
+            "margin_to_flip_spearman": -0.40119711042343087,
+            "standardized_margin_bin_flip": [
+              0.40791666666666665,
+              0.247,
+              0.11416666666666667,
+              0.034416666666666665,
+              0.003
+            ],
+            "minimum_empirical_p1_risk": 0.6882333333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.09545,
+            "hard_20_flip_rate": 0.34258333333333335,
+            "residual_sd": 0.031639620661735535,
+            "residual_abs_p99": 0.0826464295387268,
+            "margin_to_flip_spearman": -0.3934873089888475,
+            "standardized_margin_bin_flip": [
+              0.34258333333333335,
+              0.11033333333333334,
+              0.021416666666666667,
+              0.002916666666666667,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.5038,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "scalar_int4",
+          "calibration": {
+            "intercept": -0.03083747823955594,
+            "slope": 1.041653571607692,
+            "edge_spearman": 0.9981038638691412,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.0199,
+            "hard_20_flip_rate": 0.09933333333333333,
+            "residual_sd": 0.0035552254412323236,
+            "residual_abs_p99": 0.0094503965228796,
+            "margin_to_flip_spearman": -0.23057496828719187,
+            "standardized_margin_bin_flip": [
+              0.09933333333333333,
+              0.00016666666666666666,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.15708333333333335,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.01175,
+            "hard_20_flip_rate": 0.05875,
+            "residual_sd": 0.003905898192897439,
+            "residual_abs_p99": 0.01032653171569109,
+            "margin_to_flip_spearman": -0.18190962276074996,
+            "standardized_margin_bin_flip": [
+              0.05875,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.10231666666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "pq4x16",
+          "calibration": {
+            "intercept": 0.8964669289725178,
+            "slope": 0.5696838356394484,
+            "edge_spearman": 0.7183005732938682,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.3098666666666667,
+            "hard_20_flip_rate": 0.4701666666666667,
+            "residual_sd": 0.04612117917958467,
+            "residual_abs_p99": 0.11764253825314154,
+            "margin_to_flip_spearman": -0.2653463443691912,
+            "standardized_margin_bin_flip": [
+              0.4701666666666667,
+              0.39475,
+              0.32133333333333336,
+              0.241,
+              0.12208333333333334
+            ],
+            "minimum_empirical_p1_risk": 0.9474,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.1491,
+            "hard_20_flip_rate": 0.39008333333333334,
+            "residual_sd": 0.05365531410844048,
+            "residual_abs_p99": 0.1362074322264649,
+            "margin_to_flip_spearman": -0.3743524233395536,
+            "standardized_margin_bin_flip": [
+              0.39008333333333334,
+              0.2025,
+              0.10308333333333333,
+              0.03991666666666667,
+              0.009916666666666667
+            ],
+            "minimum_empirical_p1_risk": 0.7417833333333334,
+            "p1_empirical_coverage": true
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "minilm",
+      "kind": "contrastive",
+      "dimension": 384,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2000,
+      "quantizers": [
+        {
+          "quantizer": "sign",
+          "calibration": {
+            "intercept": 0.002305413173765978,
+            "slope": 0.0027428044441710226,
+            "edge_spearman": 0.7824063072821044,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.20733333333333334,
+            "hard_20_flip_rate": 0.44266666666666665,
+            "residual_sd": 0.07142619788646698,
+            "residual_abs_p99": 0.1861102432012558,
+            "margin_to_flip_spearman": -0.3812005624690859,
+            "standardized_margin_bin_flip": [
+              0.44266666666666665,
+              0.30583333333333335,
+              0.18575,
+              0.087,
+              0.015416666666666667
+            ],
+            "minimum_empirical_p1_risk": 0.7961666666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.05455,
+            "hard_20_flip_rate": 0.23341666666666666,
+            "residual_sd": 0.0791531503200531,
+            "residual_abs_p99": 0.20616021752357483,
+            "margin_to_flip_spearman": -0.3294224446680711,
+            "standardized_margin_bin_flip": [
+              0.23341666666666666,
+              0.03375,
+              0.005,
+              0.0005833333333333334,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.41173333333333334,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "shared_2bit",
+          "calibration": {
+            "intercept": 0.0006841329063522174,
+            "slope": 0.001197065884406402,
+            "edge_spearman": 0.9150852083506164,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.1287,
+            "hard_20_flip_rate": 0.38958333333333334,
+            "residual_sd": 0.044797076915262614,
+            "residual_abs_p99": 0.11580261009213579,
+            "margin_to_flip_spearman": -0.4125712913222799,
+            "standardized_margin_bin_flip": [
+              0.38958333333333334,
+              0.18466666666666667,
+              0.060833333333333336,
+              0.008416666666666666,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.5810333333333333,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.03515,
+            "hard_20_flip_rate": 0.17133333333333334,
+            "residual_sd": 0.04924980776236214,
+            "residual_abs_p99": 0.12725305880125642,
+            "margin_to_flip_spearman": -0.29155237460444466,
+            "standardized_margin_bin_flip": [
+              0.17133333333333334,
+              0.004416666666666667,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.24493333333333334,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "rabitq",
+          "calibration": {
+            "intercept": 0.0031789173198785766,
+            "slope": 0.8386664949362359,
+            "edge_spearman": 0.898567145839887,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.14445,
+            "hard_20_flip_rate": 0.40458333333333335,
+            "residual_sd": 0.04973548281349433,
+            "residual_abs_p99": 0.12831504758059994,
+            "margin_to_flip_spearman": -0.4140427477609875,
+            "standardized_margin_bin_flip": [
+              0.40458333333333335,
+              0.2185,
+              0.08158333333333333,
+              0.01725,
+              0.0003333333333333333
+            ],
+            "minimum_empirical_p1_risk": 0.6327,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.03991666666666667,
+            "hard_20_flip_rate": 0.19066666666666668,
+            "residual_sd": 0.054570093711047506,
+            "residual_abs_p99": 0.14047526686626446,
+            "margin_to_flip_spearman": -0.3054800028192109,
+            "standardized_margin_bin_flip": [
+              0.19066666666666668,
+              0.008583333333333333,
+              0.0003333333333333333,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.2730666666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "bbq_like",
+          "calibration": {
+            "intercept": -0.001317539532247619,
+            "slope": 1.0446562744276147,
+            "edge_spearman": 0.8956786619964828,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.14275,
+            "hard_20_flip_rate": 0.399,
+            "residual_sd": 0.05044738948345184,
+            "residual_abs_p99": 0.13017487525939941,
+            "margin_to_flip_spearman": -0.411595003379161,
+            "standardized_margin_bin_flip": [
+              0.399,
+              0.217,
+              0.0815,
+              0.01525,
+              0.001
+            ],
+            "minimum_empirical_p1_risk": 0.6311166666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.04016666666666667,
+            "hard_20_flip_rate": 0.19241666666666668,
+            "residual_sd": 0.05590776354074478,
+            "residual_abs_p99": 0.14410455524921417,
+            "margin_to_flip_spearman": -0.30669713114592956,
+            "standardized_margin_bin_flip": [
+              0.19241666666666668,
+              0.008333333333333333,
+              8.333333333333333e-05,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.27666666666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "scalar_int4",
+          "calibration": {
+            "intercept": -9.938728511097406e-05,
+            "slope": 1.0007121602062945,
+            "edge_spearman": 0.9951209938038579,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.030566666666666666,
+            "hard_20_flip_rate": 0.15275,
+            "residual_sd": 0.010844273492693901,
+            "residual_abs_p99": 0.028253421187400818,
+            "margin_to_flip_spearman": -0.2781944789387085,
+            "standardized_margin_bin_flip": [
+              0.15275,
+              8.333333333333333e-05,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.20818333333333333,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.008883333333333333,
+            "hard_20_flip_rate": 0.04441666666666667,
+            "residual_sd": 0.012027411721646786,
+            "residual_abs_p99": 0.031130697578191757,
+            "margin_to_flip_spearman": -0.15942056140550853,
+            "standardized_margin_bin_flip": [
+              0.04441666666666667,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.07266666666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "pq4x16",
+          "calibration": {
+            "intercept": 0.9444580370992838,
+            "slope": 0.7693231507469629,
+            "edge_spearman": 0.6730720942888615,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.2790666666666667,
+            "hard_20_flip_rate": 0.4673333333333333,
+            "residual_sd": 0.09106176064911668,
+            "residual_abs_p99": 0.23611386094265271,
+            "margin_to_flip_spearman": -0.32135297649158656,
+            "standardized_margin_bin_flip": [
+              0.4673333333333333,
+              0.3794166666666667,
+              0.2975833333333333,
+              0.18725,
+              0.06375
+            ],
+            "minimum_empirical_p1_risk": 0.9018666666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.0663,
+            "hard_20_flip_rate": 0.25766666666666665,
+            "residual_sd": 0.1035653618945883,
+            "residual_abs_p99": 0.2712147469476238,
+            "margin_to_flip_spearman": -0.3356695148438506,
+            "standardized_margin_bin_flip": [
+              0.25766666666666665,
+              0.05483333333333333,
+              0.014166666666666666,
+              0.0031666666666666666,
+              0.0016666666666666668
+            ],
+            "minimum_empirical_p1_risk": 0.49906666666666666,
+            "p1_empirical_coverage": true
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "sift128",
+      "kind": "euclidean",
+      "dimension": 128,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2000,
+      "quantizers": [
+        {
+          "quantizer": "sign",
+          "calibration": {
+            "intercept": 2.5565249340462194e-05,
+            "slope": 0.003272351915579153,
+            "edge_spearman": 0.0,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.4986,
+            "hard_20_flip_rate": 0.4979166666666667,
+            "residual_sd": 0.2923436760902405,
+            "residual_abs_p99": 0.6626810431480408,
+            "margin_to_flip_spearman": 0.002886467250439058,
+            "standardized_margin_bin_flip": [
+              0.4979166666666667,
+              0.49425,
+              0.5001666666666666,
+              0.4989166666666667,
+              0.50175
+            ],
+            "minimum_empirical_p1_risk": 1.0,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.33736666666666665,
+            "hard_20_flip_rate": 0.40658333333333335,
+            "residual_sd": 0.32282352447509766,
+            "residual_abs_p99": 0.7276949882507324,
+            "margin_to_flip_spearman": -0.10536592511955498,
+            "standardized_margin_bin_flip": [
+              0.40658333333333335,
+              0.3130833333333333,
+              0.34708333333333335,
+              0.4265,
+              0.19358333333333333
+            ],
+            "minimum_empirical_p1_risk": 0.9306666666666668,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "shared_2bit",
+          "calibration": {
+            "intercept": -2.2735031237851624,
+            "slope": 0.012127686562137304,
+            "edge_spearman": 0.6957156346847218,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.21466666666666667,
+            "hard_20_flip_rate": 0.41683333333333333,
+            "residual_sd": 0.1993150148995018,
+            "residual_abs_p99": 0.5081896975899737,
+            "margin_to_flip_spearman": -0.3312726229626591,
+            "standardized_margin_bin_flip": [
+              0.41683333333333333,
+              0.28775,
+              0.22575,
+              0.10941666666666666,
+              0.03358333333333333
+            ],
+            "minimum_empirical_p1_risk": 0.8935833333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.2019,
+            "hard_20_flip_rate": 0.42591666666666667,
+            "residual_sd": 0.2206022550203434,
+            "residual_abs_p99": 0.5619717359268094,
+            "margin_to_flip_spearman": -0.3356507003296547,
+            "standardized_margin_bin_flip": [
+              0.42591666666666667,
+              0.25758333333333333,
+              0.18066666666666667,
+              0.11475,
+              0.030583333333333334
+            ],
+            "minimum_empirical_p1_risk": 0.8010333333333334,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "rabitq",
+          "calibration": {
+            "intercept": 0.020242222848701037,
+            "slope": 0.947195087699772,
+            "edge_spearman": 0.9585751821367383,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.105,
+            "hard_20_flip_rate": 0.3695833333333333,
+            "residual_sd": 0.07899868674499932,
+            "residual_abs_p99": 0.20416115011686103,
+            "margin_to_flip_spearman": -0.4142590313711923,
+            "standardized_margin_bin_flip": [
+              0.3695833333333333,
+              0.13616666666666666,
+              0.019083333333333334,
+              0.00016666666666666666,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.4940833333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.07201666666666667,
+            "hard_20_flip_rate": 0.29008333333333336,
+            "residual_sd": 0.0865999686414505,
+            "residual_abs_p99": 0.22594522784937357,
+            "margin_to_flip_spearman": -0.3681914698428435,
+            "standardized_margin_bin_flip": [
+              0.29008333333333336,
+              0.06158333333333333,
+              0.008333333333333333,
+              8.333333333333333e-05,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.43698333333333333,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "bbq_like",
+          "calibration": {
+            "intercept": 0.07489842455299393,
+            "slope": 1.1932439530213077,
+            "edge_spearman": 0.9617467781757635,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.09106666666666667,
+            "hard_20_flip_rate": 0.32758333333333334,
+            "residual_sd": 0.07965874671936035,
+            "residual_abs_p99": 0.21230456233024597,
+            "margin_to_flip_spearman": -0.38598947980115755,
+            "standardized_margin_bin_flip": [
+              0.32758333333333334,
+              0.10575,
+              0.021583333333333333,
+              0.0004166666666666667,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.49788333333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.08405,
+            "hard_20_flip_rate": 0.31633333333333336,
+            "residual_sd": 0.09876900911331177,
+            "residual_abs_p99": 0.2593977749347687,
+            "margin_to_flip_spearman": -0.37894417116269347,
+            "standardized_margin_bin_flip": [
+              0.31633333333333336,
+              0.08675,
+              0.0165,
+              0.0006666666666666666,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.4648666666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "scalar_int4",
+          "calibration": {
+            "intercept": 0.006589456308336854,
+            "slope": 0.9939478862609558,
+            "edge_spearman": 0.9994997943412722,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.010483333333333334,
+            "hard_20_flip_rate": 0.05241666666666667,
+            "residual_sd": 0.007677755784243345,
+            "residual_abs_p99": 0.020487051457166672,
+            "margin_to_flip_spearman": -0.17237854890456875,
+            "standardized_margin_bin_flip": [
+              0.05241666666666667,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.10108333333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.006533333333333334,
+            "hard_20_flip_rate": 0.03266666666666666,
+            "residual_sd": 0.008429876528680325,
+            "residual_abs_p99": 0.022273186594247818,
+            "margin_to_flip_spearman": -0.13732108517554187,
+            "standardized_margin_bin_flip": [
+              0.03266666666666666,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.057350000000000005,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "pq4x16",
+          "calibration": {
+            "intercept": 0.9604781364339646,
+            "slope": 0.5222269937137686,
+            "edge_spearman": 0.9639543705876087,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.1057,
+            "hard_20_flip_rate": 0.3709166666666667,
+            "residual_sd": 0.07126500709999604,
+            "residual_abs_p99": 0.18624628013692532,
+            "margin_to_flip_spearman": -0.41749325793313047,
+            "standardized_margin_bin_flip": [
+              0.3709166666666667,
+              0.14233333333333334,
+              0.01525,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.46255,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.06743333333333333,
+            "hard_20_flip_rate": 0.2813333333333333,
+            "residual_sd": 0.07969181872037971,
+            "residual_abs_p99": 0.20954959223749595,
+            "margin_to_flip_spearman": -0.362748721817591,
+            "standardized_margin_bin_flip": [
+              0.2813333333333333,
+              0.051333333333333335,
+              0.0045,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.42260000000000003,
+            "p1_empirical_coverage": true
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "gist960",
+      "kind": "euclidean",
+      "dimension": 960,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2000,
+      "quantizers": [
+        {
+          "quantizer": "sign",
+          "calibration": {
+            "intercept": 8.1952211954171e-07,
+            "slope": 0.0007867412347600359,
+            "edge_spearman": 0.0,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.4964,
+            "hard_20_flip_rate": 0.49683333333333335,
+            "residual_sd": 0.09330008178949356,
+            "residual_abs_p99": 0.2860276699066162,
+            "margin_to_flip_spearman": -0.001879691428397764,
+            "standardized_margin_bin_flip": [
+              0.49683333333333335,
+              0.5,
+              0.4950833333333333,
+              0.49266666666666664,
+              0.4974166666666667
+            ],
+            "minimum_empirical_p1_risk": 1.0,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.29065,
+            "hard_20_flip_rate": 0.45016666666666666,
+            "residual_sd": 0.10363119840621948,
+            "residual_abs_p99": 0.31697916984558105,
+            "margin_to_flip_spearman": -0.22659485804535973,
+            "standardized_margin_bin_flip": [
+              0.45016666666666666,
+              0.35375,
+              0.27166666666666667,
+              0.21358333333333332,
+              0.16408333333333333
+            ],
+            "minimum_empirical_p1_risk": 0.9467666666666666,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "shared_2bit",
+          "calibration": {
+            "intercept": -0.9853553563637882,
+            "slope": 0.0009165342458456688,
+            "edge_spearman": 0.7443948292637873,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.2083,
+            "hard_20_flip_rate": 0.43025,
+            "residual_sd": 0.05554915650811738,
+            "residual_abs_p99": 0.16724066323989994,
+            "margin_to_flip_spearman": -0.3551594387753552,
+            "standardized_margin_bin_flip": [
+              0.43025,
+              0.2956666666666667,
+              0.18525,
+              0.10108333333333333,
+              0.02925
+            ],
+            "minimum_empirical_p1_risk": 0.8185,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.17326666666666668,
+            "hard_20_flip_rate": 0.41025,
+            "residual_sd": 0.06167564378641488,
+            "residual_abs_p99": 0.18488874604692426,
+            "margin_to_flip_spearman": -0.3704156724590502,
+            "standardized_margin_bin_flip": [
+              0.41025,
+              0.24466666666666667,
+              0.13316666666666666,
+              0.06283333333333334,
+              0.015416666666666667
+            ],
+            "minimum_empirical_p1_risk": 0.7506166666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "rabitq",
+          "calibration": {
+            "intercept": 0.021533882876672895,
+            "slope": 0.9671185126208226,
+            "edge_spearman": 0.9736115211365363,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.07936666666666667,
+            "hard_20_flip_rate": 0.315,
+            "residual_sd": 0.019954744148843687,
+            "residual_abs_p99": 0.053267036414103755,
+            "margin_to_flip_spearman": -0.38105016569896555,
+            "standardized_margin_bin_flip": [
+              0.315,
+              0.07316666666666667,
+              0.0085,
+              0.00016666666666666666,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.45153333333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.07118333333333333,
+            "hard_20_flip_rate": 0.2965,
+            "residual_sd": 0.02321778802142818,
+            "residual_abs_p99": 0.0612686668218176,
+            "margin_to_flip_spearman": -0.3717825062720888,
+            "standardized_margin_bin_flip": [
+              0.2965,
+              0.05583333333333333,
+              0.0035833333333333333,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.4276166666666667,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "bbq_like",
+          "calibration": {
+            "intercept": 0.2228162164653929,
+            "slope": 0.7838649448230376,
+            "edge_spearman": 0.9328297268890037,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.11858333333333333,
+            "hard_20_flip_rate": 0.3591666666666667,
+            "residual_sd": 0.03581956773996353,
+            "residual_abs_p99": 0.11010344326496124,
+            "margin_to_flip_spearman": -0.3874750782509928,
+            "standardized_margin_bin_flip": [
+              0.3591666666666667,
+              0.16275,
+              0.05475,
+              0.013916666666666667,
+              0.0023333333333333335
+            ],
+            "minimum_empirical_p1_risk": 0.6254833333333334,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.14073333333333332,
+            "hard_20_flip_rate": 0.37833333333333335,
+            "residual_sd": 0.04973632097244263,
+            "residual_abs_p99": 0.14930441975593567,
+            "margin_to_flip_spearman": -0.3751127766140275,
+            "standardized_margin_bin_flip": [
+              0.37833333333333335,
+              0.19391666666666665,
+              0.08783333333333333,
+              0.03675,
+              0.006833333333333334
+            ],
+            "minimum_empirical_p1_risk": 0.6555333333333333,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "scalar_int4",
+          "calibration": {
+            "intercept": -0.05452759383829173,
+            "slope": 1.0663905433610983,
+            "edge_spearman": 0.9964434468704539,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.021233333333333333,
+            "hard_20_flip_rate": 0.10016666666666667,
+            "residual_sd": 0.00918019749224186,
+            "residual_abs_p99": 0.0373193584382534,
+            "margin_to_flip_spearman": -0.2261631790245438,
+            "standardized_margin_bin_flip": [
+              0.10016666666666667,
+              0.0055,
+              0.0005,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.24971666666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.020133333333333333,
+            "hard_20_flip_rate": 0.09666666666666666,
+            "residual_sd": 0.010229373350739479,
+            "residual_abs_p99": 0.040635015815496445,
+            "margin_to_flip_spearman": -0.22390176319811175,
+            "standardized_margin_bin_flip": [
+              0.09666666666666666,
+              0.003833333333333333,
+              0.00016666666666666666,
+              0.0,
+              0.0
+            ],
+            "minimum_empirical_p1_risk": 0.2278,
+            "p1_empirical_coverage": true
+          }
+        },
+        {
+          "quantizer": "pq4x16",
+          "calibration": {
+            "intercept": 0.9454063913783867,
+            "slope": 0.5850194767824229,
+            "edge_spearman": 0.8483098989006792,
+            "eligible_positive_slope": true
+          },
+          "ranking": {
+            "count": 60000,
+            "flip_rate": 0.2028,
+            "hard_20_flip_rate": 0.4216666666666667,
+            "residual_sd": 0.06329587226270103,
+            "residual_abs_p99": 0.20520761462686957,
+            "margin_to_flip_spearman": -0.34134043118651486,
+            "standardized_margin_bin_flip": [
+              0.4216666666666667,
+              0.27925,
+              0.17783333333333334,
+              0.09775,
+              0.0375
+            ],
+            "minimum_empirical_p1_risk": 0.8232666666666667,
+            "p1_empirical_coverage": true
+          },
+          "pruning": {
+            "count": 60000,
+            "flip_rate": 0.15913333333333332,
+            "hard_20_flip_rate": 0.39325,
+            "residual_sd": 0.07656972888965104,
+            "residual_abs_p99": 0.2482047307468755,
+            "margin_to_flip_spearman": -0.35657505234763937,
+            "standardized_margin_bin_flip": [
+              0.39325,
+              0.21525,
+              0.10941666666666666,
+              0.05466666666666667,
+              0.023083333333333334
+            ],
+            "minimum_empirical_p1_risk": 0.784,
+            "p1_empirical_coverage": true
+          }
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "rabitq": "ratio estimator with seeded orthogonal DCT transform",
+    "bbq_like": "centroid-centered 1-bit stored and int4 query reference scorer, not Lucene clone",
+    "pq4x16": "16-subspace 4-bit ADC reference estimator",
+    "claim": "decision-interface validation, not production-system reproduction"
+  }
+}

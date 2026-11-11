@@ -1,0 +1,357 @@
+{
+  "probe": 30,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 15.1875,
+          "mean_fallback_added": 0.8125,
+          "fallback_share_of_output": 0.05078125
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 6.8375,
+          "mean_fallback_added": 9.1625,
+          "fallback_share_of_output": 0.57265625
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 2.025,
+          "mean_fallback_added": 13.975,
+          "fallback_share_of_output": 0.8734375
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 24.05,
+          "mean_fallback_added": 7.95,
+          "fallback_share_of_output": 0.2484375
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 6.85,
+          "mean_fallback_added": 25.15,
+          "fallback_share_of_output": 0.7859375
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 2.025,
+          "mean_fallback_added": 29.975,
+          "fallback_share_of_output": 0.93671875
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 9.16522304963386e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0007199511126820017,
+              "residual_scale": 0.03192423373313049,
+              "distance_spearman": 0.7254232271569472
+            },
+            "sorting_mean": -0.000633799675432861,
+            "sorting_scale": 0.005233513701626665,
+            "pruning_mean": -0.01371162472699521,
+            "pruning_scale": 0.03308720501348185,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "edge_count": 4835,
+            "mean_certificate_event_count": 49.34084798345398,
+            "median_certificate_event_count": 49.0,
+            "p90_certificate_event_count": 61.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.5518097207859359,
+            "certificate_saturation_rate": 0.99358841778697,
+            "mean_risk_sum": 19.603669470718515,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.00011477355859477075,
+              "distance_count": 25308,
+              "residual_mean": 0.0010504072277937467,
+              "residual_scale": 0.029479068675644454,
+              "distance_spearman": 0.920656382932306
+            },
+            "sorting_mean": -0.0007221798975970765,
+            "sorting_scale": 0.004200173363985613,
+            "pruning_mean": -0.009186371097904109,
+            "pruning_scale": 0.0317366117146913,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "edge_count": 4835,
+            "mean_certificate_event_count": 49.34084798345398,
+            "median_certificate_event_count": 49.0,
+            "p90_certificate_event_count": 61.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.5518097207859359,
+            "certificate_saturation_rate": 0.98717683557394,
+            "mean_risk_sum": 16.6144122985254,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 16.0,
+          "mean_fallback_added": 0.0,
+          "fallback_share_of_output": 0.0
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 14.9125,
+          "mean_fallback_added": 1.0875,
+          "fallback_share_of_output": 0.06796875
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 3.775,
+          "mean_fallback_added": 12.225,
+          "fallback_share_of_output": 0.7640625
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 32.0,
+          "mean_fallback_added": 0.0,
+          "fallback_share_of_output": 0.0
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 16.6,
+          "mean_fallback_added": 15.4,
+          "fallback_share_of_output": 0.48125
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 3.775,
+          "mean_fallback_added": 28.225,
+          "fallback_share_of_output": 0.88203125
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005852305268160636,
+              "distance_count": 25308,
+              "residual_mean": 0.0037434743668005605,
+              "residual_scale": 0.06732075924620098,
+              "distance_spearman": 0.9584921853955465
+            },
+            "sorting_mean": -0.0019507038293642015,
+            "sorting_scale": 0.020682677760178587,
+            "pruning_mean": 0.05567925471405392,
+            "pruning_scale": 0.06005734147777704,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "edge_count": 4547,
+            "mean_certificate_event_count": 50.17572025511326,
+            "median_certificate_event_count": 50.0,
+            "p90_certificate_event_count": 62.0,
+            "fixed_order_failure_rate": 0.00021992522542335605,
+            "certificate_pass_rate": 0.01715416758302177,
+            "certificate_saturation_rate": 0.9986804486474599,
+            "mean_risk_sum": 5.182999420184438,
+            "risk_failure_spearman": 0.02279065789525048,
+            "event_count_failure_spearman": 0.024799688807423476,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005851423581531199,
+              "distance_count": 25308,
+              "residual_mean": 0.0037491411694736635,
+              "residual_scale": 0.06720605037526813,
+              "distance_spearman": 0.9585331030370119
+            },
+            "sorting_mean": -0.0019259654976093602,
+            "sorting_scale": 0.020260039227275803,
+            "pruning_mean": 0.05668683025022288,
+            "pruning_scale": 0.060178177971411895,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "edge_count": 4547,
+            "mean_certificate_event_count": 50.17572025511326,
+            "median_certificate_event_count": 50.0,
+            "p90_certificate_event_count": 62.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.01715416758302177,
+            "certificate_saturation_rate": 0.9986804486474599,
+            "mean_risk_sum": 5.123543709602921,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 14.8125,
+          "mean_fallback_added": 1.1875,
+          "fallback_share_of_output": 0.07421875
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 7.875,
+          "mean_fallback_added": 8.125,
+          "fallback_share_of_output": 0.5078125
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 2.3625,
+          "mean_fallback_added": 13.6375,
+          "fallback_share_of_output": 0.85234375
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 24.975,
+          "mean_fallback_added": 7.025,
+          "fallback_share_of_output": 0.21953125
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 8.3,
+          "mean_fallback_added": 23.7,
+          "fallback_share_of_output": 0.740625
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 2.3625,
+          "mean_fallback_added": 29.6375,
+          "fallback_share_of_output": 0.926171875
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 7.610122110278672e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0004555052545026191,
+              "residual_scale": 0.029311477847560025,
+              "distance_spearman": 0.5999328543554413
+            },
+            "sorting_mean": -0.0005470637632463526,
+            "sorting_scale": 0.003286696126289438,
+            "pruning_mean": -0.005763284937764371,
+            "pruning_scale": 0.028904960311902938,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "edge_count": 4710,
+            "mean_certificate_event_count": 49.64989384288747,
+            "median_certificate_event_count": 50.0,
+            "p90_certificate_event_count": 62.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.23842887473460722,
+            "certificate_saturation_rate": 0.9870488322717622,
+            "mean_risk_sum": 26.443174718671372,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 6.541331112116326e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0008673189723532053,
+              "residual_scale": 0.027085727447076106,
+              "distance_spearman": 0.9086388718852892
+            },
+            "sorting_mean": -0.0004886509156186745,
+            "sorting_scale": 0.0024014907393500535,
+            "pruning_mean": -0.006239652637557451,
+            "pruning_scale": 0.02619010005382658,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "edge_count": 4710,
+            "mean_certificate_event_count": 49.64989384288747,
+            "median_certificate_event_count": 50.0,
+            "p90_certificate_event_count": 62.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.23842887473460722,
+            "certificate_saturation_rate": 0.9870488322717622,
+            "mean_risk_sum": 24.828363145398207,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    }
+  ]
+}

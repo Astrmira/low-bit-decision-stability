@@ -1,0 +1,698 @@
+{
+  "ranking": {
+    "records": [
+      {
+        "dataset": "cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.044326241134751775,
+        "full": 0.3191489361702128,
+        "boundary_quantile": -0.02535533905029297,
+        "residual_scale": 0.01614581391200627,
+        "standardized_quantile": -1.57039708177476
+      },
+      {
+        "dataset": "cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.04476950354609929,
+        "full": 0.30629432624113473,
+        "boundary_quantile": -0.025355339050292965,
+        "residual_scale": 0.013139990642314726,
+        "standardized_quantile": -1.9296314389023337
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.02327127659574468,
+        "full": 0.2225177304964539,
+        "boundary_quantile": -0.10238558053970337,
+        "residual_scale": 0.03729768031501523,
+        "standardized_quantile": -2.745092447437949
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.015957446808510637,
+        "full": 0.21143617021276595,
+        "boundary_quantile": -0.10238558053970337,
+        "residual_scale": 0.03712710784187794,
+        "standardized_quantile": -2.757704181423375
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.004654255319148936,
+        "full": 0.09219858156028368,
+        "boundary_quantile": -0.06513553857803345,
+        "residual_scale": 0.014828367085457823,
+        "standardized_quantile": -4.392630571029756
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.007535460992907801,
+        "full": 0.10549645390070922,
+        "boundary_quantile": -0.06513553857803345,
+        "residual_scale": 0.015499441388565348,
+        "standardized_quantile": -4.202444265255065
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.03346631205673759,
+        "full": 0.2548758865248227,
+        "boundary_quantile": -0.040352821350097656,
+        "residual_scale": 0.021766255760028237,
+        "standardized_quantile": -1.853916530017164
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.03324468085106383,
+        "full": 0.24379432624113473,
+        "boundary_quantile": -0.040352821350097656,
+        "residual_scale": 0.01955432164729301,
+        "standardized_quantile": -2.063626756169467
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.00975177304964539,
+        "full": 0.15913120567375888,
+        "boundary_quantile": -0.10555452108383177,
+        "residual_scale": 0.03474731933302568,
+        "standardized_quantile": -3.0377745135437597
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.005984042553191489,
+        "full": 0.13164893617021275,
+        "boundary_quantile": -0.10555452108383177,
+        "residual_scale": 0.029719502409265148,
+        "standardized_quantile": -3.551692071766478
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.018395390070921985,
+        "full": 0.1622340425531915,
+        "boundary_quantile": -0.09298145771026611,
+        "residual_scale": 0.033097063677034674,
+        "standardized_quantile": -2.809356703591319
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.00975177304964539,
+        "full": 0.13076241134751773,
+        "boundary_quantile": -0.09298145771026611,
+        "residual_scale": 0.02874758049338706,
+        "standardized_quantile": -3.2344098569149176
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.11591312056737589,
+        "full": 0.5438829787234043,
+        "boundary_quantile": -0.07918030023574828,
+        "residual_scale": 0.06127587138918321,
+        "standardized_quantile": -1.292193785916942
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.10638297872340426,
+        "full": 0.5305851063829787,
+        "boundary_quantile": -0.07918030023574828,
+        "residual_scale": 0.05538386834309933,
+        "standardized_quantile": -1.4296635934715078
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "2bit",
+        "eligible": false,
+        "flip": 0.6799645390070922,
+        "full": 0.9995567375886525,
+        "boundary_quantile": -0.04517793655395507,
+        "residual_scale": 0.033624696532858836,
+        "standardized_quantile": -1.3435938822468223
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.11835106382978723,
+        "full": 0.50177304964539,
+        "boundary_quantile": -0.04517793655395507,
+        "residual_scale": 0.03089041892121015,
+        "standardized_quantile": -1.4625226245453975
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.3395390070921986,
+        "full": 0.7601950354609929,
+        "boundary_quantile": -0.015263199806213377,
+        "residual_scale": 0.020059708323946844,
+        "standardized_quantile": -0.7608884216921789
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.06382978723404255,
+        "full": 0.41400709219858156,
+        "boundary_quantile": -0.015263199806213377,
+        "residual_scale": 0.01234756385147524,
+        "standardized_quantile": -1.2361304618311237
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.13453014184397163,
+        "full": 0.7477836879432624,
+        "boundary_quantile": -0.028716087341308594,
+        "residual_scale": 0.014384529937024984,
+        "standardized_quantile": -1.9963173956345264
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.1799645390070922,
+        "full": 0.7358156028368794,
+        "boundary_quantile": -0.028716087341308594,
+        "residual_scale": 0.014022245077374124,
+        "standardized_quantile": -2.0478951254135485
+      },
+      {
+        "dataset": "random",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.024822695035460994,
+        "full": 0.2021276595744681,
+        "boundary_quantile": -0.0685005784034729,
+        "residual_scale": 0.026013264317826985,
+        "standardized_quantile": -2.63329421354202
+      },
+      {
+        "dataset": "random",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.02149822695035461,
+        "full": 0.19193262411347517,
+        "boundary_quantile": -0.0685005784034729,
+        "residual_scale": 0.026443969553152726,
+        "standardized_quantile": -2.590404525530323
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.009086879432624113,
+        "full": 0.11613475177304965,
+        "boundary_quantile": -0.09351342916488645,
+        "residual_scale": 0.029643818713992787,
+        "standardized_quantile": -3.154567569958362
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.014849290780141845,
+        "full": 0.09441489361702127,
+        "boundary_quantile": -0.09351342916488645,
+        "residual_scale": 0.027906688754580924,
+        "standardized_quantile": -3.35093245878324
+      }
+    ],
+    "metrics": {
+      "full": {
+        "spearman": 0.969776061194469,
+        "eligible_spearman": 0.965653600025913,
+        "dataset_cluster_95": [
+          0.8500502402348407,
+          0.9923497504816451
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.961875214860129,
+          "minilm": 0.9697825859746574,
+          "bge_m3": 0.9697825859746574,
+          "wolt_clip": 0.9607455904151965,
+          "codesearch_jina": 0.9785431959345003,
+          "landmark_dino": 0.9740259740259741,
+          "glove100": 0.9641344637499942,
+          "sift128": 0.9641344637499942,
+          "gist960": 0.9607455904151965,
+          "sphere": 0.961875214860129,
+          "random": 0.9686529615297248,
+          "msmarco_cohere": 0.9810788304239837
+        }
+      },
+      "boundary_quantile": {
+        "spearman": 0.6586763684089239,
+        "eligible_spearman": 0.6643563698205771,
+        "dataset_cluster_95": [
+          0.2221217714402783,
+          0.8854228685816767
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.6628921783077798,
+          "minilm": 0.6440122873772224,
+          "bge_m3": 0.756162184387504,
+          "wolt_clip": 0.6360824966795258,
+          "codesearch_jina": 0.6053251894601669,
+          "landmark_dino": 0.6302403516081999,
+          "glove100": 0.7425682574771667,
+          "sift128": 0.6519420780749191,
+          "gist960": 0.6247542242542449,
+          "sphere": 0.6134259518289639,
+          "random": 0.6496764235898629,
+          "msmarco_cohere": 0.6349496694369977
+        }
+      },
+      "residual_scale": {
+        "spearman": -0.0974124832769332,
+        "eligible_spearman": -0.18927601269699318,
+        "dataset_cluster_95": [
+          -0.7060703610423038,
+          0.5052735003447483
+        ],
+        "leave_one_dataset_out": {
+          "cohere": -0.04687941446470389,
+          "minilm": -0.06043490780389536,
+          "bge_m3": -0.2558599367772393,
+          "wolt_clip": -0.05478678557923224,
+          "codesearch_jina": -0.05251270468661773,
+          "landmark_dino": -0.08413325804630155,
+          "glove100": -0.2773228012309591,
+          "sift128": -0.24343406788298041,
+          "gist960": -0.024286925566051408,
+          "sphere": 0.09319401670694145,
+          "random": -0.05365716113429963,
+          "msmarco_cohere": -0.09714770226420563
+        }
+      },
+      "standardized_quantile": {
+        "spearman": 0.9115025220913036,
+        "eligible_spearman": 0.9122807296048286,
+        "dataset_cluster_95": [
+          0.6368343797333703,
+          0.9749536274666404
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.920079110397622,
+          "minilm": 0.8884496259395086,
+          "bge_m3": 0.8861903770496433,
+          "wolt_clip": 0.9042643681685654,
+          "codesearch_jina": 0.8904573687182383,
+          "landmark_dino": 0.89158667419537,
+          "glove100": 0.9336346037368135,
+          "sift128": 0.9234679837324199,
+          "gist960": 0.9189494859526892,
+          "sphere": 0.961875214860129,
+          "random": 0.8884496259395086,
+          "msmarco_cohere": 0.8935329359417054
+        }
+      }
+    },
+    "full_minus_component_95": {
+      "boundary_quantile": [
+        0.04090371385171766,
+        0.730175671165869
+      ],
+      "residual_scale": [
+        0.4352622223997444,
+        1.652674570169513
+      ],
+      "standardized_quantile": [
+        -0.07454913364359139,
+        0.3177313336270022
+      ]
+    }
+  },
+  "pruning": {
+    "records": [
+      {
+        "dataset": "cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.10245505509375605,
+        "full": 0.5534707369239743,
+        "boundary_quantile": -0.01891947984695433,
+        "residual_scale": 0.021574650461834783,
+        "standardized_quantile": -0.8769310019841383
+      },
+      {
+        "dataset": "cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.06930214575681423,
+        "full": 0.4071553567956446,
+        "boundary_quantile": -0.01891947984695433,
+        "residual_scale": 0.01679664111931848,
+        "standardized_quantile": -1.126384716596361
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.011081862792889408,
+        "full": 0.13375754821115513,
+        "boundary_quantile": -0.1736585736274718,
+        "residual_scale": 0.04714679587107751,
+        "standardized_quantile": -3.6833589731599075
+      },
+      {
+        "dataset": "minilm",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.010106918852166,
+        "full": 0.13343289396792418,
+        "boundary_quantile": -0.1736585736274718,
+        "residual_scale": 0.0464486787320588,
+        "standardized_quantile": -3.7387193428951715
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.021261239587405646,
+        "full": 0.19438575309387263,
+        "boundary_quantile": -0.05348474264144895,
+        "residual_scale": 0.01842095734588623,
+        "standardized_quantile": -2.9034724763310504
+      },
+      {
+        "dataset": "bge_m3",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.02496015397107028,
+        "full": 0.2127376999698159,
+        "boundary_quantile": -0.053484742641448944,
+        "residual_scale": 0.020544638693097524,
+        "standardized_quantile": -2.603343063872837
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.06454678994210662,
+        "full": 0.40930682617874736,
+        "boundary_quantile": -0.024608333110809323,
+        "residual_scale": 0.023058343791676875,
+        "standardized_quantile": -1.0672203230698611
+      },
+      {
+        "dataset": "wolt_clip",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.05754774043031193,
+        "full": 0.3993666432090077,
+        "boundary_quantile": -0.02460833311080932,
+        "residual_scale": 0.021569858825885583,
+        "standardized_quantile": -1.1408666746245608
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.007092662199705834,
+        "full": 0.0840924092409241,
+        "boundary_quantile": -0.19000794887542719,
+        "residual_scale": 0.03552859052009878,
+        "standardized_quantile": -5.348029462861419
+      },
+      {
+        "dataset": "codesearch_jina",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.006896551724137931,
+        "full": 0.08151815181518152,
+        "boundary_quantile": -0.19000794887542719,
+        "residual_scale": 0.03374184343875341,
+        "standardized_quantile": -5.631226083433188
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.02933945785081193,
+        "full": 0.2399871835950016,
+        "boundary_quantile": -0.0895206069946289,
+        "residual_scale": 0.040977404041187215,
+        "standardized_quantile": -2.184633436140804
+      },
+      {
+        "dataset": "landmark_dino",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.023710940027172157,
+        "full": 0.1781480294777315,
+        "boundary_quantile": -0.0895206069946289,
+        "residual_scale": 0.02965446288055331,
+        "standardized_quantile": -3.01879037078545
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.02732223136832774,
+        "full": 0.3439180537772087,
+        "boundary_quantile": -0.13036790847778315,
+        "residual_scale": 0.07705717733025116,
+        "standardized_quantile": -1.6918334280407548
+      },
+      {
+        "dataset": "glove100",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.02551763439498512,
+        "full": 0.3387323943661972,
+        "boundary_quantile": -0.13036790847778318,
+        "residual_scale": 0.07653420533238305,
+        "standardized_quantile": -1.703394030311073
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "2bit",
+        "eligible": false,
+        "flip": 0.14246462426157439,
+        "full": 0.8478260869565217,
+        "boundary_quantile": -0.026941394805908188,
+        "residual_scale": 0.07245955427495523,
+        "standardized_quantile": -0.37181286961380267
+      },
+      {
+        "dataset": "sift128",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.1049136786188579,
+        "full": 0.60175983436853,
+        "boundary_quantile": -0.026941394805908188,
+        "residual_scale": 0.04154152390866935,
+        "standardized_quantile": -0.64854132133284
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.10594730892965828,
+        "full": 0.6438879456706281,
+        "boundary_quantile": -0.014624271392822265,
+        "residual_scale": 0.02623234253964116,
+        "standardized_quantile": -0.5574901048475831
+      },
+      {
+        "dataset": "gist960",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.06325536909833927,
+        "full": 0.4096774193548387,
+        "boundary_quantile": -0.014624271392822267,
+        "residual_scale": 0.012860869551681283,
+        "standardized_quantile": -1.1371137335663635
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.0,
+        "full": 0.020757850241545892,
+        "boundary_quantile": -0.23939401865005486,
+        "residual_scale": 0.034900166858645026,
+        "standardized_quantile": -6.859394673374039
+      },
+      {
+        "dataset": "sphere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.0,
+        "full": 0.020380434782608696,
+        "boundary_quantile": -0.23939401865005489,
+        "residual_scale": 0.034573397284971455,
+        "standardized_quantile": -6.924226065400751
+      },
+      {
+        "dataset": "random",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.0030354008191925104,
+        "full": 0.06786427145708583,
+        "boundary_quantile": -0.1935930395126342,
+        "residual_scale": 0.0354121672032672,
+        "standardized_quantile": -5.4668509385885
+      },
+      {
+        "dataset": "random",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.0029988297249853714,
+        "full": 0.06727286168403933,
+        "boundary_quantile": -0.1935930395126342,
+        "residual_scale": 0.03608681869551357,
+        "standardized_quantile": -5.364646885226885
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "2bit",
+        "eligible": true,
+        "flip": 0.010365763364430623,
+        "full": 0.1099147057044341,
+        "boundary_quantile": -0.13056190013885505,
+        "residual_scale": 0.03248136852818885,
+        "standardized_quantile": -4.019593571790158
+      },
+      {
+        "dataset": "msmarco_cohere",
+        "quantizer": "rotated_2bit",
+        "eligible": true,
+        "flip": 0.008411076558566563,
+        "full": 0.08807694634323393,
+        "boundary_quantile": -0.13056190013885505,
+        "residual_scale": 0.026912745905469528,
+        "standardized_quantile": -4.851303564394769
+      }
+    ],
+    "metrics": {
+      "full": {
+        "spearman": 0.9919547962262708,
+        "eligible_spearman": 0.9908574555025361,
+        "dataset_cluster_95": [
+          0.9553805774278216,
+          0.9997797114192899
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.9929398870957762,
+          "minilm": 0.990680638205911,
+          "bge_m3": 0.990680638205911,
+          "wolt_clip": 0.9929398870957762,
+          "codesearch_jina": 0.9895510137609784,
+          "landmark_dino": 0.994069511540709,
+          "glove100": 0.9929398870957762,
+          "sift128": 0.9895510137609784,
+          "gist960": 0.9929398870957762,
+          "sphere": 0.989836250705816,
+          "random": 0.9895510137609784,
+          "msmarco_cohere": 0.990680638205911
+        }
+      },
+      "boundary_quantile": {
+        "spearman": 0.9277011403442347,
+        "eligible_spearman": 0.94432143555177,
+        "dataset_cluster_95": [
+          0.7131171597631616,
+          0.9775575614368374
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.9369174859987262,
+          "minilm": 0.9131550859915121,
+          "bge_m3": 0.9303918332884198,
+          "wolt_clip": 0.9366170827812255,
+          "codesearch_jina": 0.9063658288465938,
+          "landmark_dino": 0.9261678288526055,
+          "glove100": 0.9286940379722,
+          "sift128": 0.9533248574322787,
+          "gist960": 0.9337874239208592,
+          "sphere": 0.9063666992236376,
+          "random": 0.9063658288465938,
+          "msmarco_cohere": 0.9131550859915121
+        }
+      },
+      "residual_scale": {
+        "spearman": -0.17699500309692776,
+        "eligible_spearman": -0.3187546427925865,
+        "dataset_cluster_95": [
+          -0.6526854577341863,
+          0.4127976480957633
+        ],
+        "leave_one_dataset_out": {
+          "cohere": -0.06325896891622693,
+          "minilm": -0.1604066711804326,
+          "bge_m3": -0.18751765785881555,
+          "wolt_clip": -0.07342558892062054,
+          "codesearch_jina": -0.16718441785002833,
+          "landmark_dino": -0.18751765785881555,
+          "glove100": -0.24964700233010986,
+          "sift128": -0.4439424068585211,
+          "gist960": -0.057610846691563806,
+          "sphere": -0.17334839073969513,
+          "random": -0.16944366673989356,
+          "msmarco_cohere": -0.1524993000659042
+        }
+      },
+      "standardized_quantile": {
+        "spearman": 0.9910850419112981,
+        "eligible_spearman": 0.9898690690132567,
+        "dataset_cluster_95": [
+          0.9331986837489409,
+          0.9989081061736199
+        ],
+        "leave_one_dataset_out": {
+          "cohere": 0.9895510137609784,
+          "minilm": 0.9895510137609784,
+          "bge_m3": 0.9895510137609784,
+          "wolt_clip": 0.9895510137609784,
+          "codesearch_jina": 0.9918102626508437,
+          "landmark_dino": 0.9929398870957762,
+          "glove100": 0.9918102626508437,
+          "sift128": 0.9884213893160457,
+          "gist960": 0.9884213893160457,
+          "sphere": 0.9887069452286844,
+          "random": 0.9929398870957762,
+          "msmarco_cohere": 0.9895510137609784
+        }
+      }
+    },
+    "full_minus_component_95": {
+      "boundary_quantile": [
+        0.013882249923511747,
+        0.2632588410778579
+      ],
+      "residual_scale": [
+        0.5687682994993479,
+        1.63636175829079
+      ],
+      "standardized_quantile": [
+        -0.020211883299854284,
+        0.056339354224346265
+      ]
+    }
+  }
+}

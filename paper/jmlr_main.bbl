@@ -1,0 +1,114 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Betser et~al.(2026)Betser, Gofer, Levi, and Gilboa]{betser2026infonce}
+R.~Betser, E.~Gofer, M.~Y. Levi, and G.~Gilboa.
+\newblock Infonce induces gaussian distribution.
+\newblock In \emph{International Conference on Learning Representations}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=BlSH7gNQSq}.
+\newblock Oral presentation.
+
+\bibitem[Boucheron et~al.(2013)Boucheron, Lugosi, and
+  Massart]{boucheron2013concentration}
+S.~Boucheron, G.~Lugosi, and P.~Massart.
+\newblock \emph{Concentration Inequalities: A Nonasymptotic Theory of
+  Independence}.
+\newblock Oxford University Press, 2013.
+
+\bibitem[Bussgang(1952)]{bussgang1952crosscorrelation}
+J.~J. Bussgang.
+\newblock Crosscorrelation functions of amplitude-distorted {Gaussian} signals.
+\newblock Technical Report 216, Research Laboratory of Electronics, MIT, 1952.
+\newblock URL \url{https://hdl.handle.net/1721.1/4847}.
+
+\bibitem[Charikar(2002)]{charikar2002similarity}
+M.~S. Charikar.
+\newblock Similarity estimation techniques from rounding algorithms.
+\newblock In \emph{Proceedings of the 34th Annual ACM Symposium on Theory of
+  Computing}, pages 380--388, 2002.
+
+\bibitem[Efron and Stein(1981)]{efron1981jackknife}
+B.~Efron and C.~Stein.
+\newblock The jackknife estimate of variance.
+\newblock \emph{The Annals of Statistics}, 9\penalty0 (3):\penalty0 586--596,
+  1981.
+
+\bibitem[Gao and Long(2024)]{gao2023rabitq}
+J.~Gao and C.~Long.
+\newblock Rabitq: Quantizing high-dimensional vectors with a theoretical error
+  bound for approximate nearest neighbor search.
+\newblock \emph{Proceedings of the ACM on Management of Data}, 2\penalty0
+  (3):\penalty0 1--27, 2024.
+\newblock \doi{10.1145/3654970}.
+
+\bibitem[Ge et~al.(2014)Ge, He, Ke, and Sun]{ge2014optimized}
+T.~Ge, K.~He, Q.~Ke, and J.~Sun.
+\newblock Optimized product quantization.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 36\penalty0 (4):\penalty0 744--755, 2014.
+
+\bibitem[Guo et~al.(2020)Guo, Sun, Lindgren, Geng, Simcha, Chern, and
+  Kumar]{guo2020accelerating}
+R.~Guo, P.~Sun, E.~Lindgren, Q.~Geng, D.~Simcha, F.~Chern, and S.~Kumar.
+\newblock Accelerating large-scale inference with anisotropic vector
+  quantization.
+\newblock In \emph{International Conference on Machine Learning}, pages
+  3887--3896, 2020.
+
+\bibitem[J{\'e}gou et~al.(2011)J{\'e}gou, Douze, and Schmid]{jegou2011product}
+H.~J{\'e}gou, M.~Douze, and C.~Schmid.
+\newblock Product quantization for nearest neighbor search.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 33\penalty0 (1):\penalty0 117--128, 2011.
+
+\bibitem[Malkov and Yashunin(2020)]{malkov2020efficient}
+Y.~A. Malkov and D.~A. Yashunin.
+\newblock Efficient and robust approximate nearest neighbor search using
+  hierarchical navigable small world graphs.
+\newblock \emph{IEEE Transactions on Pattern Analysis and Machine
+  Intelligence}, 42\penalty0 (4):\penalty0 824--836, 2020.
+
+\bibitem[Maurer and Pontil(2009)]{maurer2009empirical}
+A.~Maurer and M.~Pontil.
+\newblock Empirical bernstein bounds and sample variance penalization.
+\newblock In \emph{Conference on Learning Theory}, pages 115--124, 2009.
+
+\bibitem[Subramanya et~al.(2019)Subramanya, Devvrit, Simhadri, Krishnaswamy,
+  and Kadekodi]{subramanya2019diskann}
+S.~J. Subramanya, F.~Devvrit, H.~V. Simhadri, R.~Krishnaswamy, and R.~Kadekodi.
+\newblock Diskann: Fast accurate billion-point nearest neighbor search on a
+  single node.
+\newblock In \emph{Advances in Neural Information Processing Systems},
+  volume~32, 2019.
+
+\bibitem[Trent(2024)]{trent2024bbq}
+B.~Trent.
+\newblock Better binary quantization ({BBQ}) in {Lucene} and {Elasticsearch}.
+\newblock Elastic Search Labs, 2024.
+\newblock URL
+  \url{https://www.elastic.co/search-labs/blog/better-binary-quantization-lucene-elasticsearch}.
+\newblock Accessed 2026-09-08.
+
+\bibitem[Tsybakov(2004)]{tsybakov2004optimal}
+A.~B. Tsybakov.
+\newblock Optimal aggregation of classifiers in statistical learning.
+\newblock \emph{The Annals of Statistics}, 32\penalty0 (1):\penalty0 135--166,
+  2004.
+
+\bibitem[Vershynin(2018)]{vershynin2018high}
+R.~Vershynin.
+\newblock \emph{High-Dimensional Probability: An Introduction with Applications
+  in Data Science}.
+\newblock Cambridge University Press, 2018.
+
+\bibitem[Xiao et~al.(2026)Xiao, Zhu, and Li]{xiao2026quiver}
+W.~Xiao, P.~Zhu, and C.~Li.
+\newblock {QuIVer}: Efficient graph indexing with two-bit construction and
+  navigation, 2026.
+\newblock URL \url{https://arxiv.org/abs/2605.02171}.
+
+\end{thebibliography}

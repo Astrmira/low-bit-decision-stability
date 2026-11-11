@@ -1,0 +1,57 @@
+{
+  "source_root": "data/inputs-200k",
+  "inputs": [
+    {
+      "dataset": "cohere",
+      "prefix": "D03",
+      "dim": 768,
+      "files": {
+        "base.f32": {
+          "bytes": 614400000,
+          "crc32": 2484466452
+        },
+        "queries.f32": {
+          "bytes": 2285568,
+          "crc32": 1806242991
+        },
+        "truth32.u32": {
+          "bytes": 95232,
+          "crc32": 2795984237
+        }
+      }
+    },
+    {
+      "dataset": "wolt",
+      "prefix": "D02",
+      "dim": 512,
+      "files": {
+        "base.f32": {
+          "bytes": 409600000,
+          "crc32": 1634677162
+        },
+        "queries.f32": {
+          "bytes": 1523712,
+          "crc32": 1242835088
+        },
+        "truth32.u32": {
+          "bytes": 95232,
+          "crc32": 916395740
+        }
+      }
+    }
+  ],
+  "seeds": [
+    20261110,
+    20261111
+  ],
+  "widths": [
+    64,
+    128,
+    256
+  ],
+  "rounds": 5,
+  "threads_build": 4,
+  "threads_query": 1,
+  "memory_protection_gib": 56,
+  "disk_reserve_gib": 20
+}

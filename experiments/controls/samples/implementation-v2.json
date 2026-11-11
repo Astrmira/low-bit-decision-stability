@@ -1,0 +1,6 @@
+{
+  "previous_sha256": "ae54b28d34f5c308b7266538a7438f3a9031a8c93cdb5aa9ad5562d0b5a1be60",
+  "active_sha256": "a5d96e6362fbff8d611d92bac51c88ee754409e31ad87c695a7a97bcde398840",
+  "reason": "首次剪枝执行前修正旧JSON字段名；实验设计、阈值与统计协议不变",
+  "existing_results": "three-pool-components.json及calibration-cohere.json由V1生成"
+}

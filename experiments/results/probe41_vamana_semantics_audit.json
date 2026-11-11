@@ -1,0 +1,271 @@
+{
+  "probe": 41,
+  "alpha": 1.2,
+  "direct_counterexample": {
+    "distance_to_target": 1.0,
+    "distance_to_selected": 1.0,
+    "alpha": 1.2,
+    "standard_dominated": false,
+    "historical_dominated": true
+  },
+  "alpha_response": [
+    {
+      "alpha": 0.8,
+      "standard_dominated": true,
+      "historical_dominated": false
+    },
+    {
+      "alpha": 1.0,
+      "standard_dominated": true,
+      "historical_dominated": true
+    },
+    {
+      "alpha": 1.2,
+      "standard_dominated": true,
+      "historical_dominated": true
+    },
+    {
+      "alpha": 1.5,
+      "standard_dominated": false,
+      "historical_dominated": true
+    }
+  ],
+  "runs": {
+    "standard_unsaturated": {
+      "ordered": [
+        1,
+        2,
+        3
+      ],
+      "diversity_selected": [
+        1,
+        2
+      ],
+      "rejected": [
+        3
+      ],
+      "fallback_added": [],
+      "final_selected": [
+        1,
+        2
+      ],
+      "decisions": [
+        {
+          "candidate": 1,
+          "dominated": false,
+          "witness": null,
+          "comparisons": []
+        },
+        {
+          "candidate": 2,
+          "dominated": false,
+          "witness": null,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.1,
+              "distance_to_selected": 1.0,
+              "dominated": false
+            }
+          ]
+        },
+        {
+          "candidate": 3,
+          "dominated": true,
+          "witness": 2,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 1.5,
+              "dominated": false
+            },
+            {
+              "selected": 2,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 0.7,
+              "dominated": true
+            }
+          ]
+        }
+      ]
+    },
+    "standard_saturated": {
+      "ordered": [
+        1,
+        2,
+        3
+      ],
+      "diversity_selected": [
+        1,
+        2
+      ],
+      "rejected": [
+        3
+      ],
+      "fallback_added": [
+        3
+      ],
+      "final_selected": [
+        1,
+        2,
+        3
+      ],
+      "decisions": [
+        {
+          "candidate": 1,
+          "dominated": false,
+          "witness": null,
+          "comparisons": []
+        },
+        {
+          "candidate": 2,
+          "dominated": false,
+          "witness": null,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.1,
+              "distance_to_selected": 1.0,
+              "dominated": false
+            }
+          ]
+        },
+        {
+          "candidate": 3,
+          "dominated": true,
+          "witness": 2,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 1.5,
+              "dominated": false
+            },
+            {
+              "selected": 2,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 0.7,
+              "dominated": true
+            }
+          ]
+        }
+      ]
+    },
+    "historical_unsaturated": {
+      "ordered": [
+        1,
+        2,
+        3
+      ],
+      "diversity_selected": [
+        1,
+        3
+      ],
+      "rejected": [
+        2
+      ],
+      "fallback_added": [],
+      "final_selected": [
+        1,
+        3
+      ],
+      "decisions": [
+        {
+          "candidate": 1,
+          "dominated": false,
+          "witness": null,
+          "comparisons": []
+        },
+        {
+          "candidate": 2,
+          "dominated": true,
+          "witness": 1,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.1,
+              "distance_to_selected": 1.0,
+              "dominated": true
+            }
+          ]
+        },
+        {
+          "candidate": 3,
+          "dominated": false,
+          "witness": null,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 1.5,
+              "dominated": false
+            }
+          ]
+        }
+      ]
+    },
+    "historical_saturated": {
+      "ordered": [
+        1,
+        2,
+        3
+      ],
+      "diversity_selected": [
+        1,
+        3
+      ],
+      "rejected": [
+        2
+      ],
+      "fallback_added": [
+        2
+      ],
+      "final_selected": [
+        1,
+        3,
+        2
+      ],
+      "decisions": [
+        {
+          "candidate": 1,
+          "dominated": false,
+          "witness": null,
+          "comparisons": []
+        },
+        {
+          "candidate": 2,
+          "dominated": true,
+          "witness": 1,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.1,
+              "distance_to_selected": 1.0,
+              "dominated": true
+            }
+          ]
+        },
+        {
+          "candidate": 3,
+          "dominated": false,
+          "witness": null,
+          "comparisons": [
+            {
+              "selected": 1,
+              "distance_to_target": 1.2,
+              "distance_to_selected": 1.5,
+              "dominated": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "conclusions": {
+    "rules_are_not_equivalent_at_equal_alpha": true,
+    "alpha_response_is_opposite": true,
+    "saturation_changes_output_semantics": true,
+    "standard_prune_is_not_intrinsically_saturated": true
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "registry": {
+    "cohere": {
+      "file": "cohere_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "minilm": {
+      "file": "minilm_train.f32",
+      "dimensions": 384,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "bge_m3": {
+      "file": "bge_m3_train.f32",
+      "dimensions": 1024,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "dbpedia1536": {
+      "file": "dbpedia_openai_train.f32",
+      "dimensions": 1536,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "dbpedia3072": {
+      "file": "dbpedia_openai_3072_train.f32",
+      "dimensions": 3072,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "wolt_clip": {
+      "file": "wolt_clip_train.f32",
+      "dimensions": 512,
+      "representation": "multimodal",
+      "format": "f32"
+    },
+    "gist960": {
+      "file": "gist960_train.f32",
+      "dimensions": 960,
+      "representation": "euclidean",
+      "format": "f32"
+    },
+    "random": {
+      "file": "random_train.f32",
+      "dimensions": 768,
+      "representation": "random",
+      "format": "f32"
+    },
+    "glove100": {
+      "file": "glove100_train.f32",
+      "dimensions": 100,
+      "representation": "word2vec",
+      "format": "f32"
+    },
+    "sift128": {
+      "file": "sift128_train.f32",
+      "dimensions": 128,
+      "representation": "euclidean",
+      "format": "f32"
+    },
+    "sphere": {
+      "file": "sphere_train.f32",
+      "dimensions": 768,
+      "representation": "synthetic",
+      "format": "f32"
+    },
+    "arxiv_nomic": {
+      "file": "arxiv_nomic_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "ccnews_nomic": {
+      "file": "ccnews_nomic_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "coco_nomic": {
+      "file": "coco_nomic_train.f32",
+      "dimensions": 768,
+      "representation": "multimodal",
+      "format": "f32"
+    },
+    "codesearch_jina": {
+      "file": "codesearch_jina_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "gooaq_roberta": {
+      "file": "gooaq_roberta_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "landmark_nomic": {
+      "file": "landmark_nomic_train.f32",
+      "dimensions": 768,
+      "representation": "contrastive",
+      "format": "f32"
+    },
+    "landmark_dino": {
+      "file": "landmark_dino_train.f32",
+      "dimensions": 768,
+      "representation": "ssl_vision",
+      "format": "f32"
+    },
+    "msmarco_cohere": {
+      "file": "msmarco_cohere_train.f32",
+      "dimensions": 1024,
+      "representation": "contrastive",
+      "format": "f32"
+    }
+  },
+  "samples": [
+    {
+      "file": "samples/sample-cohere.npz",
+      "bytes": 11425590,
+      "sha256": "c5f450eb121133b6e796bc2fc28cf2611a4d82160b1f65448f79115126fbfcf3",
+      "shape": [
+        4000,
+        768
+      ],
+      "indices_sha256": "5b78f2baaf238e996e6a46a19fd490797b35725188956872d2f5c2c55e115f51",
+      "normalization": "旧样本保留归一化结果，新增原始读取采用float32逐向量L2归一化"
+    },
+    {
+      "file": "samples/sample-minilm.npz",
+      "bytes": 5705851,
+      "sha256": "1cc917ab63289dee23f5af0dc75732c5c7d5f5537f89cd7f2fc10d4238bbd790",
+      "shape": [
+        4000,
+        384
+      ],
+      "indices_sha256": "5b78f2baaf238e996e6a46a19fd490797b35725188956872d2f5c2c55e115f51",
+      "normalization": "旧样本保留归一化结果，新增原始读取采用float32逐向量L2归一化"
+    },
+    {
+      "file": "samples/sample-gist960.npz",
+      "bytes": 11059229,
+      "sha256": "06c7c145678a4e114bf851d61b71c3f2963ff383aa168274a24ebe42b17034fa",
+      "shape": [
+        4000,
+        960
+      ],
+      "indices_sha256": "5b78f2baaf238e996e6a46a19fd490797b35725188956872d2f5c2c55e115f51",
+      "normalization": "旧样本保留归一化结果，新增原始读取采用float32逐向量L2归一化"
+    },
+    {
+      "file": "samples/sample-sift128.npz",
+      "bytes": 1058615,
+      "sha256": "4334f72cc62ba23ea7df56fb9c5dad35a7953217c6713c66f0976e628a115795",
+      "shape": [
+        4000,
+        128
+      ],
+      "indices_sha256": "7a76c897918fa94dd89b84a8bc6fefe2538cc4669e233376e85db96f0a5aaacc",
+      "normalization": "旧样本保留归一化结果，新增原始读取采用float32逐向量L2归一化"
+    },
+    {
+      "file": "samples/minilm-samples.npz",
+      "bytes": 8559377,
+      "sha256": "c29137118222b04318220b3dcd760a32913b9f6816e3ef60c77de0a710396e8f"
+    },
+    {
+      "file": "samples/gist960-samples.npz",
+      "bytes": 16600962,
+      "sha256": "f1bf77177bc0962094caf97c1f5b9d57c4d9547e7974c8c01a089bcf706f1faf"
+    }
+  ],
+  "graph_input_identities": [
+    {
+      "dataset": "cohere",
+      "prefix": "D03",
+      "dim": 768,
+      "files": {
+        "base.f32": {
+          "bytes": 614400000,
+          "crc32": 2484466452
+        },
+        "queries.f32": {
+          "bytes": 2285568,
+          "crc32": 1806242991
+        },
+        "truth32.u32": {
+          "bytes": 95232,
+          "crc32": 2795984237
+        }
+      }
+    },
+    {
+      "dataset": "wolt",
+      "prefix": "D02",
+      "dim": 512,
+      "files": {
+        "base.f32": {
+          "bytes": 409600000,
+          "crc32": 1634677162
+        },
+        "queries.f32": {
+          "bytes": 1523712,
+          "crc32": 1242835088
+        },
+        "truth32.u32": {
+          "bytes": 95232,
+          "crc32": 916395740
+        }
+      }
+    }
+  ],
+  "graph_seeds": [
+    20261110,
+    20261111
+  ]
+}

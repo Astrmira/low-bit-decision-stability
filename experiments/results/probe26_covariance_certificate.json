@@ -1,0 +1,1165 @@
+{
+  "probe": 26,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "1bit",
+    "2bit",
+    "rotated_1bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_queries": 80,
+  "n_evaluation_queries": 160,
+  "local_k": 32,
+  "tail_ratio_limit": 2.0,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "quantizers": {
+        "1bit": {
+          "calibration_slope": 0.0005770604397071992,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0006062608852174485,
+            "competitor_variance": 0.0007881383449246861,
+            "shared_query_cross_covariance": 0.0005490505322505489,
+            "residual_correlation": 0.7942940576320666,
+            "empirical_difference_variance": 0.00029629816564103687,
+            "covariance_aware_variance": 0.00029629816564103687,
+            "independence_variance": 0.0013943992301421347,
+            "independence_over_empirical_ratio": 4.706067710967335,
+            "covariance_aware_over_empirical_ratio": 1.0,
+            "margin_residual_mean": -0.007190883938064122
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.08891129032258065,
+            "score_margin_spearman": 0.5574875929392341,
+            "residual_margin_spearman": -0.31117582754993994,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.35100806451612904,
+                0.15745967741935485,
+                0.06068548387096774,
+                0.019153225806451613,
+                0.005040322580645161
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.1061974180438205,
+                1.1784633574580983,
+                1.333739162682629,
+                1.5422107957209168,
+                1.8669271539564438
+              ],
+              "empirical_left_survival": [
+                0.1905241935483871,
+                0.08306451612903226,
+                0.03225806451612903,
+                0.011491935483870968,
+                0.0034274193548387098
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                1.2008691097661233,
+                1.243346743336073,
+                1.4179286779350206,
+                1.8506529548651,
+                2.5390209293807637
+              ],
+              "max_two_sided_ratio_through_2_5": 1.5422107957209168,
+              "max_left_ratio_through_2_5": 1.8506529548651,
+              "standardized_kurtosis": 3.7784585286946792
+            },
+            "boundary_bound": {
+              "selected_tau": 0.03398585319519043,
+              "calibration_plugin_bound": 0.7977302605906731,
+              "evaluation_boundary_mass": 0.5201612903225806,
+              "covariance_plugin_tail": 0.29773026059067315,
+              "covariance_plugin_bound": 0.8178915509132538,
+              "independence_plugin_tail": 0.7730218802004489,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "2bit": {
+          "calibration_slope": 0.00027182079250641914,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0005909350837155222,
+            "competitor_variance": 0.0007343963488501443,
+            "shared_query_cross_covariance": 0.0005733466750102947,
+            "residual_correlation": 0.8703263979985126,
+            "empirical_difference_variance": 0.00017863808254507725,
+            "covariance_aware_variance": 0.00017863808254507695,
+            "independence_variance": 0.0013253314325656664,
+            "independence_over_empirical_ratio": 7.419086757333696,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999983,
+            "margin_residual_mean": -0.0035406853413056617
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.058266129032258064,
+            "score_margin_spearman": 0.7258765112408685,
+            "residual_margin_spearman": -0.1744459880642501,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.34576612903225806,
+                0.1558467741935484,
+                0.062096774193548386,
+                0.022983870967741935,
+                0.004838709677419355
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.0896775255285194,
+                1.1663920298528936,
+                1.3647563525124573,
+                1.8506529548651,
+                1.7922500677981863
+              ],
+              "empirical_left_survival": [
+                0.1840725806451613,
+                0.08225806451612903,
+                0.031048387096774193,
+                0.01129032258064516,
+                0.0024193548387096775
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                1.1602047589592281,
+                1.2312754157308683,
+                1.3647563525124573,
+                1.8181853591657122,
+                1.7922500677981863
+              ],
+              "max_two_sided_ratio_through_2_5": 1.8506529548651,
+              "max_left_ratio_through_2_5": 1.8181853591657122,
+              "standardized_kurtosis": 3.9360928218758735
+            },
+            "boundary_bound": {
+              "selected_tau": 0.027771961688995362,
+              "calibration_plugin_bound": 0.543317786302606,
+              "evaluation_boundary_mass": 0.36088709677419356,
+              "covariance_plugin_tail": 0.19331778630260593,
+              "covariance_plugin_bound": 0.5542048830767995,
+              "independence_plugin_tail": 0.8013059675749049,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "rotated_1bit": {
+          "calibration_slope": 0.0008468305798937945,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.000327222180576564,
+            "competitor_variance": 0.0003661006861960048,
+            "shared_query_cross_covariance": 0.000160797844222294,
+            "residual_correlation": 0.46457793934171243,
+            "empirical_difference_variance": 0.0003717271783279807,
+            "covariance_aware_variance": 0.0003717271783279808,
+            "independence_variance": 0.0006933228667725688,
+            "independence_over_empirical_ratio": 1.8651390245155524,
+            "covariance_aware_over_empirical_ratio": 1.0000000000000002,
+            "margin_residual_mean": -0.009536277529960408
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.1558467741935484,
+            "score_margin_spearman": 0.5741755612877101,
+            "residual_margin_spearman": -0.2287130167802823,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.2969758064516129,
+                0.12358870967741936,
+                0.0405241935483871,
+                0.013709677419354839,
+                0.002620967741935484
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                0.935915449039947,
+                0.9249654777488019,
+                0.890636450827935,
+                1.1038982537791826,
+                0.9708021200573509
+              ],
+              "empirical_left_survival": [
+                0.18225806451612903,
+                0.08225806451612903,
+                0.025403225806451612,
+                0.008467741935483872,
+                0.0016129032258064516
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                1.1487679102947888,
+                1.2312754157308683,
+                1.1166188338738288,
+                1.3636390193742844,
+                1.1948333785321241
+              ],
+              "max_two_sided_ratio_through_2_5": 1.1038982537791826,
+              "max_left_ratio_through_2_5": 1.3636390193742844,
+              "standardized_kurtosis": 2.8231346847549093
+            },
+            "boundary_bound": {
+              "selected_tau": 0.03398585319519043,
+              "calibration_plugin_bound": 0.9475084829860889,
+              "evaluation_boundary_mass": 0.5201612903225806,
+              "covariance_plugin_tail": 0.447508482986089,
+              "covariance_plugin_bound": 0.9676697733086697,
+              "independence_plugin_tail": 0.6497945024228609,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "rotated_2bit": {
+          "calibration_slope": 0.00047685643099002086,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.00020000004792805612,
+            "competitor_variance": 0.00018836587850187312,
+            "shared_query_cross_covariance": 8.44565046299763e-05,
+            "residual_correlation": 0.4351279051708183,
+            "empirical_difference_variance": 0.00021945291716997693,
+            "covariance_aware_variance": 0.00021945291716997666,
+            "independence_variance": 0.00038836592642992924,
+            "independence_over_empirical_ratio": 1.7697004507309466,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999988,
+            "margin_residual_mean": -0.005313802151794734
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.08810483870967742,
+            "score_margin_spearman": 0.7120899126429642,
+            "residual_margin_spearman": -0.17785422478116217,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.3022177419354839,
+                0.1219758064516129,
+                0.04536290322580645,
+                0.013911290322580646,
+                0.002620967741935484
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                0.9524353415552481,
+                0.9128941501435972,
+                0.9969811016730614,
+                1.1201320516288764,
+                0.9708021200573509
+              ],
+              "empirical_left_survival": [
+                0.1842741935483871,
+                0.07822580645161291,
+                0.03306451612903226,
+                0.010483870967741936,
+                0.0020161290322580645
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                1.1614755199219435,
+                1.1709187777048455,
+                1.4533768948833963,
+                1.6883149763681615,
+                1.493541723165155
+              ],
+              "max_two_sided_ratio_through_2_5": 1.1201320516288764,
+              "max_left_ratio_through_2_5": 1.6883149763681615,
+              "standardized_kurtosis": 2.9361049509331165
+            },
+            "boundary_bound": {
+              "selected_tau": 0.03398585319519043,
+              "calibration_plugin_bound": 0.653656423006651,
+              "evaluation_boundary_mass": 0.5201612903225806,
+              "covariance_plugin_tail": 0.15365642300665106,
+              "covariance_plugin_bound": 0.6738177133292317,
+              "independence_plugin_tail": 0.3470134792333828,
+              "independence_plugin_bound": 0.8671747695559635,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "quantizers": {
+        "1bit": {
+          "calibration_slope": 0.003169122722191128,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0021324249916263383,
+            "competitor_variance": 0.0025431883699069905,
+            "shared_query_cross_covariance": 0.00010910485561724524,
+            "residual_correlation": 0.04685089941435774,
+            "empirical_difference_variance": 0.00445740365029884,
+            "covariance_aware_variance": 0.004457403650298839,
+            "independence_variance": 0.004675613361533329,
+            "independence_over_empirical_ratio": 1.0489544426203938,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999996,
+            "margin_residual_mean": -0.0310683029075288
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.11209677419354838,
+            "score_margin_spearman": 0.6228488679752621,
+            "residual_margin_spearman": -0.13809604441014245,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.36088709677419356,
+                0.1782258064516129,
+                0.0625,
+                0.017741935483870968,
+                0.0032258064516129032
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.1373310616303496,
+                1.3338817003751073,
+                1.3736184067495514,
+                1.4285742107730597,
+                1.1948333785321241
+              ],
+              "empirical_left_survival": [
+                0.14516129032258066,
+                0.06189516129032258,
+                0.018145161290322582,
+                0.004233870967741936,
+                0.0010080645161290322
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9149478931551417,
+                0.9264743936994524,
+                0.7975848813384492,
+                0.6818195096871422,
+                0.7467708615825775
+              ],
+              "max_two_sided_ratio_through_2_5": 1.4285742107730597,
+              "max_left_ratio_through_2_5": 0.9264743936994524,
+              "standardized_kurtosis": 3.7808161069781834
+            },
+            "boundary_bound": {
+              "selected_tau": 0.12320317327976227,
+              "calibration_plugin_bound": 0.8858844265691154,
+              "evaluation_boundary_mass": 0.5092741935483871,
+              "covariance_plugin_tail": 0.38588442656911537,
+              "covariance_plugin_bound": 0.8951586201175025,
+              "independence_plugin_tail": 0.40341978059378203,
+              "independence_plugin_bound": 0.9126939741421691,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "2bit": {
+          "calibration_slope": 0.0012496685058594726,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0009665068948410912,
+            "competitor_variance": 0.0010173913087013478,
+            "shared_query_cross_covariance": 9.244811755625728e-05,
+            "residual_correlation": 0.09322911949140979,
+            "empirical_difference_variance": 0.0017990019684299256,
+            "covariance_aware_variance": 0.0017990019684299245,
+            "independence_variance": 0.001983898203542439,
+            "independence_over_empirical_ratio": 1.1027771166219908,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999994,
+            "margin_residual_mean": -0.012068552287482763
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.041935483870967745,
+            "score_margin_spearman": 0.8082380365416227,
+            "residual_margin_spearman": -0.057397387777190244,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.35080645161290325,
+                0.1566532258064516,
+                0.05907258064516129,
+                0.013911290322580646,
+                0.0020161290322580645
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.1055620375624629,
+                1.1724276936554958,
+                1.2982909457342533,
+                1.1201320516288764,
+                0.7467708615825775
+              ],
+              "empirical_left_survival": [
+                0.14334677419354838,
+                0.06008064516129032,
+                0.020161290322580645,
+                0.004233870967741936,
+                0.0010080645161290322
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9035110444907023,
+                0.899313906587742,
+                0.8862054237093879,
+                0.6818195096871422,
+                0.7467708615825775
+              ],
+              "max_two_sided_ratio_through_2_5": 1.2982909457342533,
+              "max_left_ratio_through_2_5": 0.9035110444907023,
+              "standardized_kurtosis": 3.405343981599733
+            },
+            "boundary_bound": {
+              "selected_tau": 0.0983167052268982,
+              "calibration_plugin_bound": 0.47650618532076805,
+              "evaluation_boundary_mass": 0.3431451612903226,
+              "covariance_plugin_tail": 0.12650618532076807,
+              "covariance_plugin_bound": 0.46965134661109065,
+              "independence_plugin_tail": 0.1533887651914339,
+              "independence_plugin_bound": 0.4965339264817565,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "rotated_1bit": {
+          "calibration_slope": 0.0032056911502923342,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.002006470264870663,
+            "competitor_variance": 0.002477046761602163,
+            "shared_query_cross_covariance": 0.00013050941537431885,
+            "residual_correlation": 0.05854076286469046,
+            "empirical_difference_variance": 0.004222498195724186,
+            "covariance_aware_variance": 0.0042224981957241885,
+            "independence_variance": 0.004483517026472826,
+            "independence_over_empirical_ratio": 1.0618162089478107,
+            "covariance_aware_over_empirical_ratio": 1.0000000000000007,
+            "margin_residual_mean": -0.02700669630439358
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.10866935483870968,
+            "score_margin_spearman": 0.6779671701157624,
+            "residual_margin_spearman": -0.09954668780518251,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.33326612903225805,
+                0.1504032258064516,
+                0.053629032258064514,
+                0.014112903225806451,
+                0.00282258064516129
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.0502839356843396,
+                1.125651299185328,
+                1.178653213533486,
+                1.1363658494785702,
+                1.0454792062156086
+              ],
+              "empirical_left_survival": [
+                0.1443548387096774,
+                0.05967741935483871,
+                0.01875,
+                0.004838709677419355,
+                0.0010080645161290322
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9098648493042797,
+                0.8932782427851398,
+                0.8241710440497307,
+                0.7792222967853053,
+                0.7467708615825775
+              ],
+              "max_two_sided_ratio_through_2_5": 1.178653213533486,
+              "max_left_ratio_through_2_5": 0.9098648493042797,
+              "standardized_kurtosis": 3.332390486001338
+            },
+            "boundary_bound": {
+              "selected_tau": 0.12320317327976227,
+              "calibration_plugin_bound": 0.8342825663398988,
+              "evaluation_boundary_mass": 0.5092741935483871,
+              "covariance_plugin_tail": 0.33428256633989883,
+              "covariance_plugin_bound": 0.8435567598882859,
+              "independence_plugin_tail": 0.35630228092595206,
+              "independence_plugin_bound": 0.8655764744743392,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "rotated_2bit": {
+          "calibration_slope": 0.0012484786962269334,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0008443354203534586,
+            "competitor_variance": 0.0009344314876780405,
+            "shared_query_cross_covariance": 7.050541107419663e-05,
+            "residual_correlation": 0.07937636605616258,
+            "empirical_difference_variance": 0.001637756085883105,
+            "covariance_aware_variance": 0.001637756085883106,
+            "independence_variance": 0.0017787669080314992,
+            "independence_over_empirical_ratio": 1.08610001413755,
+            "covariance_aware_over_empirical_ratio": 1.0000000000000004,
+            "margin_residual_mean": -0.009277043579710025
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.0467741935483871,
+            "score_margin_spearman": 0.8438569662994119,
+            "residual_margin_spearman": 0.019555888288976402,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.3465725806451613,
+                0.14758064516129032,
+                0.05342741935483871,
+                0.014919354838709677,
+                0.0020161290322580645
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.0922190474539502,
+                1.10452647587622,
+                1.1742221864149391,
+                1.2013010408773457,
+                0.7467708615825775
+              ],
+              "empirical_left_survival": [
+                0.15544354838709679,
+                0.06532258064516129,
+                0.022379032258064518,
+                0.0064516129032258064,
+                0.0006048387096774194
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9797567022536309,
+                0.9777775360215719,
+                0.9836880203174206,
+                1.0389630623804071,
+                0.4480625169495466
+              ],
+              "max_two_sided_ratio_through_2_5": 1.2013010408773457,
+              "max_left_ratio_through_2_5": 1.0389630623804071,
+              "standardized_kurtosis": 3.2928692607018797
+            },
+            "boundary_bound": {
+              "selected_tau": 0.08452170342206955,
+              "calibration_plugin_bound": 0.4275485822571996,
+              "evaluation_boundary_mass": 0.2536290322580645,
+              "covariance_plugin_tail": 0.1775485822571996,
+              "covariance_plugin_bound": 0.4311776145152641,
+              "independence_plugin_tail": 0.20362317123766527,
+              "independence_plugin_bound": 0.45725220349572976,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "quantizers": {
+        "1bit": {
+          "calibration_slope": 0.0,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0006752420985184412,
+            "competitor_variance": 0.0009737925402715541,
+            "shared_query_cross_covariance": 0.0007317193993130205,
+            "residual_correlation": 0.9023636495992398,
+            "empirical_difference_variance": 0.000185595840163956,
+            "covariance_aware_variance": 0.00018559584016395424,
+            "independence_variance": 0.0016490346387899953,
+            "independence_over_empirical_ratio": 8.8850840478603,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999905,
+            "margin_residual_mean": -0.021389042754327098
+          },
+          "evaluation": {
+            "decision_flip_rate": 1.0,
+            "score_margin_spearman": 0.0,
+            "residual_margin_spearman": -1.0,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.24475806451612903,
+                0.0967741935483871,
+                0.06008064516129032,
+                0.04778225806451613,
+                0.04153225806451613
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                0.7713519043682929,
+                0.7242796563122754,
+                1.320446081326988,
+                3.847410090377445,
+                15.383479748601099
+              ],
+              "empirical_left_survival": [
+                0.14495967741935484,
+                0.09032258064516129,
+                0.06008064516129032,
+                0.04778225806451613,
+                0.04153225806451613
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9136771321924261,
+                1.3519886917829143,
+                2.640892162653976,
+                7.69482018075489,
+                30.766959497202198
+              ],
+              "max_two_sided_ratio_through_2_5": 3.847410090377445,
+              "max_left_ratio_through_2_5": 7.69482018075489,
+              "standardized_kurtosis": 26.006034377933293
+            },
+            "boundary_bound": {
+              "selected_tau": 0.0019639086723327636,
+              "calibration_plugin_bound": 1.0,
+              "evaluation_boundary_mass": 0.014516129032258065,
+              "covariance_plugin_tail": 1.0,
+              "covariance_plugin_bound": 1.0,
+              "independence_plugin_tail": 1.0,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": false,
+            "reasons": [
+              "校准斜率非正",
+              "分数与精确 margin 的秩相关过低",
+              "residual 与 margin 的相关过强",
+              "左尾超过 Gaussian proxy 门限"
+            ]
+          }
+        },
+        "2bit": {
+          "calibration_slope": 0.00014867784490739977,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.0005432867518649918,
+            "competitor_variance": 0.0007138660325902619,
+            "shared_query_cross_covariance": 0.0005182308897206084,
+            "residual_correlation": 0.8321476283335963,
+            "empirical_difference_variance": 0.00022069100501403608,
+            "covariance_aware_variance": 0.000220691005014037,
+            "independence_variance": 0.0012571527844552539,
+            "independence_over_empirical_ratio": 5.696438712467226,
+            "covariance_aware_over_empirical_ratio": 1.0000000000000042,
+            "margin_residual_mean": -0.019461746238971005
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.3582661290322581,
+            "score_margin_spearman": -0.013160606769760257,
+            "residual_margin_spearman": -0.8575685145377268,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.2608870967741935,
+                0.10826612903225806,
+                0.06189516129032258,
+                0.04879032258064516,
+                0.0407258064516129
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                0.8221823428769119,
+                0.8102878654993582,
+                1.3603253253939105,
+                3.928579079625914,
+                15.084771403968068
+              ],
+              "empirical_left_survival": [
+                0.14294354838709677,
+                0.09133064516129032,
+                0.06169354838709677,
+                0.04858870967741936,
+                0.0405241935483871
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.9009695225652714,
+                1.36707785128942,
+                2.711788596550727,
+                7.824690563552441,
+                30.020188635619622
+              ],
+              "max_two_sided_ratio_through_2_5": 3.928579079625914,
+              "max_left_ratio_through_2_5": 7.824690563552441,
+              "standardized_kurtosis": 25.613737201360497
+            },
+            "boundary_bound": {
+              "selected_tau": 0.0019639086723327636,
+              "calibration_plugin_bound": 1.0,
+              "evaluation_boundary_mass": 0.014516129032258065,
+              "covariance_plugin_tail": 1.0,
+              "covariance_plugin_bound": 1.0,
+              "independence_plugin_tail": 1.0,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": false,
+            "reasons": [
+              "分数与精确 margin 的秩相关过低",
+              "residual 与 margin 的相关过强",
+              "左尾超过 Gaussian proxy 门限"
+            ]
+          }
+        },
+        "rotated_1bit": {
+          "calibration_slope": 0.0005158082169476746,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.00017891078309067586,
+            "competitor_variance": 0.0002685944457452423,
+            "shared_query_cross_covariance": 0.000128287587839416,
+            "residual_correlation": 0.5852182581122722,
+            "empirical_difference_variance": 0.0001909300531570859,
+            "covariance_aware_variance": 0.00019093005315708617,
+            "independence_variance": 0.00044750522883591816,
+            "independence_over_empirical_ratio": 2.3438176517331057,
+            "covariance_aware_over_empirical_ratio": 1.0000000000000013,
+            "margin_residual_mean": -0.008732190643789281
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.14798387096774193,
+            "score_margin_spearman": 0.5096658916877879,
+            "residual_margin_spearman": -0.3806163853281712,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.3217741935483871,
+                0.13790322580645162,
+                0.05241935483870968,
+                0.016129032258064516,
+                0.004838709677419355
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                1.0140672482469486,
+                1.0320985102449927,
+                1.1520670508222044,
+                1.2987038279755088,
+                1.7922500677981863
+              ],
+              "empirical_left_survival": [
+                0.11713709677419355,
+                0.0532258064516129,
+                0.025403225806451612,
+                0.011693548387096775,
+                0.0038306451612903224
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.7383121193376907,
+                0.796707621943503,
+                1.1166188338738288,
+                1.883120550564488,
+                2.8377292740137947
+              ],
+              "max_two_sided_ratio_through_2_5": 1.2987038279755088,
+              "max_left_ratio_through_2_5": 1.883120550564488,
+              "standardized_kurtosis": 3.4807145814140923
+            },
+            "boundary_bound": {
+              "selected_tau": 0.0019639086723327636,
+              "calibration_plugin_bound": 1.0,
+              "evaluation_boundary_mass": 0.014516129032258065,
+              "covariance_plugin_tail": 1.0,
+              "covariance_plugin_bound": 1.0,
+              "independence_plugin_tail": 1.0,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        },
+        "rotated_2bit": {
+          "calibration_slope": 0.000344684219700819,
+          "effective_calibrated_scale": 1.0,
+          "calibration_decision_count": 2480,
+          "evaluation_decision_count": 4960,
+          "residual_structure": {
+            "top_variance": 0.00010365083985101008,
+            "competitor_variance": 0.00014763820574186125,
+            "shared_query_cross_covariance": 6.54578700567625e-05,
+            "residual_correlation": 0.529146682511591,
+            "empirical_difference_variance": 0.0001203733054793464,
+            "covariance_aware_variance": 0.00012037330547934631,
+            "independence_variance": 0.0002512890455928713,
+            "independence_over_empirical_ratio": 2.087581167537078,
+            "covariance_aware_over_empirical_ratio": 0.9999999999999992,
+            "margin_residual_mean": -0.0046026432837522925
+          },
+          "evaluation": {
+            "decision_flip_rate": 0.09334677419354839,
+            "score_margin_spearman": 0.6687671004475703,
+            "residual_margin_spearman": -0.19828863494457194,
+            "tail": {
+              "thresholds": [
+                1.0,
+                1.5,
+                2.0,
+                2.5,
+                3.0
+              ],
+              "empirical_two_sided_survival": [
+                0.31129032258064515,
+                0.12096774193548387,
+                0.04133064516129032,
+                0.010685483870967741,
+                0.0024193548387096775
+              ],
+              "gaussian_two_sided_survival": [
+                0.31731050786291415,
+                0.13361440253771617,
+                0.04550026389635843,
+                0.01241933065155228,
+                0.0026997960632601918
+              ],
+              "two_sided_ratio": [
+                0.9810274632163463,
+                0.9053495703903444,
+                0.9083605593021226,
+                0.8603912860337746,
+                0.8961250338990931
+              ],
+              "empirical_left_survival": [
+                0.12016129032258065,
+                0.043548387096774194,
+                0.015524193548387097,
+                0.0038306451612903224,
+                0.0010080645161290322
+              ],
+              "gaussian_one_sided_survival": [
+                0.15865525393145707,
+                0.06680720126885809,
+                0.022750131948179216,
+                0.00620966532577614,
+                0.0013498980316300959
+              ],
+              "left_ratio": [
+                0.7573735337784228,
+                0.651851690681048,
+                0.6823781762562287,
+                0.6168843182883667,
+                0.7467708615825775
+              ],
+              "max_two_sided_ratio_through_2_5": 0.9810274632163463,
+              "max_left_ratio_through_2_5": 0.7573735337784228,
+              "standardized_kurtosis": 2.7895124922064425
+            },
+            "boundary_bound": {
+              "selected_tau": 0.018566787242889404,
+              "calibration_plugin_bound": 0.9448718112463597,
+              "evaluation_boundary_mass": 0.5147177419354839,
+              "covariance_plugin_tail": 0.4448718112463596,
+              "covariance_plugin_bound": 0.9595895531818435,
+              "independence_plugin_tail": 0.6784163697445496,
+              "independence_plugin_bound": 1.0,
+              "covariance_covers_empirical": true,
+              "independence_covers_empirical": true,
+              "status": "仅检验定理形式；样本方差不是已证明的 MGF proxy"
+            }
+          },
+          "calibration_gate": {
+            "eligible": true,
+            "reasons": []
+          }
+        }
+      }
+    }
+  ]
+}

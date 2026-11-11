@@ -1,0 +1,104 @@
+{
+  "seed": 20261111,
+  "source_sha256": {
+    "experiments/16_p6_heldout_calibration.py": "9752014e6c66595e1cca8ad08f033a13d5bd07ff1e0224b9a784f94fcf2d2573",
+    "experiments/20_cross_quantizer_validation.py": "b91e4eb5cbdc42909ddcaca9cdbf99b91f5c0d5f476d3969ecdb6e097f0eed61",
+    "experiments/10_pruning_replay.py": "d846f302a85c60c490e93ca835a54779c757ee5c1b81498916b1427a51de2d72",
+    "experiments/11_trace_certificate.py": "22f88b81eab4eba91696d1245e9b90041484cc2f3cfedbe39b543463e938b5fc",
+    "experiments/12_edge_certificate.py": "ad91d5053c761931a749c5e551a61156ecc0a326cee4281a413d02ef6ae26a54",
+    "experiments/14_path_certificate.py": "f556c22cd64bb58dc1897ca0526d7bc7f5bb00ed477ccef27e63635a2fd4fdb1",
+    "experiments/results/probe29_standard_vamana_edge_certificate.json": "be3481fda60a2ffa4b5681648310cc2066f1587725f8bfa2741a37aca46ccc47",
+    "experiments/results/probe31_standard_vamana_path_certificate.json": "4dd38714e17f92de10f26a2e27f527ec305e44e7230d7842dd35fb67a460b31c",
+    "experiments/results/probe33_standard_vamana_p6_heldout_calibration.json": "49e6b4fe5303502b3db8c85d6ee58d9b36ccab3376b72ce445c4b40df58ddf12",
+    "experiments/controls/calibration/graph-analysis.json": "674d9630ee16138e3cd6c9c894e161f3122291c1b4d428795cb4842257d34455"
+  },
+  "resources": {
+    "blas_threads": 2,
+    "pair_batch": 512,
+    "full_dataset_loading": false
+  },
+  "calibration": {
+    "sets": [
+      "E2原80拟合/160评估及6K交叉人口",
+      "E1 Cohere原48候选池",
+      "E8各图ef128 FP32已访问池"
+    ],
+    "variants": [
+      "原单距离拟合/双侧",
+      "原单距离拟合/对抗单侧",
+      "正比例比较拟合/双侧",
+      "正比例比较拟合/对抗单侧"
+    ],
+    "threshold_quantiles": [
+      0.02,
+      0.04,
+      0.08,
+      0.12,
+      0.18,
+      0.25,
+      0.35,
+      0.5,
+      0.7
+    ],
+    "selection": "所有变体同时报告，阈值和系数仅拟合块确定，保留评估不选变体"
+  },
+  "six_codes": {
+    "datasets": [
+      "cohere",
+      "minilm",
+      "sift128",
+      "gist960"
+    ],
+    "codes": [
+      "sign",
+      "shared_2bit",
+      "rabitq",
+      "bbq_like",
+      "scalar_int4",
+      "pq4x16"
+    ],
+    "sample_size": 4000,
+    "code_fit": 1200,
+    "calibration": 800,
+    "evaluation": 2000,
+    "distance_fit_pairs": 24000,
+    "calibration_targets": 96,
+    "evaluation_targets": 160,
+    "candidates": 48,
+    "degree": 24,
+    "alpha": 1.2,
+    "sharing": "同一数据集所有编码共享向量拆分、距离校准对、目标、精确候选池和剪枝比较",
+    "statistics": "逐库六编码Spearman及15对选码一致率，评估query块共同bootstrap500次，拟合统计冻结",
+    "primary": "原单距离拟合的双侧经验分数，对抗单侧与比较拟合作为固定对照同时报告"
+  },
+  "strongest_blocker": {
+    "datasets": [
+      "cohere",
+      "minilm",
+      "gist960"
+    ],
+    "codes": [
+      "2bit",
+      "rotated_2bit"
+    ],
+    "identity": "沿用原4000样本、80拟合、160目标及320节点图、原种子和拟合常量",
+    "comparisons": "全前缀逐项求和对照精确阻挡者最小值，保留原已使用最小值的表格身份",
+    "paths": "原冻结600条路径，1/2/3/4跳均报告，不按饱和率提前停止"
+  },
+  "original_source_sha256": {
+    "experiments/16_p6_heldout_calibration.py": "6bc4eb31eb87ce86541caead691d2f9d6b9dcca1eaa7ffa64cf9ab23e9e0c6e1",
+    "experiments/20_cross_quantizer_validation.py": "7d3731c858282c971a2025560a3bdcf5af0764ec4fa23c2ce85908bcc4df6ebe",
+    "experiments/10_pruning_replay.py": "e05a99ce206d47ebeb40efce6092097fd5bbe6189e1bbd4ea8fd2dddd33ec57c",
+    "experiments/11_trace_certificate.py": "d1ae65b38b12c9cf56b9ff2df6c2386a7db0093e1c8751d74731e167b35e629c",
+    "experiments/12_edge_certificate.py": "b07b87a438c1ede6864db53ca59ba930c62aa6dbd75eb01b26fc7893deaae952",
+    "experiments/14_path_certificate.py": "41a9eba929d474994b77a4d9e8f9cd47c63f2d63001f16d34c9b05471ef61cf5",
+    "experiments/results/probe29_standard_vamana_edge_certificate.json": "d0a7e7724685ee26e88e8345b79af41bfaf3d99f45a84e60dc67b387a48998f8",
+    "experiments/results/probe31_standard_vamana_path_certificate.json": "b3e48d67fd0376ec99486bc012bcfbfac058b0234731dc299cd011e49d7780c0",
+    "experiments/results/probe33_standard_vamana_p6_heldout_calibration.json": "2e05828469f01ba81a09e3dfc2b98717784957f7d94f17245e03f5a25345cecb",
+    "experiments/controls/calibration/calibration-cross-arrays.npz": "468ecc5abbc17ef5048ca172ec88d00b3f927238a2ba6a4aff5b0724ddc30ff1",
+    "experiments/controls/calibration/graph-analysis.json": "9a16ce20402c36655bced6b162d0bb960393345e9947637a60d9b9513bec2688"
+  },
+  "external_source_sha256": {
+    "experiments/controls/calibration/calibration-cross-arrays.npz": "468ecc5abbc17ef5048ca172ec88d00b3f927238a2ba6a4aff5b0724ddc30ff1"
+  }
+}

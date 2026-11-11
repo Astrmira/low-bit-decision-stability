@@ -1,0 +1,104 @@
+{
+  "2bit": {
+    "models": {
+      "original_origin": [
+        0.0,
+        0.0005852305268160636
+      ],
+      "affine_slope_only": [
+        0.0,
+        0.0012516011372213018
+      ],
+      "affine": [
+        -0.9366915820457253,
+        0.0012516011372213018
+      ]
+    },
+    "variants": {
+      "original_origin": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.019197171381031615,
+        "false_prune_rate": 0.0,
+        "flip_rate": 0.019197171381031615,
+        "bias_over_sd": 0.8249448246839084,
+        "fixed_order_jaccard": 0.653665823703995,
+        "free_order_jaccard": 0.5294512502499282
+      },
+      "affine_slope_only": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.019197171381031615,
+        "false_prune_rate": 0.0,
+        "flip_rate": 0.019197171381031615,
+        "bias_over_sd": -3.901240156921215,
+        "fixed_order_jaccard": 0.653665823703995,
+        "free_order_jaccard": 0.5294512502499282
+      },
+      "affine": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.004856489184692179,
+        "false_prune_rate": 0.006281198003327787,
+        "flip_rate": 0.011137687188019966,
+        "bias_over_sd": 0.2082945585507941,
+        "fixed_order_jaccard": 0.820015261586469,
+        "free_order_jaccard": 0.5895671427187147
+      }
+    },
+    "scale_invariance": true,
+    "reproduction_gaps": {
+      "local_flip": 0.0,
+      "fixed_jaccard": 0.0,
+      "slope": 0.0
+    }
+  },
+  "rotated_2bit": {
+    "models": {
+      "original_origin": [
+        0.0,
+        0.0005851423581531199
+      ],
+      "affine_slope_only": [
+        0.0,
+        0.0012509175899465725
+      ],
+      "affine": [
+        -0.9360105904304601,
+        0.0012509175899465725
+      ]
+    },
+    "variants": {
+      "original_origin": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.019197171381031615,
+        "false_prune_rate": 0.0,
+        "flip_rate": 0.019197171381031615,
+        "bias_over_sd": 0.8177378709367344,
+        "fixed_order_jaccard": 0.655509929033045,
+        "free_order_jaccard": 0.5286774195387774
+      },
+      "affine_slope_only": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.019197171381031615,
+        "false_prune_rate": 0.0,
+        "flip_rate": 0.019197171381031615,
+        "bias_over_sd": -4.0400840458072595,
+        "fixed_order_jaccard": 0.655509929033045,
+        "free_order_jaccard": 0.5286774195387774
+      },
+      "affine": {
+        "comparisons": 96160,
+        "false_keep_rate": 0.004939683860232945,
+        "false_prune_rate": 0.00625,
+        "flip_rate": 0.011189683860232945,
+        "bias_over_sd": 0.16296242995078,
+        "fixed_order_jaccard": 0.8203516834234712,
+        "free_order_jaccard": 0.5989809654464651
+      }
+    },
+    "scale_invariance": true,
+    "reproduction_gaps": {
+      "local_flip": 0.0,
+      "fixed_jaccard": 0.0,
+      "slope": 0.0
+    }
+  }
+}

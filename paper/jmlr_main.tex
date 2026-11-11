@@ -1,0 +1,922 @@
+\documentclass[twoside,11pt]{article}
+
+% 取消下一行注释生成 arXiv 预印本；注释该行生成 JMLR 投稿占位版
+\newif\ifarxiv
+\arxivtrue
+
+\ifarxiv
+  \usepackage[preprint,abbrvbib]{jmlr2e}
+\else
+  \usepackage[abbrvbib]{jmlr2e}
+\fi
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\emergencystretch=1em
+\usepackage{placeins}
+% 在模板版心内提高浮动图表的排版利用率。
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\floatpagefraction}{0.75}
+\setlength{\bibsep}{4pt plus 1pt minus 1pt}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+
+\newtheorem{assumption}{Assumption}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Pp}{\mathbb{P}}
+\newcommand{\Pq}{\mathbb{P}_{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\mnr}{\mathrm{MNR}}
+
+\ifarxiv
+  \jmlrheading{}{2026}{1-\pageref{LastPage}}{}{}{}{Wenxuan Xiao and Xu Cao}
+\else
+  \jmlrheading{1}{2027}{1-\pageref{LastPage}}{}{}{26-XXXX}{Wenxuan Xiao and Xu Cao}
+\fi
+\ShortHeadings{Low-Bit Decision Stability in Vector Search}{Xiao and Cao}
+\firstpageno{1}
+\usepackage{lastpage}
+
+\begin{document}
+
+\title{When Does Low-Bit Quantization Preserve the Decisions of Vector Search?}
+
+\author{\name Wenxuan Xiao\thanks{Corresponding author.} \email w.xiao@astrmira.com \\
+       \addr Astrmira Tech.\\
+       Liuyanghe Subdistrict, Changsha, Hunan, China
+       \AND
+       \name Xu Cao \email x.cao@astrmira.com \\
+       \addr Astrmira Tech.}
+
+\ifarxiv
+  \editor{}
+\else
+  \editor{TBD}
+\fi
+
+\maketitle
+
+\begin{abstract}%
+An orthogonal rotation improves the distance rank correlation of two-bit Cohere codes from 0.75 to 0.91, yet increases nearest-neighbour comparison flips by 51\%. We analyse quantization through the comparisons made by graph search. A comparison changes only when its quantization error exceeds its exact margin, giving a flip bound that separates close calls from large errors. Shared endpoints induce correlated distance errors that partly cancel within a comparison. An exact replay identity connects candidate-level actions to the output of neighbour selection. A Gaussian model gives coordinate-code errors in closed form, and a rare-spike construction exposes heavy tails in the population-radius error. Held-out blocks give model-free certificates for acceptance rules based on exact or quantized margins. Across 24 dataset--code configurations, calibration-estimated risk correlates with held-out ranking and pruning flips at 0.97 and 0.99, compared with 0.91 and 0.99 for a margin-to-noise summary and 0.74 and 0.05 for distance rank correlation. Paired builds of 200{,}000-vector graphs connect rotation, query scoring, and topology to end-to-end recall and search work.
+\end{abstract}
+
+\begin{keywords}
+  vector search, binary quantization, decision stability, concentration inequalities, contrastive representations
+\end{keywords}
+
+% ============================================================
+\section{Introduction}
+\label{sec:intro}
+
+Low-bit codes are the main tool for making graph-based vector search fast and compact. Binary quantization stores a 768-dimensional vector in 96 bytes and replaces most floating-point distance arithmetic with bit operations. How well such a code serves search, however, is hard to read from how well it estimates distances. Consider two-bit codes of Cohere text embeddings, with and without an orthogonal rotation applied first. On the same 160 held-out queries and candidate sets, rotation raises the distance rank correlation from 0.747 to 0.907. Yet when each query's exact nearest neighbour is compared with its other candidates, the quantized comparison gives the wrong answer 8.81\% of the time instead of 5.83\%, about half again as often. On other decision sets rotation leaves ranking flips nearly unchanged and lowers pruning flips. We call this the \emph{rotation paradox}. Distance fidelity alone does not determine the direction of change in decision errors.
+
+The effect of a code also depends strongly on the data. Recent systems use low-bit codes in different ways: QuIVer keeps the coordinate axes of the encoder and builds and searches a proximity graph on two-bit scores~\citep{xiao2026quiver}, while RaBitQ rotates vectors randomly before one-bit coding and corrects its distance estimates~\citep{gao2023rabitq}. At the same search width, QuIVer finds 99.19\% of the ten nearest neighbours on Cohere text embeddings and 3.28\% on GIST image descriptors~\citep{xiao2026quiver}. A practitioner choosing a code for a new embedding needs to anticipate differences of this kind without building and searching an index for every candidate code. The usual summaries of quantization quality measure \emph{fidelity}, how closely approximate distances track exact ones, through mean squared error or rank correlation, and they predict search failures poorly: across the 24 dataset--code configurations of Section~\ref{sec:experiments}, the rank correlation between approximate and exact distances predicts how often held-out pruning decisions change with a Spearman correlation of only 0.05.
+
+This paper explains such outcomes by analysing quantization at the level at which a graph algorithm uses it. A graph search never uses a distance on its own; it compares distances. Is candidate $x$ closer to the query than candidate $y$? Is a candidate closer to an already selected neighbour than to the node being linked? Each comparison has an exact margin, the gap between the two exact quantities, and the quantized comparison gives the same answer unless its error exceeds that margin. Two consequences follow.
+
+First, the comparisons that matter are close calls. A graph search compares candidates that all lie near the query, so small margins are common. On Cohere two-bit codes, comparisons whose margin is below a quarter of the error scale change 48.6\% of the time, while none of the 309 comparisons with a margin above five times the error scale changed.
+
+Second, the relevant error is the error of a difference, and the two compared distances usually share an endpoint. Quantizing a query can shift all of its distances in a similar way, and that shared part cancels within a comparison. On Cohere two-bit codes, comparison errors have 2.4 to 7.4 times less variance than independent distance errors would, depending on the calibration. On MiniLM the factor is 1.05 to 1.10. Rotation changes the covariance, bias, and scale of the residual jointly. Section~\ref{sec:exp-rotation} crosses two calibrations and shows why error variance must be considered together with decision margins.
+
+We organize the analysis around three questions.
+\begin{enumerate}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item \textbf{When does a single comparison change?} (Section~\ref{sec:flip}) The probability of a flip is at most the probability of a close call plus the probability of a large comparison error, with no distributional assumption (Theorem~\ref{thm:main}). We work out the comparison error for ranking and for Vamana pruning, where shared endpoints make errors correlated and calibration offsets add a bias.
+\item \textbf{When does a whole neighbour list change?} (Section~\ref{sec:trace}) A Vamana neighbour-selection call returns a different list exactly when its decision on some candidate, replayed on the exact run, changes, and the first such candidate is where the two lists start to differ (Theorem~\ref{thm:trace}). The replay identifies the comparisons whose risks enter edge, list, and path bounds and diagnostic scores.
+\item \textbf{How large are comparison errors, and how can we know?} (Sections~\ref{sec:bridge} and~\ref{sec:heldout}) For embeddings whose coordinates behave like Gaussian vectors, Stein's lemma gives the error structure of sign and two-bit codes in closed form, and the same model shows when a second, magnitude bit improves the code (Proposition~\ref{prop:magnitude}). A rare-spike construction identifies a tail obstruction for the population-radius idealization (Theorem~\ref{thm:counterexample}). When no model applies, independent held-out data bound the failure rate of the accepted decisions directly (Theorem~\ref{thm:heldout}).
+\end{enumerate}
+
+The experiments test each answer on learned, classical, and synthetic embeddings. Across 24 dataset--code configurations, a calibration-only close-call risk score correlates with held-out flip rates with Spearman correlation 0.97 for ranking and 0.99 for pruning, against 0.74 and 0.05 for distance rank correlation. A simple margin-to-noise summary gives 0.91 and 0.99, with paired confidence intervals that overlap the full score. An implementation check reproduces the first-divergence identity in all 960 sampled calls, and held-out certificates cover rules based on quantized margins. Paired 200{,}000-vector graph builds then measure how rotation and query scoring affect recall and work. Section~\ref{sec:instantiations} places RaBitQ, Lucene BBQ, and product quantization in the same framework.
+
+\noindent\emph{Contributions.}\quad
+\begin{itemize}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item A decision-level account of quantization error in graph search: a close-call plus large-error bound for single comparisons, error formulas for ranking and pruning comparisons that share endpoints, and an exact first-divergence theorem for neighbour selection.
+\item Two ways to handle the large-error term: a Gaussian model that gives the error of coordinate codes in closed form, with a construction that marks where it stops, and model-free held-out certificates.
+\item Experiments on learned, classical, and synthetic embeddings and six quantizer families showing that decision-level quantities predict failures that distance-level fidelity misses, a resolution of the rotation paradox, and practical guidance for choosing a code.
+\end{itemize}
+
+The formal results concern comparisons and neighbour-selection calls over given candidate sets. Section~\ref{sec:exp-graph} complements them with actual graph construction and search, where the graph itself generates the candidates.
+
+% ============================================================
+\section{Setting}
+\label{sec:setting}
+
+Ranking and pruning compare distances through signed scores whose signs determine the selected actions.
+
+\subsection{Decisions in Graph Search}
+\label{sec:decisions}
+
+Let $d(\cdot,\cdot)$ be an exact dissimilarity, the cosine distance for normalized embeddings, and let $\hat d_Q$ be its approximation under a code $Q$. Graph search and graph construction make three kinds of decisions.
+\begin{itemize}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item \textbf{Ranking.} Given a query $q$ and candidates $x$ and $y$, decide which is closer to $q$. The decision score is $\Psi_{\mathrm{rank}}=d(q,y)-d(q,x)$.
+\item \textbf{Pruning.} When Vamana links a target $t$, it drops a candidate $c$ if some already selected neighbour $s$ is at least $\alpha\ge1$ times closer to $c$ than $t$ is~\citep{subramanya2019diskann}. The decision score is $\Psi_\alpha=d(t,c)-\alpha\,d(s,c)$, and $c$ is pruned when $\Psi_\alpha\ge0$.
+\item \textbf{Stopping.} A search stops expanding when the best unexpanded candidate is no closer than the worst retained one; the decision score is the difference of these two distances.
+\end{itemize}
+In each case the sign of the score selects the action, with a fixed rule for a score of zero. A \emph{flip} occurs when the quantized score $\widehat\Psi_Q$ selects a different action from the exact score; nearest-vs-rest score audits also count a quantized tie against a nonzero exact score as a flip, while action replays and block certificates use their stated deterministic tie-breakers. The \emph{exact margin} $\Gamma=|\Psi|$ measures how close the call is.
+
+\subsection{Comparison Error and Calibration}
+\label{sec:calibration}
+
+Quantized scores live on a different scale from exact ones. A two-bit score, for example, is an integer. For a positively scaled quantized comparison $\widehat\Psi_Q$, define the \emph{comparison error}
+\begin{equation}
+R=\widehat\Psi_Q-c_Q\Psi,
+\label{eq:comparison-error}
+\end{equation}
+where $c_Q>0$ is the exact-signal scale in the units of $\widehat\Psi_Q$. At a nonzero exact margin, a flip requires $R$ to oppose $\Psi$ with magnitude at least $c_Q\Gamma$. In the experiments, an independently fitted map $a\hat d_{\rm raw}+b$ puts quantized distances in exact-distance units, so $c_Q=1$. Equivalently, dividing the calibrated score by $a$ gives $c_Q=1/a$, $R_{\rm raw}=R_{\rm metric}/a$, and $v_{\rm raw}/c_Q=v_{\rm metric}$. A \emph{distance-fitted} affine map uses individual distance pairs, sampled randomly or from fitting candidate pools. A \emph{comparison-fitted} positive gain acts on signed comparison scores. Appendix~\ref{app:calibration-direction} specifies each experiment's fitting population. An intercept cancels in ranking but contributes $(1-\alpha)b$ in pruning, so the mean of $R$ is carried explicitly in Section~\ref{sec:flip}. Positive rescaling preserves ranking flips, including quantized ties.
+
+The \emph{error scale} $v$ is the standard deviation of $R$ on the calibration data, and the \emph{margin-to-noise ratio} of a comparison is
+\begin{equation}
+\mnr=\frac{c_Q\Gamma}{v}.
+\end{equation}
+A comparison with a small margin-to-noise ratio is a close call (Figure~\ref{fig:comparison-geometry}).
+
+\subsection{What Is Random}
+\label{sec:randomness}
+
+The results of this paper are probability statements, and they draw randomness from two sources. The first is the \emph{decision population}: the comparisons a search makes on a workload, with the query drawn from the query distribution, the candidates chosen by the search, and, for pruning, a target with its candidate list. The second is the code itself, when the code is randomized.
+
+For a deterministic code, the decision population supplies the randomness. A randomized code also varies its own seed. Propositions~\ref{prop:ranking}--\ref{prop:pruning} condition on vectors and randomize the code, while the Gaussian model samples embeddings and held-out certificates sample independent blocks. The close-call bound allows either probability space, and first divergence is deterministic.
+
+Which comparisons enter the population matters. Comparisons selected by a search have small margins, because their candidates lie near the query, and their errors are more strongly correlated than those of random pairs (Section~\ref{sec:exp-covariance}).
+
+
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig01-comparison-geometry.png}
+\small
+\caption{Equal errors at different margins. With $\Psi>0$, $m=c_Q\Gamma$ and $\widehat\Psi_Q=m+R$. The same illustrated error envelope $|R|\le r$ crosses zero for the close call but stays positive at the larger margin.}
+\label{fig:comparison-geometry}
+\end{figure}
+
+% ============================================================
+\section{When Does a Comparison Flip?}
+\label{sec:flip}
+
+A comparison flips only when its error is large relative to its margin, so its flip probability splits into how often margins are small, which depends only on the data and the decisions, and how often errors are large, which depends on the code applied to those decisions.
+
+\subsection{Close Calls and Large Errors}
+\label{sec:close-call}
+
+Theorem~\ref{thm:main} makes this split exact. It holds on any probability space, and it needs no assumption about how errors are distributed or how they depend on the margin.
+
+\begin{theorem}[Close-call bound]
+\label{thm:main}
+Put $R_{\mathrm{opp}}=-\sign(\Psi)R$, with $\sign(0)=0$. For every $\tau>0$,
+\begin{equation}
+\begin{aligned}
+\Pp(\text{flip})
+&\le \Pp(\Gamma\le\tau)+\Pp(R_{\mathrm{opp}}\ge c_Q\tau)\\
+&\le \underbrace{\Pp(\Gamma\le\tau)}_{\text{close-call probability}}
++\underbrace{\Pp(|R|\ge c_Q\tau)}_{\text{large-error probability}}.
+\end{aligned}
+\label{eq:decomposition}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Exact ties lie in $\{\Gamma\le\tau\}$. For $\Gamma>\tau$, a flip requires $-\sign(\Psi)R\ge c_Q\Gamma>c_Q\tau$. Since $R_{\mathrm{opp}}\le|R|$, both inequalities follow.
+\end{proof}
+
+The first term depends only on the exact geometry of the decisions; the second measures how large the code's calibrated errors are on those decisions. Distance-level summaries average over both. A code with high average fidelity can fail often when many decisions are close calls, and a code with poor average fidelity is harmless when every margin is large. Section~\ref{sec:exp-necessity} constructs two codes with identical distance rank correlations whose flip rates differ by a factor of two.
+
+When close calls thin out polynomially and errors have sub-Gaussian tails, choosing the threshold well turns the bound into an explicit rate.
+
+\begin{corollary}[Rate under sub-Gaussian errors]
+\label{cor:subgaussian}
+Suppose $\Pp(\Gamma\le\tau)\le C\tau^\beta$ for $0<\tau\le\tau_0$ and $\Pp(|R|\ge z)\le2\exp(-z^2/2\nu^2)$. Here $\nu$ is a tail scale for $R$ itself, not centred, so it absorbs any bias and can exceed $v$; write $r=\nu/c_Q$. Then
+\begin{equation}
+\Pp(\text{flip})\le\inf_{0<\tau\le\tau_0}\left[C\tau^\beta+2\exp\!\left(-\frac{\tau^2}{2r^2}\right)\right],
+\label{eq:small-ball-bound}
+\end{equation}
+and a threshold of order $r\sqrt{\log(1/r)}$ gives a bound of order $r^\beta[\log(1/r)]^{\beta/2}$ (Appendix~\ref{app:p1}).
+\end{corollary}
+
+We call $\beta$ the \emph{near-tie exponent}. It describes the embedding and its decisions rather than the code. Fitting the empirical margin distribution on logarithmic axes gives $\beta=1.53$ on Cohere ($R^2=0.994$), $1.50$ on MiniLM ($R^2=0.979$), and $1.60$ on GIST ($R^2=0.989$), with the same value for one- and two-bit codes on the same data. The close-call term can therefore be estimated from the embedding before a code is chosen, and it indicates how much error control the decisions of an index will require.
+
+\subsection{Ranking: Comparisons That Share a Query}
+\label{sec:ranking}
+
+For a query $q$ and candidates $x,y$ with $d(q,x)<d(q,y)$, the ranking score and its comparison error are
+\begin{equation}
+\Psi_{\mathrm{rank}}=d(q,y)-d(q,x)>0,\qquad R_{\mathrm{rank}}=\xi_y-\xi_x,
+\end{equation}
+where $\xi_x=\hat d_Q(q,x)-c_Qd(q,x)$ is the calibrated error of the single distance from $q$ to $x$. Both distance errors involve the same quantized query, so they share a component, and the variance of their difference contains a covariance term. For a randomized code and given vectors, this covariance enters the flip probability directly.
+
+\begin{proposition}[Ranking error]
+\label{prop:ranking}
+Fix $q$, $x$, and $y$, and let the randomness come from the code. Suppose $(\xi_x,\xi_y)$ has mean $m$ and joint sub-Gaussian proxy matrix $K$. Then $R_{\mathrm{rank}}$ is sub-Gaussian with variance proxy
+\begin{equation}
+\nu_{\mathrm{rank}}^2=K_{xx}+K_{yy}-2K_{xy},
+\label{eq:rank-variance}
+\end{equation}
+and for an exact margin $\gamma>0$ and bias $\mu_R=\E(\xi_y-\xi_x)$,
+\begin{equation}
+\Pq(\text{flip})\le\exp\!\left[-\frac{(c_Q\gamma+\mu_R)_+^2}{2\nu_{\mathrm{rank}}^2}\right].
+\label{eq:ranking-bound}
+\end{equation}
+\end{proposition}
+
+The cross term $K_{xy}$ is what distance-level summaries leave out. When the two distance errors are positively correlated, the comparison error is smaller than it would be if they were independent.
+
+For a deterministic code, the same structure appears over the decision population. Writing $\widehat\Sigma_\xi$ for the sample covariance of $(\xi_x,\xi_y)$ over the comparisons a search makes, the comparison error satisfies the exact identity
+\begin{equation}
+\widehat\Var(\xi_y-\xi_x)
+=(\widehat\Sigma_\xi)_{xx}+(\widehat\Sigma_\xi)_{yy}
+-2(\widehat\Sigma_\xi)_{xy}.
+\label{eq:empirical-rank-variance}
+\end{equation}
+Table~\ref{tab:covariance} measures this covariance on \emph{nearest-vs-rest comparisons}, which compare each query's exact nearest neighbour with every other candidate in its 32-neighbour set. The \emph{cancellation factor} $[(\widehat\Sigma_\xi)_{xx}+(\widehat\Sigma_\xi)_{yy}]/\widehat\Var(\xi_y-\xi_x)$ states how many times smaller the comparison-error variance is than it would be with independent distance errors.
+
+\begin{table}[tbp]
+\centering
+\small
+
+\begin{tabular}{llcccc}
+\toprule
+Dataset & Code & Error correlation & Cancellation factor & Flip rate & Check \\
+\midrule
+Cohere-768 & 1-bit & 0.794 & 4.71 & 8.89\% & pass \\
+Cohere-768 & 2-bit & 0.870 & 7.42 & 5.83\% & pass \\
+Cohere-768 & rotated 1-bit & 0.465 & 1.87 & 15.58\% & pass \\
+Cohere-768 & rotated 2-bit & 0.435 & 1.77 & 8.81\% & pass \\
+MiniLM-384 & 1-bit & 0.047 & 1.05 & 11.21\% & pass \\
+MiniLM-384 & 2-bit & 0.093 & 1.10 & 4.19\% & pass \\
+GIST-960 & 1-bit & 0.902 & 8.89 & 100.00\% & fail \\
+GIST-960 & 2-bit & 0.832 & 5.70 & 35.83\% & fail \\
+GIST-960 & rotated 1-bit & 0.585 & 2.34 & 14.80\% & pass \\
+GIST-960 & rotated 2-bit & 0.529 & 2.09 & 9.33\% & pass \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Distance-error correlation and cancellation factor for nearest-vs-rest comparisons on 32-neighbour sets. Calibration is comparison-fitted on 80 queries; flip rates use 160 held-out queries. ``Check'' is the applicability check of Section~\ref{sec:applicability}.}
+\label{tab:covariance}
+\end{table}
+
+Two observations follow. First, these correlations describe selected nearest-vs-rest comparisons. For i.i.d.\ endpoints and a symmetric distance-error kernel, the Hoeffding decomposition caps shared-endpoint error correlation at $1/2$ and cancellation at $2$ (Appendix~\ref{app:p2p3}). The symmetric-code experiments use the same scorer on both endpoints. Directional query--candidate scorers use the general joint-error formula. Unrotated Cohere codes and GIST exceed both caps. Rotation lowers Cohere's fitted correlation to 0.435 and cancellation to 1.77, while held-out flips rise from 5.83\% to 8.81\%. The calibration cross in Section~\ref{sec:exp-rotation} explains this change through bias, scale, and margins jointly. Second, combining the close-call split with the one-sided tail gives an empirical plug-in value of 0.55 for Cohere two-bit codes. The same calculation without covariance gives one on three Cohere configurations and 0.87 on rotated two-bit codes. Appendix~\ref{app:covariance} specifies the fitted constants, threshold selection, and aggregation. A six-bin margin-dependent scale changes the configuration-level correlation by at most 0.002.
+
+\subsection{Pruning: Comparisons That Share a Candidate}
+\label{sec:pruning}
+
+Vamana's pruning rule compares a target $t$, a candidate $c$, and an already selected neighbour $s$ through $\Psi_\alpha=d(t,c)-\alpha\,d(s,c)$. Its comparison error
+\begin{equation}
+Z_\alpha=\xi_{tc}-\alpha\,\xi_{sc},\qquad
+\nu_\alpha^2=K_{tc,tc}+\alpha^2K_{sc,sc}-2\alpha K_{tc,sc},
+\end{equation}
+combines two distances that share the candidate $c$ rather than a query. A calibration intercept $b$ cancels in a ranking comparison but survives here as $(1-\alpha)b$, so a pruning comparison carries its own bias $\mu_Z=\E Z_\alpha$. Pruning can also go wrong in two ways, and the bound treats them separately.
+
+\begin{proposition}[Pruning error]
+\label{prop:pruning}
+Fix the triple $(t,c,s)$ and let the randomness come from the code, with $Z_\alpha$ sub-Gaussian with scale $\nu_\alpha$ and mean $\mu_Z$. For an exact margin $\gamma=|\Psi_\alpha|>0$:
+\begin{itemize}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item a \emph{missed prune}, where $\Psi_\alpha>0$ but $c$ is kept, has probability at most $\exp[-(c_Q\gamma+\mu_Z)_+^2/(2\nu_\alpha^2)]$;
+\item a \emph{spurious prune}, where $\Psi_\alpha<0$ but $c$ is pruned, has probability at most $\exp[-(c_Q\gamma-\mu_Z)_+^2/(2\nu_\alpha^2)]$;
+\item at an \emph{exact tie}, $\Psi_\alpha=0$, the two actions differ exactly when $Z_\alpha<0$, and this probability enters the risk as a separate term.
+\end{itemize}
+\end{proposition}
+
+The bias decides which error dominates. With the scale-only calibration of Section~\ref{sec:exp-trace}, every observed pruning error is a missed prune; a fitted intercept shifts the bias and produces both kinds.
+
+This is the standard RobustPrune rule analysed here and in Section~\ref{sec:trace}, and replayed on calibrated scores in E3. QuIVer's native builder uses $h(c,t)=4D-\langle q(c),q(t)\rangle$, with $q_i\in\{-2,-1,1,2\}$ and smaller scores nearer, and tests $h(c,s)<\alpha h(c,t)$ and fills the remaining degree slots in distance order, called \emph{backfill}. About one candidate per vertex survives its test, and backfill supplies 98.4\% of final edges in the production Cohere-1M build~\citep{xiao2026quiver}. E8 evaluates this native builder. Its integer predicate and production candidate pools differ from E3's standard rule on fixed 64-candidate pools with degree 32.
+
+\subsection{Top-$K$ Selection}
+\label{sec:topk}
+
+For a candidate set $C$ fixed before scoring, with exact top-$K$ subset $A\subset C$, the quantized top-$K$ set differs from $A$ only if some pair with $x\in A$ and $y\in C\setminus A$ is ranked in the wrong order. Hence
+\begin{equation}
+\Pq(\widehat A\ne A)\le\sum_{x\in A}\sum_{y\in C\setminus A}\Pq(\text{ranking of }(x,y)\text{ flips}),
+\label{eq:topk-union}
+\end{equation}
+and any fixed set of comparisons that determines the top-$K$ set can replace the full cross product.
+
+% ============================================================
+\section{When Does a Neighbour List Change?}
+\label{sec:trace}
+
+A neighbour-selection call makes dozens of dependent comparisons, yet whether its output changes follows a simple rule: the output changes exactly when the decision on one candidate, replayed on the exact run, changes.
+
+\subsection{Neighbour Selection as a Sequence of Actions}
+\label{sec:selection}
+
+Fix a target $t$, a candidate order $\pi=(c_{(1)},\ldots,c_{(N)})$ sorted by exact distance to $t$ with a fixed tie-breaking rule, a degree budget $\Delta$, and $\alpha\ge1$. Selection starts with an empty list $S$ and scans $\pi$ until the order is exhausted or $|S|=\Delta$. For each candidate $c$ it computes the action
+\begin{equation}
+a(c;S)=\bigvee_{s\in S}\mathbf 1\{d(t,c)-\alpha\,d(s,c)\ge0\},
+\end{equation}
+and appends $c$ exactly when $a(c;S)=0$. A selected neighbour $s$ with $d(t,c)-\alpha\,d(s,c)\ge0$ is a \emph{blocking neighbour} of $c$; a candidate is appended when no selected neighbour blocks it. This is the standard RobustPrune call without backfill. Backfill is a separate map $B_\pi$ that fills remaining slots in the shared order $\pi$. Applying the same map to equal plain outputs gives equal backfilled outputs (Appendix~\ref{app:p4}).
+
+The \emph{decision record} of a call lists the candidate order, each visited candidate, the selected list before it, its action, and where the scan stopped. It records which candidates are blocked, and leaves out the order in which an implementation checks their blocking neighbours (Figure~\ref{fig:first-divergence}).
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig02-first-divergence.png}
+\small
+\caption{First divergence under a shared candidate order, $\Delta=4$, and no backfill. Each box shows the list after its action. Both calls reach $c_3$ with $\{c_1\}$, but only the quantized call appends it. Later boxes follow the actual runs. Theorem~\ref{thm:trace} evaluates replayed actions on exact-run lists.}
+\label{fig:first-divergence}
+\end{figure}
+
+\subsection{The First-Divergence Theorem}
+\label{sec:first-divergence}
+
+Replay the quantized call with the exact call's candidate order and, at each step, the exact call's selected list. If every replayed action agrees with the exact one, the two calls make the same choices throughout; otherwise the first disagreement is where their outputs part.
+
+\begin{theorem}[First divergence]
+\label{thm:trace}
+Let the quantized replay use the same candidate order, distinct candidate labels, degree budget, and tie rule as the exact call. For each candidate $c_j$ visited by the exact call, evaluate the quantized action on the exact selected list $S_j$, and let $E_j$ be the event of an \emph{action mismatch}, that this action differs from the exact one. Then
+\begin{equation}
+\{\widehat T\ne T\}=\{\widehat S_{\mathrm{out}}\ne S_{\mathrm{out}}\}=\bigcup_{j\in\mathcal V}E_j,
+\label{eq:trace-identity}
+\end{equation}
+where $T,\widehat T$ are decision records, $S_{\mathrm{out}},\widehat S_{\mathrm{out}}$ are output lists, and $\mathcal V$ is the exact visited set. With the exact input and order fixed, write $p_{j,s}\in[0,1]$ for a bound on the flip probability of $(t,c_j,s)$ and $B_j=\{s\in S_j:\Psi_{j,s}\ge0\}$ for the exact blockers. Then
+\begin{equation}
+q_j=\begin{cases}
+\min_{s\in B_j}p_{j,s},&B_j\ne\varnothing,\\
+\min\{1,\sum_{s\in S_j}p_{j,s}\},&B_j=\varnothing
+\end{cases}
+\label{eq:action-bound}
+\end{equation}
+bounds $\Pp(E_j)$, with an empty sum equal to zero. Consequently,
+\begin{equation}
+\Pp(\widehat S_{\mathrm{out}}\ne S_{\mathrm{out}})
+\le\sum_{j\in\mathcal V}q_j
+\le\sum_{j\in\mathcal V}\sum_{s\in S_j}p_{j,s}.
+\label{eq:trace-bound}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If no $E_j$ occurs, induction from the empty list makes the selected lists, actions, and stopping points identical. Otherwise, at the first mismatch the candidate is appended in exactly one call and remains there, so the outputs differ. If $B_j$ is nonempty, an action mismatch requires every exact blocker to fail, giving the minimum in~\eqref{eq:action-bound}. If $B_j$ is empty, a union over spurious blockers gives the sum.
+\end{proof}
+
+The identity is deterministic. Probability enters only through the bounds on single comparisons, and the theorem uses no independence between comparisons. When quantization also changes the candidate order, the probability that the order changes is added to the bound, and the theorem applies on the event that the orders agree.
+
+\subsection{Edges and Paths}
+\label{sec:edges}
+
+Many applications need less than a whole list. For a single selected edge, it suffices that every action before it agrees.
+
+\begin{corollary}[Edge and path survival]
+\label{cor:path}
+Let $e$ be an exact output edge selected at scan position $j_e$. If every action at positions up to $j_e$ agrees, $e$ survives in the quantized output. For a fixed path $P$ made of such edges,
+\begin{equation}
+\Pp(\text{some edge of }P\text{ is lost})\le\sum_{e\in P}\sum_{j\le j_e}q_{e,j}.
+\end{equation}
+Here each edge uses its own exact-run prefixes, and repeated action events may be counted once. If the $N_P$ retained action bounds satisfy $q_{e,j}\le\exp(-\eta_{\min}^2/2)$, their sum is below one whenever $\eta_{\min}^2>2\log N_P$.
+\end{corollary}
+
+In the calls of Section~\ref{sec:exp-trace}, an edge prefix contains 21 to 25 actions on average. The blocker-aware plug-in sums exceed one for 89 to 92\% of edges and correlate with edge loss at 0.81, 0.69, and 0.73 on Cohere, MiniLM, and GIST. Appendix~\ref{app:trace} compares them with the all-comparisons sums.
+
+\begin{remark}[The largest risks predict failure]
+\label{rem:topr}
+\begingroup\emergencystretch=2em
+For the failure of a query's candidate set, the largest ranking-comparison risks carry most of the predictive value: ranking the 31 comparisons of a candidate set by individual risk and summing only the $r$ largest raises the correlation with observed failure as $r$ grows to 3 to 5 (Cohere two-bit from 0.471 to 0.480, MiniLM one-bit from 0.460 to 0.500; MiniLM rotated two-bit reaches 0.589), after which further terms add noise. The full sum is the upper bound, and the sum of the largest few terms is the better predictor.
+\par\endgroup
+\end{remark}
+
+% ============================================================
+\section{Where the Error Law Comes From}
+\label{sec:bridge}
+
+The close-call bound needs the probability of a large comparison error. For a deterministic code, this probability is a property of the data: it depends on how the code transforms the joint distribution of the embedding's coordinates. This section derives that error law for coordinate sign and two-bit codes under a Gaussian model of the embedding. It has two parts: the signal a code keeps, which sets the calibration slope (Sections~\ref{sec:stein}--\ref{sec:rotation}), and the error it adds, whose variance and tails enter the bound (Sections~\ref{sec:error-decomposition}--\ref{sec:routes}). The section also shows which checks of the model suffice to trust its error tails and which do not.
+
+\subsection{A Gaussian Model of Contrastive Embeddings}
+\label{sec:gaussian-model}
+
+Let $G\in\R^D$ be the encoder output before $L_2$ normalization.
+
+\begin{assumption}[Coordinate Gaussianity]
+\label{asm:H1}
+\begin{enumerate}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item[(a)] For every fixed set $I$ of $k$ coordinates, $d_{\mathrm{BL}}(\mathcal L(G_I),\mathcal L(Z_I))\le\varepsilon_D$ with $Z\sim\mathcal N(\mu,\Sigma)$.
+\item[(b)] $\E\bigl|\|G\|-r_D\bigr|/r_D\le\delta_D$ with $\delta_D\to0$.
+\end{enumerate}
+\end{assumption}
+
+Part (a) says that small groups of coordinates are jointly close to Gaussian in the bounded-Lipschitz distance $d_{\mathrm{BL}}$. Part (b), a \emph{thin shell}, says that the norm of $G$ varies little relative to its typical size $r_D$. \citet{betser2026infonce} prove that fixed-dimensional projections of InfoNCE-trained representations become Gaussian under stated alignment and concentration assumptions. Direct coordinate-wise QQ fits on archived Cohere, MiniLM, and Wolt vectors have mean $R^2$ between 0.9969 and 0.9993, against 0.9181 for GIST (Appendix~\ref{app:foundational}). Joint Gaussianity is stronger, and Section~\ref{sec:exp-eligibility} examines it separately. In the \emph{exact Gaussian model}, $G\sim\mathcal N(\mu,\Sigma)$, the following identities hold exactly.
+
+\subsection{How a Sign Code Inherits Coordinate Correlations}
+\label{sec:stein}
+
+The first quantity a code determines is how much of the exact score its own score retains. For a sign code and a linear score, Stein's lemma gives this covariance exactly. Let $G\sim\mathcal N(\mu,\Sigma)$, let $S_0=\sum_i\sign(G_i)$ be the sum of the sign bits, and let $T_0=\sum_jw_jG_j$ be a linear score with fixed weights $w_j$.
+
+\begin{theorem}[Stein covariance identity]
+\label{thm:stein}
+\begin{equation}
+\Cov(S_0,T_0)=\sum_{i,j}a_i\,\Sigma_{ij}\,w_j,\qquad a_i=\frac{2\varphi(\mu_i/\sigma_i)}{\sigma_i},
+\end{equation}
+where $\sigma_i^2=\Sigma_{ii}$ and $\varphi$ is the standard normal density.
+\end{theorem}
+
+\begin{proof}
+By bilinearity $\Cov(S_0,T_0)=\sum_{i,j}w_j\Cov(\sign(G_i),G_j)$. For jointly Gaussian $(G_i,G_j)$ the conditional mean is $\E[G_j\mid G_i]=\mu_j+(\Sigma_{ij}/\sigma_i^2)(G_i-\mu_i)$, whence
+\[
+\Cov(\sign(G_i),G_j)=\frac{\Sigma_{ij}}{\sigma_i^2}\cdot2\sigma_i\varphi(\mu_i/\sigma_i)=a_i\Sigma_{ij}.
+\]
+\end{proof}
+
+This identity is the Gaussian input--output cross-covariance relation of \citet{bussgang1952crosscorrelation}. Every covariance $\Sigma_{ij}$ enters, not only the variances. Individual coordinate correlations are small on our data, with mean $|\rho_{ij}|$ between 0.04 and 0.11, but there are $D(D-1)$ of them: with $|\rho_{ij}|\asymp\kappa/\sqrt D$, their squared sum $\sum_{i\ne j}\rho_{ij}^2\asymp\kappa^2D$ is of the same order as the diagonal. Measured by the energy $\mathcal I_{\mathrm{off}}=\sum_{i\ne j}(a_i\Sigma_{ij})^2$, the off-diagonal terms carry 31 to 38\% of the predicted signal. Table~\ref{tab:fidelity} tests the model on a quantity it predicts directly, the ranking fidelity of one-bit codes. With the full covariance, the model reproduces the measured fidelity on four datasets; with only the diagonal, it falls short by 0.21 to 0.35. Fidelity serves here as a test of the model, not as a measure of decision quality.
+
+\begin{table}[tbp]
+\centering
+
+
+\begin{tabular}{lcccc}
+\toprule
+Dataset & $F_{\mathrm{measured}}$ & $F_{\mathrm{full}}$ & $F_{\mathrm{diag}}$ & Gap explained \\
+\midrule
+Cohere & 0.681 & 0.688 & 0.474 & 103\% \\
+Arxiv & 0.897 & 0.886 & 0.546 & 97\% \\
+CodeSearch & 0.823 & 0.837 & 0.542 & 105\% \\
+Random & 0.907 & 0.899 & 0.560 & 98\% \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Spearman ranking fidelity $F$ of one-bit codes: measured, and predicted by the Gaussian model with the full covariance and with its diagonal only. Gap explained is $(F_{\mathrm{full}}-F_{\mathrm{diag}})/(F_{\mathrm{measured}}-F_{\mathrm{diag}})$.}
+\label{tab:fidelity}
+\end{table}
+
+\subsection{Why a Magnitude Bit Helps}
+\label{sec:magnitude}
+
+QuIVer's code adds a second, magnitude bit to each sign. In its fixed-amplitude form, coordinate $i$ of a vector $g$ is coded as $q_i(g)=\sign(g_i)(1+\mathbf 1\{|g_i|>\tau\})$, which takes the values $\pm1$ and $\pm2$. Whether the extra bit helps depends on what the score is meant to track. In the \emph{matched-scorer model}, $G$ and $H$ are independent with independent coordinates $G_i,H_i\sim\mathcal N(0,\sigma_i^2)$, the target is their inner product, and the scorers sum per-coordinate products of the codes:
+\begin{equation}
+T=\sum_iG_iH_i,\qquad S_1=\sum_i\sign(G_i)\sign(H_i),\qquad S_2=\sum_iq_i(G)q_i(H).
+\end{equation}
+Target and scorers thus weight the coordinates alike.
+
+\begin{proposition}[Magnitude-bit gain]
+\label{prop:magnitude}
+For every $D\ge1$, every $\sigma_i>0$, and every finite threshold $\tau>0$, the Pearson correlations satisfy $\rho(S_2,T)>\rho(S_1,T)$.
+\end{proposition}
+
+The closed forms and the proof are in Appendix~\ref{app:p5}. The match between scorer and target is what makes the inequality hold. When the target is a linear score that weights the coordinates differently from a fixed equally weighted scorer, the second bit can lower the correlation; in the eight-dimensional example of Appendix~\ref{app:p5} it lowers it by 0.163. A second bit gives the best possible readout more information, and a fixed readout gains when it weights the coordinates as the target does. With QuIVer's per-vector threshold, the mean absolute coordinate, in place of the fixed $\tau$, the two correlations converge to their fixed-threshold values as the number of independent equal-variance coordinates grows.
+
+On the contrastive embeddings we inspected, the second bit raises the rank correlation between quantized and exact distances by 0.071 to 0.132. On Cohere it also brings the probability of a comparison error beyond three error scales from 2.09 times the Gaussian value to 1.05 times, and it lowers the flip rate of nearest-vs-rest comparisons by about a third, from 8.89\% to 5.83\%.
+
+\subsection{Two Uses of Random Rotation}
+\label{sec:rotation}
+
+A random orthogonal rotation changes a representation's coordinate structure and nothing else, which makes it the cleanest intervention on a coordinate code. By L\'evy concentration and a union bound, a Haar-random rotation makes every coordinate variance, with high probability, equal to
+\[
+\frac{\tr(\Sigma)}{D}\pm O\!\left(\|\Sigma\|_{\mathrm{op}}\sqrt{\frac{\log D}{D}}\right).
+\]
+This one fact has opposite consequences for the two families of codes. A coordinate code such as QuIVer's exploits the differences between coordinates, in their variances and in how often each is positive, and rotation removes those differences; its effect on a coordinate code therefore depends on the representation. A randomized code such as RaBitQ relies on exactly the uniformity that rotation creates.
+
+The \emph{sign entropy} $H_{\mathrm{sign}}$ is the average, over coordinates, of the binary entropy of the probability that a coordinate is positive. It equals one when every coordinate is positive and negative equally often, and zero when every coordinate has a fixed sign. Across 12 datasets, the entropy gap $1-H_{\mathrm{sign}}$ predicts how much rotation changes the two-bit code's distance rank correlation with Spearman correlation 0.909, against 0.657 for the spread of the coordinate standard deviations, $\mathrm{CV}(\sigma)$; their product $(1-H_{\mathrm{sign}})\times\mathrm{CV}(\sigma)$ reaches 0.930. On GIST, where each coordinate almost always has the same sign ($H_{\mathrm{sign}}=0.0004$), rotation turns an unusable code into a usable one (Section~\ref{sec:exp-eligibility}). Rotation also changes how the two errors of a comparison are correlated, which the distance rank correlation does not see; on Cohere this change can outweigh the gain in distance accuracy (Section~\ref{sec:exp-rotation}).
+
+\subsection{Decomposing the Error}
+\label{sec:error-decomposition}
+
+The comparison error has a part the model predicts exactly and two parts that measure departure from it. The error depends on two per-vector quantities: the magnitude threshold that the two-bit code compares each coordinate with, and the norm by which cosine distance normalizes each vector. An idealized version replaces both by population values: the threshold by its mean over the data, and the norm by the typical norm $r_D$. For a fixed decision type, ranking or pruning, the comparison error then splits as
+\begin{equation}
+R=R^\circ+R_{\mathrm{thr}}+R_{\mathrm{norm}},
+\label{eq:population-decomposition}
+\end{equation}
+where $R^\circ$ is the \emph{idealized error}, $R_{\mathrm{thr}}$ the \emph{threshold error} from using each vector's own threshold, and $R_{\mathrm{norm}}$ the \emph{normalization error} from using each vector's own norm.
+
+For nodes drawn independently from the model, the idealized error has an exact variance formula. Write the comparison as a combination of node pairs with coefficients $A_p$; a ranking comparison, for example, has $A=+1$ on the pair $(q,y)$ and $A=-1$ on $(q,x)$. Let $d_u=\sum_{p\ni u}A_p$ be the net coefficient of node $u$. Then
+\begin{equation}
+\Var(R^\circ)=\kappa_1\sum_ud_u^2+\kappa_2\sum_pA_p^2,
+\label{eq:oracle-variance}
+\end{equation}
+where $\kappa_1$ and $\kappa_2$ are the variances of the first- and second-order Hoeffding components of the error of a single pair (Appendix~\ref{app:p5}). In a ranking comparison the query's net coefficient is zero, so its first-order contribution cancels; this is the cancellation of Section~\ref{sec:ranking} for independently drawn nodes, and selection by a search adds to it (Section~\ref{sec:exp-covariance}). The Efron--Stein replacement bound $V_{\mathrm{ES}}$ on this variance satisfies $\Var(R^\circ)\le V_{\mathrm{ES}}\le2\Var(R^\circ)$, with equality at two when the first-order component vanishes.
+
+The threshold and normalization errors are measurable, and their size shows whether the model describes an embedding. The threshold error accounts for 1.3 to 4.7\% of the error variance on Cohere and MiniLM, for essentially all of it on unrotated GIST, and for 2.3\% on GIST after rotation.
+
+\subsection{A Rare-Spike Tail Obstruction}
+\label{sec:counterexample}
+
+The population-radius error $R^\circ$ of Equation~\eqref{eq:population-decomposition} admits an explicit rare-spike construction. It has nearly Gaussian low-dimensional marginals, concentrated norms, and isotropic covariance, while its idealized comparison error has a large fourth cumulant.
+
+\begin{theorem}[Tail obstruction for the population-radius error]
+\label{thm:counterexample}
+There is a sequence of distributions $G_D$ such that the standardized marginals of every fixed set of $k$ coordinates converge to Gaussian in total variation at rate $O_k(D^{-1})$, the relative mean-square deviation of the norm is $O(D^{-1})$, and the covariance is isotropic. With population magnitude threshold $\tau_D=\E|G_{D1}|$, the expected fraction of coordinates satisfying $\bigl||G_{Di}|-\tau_D\bigr|\le D^{-1/4}$ is $O(D^{-1/4})$. The idealized ranking error $R_D^\circ$ with this fixed threshold and population radius satisfies
+\begin{equation}
+V_D=\Var(R_D^\circ)=\Theta(D^{-1}),\qquad \kappa_4(R_D^\circ)=\Omega(D^2).
+\end{equation}
+Consequently, a Bernstein-type cumulant condition, or a two-sided sub-gamma bound with variance proxy $v_D=O(V_D)$, requires a scale parameter with $b_D/\sqrt{V_D}=\Omega(D^2)$.
+\end{theorem}
+
+\begin{proof}[Construction]
+Take $G_D=(1-J_D)Z_D+J_DD^{3/2}S_D$ with $J_D\sim\mathrm{Bernoulli}(D^{-4})$, $Z_D\sim\mathcal N(0,I_D)$, and $S_D$ a vector of independent random signs. The event that two of the three nodes of a ranking comparison are spikes and the third is not has probability $\Theta(D^{-8})$, and on this event the bilinear part of the error contributes $\Theta(D^2)$ to the fourth moment. The bounded-code part has fourth moment $O(D^{-2})$ and cannot cancel this contribution, while the total variance stays $\Theta(D^{-1})$. Appendix~\ref{app:p8} verifies the stated properties and derives the cumulant and moment-generating-function consequences.
+\end{proof}
+
+A sub-gamma bound at variance scale $1/D$ therefore needs a scale parameter $D^2$ times the standard deviation. This error uses the common population radius $r_D$. Per-vector cosine normalization removes the spike amplitude and enters the separate term $R_{\mathrm{norm}}$ in Equation~\eqref{eq:population-decomposition}. Tail control for $R^\circ$ can instead bound coordinate influence, conditional error increments, or the range after rare events are clipped.
+
+\subsection{Three Routes to Light Tails}
+\label{sec:routes}
+
+The last two controls lead to two analytical routes; the third route measures the tail directly.
+\begin{enumerate}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item \textbf{Conditional tail route.} Reveal the three nodes of a comparison one at a time. If the three resulting martingale increments of $R^\circ$ satisfy sub-gamma bounds with parameters $(v_j,b_j)$ conditionally on the earlier nodes, almost surely, then
+\begin{equation}
+\Pp(|R^\circ-\E R^\circ|\ge z)\le2\exp\!\left[-\frac{z^2}{2(v_\star+b_\star z)}\right],\qquad v_\star=\sum_jv_j,\ b_\star=\max_jb_j.
+\label{eq:conditional-mgf-tail}
+\end{equation}
+\item \textbf{Clipping route.} If a clipped error $R_L$ equals $R^\circ$ outside an event of probability $\varepsilon_L$, has bias $|\E R^\circ-\E R_L|\le d_L$, and is sub-gamma with parameters $(v_L,b_L)$, then
+\begin{equation}
+\Pp(|R^\circ-\E R^\circ|\ge z+d_L)\le2\exp\!\left[-\frac{z^2}{2(v_L+b_Lz)}\right]+\varepsilon_L.
+\end{equation}
+\item \textbf{Held-out route.} Section~\ref{sec:heldout} bounds the failure rate directly from independent data, with no tail model.
+\end{enumerate}
+Section~\ref{sec:exp-eligibility} measures the parameters of the first two routes on real embeddings.
+
+% ============================================================
+\section{Measuring Risk Without a Model}
+\label{sec:heldout}
+
+When no model describes the comparison error, because the coordinates are far from Gaussian, the error tails are heavy, or the calibration slope is near zero, independent held-out data still bound the failure rate of the decisions a code accepts. Two ideas make this possible. Decisions come in \emph{blocks}, each consisting of one query or target with its candidate set, and independent blocks allow arbitrary dependence among the decisions inside a block. And a certificate covers only the decisions that an acceptance rule, fixed in advance, accepts, so a code can be certified on the decisions it handles reliably.
+
+\subsection{When to Trust a Calibrated Error}
+\label{sec:applicability}
+
+The close-call bound holds for every positive signal scale. For empirical use of the analytical error models, we apply a prespecified \emph{heuristic diagnostic screen}. It requires a positive fitted slope, a score rank correlation of at least 0.10, an absolute error--margin rank correlation of at most 0.50, and left-tail probabilities at most twice the Gaussian values at 1 to 2.5 error scales. These checks summarize measured fit and tails. The analytical inequalities retain their stated moment-generating-function assumptions. The covariance study checks all four criteria. Appendix~\ref{app:ranking} reports the first three because its local-decision protocol does not estimate the tail diagnostic. Across 27 nearby choices of the three numerical cutoffs, unrotated GIST fails every screen and MiniLM passes every screen, while some Cohere and rotated-GIST outcomes depend on the tail cutoff (Appendix~\ref{app:eligibility}). Held-out certificates apply to every code.
+
+\subsection{Certificates for Accepted Decisions}
+\label{sec:certificates}
+
+\begin{theorem}[Held-out certificate for accepted decisions]
+\label{thm:heldout}
+Fit all calibration constants, acceptance rules, thresholds, and tie rules on an independent fitting split, and condition on them. Let $Z_1,\ldots,Z_n$ be i.i.d.\ blocks. For an acceptance rule $s$ and a threshold $\tau$, let $C_{i,s}$ be the fraction of decisions in block $i$ that $s$ accepts, $U_{i,s,\tau}$ the fraction that are accepted and are either close calls ($\Gamma\le\tau$, including exact ties) or large errors ($|R|\ge c_Q\tau$), and $F_{i,s}$ the fraction that are accepted and flip, so that
+\begin{equation}
+0\le F_{i,s}\le U_{i,s,\tau}\le C_{i,s}\le1.
+\end{equation}
+For a prespecified grid $\mathcal G$ of pairs $(s,\tau)$, set $\epsilon_n=\sqrt{\log(|\mathcal G|/\delta)/(2n)}$. With probability at least $1-\delta$, simultaneously for every pair with $\widehat C_s>0$,
+\begin{equation}
+p_s:=\frac{\E F_{i,s}}{\E C_{i,s}}
+\;\le\;
+q_{s,\tau}:=\frac{\E U_{i,s,\tau}}{\E C_{i,s}}
+\;\le\;
+\min\!\left\{1,\frac{\widehat U_{s,\tau}+\epsilon_n}{\widehat C_s}\right\},
+\label{eq:certificate}
+\end{equation}
+where hats denote averages over the $n$ blocks. The ratios are defined when $\E C_{i,s}>0$, and a rule that accepts no held-out decision yields no certificate.
+\end{theorem}
+
+\begin{proof}
+Fix a grid pair and write $q=q_{s,\tau}$. Since $0\le U_i\le C_i\le1$, the variable $W_i=U_i-qC_i$ has mean zero and lies in $[-q,1-q]$, an interval of length one. One-sided Hoeffding gives $\widehat U-q\widehat C\ge-\epsilon_n$ except with probability $\delta/|\mathcal G|$; a union bound over the grid and division by $\widehat C>0$ complete the proof. Decisions inside a block may depend on each other arbitrarily.
+\end{proof}
+
+\begin{corollary}[Failure certificate]
+\label{cor:direct-failure}
+Replacing $U_{i,s,\tau}$ by $F_{i,s}$ and paying only for the family $\mathcal S$ of acceptance rules gives, simultaneously over $s\in\mathcal S$,
+\begin{equation}
+p_s\le\min\!\left\{1,\frac{\widehat F_s+\sqrt{\log(|\mathcal S|/\delta)/(2n)}}{\widehat C_s}\right\}.
+\end{equation}
+\end{corollary}
+
+The quantity $p_s$ is the failure rate among accepted decisions when a block is drawn at random and then a decision at random within it; pooling all decisions instead would give larger blocks more weight. Both results bound $p_s$. The \emph{mechanism certificate} of Theorem~\ref{thm:heldout} goes through the close-call-or-large-error event, so it keeps the mechanism of Theorem~\ref{thm:main} visible. The \emph{failure certificate} of Corollary~\ref{cor:direct-failure} bounds observed flips directly and is tighter, especially when the rule accepts many decisions. Appendix~\ref{app:p6-selective} gives two further variants: one that bounds the numerator and the denominator separately, which is looser, and a variance-adaptive empirical-Bernstein version.
+
+Section~\ref{sec:exp-certificates} evaluates acceptance rules based on exact MNR and on quantized margins. Each rule is fixed on the fitting split. Exact margins support an offline workload audit, while quantized-margin rules use observable scores. Each certificate describes its block distribution.
+
+\noindent\emph{Protocol.}\quad
+The sample-size study of Section~\ref{sec:exp-certificates} fits on an independent split, certifies on the first 128, 256, 512, and 1{,}024 of a sequence of i.i.d.\ blocks, and validates on 1{,}024 further blocks. Each block independently samples one query or target and 32 distinct candidates from its fixed pool. Vectors may recur across blocks. Every method and sample size is fixed in advance, so each reported certificate carries its own $1-\delta$ guarantee. Appendix~\ref{app:heldout} reports a separate five-pool protocol with its own fit and seeds.
+
+% ============================================================
+\section{Other Quantizers}
+\label{sec:instantiations}
+
+The close-call bound and the first-divergence theorem apply to any code; what changes from one code to another is the mechanism behind the comparison error. Table~\ref{tab:cross-quantizer} places six reference codes on this common interface.
+
+\emph{Coordinate codes} are the family analysed in Section~\ref{sec:bridge}; the Stein identity, the magnitude-bit result, the effect of rotation, and the conditional tail route are specific to it. \emph{RaBitQ}~\citep{gao2023rabitq} is a randomized ratio estimator with an error radius for each rotation. For a fixed query $q$ and data directions $x$ and $y$ that share one random rotation,
+\begin{equation}
+\Pp\{|\varepsilon_R(x,q)-\varepsilon_R(y,q)|>\rho_x+\rho_y\}\le4\exp(-c_0\epsilon_0^2),
+\end{equation}
+where $\rho_x$ and $\rho_y$ are the random radii and $c_0,\epsilon_0$ are constants of the estimator. Because the two distances share the rotation, ranking and pruning bounds go through this joint event and the triangle inequality rather than through independence. A pruning rule stated in Euclidean distance becomes an $\alpha^2$ rule on squared distances, with a different radial factor for each of the two distances (Appendix~\ref{app:p7}). \emph{Lucene BBQ}~\citep{trent2024bbq} stores one-bit vectors and scores them against int4 query-side vectors. During HNSW construction it keeps temporary int4 query-side vectors, scores candidates against the stored one-bit vectors, and uses the int4 vectors for diversity and reverse-link scoring, so each scoring direction $A\to B$ needs its own affine calibration $\widehat d_{A\to B}=b_{A\to B}+a_{A\to B}\,d+\xi_{A\to B}$. \emph{Product quantization}~\citep{jegou2011product,ge2014optimized} decomposes the error over codebook blocks, which enter through bounded-block concentration or held-out tails; the coordinate-sign Stein identity does not apply to it.
+
+The RaBitQ reference uses a seeded signed-DCT orthogonal transform without scalar quantization of the query; the BBQ-like reference uses centroid-centred one-bit codes and int4 queries and leaves out Lucene's metric-specific corrections; the product quantizer uses 16 subspaces with 16 centroids each.
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\begin{tabular}{lrrrrr}
+\toprule
+& & \multicolumn{2}{c}{Ranking flips} & \multicolumn{2}{c}{Pruning flips} \\
+Code & Distance corr. & all & hard & all & hard \\
+\midrule
+Sign (1-bit) & .373 & 35.9\% & 47.1\% & 20.1\% & 36.5\% \\
+Shared 2-bit & .789 & 18.5\% & 41.5\% & 12.8\% & 33.9\% \\
+RaBitQ reference & .939 & 11.8\% & 37.2\% & 6.5\% & 27.1\% \\
+BBQ-like & .923 & 12.8\% & 37.3\% & 9.0\% & 30.7\% \\
+Scalar int4 & .997 & 2.1\% & 10.1\% & 1.2\% & 5.8\% \\
+PQ (16 blocks $\times$ 4 bits) & .801 & 22.4\% & 43.3\% & 11.0\% & 33.1\% \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Six codes on the common interface, averaged over Cohere, MiniLM, SIFT, and GIST with 60{,}000 held-out ranking and 60{,}000 pruning comparisons per dataset. ``Distance corr.'' is the correlation between quantized and exact distances; ``hard'' restricts to the 20\% of comparisons with the smallest exact margins. All calibration slopes are positive. The product quantizer stores 64 index bits per vector.}
+\label{tab:cross-quantizer}
+\end{table}
+
+Scalar int4 has the best distance-level metrics of these codes, with distance correlation 0.997 and 2.1\% ranking flips, yet it still flips 10.1\% of the ranking comparisons in the hardest fifth. More bits shrink the error; the margins of the hardest comparisons stay as small as before.
+
+% ============================================================
+\section{Experiments}
+\label{sec:experiments}
+
+The data span contrastive text embeddings (Cohere, MiniLM, BGE-M3, Jina, MSMARCO), learned vision embeddings (Wolt-CLIP, Landmark-DINO), word embeddings and visual descriptors (GloVe, SIFT, GIST), and synthetic controls. Decision and graph experiments use $L_2$-normalized vectors with the stated disjoint splits or independent block streams. Representation diagnostics state input scales separately. Table~\ref{tab:protocols} and Appendix~\ref{app:experiments} give the protocols and evidence.
+
+
+
+\begin{table}[tbp]
+\centering
+
+
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{L{2.6cm}L{3.3cm}L{4.3cm}L{3.6cm}}
+\toprule
+Experiment & Data and codes & Decisions & Splits \\
+\midrule
+E1 margin bins & Cohere, MiniLM, GIST; 1- and 2-bit & nearest-vs-rest on 32-neighbour sets & 80 calibration, 160 held-out queries \\
+E1 predictor & 12 datasets, 2-bit rotation pairs; four datasets, six codes & shared 48-neighbour pools; pruning $\Delta=24$ & disjoint calibration / validation / stress; six-code fit/cal/eval 1{,}200/800/2{,}000 \\
+E2 correlated errors & Cohere, MiniLM, GIST & nearest-vs-rest and four selection regimes & 4{,}000 or 6{,}000 vectors; 80 or 160 query blocks \\
+E3 first divergence & Cohere, MiniLM, GIST; 2-bit with and without rotation & RobustPrune, 64 candidates, $\alpha=1.2$, $\Delta=32$ & 80 calibration, 160 evaluation targets \\
+E4 certificates & 12 datasets; 2-bit with and without rotation & 32-candidate blocks & certification prefixes 128--1{,}024; 1{,}024 validation blocks \\
+E5 rotation & Cohere & E1 and E2 protocols & as in E1 and E2 \\
+E6 Gaussian model & three to eight datasets per check & ranking and pruning comparisons & disjoint fit, reference, calibration, validation pools \\
+E7 necessity & synthetic scores & 500{,}000 comparisons & --- \\
+E8 graph search & Cohere and Wolt, 200K each & 2 orders $\times$ 2 axes $\times$ 3 widths $\times$ 4 scorers & 128 fitting, 616 evaluation queries \\
+\S\ref{sec:instantiations} & Cohere, MiniLM, SIFT, GIST; six codes & 60{,}000 ranking and 60{,}000 pruning & 1{,}200 fit, 2{,}000 held-out vectors \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Experimental protocols. Fitting and evaluation follow the stated split or independent-block sampling protocol.}
+\label{tab:protocols}
+\end{table}
+
+\subsection{Margins and Flip Rates (E1)}
+\label{sec:exp-margins}
+
+On Cohere two-bit codes, the flip rate falls steadily with the margin-to-noise ratio over more than two orders of magnitude, and no comparison with a ratio above 5 flipped (Figure~\ref{fig:margin-bins}). On Cohere and MiniLM two-bit codes, two thirds to three quarters of comparisons have a ratio of at least 2, and 7 to 9\% fall below 1. On GIST, which fails the applicability check, the flip rate stays between 28\% and 64\% at every ratio (Appendix~\ref{app:ranking}), so no cutoff separates safe comparisons from unsafe ones.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig03-margin-flips.png}
+\small
+\caption{Flip rate by MNR for nearest-vs-rest comparisons, with unrotated two-bit codes and $4{,}960$ held-out comparisons per data set. Points pool counts within the six intervals. The right panel enlarges Cohere and MiniLM at large margins. Table~\ref{tab:app-margin-bins} gives the original nine-bin counts.}
+\label{fig:margin-bins}
+\end{figure}
+
+E1 fits $\widehat d=b+a d_{\mathrm{raw}}$ on the 48 calibration target--candidate blocks and sets $c_Q=1$. For signed comparisons $\Psi$ and residuals $R=\widehat\Psi-\Psi$, the original score is
+\begin{equation}
+\widehat r_2=\min\!\left\{1,\min_{\tau\in\mathcal T}
+\left[\widehat\Pp_{\mathrm{fit}}(\Gamma\le\tau)
++\widehat\Pp_{\mathrm{fit}}(|R|\ge\tau)\right]\right\},
+\label{eq:empirical-risk}
+\end{equation}
+where $\mathcal T$ contains nine fitting-margin quantiles. Replacing $|R|$ by $R_{\mathrm{opp}}$ defines $\widehat r_{\mathrm{opp}}$. Both use empirical frequencies and fitting data only. Appendix~\ref{app:calibration-direction} specifies the grid, orientations, and positive comparison-fitting control. Across 24 configurations, $\widehat r_2$ correlates with held-out flips at 0.970 for ranking and 0.992 for pruning (Figure~\ref{fig:predictor-scatter}). Distance rank correlation gives 0.739 / 0.053 and distance MSE 0.184 / 0.447. The scores exceed observed flips by 24--25 percentage points on average. Excluding the nonpositive-slope configuration gives 0.966 / 0.991. Dataset-cluster leave-one-out ranges are 0.961--0.981 / 0.990--0.994, and cluster-bootstrap 95\% intervals are $[0.850,0.992]$ / $[0.955,1.000]$.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig04-predictor-scatter.png}
+\small
+\caption{Held-out flip rates against two calibration-only predictors for 24 dataset--code configurations per decision type. Colours distinguish the close-call risk score and distance fidelity, shown as $1-\rho_{\mathrm{distance}}$ so that both increase with predicted risk. Shapes identify code variants. Annotations give each predictor's Spearman correlation with held-out flip rates.}
+\label{fig:predictor-scatter}
+\end{figure}
+
+\begin{table}[tbp]
+\centering
+\small
+\begin{tabular}{lrrrr}
+\toprule
+& \multicolumn{2}{c}{Across 24 configurations} & \multicolumn{2}{c}{Within-dataset agreement} \\
+Ordering statistic & Ranking $\rho$ & Pruning $\rho$ & Ranking & Pruning \\
+\midrule
+Close-call risk score & .970 & .992 & 9/12 & 11/11 \\
+Margin quantile, $-q_{.2}$ & .659 & .928 & tied & tied \\
+Error scale, $v$ & $-.097$ & $-.177$ & 8/12 & 10/11 \\
+Margin-to-noise summary, $-q_{.2}/v$ & .912 & .991 & 8/12 & 10/11 \\
+Distance fidelity, $1-\rho_{\mathrm{distance}}$ & .739 & .053 & 7/12 & 9/11 \\
+\bottomrule
+\end{tabular}
+\caption{Calibration-only ordering statistics and held-out flip rates. The first two columns correlate 24 configurations. The last two count agreement with the original-to-rotated change within each dataset, excluding one tied sphere-pruning pair. Here $q_{.2}$ is the 20th percentile of exact margins and $v$ the error scale. The margin quantile is identical for the two codes.}
+\label{tab:predictor-controls}
+\end{table}
+
+Table~\ref{tab:predictor-controls} separates the two ingredients. The margin quantile alone predicts moderately, the error scale alone does not predict, and their ratio, a margin-to-noise summary, captures most of the predictive association. The paired cluster intervals for full score minus MNR are $[-0.075,0.318]$ for ranking and $[-0.020,0.056]$ for pruning. Estimating the two terms on separate pools and predicting the hardest fifth of decisions gives 0.955 for ranking and 0.983 for pruning; there the large-error term alone gives 0.953 for ranking and the close-call term alone 0.969 for pruning, so the two terms carry the prediction for different decision types (Appendix~\ref{app:predictor}).
+
+\noindent\emph{Within-dataset code choice.}\quad
+A shared-pool test compares the six families of Section~\ref{sec:instantiations} on Cohere, MiniLM, SIFT, and GIST, with 1{,}200 code-fitting, 800 calibration, and 2{,}000 evaluation vectors per dataset. Codes share exact 48-neighbour pools. On Cohere ranking, the comparison-fitted opposing score gives $\rho=1.000$, against $.314$ for MNR, $.714$ for global distance fidelity, $.143$ for same-pool fidelity, and $.886$ for same-pool distance MSE. On MiniLM, local fidelity gives $1.000$ and the comparison score $.943$. The opposing comparison score gives $.943$ for pruning on all four datasets. Table~\ref{tab:app-six-code-choice} reports every fixed variant, separating within-embedding code choice from cross-dataset association.
+
+\subsection{Where Correlated Errors Come from (E2)}
+\label{sec:exp-covariance}
+
+On Cohere and GIST, Table~\ref{tab:covariance} reports error correlations well above the cap of $1/2$ that holds for i.i.d.\ endpoints and a fixed symmetric kernel. To locate the source, we keep one distance-fitted calibration fixed and vary only how comparisons are generated (Table~\ref{tab:selection-covariance}).
+
+\begin{table}[tbp]
+\centering
+
+
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrrr}
+\toprule
+Dataset & Code & Independent & Random cand. & Top-256 & Top-32 / nearest-vs-rest \\
+\midrule
+Cohere & 1-bit & .361 & .312 & .524 & .525 / .544 \\
+Cohere & 2-bit & .391 & .346 & .571 & .599 / .613 \\
+Cohere & rotated 2-bit & .259 & .212 & .324 & .340 / .364 \\
+MiniLM & 2-bit & .010 & .020 & .067 & .111 / .118 \\
+GIST & 1-bit & .386 & .370 & .925 & .934 / .870 \\
+GIST & 2-bit & .405 & .422 & .576 & .640 / .616 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{Correlation between the two distance errors of a ranking comparison under different ways of generating comparisons, with one fixed distance-fitted calibration.}
+\label{tab:selection-covariance}
+\end{table}
+
+Sampling endpoints with or without repetition changes the correlation by at most 0.003, while moving from random candidates to the top 32 raises it by a factor of 1.6 to 1.7 on Cohere and up to 2.5 on GIST, and from 0.02 to 0.11 on MiniLM. The covariance splits exactly into a part within queries and a part between queries (Appendix~\ref{app:within-between}), and the split holds to floating-point precision in every regime. For nearest-vs-rest comparisons, the nearest neighbour's error is constant within a query, so the covariance comes entirely from differences between queries: quantization shifts the distances of different queries by different amounts, and each shift cancels within that query's comparisons.
+
+The size of the effect depends on the calibration. On the sample of Table~\ref{tab:covariance}, replacing the comparison-fitted calibration by the distance-fitted one lowers the correlation from 0.870 to 0.584 and the cancellation factor from 7.42 to 2.36, and the larger sample of Table~\ref{tab:selection-covariance} gives 0.613 and 2.59, so the cancellation is present under both calibrations (Appendix~\ref{app:covariance}).
+
+\subsection{First Divergence in Practice (E3)}
+\label{sec:exp-trace}
+
+All 960 sampled selection calls (three datasets, two codes, 160 targets each) satisfy Theorem~\ref{thm:trace} exactly: the quantized output differs from the exact one when some action differs, and only then. Table~\ref{tab:trace} shows what this means for output agreement.
+
+\begin{table}[tbp]
+\centering
+
+
+\begin{tabular}{lccc}
+\toprule
+Dataset & Pruning flip rate & Jaccard, fixed order & Jaccard, re-sorted \\
+\midrule
+Cohere-768 & 13.06\% & 0.322 & 0.395 \\
+MiniLM-384 & 1.92\% & 0.654 & 0.529 \\
+GIST-960 & 7.91\% & 0.458 & 0.260 \\
+\bottomrule
+\end{tabular}
+
+\small
+\caption{RobustPrune without backfill on exact candidate pools: two-bit codes, $\alpha=1.2$, $\Delta=32$, scale-only calibration. ``Fixed order'' reuses the exact candidate order; ``re-sorted'' also orders candidates by quantized distance.}
+\label{tab:trace}
+\end{table}
+
+Output lists differ far more often than single comparisons flip: some action differs in 99.4 to 100\% of calls, although only 1.9 to 13.1\% of pruning comparisons flip. An action is an OR over the whole selected list, and once a candidate is appended in only one of the two calls, the outputs stay different. With the scale-only calibration, every flipped pruning comparison is a missed prune, and rescaling by a positive constant leaves every action unchanged. Adding the intercept of an independently fitted distance calibration, with everything else fixed, produces spurious prunes alongside missed prunes in all six dataset--code configurations and changes the pruning flip rate from 13.06\% to 8.82\% on Cohere, from 1.92\% to 1.11\% on MiniLM, and from 7.91\% to 8.69\% on GIST, so how calibration changes pruning depends on the representation (Appendix~\ref{app:trace}).
+
+Adding backfill after standard RobustPrune on the 64-candidate pools ($\Delta=32$) fills 34.1\% of final edges on Cohere, none on MiniLM, and 28.8\% on GIST. The paired replay shares the exact candidate order during selection and backfill, so the plain-call bound also bounds backfilled differences. Re-sorted backfill additionally incurs the order-change term of Appendix~\ref{app:p4}.
+
+\subsection{Held-Out Certificates (E4)}
+\label{sec:exp-certificates}
+
+Across 24 configurations per decision type, certificates from 512 blocks average 16.74\% / 18.65\% for the mechanism route and 9.07\% / 10.45\% for the direct failure route (ranking / pruning). At 1{,}024 blocks they fall to 12.74\% / 14.65\% and 6.75\% / 7.99\%. Every rate on 1{,}024 independent validation blocks lies below its certificate. Appendix~\ref{app:heldout} reports acceptance rates and the full sample-size comparison.
+
+
+
+The direct certificate bounds flips, while the mechanism certificate bounds the close-call-or-large-error event. Each selects its own acceptance rule. Fixing an MNR cutoff on fitting data to retain the highest-margin fifth keeps 19.9\% / 20.9\% of ranking / pruning validation decisions and lowers flips from 8.58\% / 3.84\% to 5.27\% / 0.12\%.
+
+For score-observable acceptance, six configurations use Cohere, MiniLM, and GIST two-bit codes on original and rotated axes. Each fixed 4{,}000-vector empirical pool supplies independently redrawn blocks with 32 distinct candidates. Separate random streams generate 128 fitting, 512 certification, and 512 validation blocks. The rule accepts when $|\widehat\Psi_Q|$ exceeds a cutoff. Five retention cutoffs and seven error thresholds are frozen on fitting blocks. Table~\ref{tab:observable-certificate} compares exact- and quantized-margin rules, each selected with a finite-family certificate at $\delta=0.05$. All validation rates lie below their certificates.
+
+\begin{table}[!htbp]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llrrr}
+\toprule
+Acceptance & Certificate & Value & Acceptance rate & Failure rate \\
+\midrule
+Exact margin & failure & 9.92\% / 12.51\% & 86.86\% / 72.87\% & 2.14\% / 3.05\% \\
+Exact margin & mechanism & 20.52\% / 23.91\% & 65.46\% / 59.54\% & 0.70\% / 1.49\% \\
+Quantized margin & failure & 9.50\% / 12.43\% & 83.53\% / 72.26\% & 1.28\% / 2.82\% \\
+Quantized margin & mechanism & 25.30\% / 33.03\% & 58.91\% / 49.30\% & 0.22\% / 1.91\% \\
+\bottomrule
+\end{tabular}
+\caption{Exact- and quantized-margin acceptance, averaged over six dataset--code configurations. Entries are ranking / pruning. The selected rule is evaluated on 512 independent validation blocks from the fixed empirical pool.}
+\label{tab:observable-certificate}
+\end{table}
+
+\subsection{Resolving the Rotation Paradox (E5)}
+\label{sec:exp-rotation}
+
+A random rotation preserves every exact distance, so it leaves the decisions of our protocols and their exact margins unchanged, and with them the close-call term of Theorem~\ref{thm:main}. Any change in flip rates must therefore come from the comparison error, and Figure~\ref{fig:rotation} follows it for Cohere's codes.
+
+For nearest-vs-rest comparisons on the same 160 held-out queries, distance rank correlation improves from 0.747 to 0.907 (panel a), while two-bit flips rise from 5.83\% to 8.81\%. These changes are invariant to positive calibration slopes. The residual variance decomposition depends on the fitted map. On the original 80-query fitting set, comparison-fitted calibration gives a 23\% rise in comparison-error variance. On the held-out set, that rise is 2\%, and distance-fitted calibration gives a 60\% decrease (panel b). The held-out standardized residual bias $\mu_R/v$ in exact-distance units ($c_Q=1$) changes from $-0.29$ to $-0.52$ under comparison fitting and from $+0.66$ to $-0.32$ under distance fitting. The comparison error relative to the signed margin governs the flip event, and its variance alone does not specify that event. Appendix~\ref{app:covariance} reports the full calibration cross, including signal scales, biases, and effective noise.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\textwidth]{figures/fig05-rotation-paradox.png}
+\small
+\caption{The rotation paradox on Cohere. Panels (a), (b), and the first two rows of (c) use the same 160 held-out queries and nearest-vs-rest sets. (a) Distance rank correlation for two-bit codes. (b) Comparison-error variance in exact-distance units under comparison-fitted and distance-fitted calibration. (c) Calibration-invariant held-out ranking flips, followed by two-bit ranking and pruning flips from the separate 48-candidate-block protocol of Section~\ref{sec:exp-margins}.}
+\label{fig:rotation}
+\end{figure}
+
+The 48-candidate blocks show the same mechanism with different outcomes. There rotation raises the distance rank correlation of the calibration pairs from 0.576 to 0.926, and the scale of the comparison error falls by about a fifth for both ranking and pruning. For pruning, the bias of the comparison error also nearly vanishes, the held-out large-error probability at the threshold fixed on calibration data falls from 20.3\% to 6.6\%, and the flip rate falls from 10.25\% to 6.93\%. For ranking, the comparison error acquires a bias of two thirds of its new scale, the large-error probability stays at 13.2 to 13.3\%, and the flip rate stays at 4.4 to 4.5\%. In all three decision sets, the joint comparison error and margin explain the flip event. The close-call risk score of Section~\ref{sec:exp-margins}, which is built from comparison errors, orders the rotated and unrotated codes of a dataset in the same way as their held-out flip rates on 9 of 12 datasets for ranking and on all 11 datasets without tied flip rates for pruning (Table~\ref{tab:predictor-controls}).
+
+\subsection{When the Gaussian Model Applies (E6)}
+\label{sec:exp-eligibility}
+
+The directly recomputed coordinate-wise QQ fits separate the archived learned representations from GIST. Joint checks examine an additional property. Testing 24 random subsets of 8 coordinates per dataset with a Kolmogorov--Smirnov test on the Mahalanobis radius at the 1\% level, BGE-M3 and GloVe reject none, Landmark-DINO rejects 8\%, MiniLM 13\%, Cohere 29\%, and Wolt-CLIP 58\%, while SIFT and GIST reject every subset.
+
+Where the model applies, its predictions are accurate. The variance formula~\eqref{eq:oracle-variance} reproduces the measured ranking and pruning error variances within 4.6\% across twelve configurations, with a median error of 1.2\%. Over 28 configurations, the Efron--Stein bound exceeds the measured variance by a median factor of 1.67 (range 1.21 to 2.04), consistent with the factor of at most two, whereas a componentwise Cauchy--Schwarz bound exceeds it by a median factor of 40.8. The difference comes from the two components of the error, the bounded-code part and the bilinear part: their covariance is negative in all 28 configurations, with a median cancellation ratio of 0.947.
+
+GIST shows the checks diagnosing a failure and its repair. Unrotated one-bit GIST has a calibration slope near zero, no correlation between quantized and exact margins, error kurtosis 26, a left tail 7.7 times the Gaussian value, and a threshold error equal to the whole error variance; the two-bit left tail is 7.8 times the Gaussian value. These diagnostics require no search run. After a random rotation, the margin correlation rises to 0.510 and 0.669 for one- and two-bit codes, the kurtosis falls to 3.5 and 2.8, the left tail to 1.88 and 0.76 times the Gaussian value, and the threshold error to 2.3\% of the variance. The flip rates fall from 100\% to 14.80\% for one-bit codes and from 35.83\% to 9.33\% for two-bit codes (Table~\ref{tab:covariance}).
+
+The parameters of the two analytical tail routes can also be measured (Appendix~\ref{app:eligibility}). Across 24 configurations (six datasets, two codes, two decision types), the scale parameter $b_\star$ of the conditional tail route lies between 0.133 and 0.324 error standard deviations, clipping 1\% of the probability mass lowers its median from 0.158 to 0.147, every configuration admits a clipping bound below one, and no held-out tail exceeded its bound.
+
+\subsection{Why Both Terms Are Needed (E7)}
+\label{sec:exp-necessity}
+
+Two constructions show that neither term of the close-call bound can be dropped. At an exact margin of zero, errors of arbitrarily small size select opposite actions, so the close-call term is necessary. Conversely, two perturbations of the same exact scores, one with light Gaussian tails and one concentrated near the decision boundary, have identical rank correlations with the exact scores (0.9860281863), yet they flip 5.09\% against 10.00\% of all decisions and 23.91\% against 50.00\% of the hardest fifth. Mean squared error orders them the wrong way, 0.0251 for the light-tailed perturbation and 0.0170 for the boundary-concentrated one, so choosing by either distance-level summary picks the code with twice the failure rate. The margin-to-noise ratio separates the two at once.
+
+\subsection{Graph Construction and Search with QuIVer (E8)}
+\label{sec:exp-graph}
+
+Eight QuIVer graphs pair 200{,}000-vector Cohere and Wolt collections, insertion orders A/B (seeds 20261110/20261111), and original/signed-DCT-rotated axes. The builder uses $m=32$, 64 layer-zero neighbours, construction width 128, $\alpha=1.2$, and four threads. The first 128 queries fit diagnostics and the remaining 616 evaluate quality. Widths 64/128/256 and FP32 budget 64 are prespecified (Table~\ref{tab:actual-graph}). One Xeon Platinum 8352V CPU times five warmed-up complete native rounds. Every timed label matches the instrumented run.
+
+Native expansion uses the frozen path's cheap two-bit Hamming score, followed by full sign--magnitude (SM) candidate selection and FP32 reranking. Same-graph controls use full SM, FP32, or the other axis's full SM for navigation and candidate selection. These builds have one layer. All scorers share its entry and FP32 budget.
+
+
+
+At width 128, Cohere native recall falls from 95.69\% to 88.70\% under rotation, with work falling from 3{,}920 to 3{,}189 scored nodes. Full SM on the original graph gives 95.34\%, and rotated codes on that graph give 91.82\%. Original codes on the rotated graph recover 92.24\%. FP32 gives 98.69\% on the original graph and 93.71\% on the rotated graph, separating scoring and topology effects. Sampled neighbour Jaccard is 0.262--0.263, and reachability is 99.94\% versus 96.5\%. The full sweep also separates their recall--work frontiers. Original-axis Cohere at width 64 gives 93.29\% recall, 2{,}386 scored nodes, and 2{,}726 QPS, exceeding rotated width 256 at 89.96\%, 5{,}194 nodes, and 1{,}250 QPS. Wolt B at width 256 gives 90.70\% versus 87.31\% recall at nearly equal work (3{,}867 versus 3{,}851 nodes).
+
+In each graph's width-128 FP32-search visited set, the exact nearest candidate is compared with the next 31. Averaged over both insertion orders, Cohere full-SM flips rise from 3.31\% to 5.78\% and its comparison-fitted score from 0.306 to 0.389. Cheap-score flips rise from 3.43\% to 4.73\%, while its score changes from 0.337 to 0.326. Comparison fitting retains this cheap-score inversion with opposing errors (0.292 to 0.283). Local distance fitting with opposing errors gives 0.194 to 0.267. Appendix~\ref{app:calibration-direction} gives the fitting rules and sampled comparisons.
+
+Wolt A's entry lies in a closed directed set containing 63 and 5 copies of two vectors with cosine 0.999949. Three instrumented rebuilds reproduce the closure. In the original-axis single-thread run, the entry's final prune has 104 candidates, including 37 outside this set. The first selected point duplicates the target, giving raw SM scores $h(c,s)=h(c,t)$. The native test $h(c,s)<1.2h(c,t)$ removes the remaining positive-score candidates. One point survives, then nearest-score backfill fills the other 63 slots from this set, leaving zero exits. The four-thread run removes 36 external candidates.
+
+Changing the entry to the first internal node outside the set (ID 1) gives 88.75\% / 85.16\% native recall (original / rotated, width 128). One entry edge to node 1 gives 88.02\% / 85.23\%. Fixed-pool entry self-scores $h(t,t)$ are 948 / 858. The alternative control $\alpha h(c,s)\le h(c,t)$ also retains zero exits on raw scores. Reconstructed-code squared $L_2$ with standard $\alpha d(c,s)\le d(c,t)$ retains 11--13 external neighbours. Applying that selection only to the entry's 64-neighbour list gives 75.78\% / 82.27\% recall in the single-thread rebuilds. Exact-cosine entry selection gives 76.66\% on original axes.
+
+% ============================================================
+\section{Practical Guidance}
+\label{sec:guidance}
+
+The results suggest a decision-level audit for comparing low-bit codes on an index workload.
+
+\begin{enumerate}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\item \textbf{Sample workload decisions.} Build one code-independent reference pool using exact top-$M$ neighbours on a small sample or one FP32 pilot graph. Reuse its query candidates and pruning lists for all candidate codes, with separate fitting and evaluation blocks.
+\item \textbf{Measure margins.} Estimate close-call frequencies and the near-tie exponent independently of the candidate code.
+\item \textbf{Calibrate and inspect errors.} Fit each code and apply the heuristic diagnostic screen. Use held-out certificates when analytical assumptions are unavailable.
+\item \textbf{Compare decision quantities.} Evaluate the full risk score, MNR, and held-out flips alongside actual graph recall and work.
+\item \textbf{Certify acceptance rules.} Report each accepted-decision certificate together with coverage and validation failure, using quantized margins for score-observable rules.
+\end{enumerate}
+
+\noindent\emph{Assessing rotation.}\quad
+Inspect margin association, residual bias, tail frequencies, and held-out flips jointly. The applicability screen summarizes these diagnostics, with cutoff sensitivity reported in Appendix~\ref{app:eligibility}. The entropy gap $1-H_{\mathrm{sign}}$ tracks rotation's change in distance fidelity. Decision quantities and graph recall--work curves evaluate its effect on search. Cohere and SIFT have nearly equal sign entropy (0.747 and 0.746), but different error diagnostics and responses to rotation.
+
+% ============================================================
+\section{Related Work}
+\label{sec:related}
+
+\noindent\emph{Binary codes and random projections.}\quad
+SimHash~\citep{charikar2002similarity} shows that random-hyperplane sign bits preserve angular similarity, with collision probability $1-\arccos\langle x,y\rangle/\pi$ for fixed vectors. Its randomness lies in the projection directions, so it describes random hyperplanes rather than the fixed coordinate axes of a learned encoder, whose coordinate variances can differ by an order of magnitude. RaBitQ~\citep{gao2023rabitq} gives a sharp pointwise error bound for a randomized estimate of a single inner product. Product quantization~\citep{jegou2011product,ge2014optimized} and ScaNN~\citep{guo2020accelerating} use learned codebooks at 4 to 64 bits. These results describe individual distance estimates; we study differences of estimates that share endpoints.
+
+\noindent\emph{Graph-based nearest-neighbour search.}\quad
+HNSW~\citep{malkov2020efficient} and Vamana~\citep{subramanya2019diskann} build navigable graphs by repeated candidate sorting and diversity pruning, and QuIVer builds and searches its graph with two-bit scores~\citep{xiao2026quiver}. The QuIVer paper designs and evaluates that index; this paper develops the decision-level analysis of when its codes, and low-bit codes in general, preserve search decisions. Existing theory of graph search studies navigability under random-graph or geometric assumptions. We ask whether quantization preserves the local decisions made during construction and search, and answer it with an exact theorem about the selection procedure.
+
+\noindent\emph{Contrastive representation geometry.}\quad
+\citet{betser2026infonce} prove asymptotic Gaussianity of fixed-dimensional projections of InfoNCE-trained representations under stated alignment and concentration assumptions, with a second regime that adds a vanishing regularizer. We use this result to motivate the exact Gaussian model of Section~\ref{sec:bridge}, and Theorem~\ref{thm:counterexample} gives a rare-spike obstruction for the population-radius idealization under low-order Gaussian checks.
+
+\noindent\emph{Concentration and margin conditions.}\quad
+The close-call bound transfers the low-noise condition of \citet{tsybakov2004optimal} from classification to the comparisons of a search algorithm. The large-error term draws on sub-Gaussian and sub-gamma tail bounds~\citep{vershynin2018high,boucheron2013concentration}, Efron--Stein bounds~\citep{efron1981jackknife}, and empirical Bernstein inequalities~\citep{maurer2009empirical}. Our framework combines errors specific to each decision type, covariance-aware error scales, and exact-run replay of graph construction.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+A graph index uses a low-bit code through comparisons. The close-call bound separates small margins from large comparison errors. Shared-endpoint covariance determines difference errors, and exact-run replay connects candidate actions to neighbour-list changes. The Gaussian model supplies reference errors, and held-out certificates cover exact- and quantized-margin rules. Across 24 dataset--code configurations, risk and MNR correlate more closely with held-out flips than distance fidelity. Paired graphs connect these local effects to retrieval quality and search work.
+
+\noindent\emph{Open directions.}\quad
+Open questions concern predicting useful path-bound lengths from representation geometry, extending first divergence to adaptive beam-search candidates, and choosing rotation, bit width, and verification cutoffs from pilot covariance statistics.
+
+\acks{No external funding was received for this work. The authors declare no competing interests.}
+
+\FloatBarrier
+\appendix
+\input{appendix_theory}
+\input{appendix_experiments}
+
+\FloatBarrier
+\bibliography{references}
+
+\end{document}

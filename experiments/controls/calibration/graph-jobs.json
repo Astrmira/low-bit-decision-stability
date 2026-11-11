@@ -1,0 +1,63 @@
+{
+  "jobs": [
+    {
+      "dataset": "cohere",
+      "seed": 20261110,
+      "axis": "original",
+      "dim": 768,
+      "directory": "experiments/controls/calibration/graph-data/cohere/20261110/original"
+    },
+    {
+      "dataset": "cohere",
+      "seed": 20261110,
+      "axis": "rotated",
+      "dim": 768,
+      "directory": "experiments/controls/calibration/graph-data/cohere/20261110/rotated"
+    },
+    {
+      "dataset": "cohere",
+      "seed": 20261111,
+      "axis": "original",
+      "dim": 768,
+      "directory": "experiments/controls/calibration/graph-data/cohere/20261111/original"
+    },
+    {
+      "dataset": "cohere",
+      "seed": 20261111,
+      "axis": "rotated",
+      "dim": 768,
+      "directory": "experiments/controls/calibration/graph-data/cohere/20261111/rotated"
+    },
+    {
+      "dataset": "wolt",
+      "seed": 20261110,
+      "axis": "original",
+      "dim": 512,
+      "directory": "experiments/controls/calibration/graph-data/wolt/20261110/original"
+    },
+    {
+      "dataset": "wolt",
+      "seed": 20261110,
+      "axis": "rotated",
+      "dim": 512,
+      "directory": "experiments/controls/calibration/graph-data/wolt/20261110/rotated"
+    },
+    {
+      "dataset": "wolt",
+      "seed": 20261111,
+      "axis": "original",
+      "dim": 512,
+      "directory": "experiments/controls/calibration/graph-data/wolt/20261111/original"
+    },
+    {
+      "dataset": "wolt",
+      "seed": 20261111,
+      "axis": "rotated",
+      "dim": 512,
+      "directory": "experiments/controls/calibration/graph-data/wolt/20261111/rotated"
+    }
+  ],
+  "executable_sha256": "1eb1cf0335447c653f4369894c7d07dd525bf81a2b56d3ed316b1ae9bdcd4bb5",
+  "prelaunch_executable_sha256": "34ede83ecd497307adc8df98c66dcee3bd58495f6698cc1d60bef89cc93a41c4",
+  "collector": "独立V2，原生查询与公共入口一致，精确L0全宽度对照通过穷举核对"
+}

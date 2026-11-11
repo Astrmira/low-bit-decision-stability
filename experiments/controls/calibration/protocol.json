@@ -1,0 +1,75 @@
+{
+  "scope": [
+    "校准方式与旋转的交叉复核",
+    "真实QuIVer图上的旋转配对与同图评分交叉",
+    "可观测量化margin接受规则",
+    "诊断阈值敏感性与正文核对"
+  ],
+  "excluded": [
+    "预印本版本操作"
+  ],
+  "calibration": {
+    "dataset": "cohere",
+    "populations": [
+      "原4K样本80个拟合查询",
+      "原4K样本160个留出查询",
+      "原6K样本160个查询"
+    ],
+    "codes": [
+      "原轴2-bit",
+      "统一原Probe26旋转的2-bit"
+    ],
+    "fitting": [
+      "原Probe26比较拟合系数",
+      "原Probe46原轴距离拟合系数及同方向独立随机对距离拟合"
+    ],
+    "selection": "全部交叉报告，不按复核结果选择校准方式",
+    "units": "同时记录原始整数分数与度量单位残差，明确a、c_Q与v/c_Q"
+  },
+  "graph": {
+    "datasets": [
+      "Cohere-200K-768",
+      "Wolt-200K-512"
+    ],
+    "source": "已归档inputs-200k.zip",
+    "builder": "2026-10-18冻结QuIVer生产crate的batch_build_with_store",
+    "m": 32,
+    "ef_construction": 128,
+    "alpha": 1.2,
+    "build_threads": 4,
+    "permutation_seeds": [
+      20261110,
+      20261111
+    ],
+    "rotations": [
+      "原轴",
+      "固定signed-DCT正交旋转"
+    ],
+    "ef_search": [
+      64,
+      128,
+      256
+    ],
+    "fp32_rerank_budget": 64,
+    "top_k": 10,
+    "query_split": "前128条只用于校准，其余616条用于质量验证",
+    "local_measurement": "本地仅记录质量、实际访问与工作量，远端可用后才增加正式性能计时",
+    "max_process_family_rss_gib": 6,
+    "minimum_available_memory_gib": 4
+  },
+  "certificates": {
+    "datasets": [
+      "cohere",
+      "minilm",
+      "gist960"
+    ],
+    "rotation_settings": 2,
+    "fit_blocks": 128,
+    "certification_blocks": 512,
+    "validation_blocks": 512,
+    "candidate_count": 32,
+    "acceptance": "仅由拟合split决定的绝对量化margin阈值",
+    "delta": 0.05,
+    "sampling": "固定经验向量池，块间独立重抽，块内候选不重复"
+  }
+}

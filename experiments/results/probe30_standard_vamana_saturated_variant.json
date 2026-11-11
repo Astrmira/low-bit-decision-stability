@@ -1,0 +1,358 @@
+{
+  "probe": 30,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "variant": "标准RobustPrune后执行确定性饱和填充；填充不是原始RobustPrune步骤",
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 1.575,
+          "mean_fallback_added": 14.425,
+          "fallback_share_of_output": 0.9015625
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 6.8375,
+          "mean_fallback_added": 9.1625,
+          "fallback_share_of_output": 0.57265625
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 14.5625,
+          "mean_fallback_added": 1.4375,
+          "fallback_share_of_output": 0.08984375
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 1.575,
+          "mean_fallback_added": 30.425,
+          "fallback_share_of_output": 0.95078125
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 6.85,
+          "mean_fallback_added": 25.15,
+          "fallback_share_of_output": 0.7859375
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 21.075,
+          "mean_fallback_added": 10.925,
+          "fallback_share_of_output": 0.34140625
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 9.16522304963386e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0007199511126820017,
+              "residual_scale": 0.03192423373313049,
+              "distance_spearman": 0.7254232271569472
+            },
+            "sorting_mean": -0.000633799675432861,
+            "sorting_scale": 0.005233513701626665,
+            "pruning_mean": 0.0017765758938847308,
+            "pruning_scale": 0.03099907976126365,
+            "sorting_count": 5040,
+            "pruning_count": 31068
+          },
+          "evaluation": {
+            "edge_count": 2066,
+            "mean_certificate_event_count": 54.83446272991287,
+            "median_certificate_event_count": 56.0,
+            "p90_certificate_event_count": 63.0,
+            "fixed_order_failure_rate": 0.002420135527589545,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 35.40665397744498,
+            "risk_failure_spearman": -0.028500424081412658,
+            "event_count_failure_spearman": 0.014982122267370527,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.00011477355859477075,
+              "distance_count": 25308,
+              "residual_mean": 0.0010504072277937467,
+              "residual_scale": 0.029479068675644454,
+              "distance_spearman": 0.920656382932306
+            },
+            "sorting_mean": -0.0007221798975970765,
+            "sorting_scale": 0.004200173363985613,
+            "pruning_mean": 0.005005057530310045,
+            "pruning_scale": 0.030955516219594796,
+            "sorting_count": 5040,
+            "pruning_count": 31068
+          },
+          "evaluation": {
+            "edge_count": 2066,
+            "mean_certificate_event_count": 54.83446272991287,
+            "median_certificate_event_count": 56.0,
+            "p90_certificate_event_count": 63.0,
+            "fixed_order_failure_rate": 0.003872216844143272,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 33.74712034977222,
+            "risk_failure_spearman": -0.059378743138583476,
+            "event_count_failure_spearman": 0.012559509873747432,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 2.85,
+          "mean_fallback_added": 13.15,
+          "fallback_share_of_output": 0.821875
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 14.9125,
+          "mean_fallback_added": 1.0875,
+          "fallback_share_of_output": 0.06796875
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 16.0,
+          "mean_fallback_added": 0.0,
+          "fallback_share_of_output": 0.0
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 2.85,
+          "mean_fallback_added": 29.15,
+          "fallback_share_of_output": 0.9109375
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 16.6,
+          "mean_fallback_added": 15.4,
+          "fallback_share_of_output": 0.48125
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 32.0,
+          "mean_fallback_added": 0.0,
+          "fallback_share_of_output": 0.0
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005852305268160636,
+              "distance_count": 25308,
+              "residual_mean": 0.0037434743668005605,
+              "residual_scale": 0.06732075924620098,
+              "distance_spearman": 0.9584921853955465
+            },
+            "sorting_mean": -0.0019507038293642015,
+            "sorting_scale": 0.020682677760178587,
+            "pruning_mean": 0.06035840127878438,
+            "pruning_scale": 0.07248474553201101,
+            "sorting_count": 5040,
+            "pruning_count": 47213
+          },
+          "evaluation": {
+            "edge_count": 2,
+            "mean_certificate_event_count": 63.5,
+            "median_certificate_event_count": 63.5,
+            "p90_certificate_event_count": 63.9,
+            "fixed_order_failure_rate": 0.5,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 35.05373403613616,
+            "risk_failure_spearman": 0.9999999999999999,
+            "event_count_failure_spearman": -0.9999999999999999,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005851423581531199,
+              "distance_count": 25308,
+              "residual_mean": 0.0037491411694736635,
+              "residual_scale": 0.06720605037526813,
+              "distance_spearman": 0.9585331030370119
+            },
+            "sorting_mean": -0.0019259654976093602,
+            "sorting_scale": 0.020260039227275803,
+            "pruning_mean": 0.060750731580971336,
+            "pruning_scale": 0.07176502366778333,
+            "sorting_count": 5040,
+            "pruning_count": 47213
+          },
+          "evaluation": {
+            "edge_count": 2,
+            "mean_certificate_event_count": 63.5,
+            "median_certificate_event_count": 63.5,
+            "p90_certificate_event_count": 63.9,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 34.80893059727819,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "parameter_sensitivity": [
+        {
+          "alpha": 0.8,
+          "max_k": 16,
+          "mean_diversity_selected": 1.8375,
+          "mean_fallback_added": 14.1625,
+          "fallback_share_of_output": 0.88515625
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 16,
+          "mean_diversity_selected": 7.875,
+          "mean_fallback_added": 8.125,
+          "fallback_share_of_output": 0.5078125
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 16,
+          "mean_diversity_selected": 14.35,
+          "mean_fallback_added": 1.65,
+          "fallback_share_of_output": 0.103125
+        },
+        {
+          "alpha": 0.8,
+          "max_k": 32,
+          "mean_diversity_selected": 1.8375,
+          "mean_fallback_added": 30.1625,
+          "fallback_share_of_output": 0.942578125
+        },
+        {
+          "alpha": 1.0,
+          "max_k": 32,
+          "mean_diversity_selected": 8.3,
+          "mean_fallback_added": 23.7,
+          "fallback_share_of_output": 0.740625
+        },
+        {
+          "alpha": 1.2,
+          "max_k": 32,
+          "mean_diversity_selected": 22.8,
+          "mean_fallback_added": 9.2,
+          "fallback_share_of_output": 0.2875
+        }
+      ],
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 7.610122110278672e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0004555052545026191,
+              "residual_scale": 0.029311477847560025,
+              "distance_spearman": 0.5999328543554413
+            },
+            "sorting_mean": -0.0005470637632463526,
+            "sorting_scale": 0.003286696126289438,
+            "pruning_mean": 0.007302076030462389,
+            "pruning_scale": 0.027601040210570086,
+            "sorting_count": 5040,
+            "pruning_count": 32925
+          },
+          "evaluation": {
+            "edge_count": 1419,
+            "mean_certificate_event_count": 53.99929527836505,
+            "median_certificate_event_count": 55.0,
+            "p90_certificate_event_count": 63.0,
+            "fixed_order_failure_rate": 0.0,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 31.092092341686698,
+            "risk_failure_spearman": 0.0,
+            "event_count_failure_spearman": 0.0,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 6.541331112116326e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0008673189723532053,
+              "residual_scale": 0.027085727447076106,
+              "distance_spearman": 0.9086388718852892
+            },
+            "sorting_mean": -0.0004886509156186745,
+            "sorting_scale": 0.0024014907393500535,
+            "pruning_mean": 0.005635880861803978,
+            "pruning_scale": 0.024803232500469147,
+            "sorting_count": 5040,
+            "pruning_count": 32925
+          },
+          "evaluation": {
+            "edge_count": 1419,
+            "mean_certificate_event_count": 53.99929527836505,
+            "median_certificate_event_count": 55.0,
+            "p90_certificate_event_count": 63.0,
+            "fixed_order_failure_rate": 0.005637773079633545,
+            "certificate_pass_rate": 0.0,
+            "certificate_saturation_rate": 1.0,
+            "mean_risk_sum": 29.959674900156056,
+            "risk_failure_spearman": -0.12161908438510087,
+            "event_count_failure_spearman": 0.060065108481676004,
+            "tie_event_mean": 0.0,
+            "certificate_sufficiency_holds": true
+          }
+        }
+      }
+    }
+  ]
+}

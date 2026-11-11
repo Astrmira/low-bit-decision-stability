@@ -1,0 +1,74 @@
+{
+  "2bit": {
+    "model": {
+      "intercept": -0.6578721248300075,
+      "slope": 0.0010396444406020637,
+      "distance_mse": 0.0008558102753185743,
+      "distance_spearman": 0.8368323474892713
+    },
+    "roles": {
+      "ranking": {
+        "boundary": 0.1201241134751773,
+        "tail": 0.1023936170212766,
+        "combined": 0.2225177304964539,
+        "tau": 0.08285354375839234,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.02327127659574468
+      },
+      "pruning": {
+        "boundary": 0.12005713914680866,
+        "tail": 0.013700409064346471,
+        "combined": 0.13375754821115513,
+        "tau": 0.13002727031707761,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.011081862792889408
+      }
+    }
+  },
+  "rotated_2bit": {
+    "model": {
+      "intercept": -0.6545116399073486,
+      "slope": 0.0010373412210350574,
+      "distance_mse": 0.000845221938854465,
+      "distance_spearman": 0.8396015657136062
+    },
+    "roles": {
+      "ranking": {
+        "boundary": 0.1201241134751773,
+        "tail": 0.09131205673758866,
+        "combined": 0.21143617021276595,
+        "tau": 0.08285354375839234,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.015957446808510637
+      },
+      "pruning": {
+        "boundary": 0.12005713914680866,
+        "tail": 0.013375754821115513,
+        "combined": 0.13343289396792418,
+        "tau": 0.13002727031707761,
+        "reproduction_gaps": {
+          "tau": 0.0,
+          "plugin_risk": 0.0,
+          "residual_scale": 0.0,
+          "calibration_count": 0
+        },
+        "validation_flip": 0.010106918852166
+      }
+    }
+  }
+}

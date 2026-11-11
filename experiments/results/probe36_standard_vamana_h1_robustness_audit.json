@@ -1,0 +1,757 @@
+{
+  "probe": 36,
+  "seed": 20260826,
+  "n_sample": 4000,
+  "pair_sample": 100000,
+  "subset_trials": 24,
+  "k_values": [
+    2,
+    4,
+    8
+  ],
+  "results": [
+    {
+      "dataset": "cohere",
+      "kind": "contrastive",
+      "dimension": 768,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.01232344879713175,
+          "p90_radius_ks": 0.018658329534707016,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.06471105262344479,
+          "median_abs_excess_kurtosis": 0.08814167954193708
+        },
+        "4": {
+          "median_radius_ks": 0.016148889948878586,
+          "p90_radius_ks": 0.022026426879279293,
+          "rejection_rate_0_01": 0.041666666666666664,
+          "median_abs_skew": 0.06861694235886792,
+          "median_abs_excess_kurtosis": 0.09801538215885203
+        },
+        "8": {
+          "median_radius_ks": 0.022159882344839482,
+          "p90_radius_ks": 0.03169185994482741,
+          "rejection_rate_0_01": 0.2916666666666667,
+          "median_abs_skew": 0.06580740764386185,
+          "median_abs_excess_kurtosis": 0.10043297898917775
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 25.205052038144913,
+        "stable_rank": 4.446418875036584,
+        "top_eigenvalue_share": 0.03967458581266233,
+        "top10_share": 0.16966874457712916,
+        "operator_to_frobenius": 0.4742363217178709
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00565
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01085
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02607
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.05099
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00357
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00756
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.01817
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.03716
+          }
+        ],
+        "quantized_unique_scores": 669,
+        "quantized_max_atom_mass": 0.00513,
+        "quantized_pair_tie_probability": 0.0032877872
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.00034150187174479166,
+        "vector_any_other_flip_rate": 0.2190625,
+        "mean_threshold_influence": 1.6561455854379844e-05,
+        "dimension_scaled_other_flip_fraction": 0.2622734375,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": true,
+        "fraction_within_1e_5_of_one": 0.0,
+        "coefficient_of_variation": 0.044310446828603745,
+        "relative_deviation_p95": 0.08360331505537033,
+        "relative_deviation_p99": 0.11492229998111725
+      }
+    },
+    {
+      "dataset": "minilm",
+      "kind": "contrastive",
+      "dimension": 384,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.012151714889108073,
+          "p90_radius_ks": 0.01899638357179932,
+          "rejection_rate_0_01": 0.041666666666666664,
+          "median_abs_skew": 0.032728379896116155,
+          "median_abs_excess_kurtosis": 0.06245633492557545
+        },
+        "4": {
+          "median_radius_ks": 0.013837369182259654,
+          "p90_radius_ks": 0.022198557022072168,
+          "rejection_rate_0_01": 0.041666666666666664,
+          "median_abs_skew": 0.0354022214513742,
+          "median_abs_excess_kurtosis": 0.06698287904047795
+        },
+        "8": {
+          "median_radius_ks": 0.01456595380489081,
+          "p90_radius_ks": 0.0807959641961372,
+          "rejection_rate_0_01": 0.125,
+          "median_abs_skew": 0.04085786730855741,
+          "median_abs_excess_kurtosis": 0.06461370323486193
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 31.174904672903462,
+        "stable_rank": 7.557721761398789,
+        "top_eigenvalue_share": 0.032077082848922966,
+        "top10_share": 0.1826258584158926,
+        "operator_to_frobenius": 0.3637512968674725
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00572
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01101
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02744
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.0551
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00212
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00394
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.01109
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.02167
+          }
+        ],
+        "quantized_unique_scores": 553,
+        "quantized_max_atom_mass": 0.00676,
+        "quantized_pair_tie_probability": 0.0043290348
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.0007466227213541667,
+        "vector_any_other_flip_rate": 0.234328125,
+        "mean_threshold_influence": 6.496165851106782e-05,
+        "dimension_scaled_other_flip_fraction": 0.286703125,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": false,
+        "fraction_within_1e_5_of_one": 1.0,
+        "reason": "artifact is already unit-normalized"
+      }
+    },
+    {
+      "dataset": "bge_m3",
+      "kind": "contrastive",
+      "dimension": 1024,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.011946453888254355,
+          "p90_radius_ks": 0.020847485637004847,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.1023329610218552,
+          "median_abs_excess_kurtosis": 0.08874802254176695
+        },
+        "4": {
+          "median_radius_ks": 0.013455438495854705,
+          "p90_radius_ks": 0.018034671952263104,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.10600017464852901,
+          "median_abs_excess_kurtosis": 0.10486244666713773
+        },
+        "8": {
+          "median_radius_ks": 0.015217185658537746,
+          "p90_radius_ks": 0.020517174864438468,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.09441773340188117,
+          "median_abs_excess_kurtosis": 0.08415262546618446
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 21.09613039321782,
+        "stable_rank": 7.9684959051434925,
+        "top_eigenvalue_share": 0.047402058167098235,
+        "top10_share": 0.33142528967660656,
+        "operator_to_frobenius": 0.3542516021675728
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.0053
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01025
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02583
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.05174
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.0039
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00818
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02077
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.04132
+          }
+        ],
+        "quantized_unique_scores": 1255,
+        "quantized_max_atom_mass": 0.00286,
+        "quantized_pair_tie_probability": 0.0017347030000000002
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.00028529357910156254,
+        "vector_any_other_flip_rate": 0.22421875000000002,
+        "mean_threshold_influence": 1.5041408917031459e-05,
+        "dimension_scaled_other_flip_fraction": 0.29214062500000004,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": true,
+        "fraction_within_1e_5_of_one": 0.03375,
+        "coefficient_of_variation": 0.00017633619427215308,
+        "relative_deviation_p95": 0.0002895712968893349,
+        "relative_deviation_p99": 0.0003091144608333707
+      }
+    },
+    {
+      "dataset": "wolt_clip",
+      "kind": "multimodal",
+      "dimension": 512,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.014367091667972703,
+          "p90_radius_ks": 0.020727774303682653,
+          "rejection_rate_0_01": 0.041666666666666664,
+          "median_abs_skew": 0.11154766993682846,
+          "median_abs_excess_kurtosis": 0.12190836752830303
+        },
+        "4": {
+          "median_radius_ks": 0.02020804187501618,
+          "p90_radius_ks": 0.033843911176687856,
+          "rejection_rate_0_01": 0.2916666666666667,
+          "median_abs_skew": 0.13112158450323275,
+          "median_abs_excess_kurtosis": 0.1510373073796773
+        },
+        "8": {
+          "median_radius_ks": 0.02936978722574779,
+          "p90_radius_ks": 0.03684714425397764,
+          "rejection_rate_0_01": 0.5833333333333334,
+          "median_abs_skew": 0.1339966122425278,
+          "median_abs_excess_kurtosis": 0.18497284152881002
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 10.606019166990269,
+        "stable_rank": 2.534497966782727,
+        "top_eigenvalue_share": 0.09428608267203195,
+        "top10_share": 0.37524131627974155,
+        "operator_to_frobenius": 0.6281364944019043
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00627
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.0129
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.03186
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.06278
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00453
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00937
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.0241
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.0463
+          }
+        ],
+        "quantized_unique_scores": 879,
+        "quantized_max_atom_mass": 0.00326,
+        "quantized_pair_tie_probability": 0.0021588948
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.000567657470703125,
+        "vector_any_other_flip_rate": 0.2340234375,
+        "mean_threshold_influence": 3.4462542473809745e-05,
+        "dimension_scaled_other_flip_fraction": 0.290640625,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": false,
+        "fraction_within_1e_5_of_one": 1.0,
+        "reason": "artifact is already unit-normalized"
+      }
+    },
+    {
+      "dataset": "landmark_dino",
+      "kind": "ssl_vision",
+      "dimension": 768,
+      "source_total": 760757,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.011500058897468551,
+          "p90_radius_ks": 0.018043319640814695,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.05601134433674868,
+          "median_abs_excess_kurtosis": 0.08359867299640211
+        },
+        "4": {
+          "median_radius_ks": 0.012992215098780194,
+          "p90_radius_ks": 0.01685199828363249,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.06807187132432549,
+          "median_abs_excess_kurtosis": 0.0950136389466541
+        },
+        "8": {
+          "median_radius_ks": 0.011636025030529906,
+          "p90_radius_ks": 0.019943874365692886,
+          "rejection_rate_0_01": 0.08333333333333333,
+          "median_abs_skew": 0.06245551486747753,
+          "median_abs_excess_kurtosis": 0.08917000533074795
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 19.761389474413743,
+        "stable_rank": 4.226487394325538,
+        "top_eigenvalue_share": 0.05060372912009856,
+        "top10_share": 0.26039650777483075,
+        "operator_to_frobenius": 0.4864186420775883
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00667
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01305
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.0325
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.06539
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00238
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00493
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.01248
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.02428
+          }
+        ],
+        "quantized_unique_scores": 1057,
+        "quantized_max_atom_mass": 0.00459,
+        "quantized_pair_tie_probability": 0.0027370922
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.00036235555013020834,
+        "vector_any_other_flip_rate": 0.2259921875,
+        "mean_threshold_influence": 2.3170653312284964e-05,
+        "dimension_scaled_other_flip_fraction": 0.2782890625,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": true,
+        "fraction_within_1e_5_of_one": 0.0,
+        "coefficient_of_variation": 0.017285695299506187,
+        "relative_deviation_p95": 0.03428623452782631,
+        "relative_deviation_p99": 0.04549982771277428
+      }
+    },
+    {
+      "dataset": "glove100",
+      "kind": "word2vec",
+      "dimension": 100,
+      "source_total": 1183514,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.010937616867221563,
+          "p90_radius_ks": 0.016745189769147295,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.041620625908141376,
+          "median_abs_excess_kurtosis": 0.07558841071079547
+        },
+        "4": {
+          "median_radius_ks": 0.011524996521479702,
+          "p90_radius_ks": 0.02152223790804604,
+          "rejection_rate_0_01": 0.041666666666666664,
+          "median_abs_skew": 0.0526770492322969,
+          "median_abs_excess_kurtosis": 0.0702069250445696
+        },
+        "8": {
+          "median_radius_ks": 0.012584734228673441,
+          "p90_radius_ks": 0.018743677218535634,
+          "rejection_rate_0_01": 0.0,
+          "median_abs_skew": 0.057505787854062365,
+          "median_abs_excess_kurtosis": 0.10141600599535405
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 36.51663446872977,
+        "stable_rank": 15.355267530370519,
+        "top_eigenvalue_share": 0.02738477996531494,
+        "top10_share": 0.19211622095861702,
+        "operator_to_frobenius": 0.25519449772639213
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00479
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00998
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02518
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.05024
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00369
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.00732
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.01877
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.03713
+          }
+        ],
+        "quantized_unique_scores": 208,
+        "quantized_max_atom_mass": 0.01665,
+        "quantized_pair_tie_probability": 0.0114898202
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.0029165625,
+        "vector_any_other_flip_rate": 0.23611718750000002,
+        "mean_threshold_influence": 0.0004914618590768232,
+        "dimension_scaled_other_flip_fraction": 0.29165625,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": false,
+        "fraction_within_1e_5_of_one": 1.0,
+        "reason": "artifact is already unit-normalized"
+      }
+    },
+    {
+      "dataset": "sift128",
+      "kind": "euclidean",
+      "dimension": 128,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.22470023870814904,
+          "p90_radius_ks": 0.37848779008360817,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.5233520105607745,
+          "median_abs_excess_kurtosis": 3.168896886782986
+        },
+        "4": {
+          "median_radius_ks": 0.17706737658376087,
+          "p90_radius_ks": 0.26037010311355746,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.462022445019537,
+          "median_abs_excess_kurtosis": 2.6186146658296203
+        },
+        "8": {
+          "median_radius_ks": 0.14982384987822278,
+          "p90_radius_ks": 0.2313454524444503,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.4378218021338753,
+          "median_abs_excess_kurtosis": 2.6680712630099883
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 3.0991106130612995,
+        "stable_rank": 1.15102656590077,
+        "top_eigenvalue_share": 0.32267321978940294,
+        "top10_share": 0.6184271932889113,
+        "operator_to_frobenius": 0.9320888790151285
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00648
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01255
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.03229
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.06532
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00467
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.0092
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.02208
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.04339
+          }
+        ],
+        "quantized_unique_scores": 333,
+        "quantized_max_atom_mass": 0.00776,
+        "quantized_pair_tie_probability": 0.005384903999999999
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.00147119140625,
+        "vector_any_other_flip_rate": 0.1233515625,
+        "mean_threshold_influence": 0.00040507090969014965,
+        "dimension_scaled_other_flip_fraction": 0.1883125,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": false,
+        "fraction_within_1e_5_of_one": 1.0,
+        "reason": "artifact is already unit-normalized"
+      }
+    },
+    {
+      "dataset": "gist960",
+      "kind": "euclidean",
+      "dimension": 960,
+      "source_total": 1000000,
+      "joint_gaussianity": {
+        "2": {
+          "median_radius_ks": 0.08711639897060441,
+          "p90_radius_ks": 0.11246410591837529,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.2997771177270903,
+          "median_abs_excess_kurtosis": 3.29938770047277
+        },
+        "4": {
+          "median_radius_ks": 0.12129083400455815,
+          "p90_radius_ks": 0.13769101559632485,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.3207605082960545,
+          "median_abs_excess_kurtosis": 3.5863967424859844
+        },
+        "8": {
+          "median_radius_ks": 0.14208225136481228,
+          "p90_radius_ks": 0.15206657321531378,
+          "rejection_rate_0_01": 1.0,
+          "median_abs_skew": 1.2665388521850305,
+          "median_abs_excess_kurtosis": 3.027965647179504
+        }
+      },
+      "covariance_spectrum": {
+        "effective_rank": 10.570122318390942,
+        "stable_rank": 2.8235602807356477,
+        "top_eigenvalue_share": 0.09460628457062426,
+        "top10_share": 0.4144988201722772,
+        "operator_to_frobenius": 0.5951157825916226
+      },
+      "boundary_and_atoms": {
+        "ranking_exact_tie_rate_1e_12": 0.0,
+        "pruning_exact_tie_rate_1e_12": 0.0,
+        "ranking_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.0066
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01316
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.03348
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.06631
+          }
+        ],
+        "pruning_small_ball": [
+          {
+            "tau_over_sd": 0.01,
+            "mass": 0.00611
+          },
+          {
+            "tau_over_sd": 0.02,
+            "mass": 0.01194
+          },
+          {
+            "tau_over_sd": 0.05,
+            "mass": 0.03026
+          },
+          {
+            "tau_over_sd": 0.1,
+            "mass": 0.05989
+          }
+        ],
+        "quantized_unique_scores": 586,
+        "quantized_max_atom_mass": 0.00652,
+        "quantized_pair_tie_probability": 0.0042627004
+      },
+      "shared_threshold_loo": {
+        "removed_coordinate_trials": 32,
+        "other_bit_flip_fraction": 0.0003115885416666667,
+        "vector_any_other_flip_rate": 0.178359375,
+        "mean_threshold_influence": 1.3030733304925722e-05,
+        "dimension_scaled_other_flip_fraction": 0.29912500000000003,
+        "status": "leave-one-coordinate-out perturbation evaluated on all other magnitude bits"
+      },
+      "shell": {
+        "identifiable": false,
+        "fraction_within_1e_5_of_one": 1.0,
+        "reason": "artifact is already unit-normalized"
+      }
+    }
+  ],
+  "status": "empirical eligibility and falsification audit, not a proof of H1"
+}

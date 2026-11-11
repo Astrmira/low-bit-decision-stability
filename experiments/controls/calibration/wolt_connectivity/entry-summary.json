@@ -1,0 +1,26 @@
+[
+  {
+    "axis": "original",
+    "mode": "bridge1",
+    "recall10": 0.8801948051948053,
+    "qps_mean": 1683.8635900053239
+  },
+  {
+    "axis": "original",
+    "mode": "entry1",
+    "recall10": 0.8875000000000001,
+    "qps_mean": 1529.829376945984
+  },
+  {
+    "axis": "rotated",
+    "mode": "bridge1",
+    "recall10": 0.8522727272727273,
+    "qps_mean": 1843.882533243254
+  },
+  {
+    "axis": "rotated",
+    "mode": "entry1",
+    "recall10": 0.8516233766233765,
+    "qps_mean": 1440.8793528814815
+  }
+]

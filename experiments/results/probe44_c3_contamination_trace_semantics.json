@@ -1,0 +1,160 @@
+{
+  "probe": 44,
+  "contamination": {
+    "rows": [
+      {
+        "dimension": 16,
+        "single_contamination_probability": 1.52587890625e-05,
+        "two_contaminated_one_clean_probability": 2.3282709094019083e-10,
+        "relative_shell_mse": 0.09405132555684499,
+        "relative_shell_l2_norm": 0.3066778856664513,
+        "coordinate_variance_excess": 0.0624847412109375,
+        "oracle_bilinear_ranking_variance": 0.1496185378690862,
+        "conditional_rademacher_fourth_moment": 736.0,
+        "unconditional_fourth_moment_contribution": 827.4298178757322
+      },
+      {
+        "dimension": 32,
+        "single_contamination_probability": 9.5367431640625e-07,
+        "two_contaminated_one_clean_probability": 9.094938344111902e-13,
+        "relative_shell_mse": 0.047123788499654366,
+        "relative_shell_l2_norm": 0.21708014303398265,
+        "coordinate_variance_excess": 0.031249046325683594,
+        "oracle_bilinear_ranking_variance": 0.0685292642776168,
+        "conditional_rademacher_fourth_moment": 3008.0,
+        "unconditional_fourth_moment_contribution": 3197.534815946491
+      },
+      {
+        "dimension": 64,
+        "single_contamination_probability": 5.960464477539063e-08,
+        "two_contaminated_one_clean_probability": 3.552713467042264e-15,
+        "relative_shell_mse": 0.02352766562354216,
+        "relative_shell_l2_norm": 0.15338730594003586,
+        "coordinate_variance_excess": 0.015624940395355225,
+        "oracle_bilinear_ranking_variance": 0.032737777571774304,
+        "conditional_rademacher_fourth_moment": 12160.0,
+        "unconditional_fourth_moment_contribution": 12542.914571785344
+      },
+      {
+        "dimension": 128,
+        "single_contamination_probability": 3.725290298461914e-09,
+        "two_contaminated_one_clean_probability": 1.3877787756115668e-17,
+        "relative_shell_mse": 0.011745992497589003,
+        "relative_shell_l2_norm": 0.10837893013676138,
+        "coordinate_variance_excess": 0.0078124962747097015,
+        "oracle_bilinear_ranking_variance": 0.015994218020858302,
+        "conditional_rademacher_fourth_moment": 48896.0,
+        "unconditional_fourth_moment_contribution": 49663.845718772434
+      },
+      {
+        "dimension": 256,
+        "single_contamination_probability": 2.3283064365386963e-10,
+        "two_contaminated_one_clean_probability": 5.421010861165345e-20,
+        "relative_shell_mse": 0.005866995265552364,
+        "relative_shell_l2_norm": 0.07659631365511244,
+        "coordinate_variance_excess": 0.0039062497671693563,
+        "oracle_bilinear_ranking_variance": 0.007904440720035552,
+        "conditional_rademacher_fourth_moment": 196096.0,
+        "unconditional_fourth_moment_contribution": 197632.48709091055
+      },
+      {
+        "dimension": 512,
+        "single_contamination_probability": 1.4551915228366852e-11,
+        "two_contaminated_one_clean_probability": 2.117582368104936e-22,
+        "relative_shell_mse": 0.002931733835794529,
+        "relative_shell_l2_norm": 0.054145487677132696,
+        "coordinate_variance_excess": 0.0019531249854480848,
+        "oracle_bilinear_ranking_variance": 0.003929187745058098,
+        "conditional_rademacher_fourth_moment": 785408.0,
+        "unconditional_fourth_moment_contribution": 788480.9341749791
+      },
+      {
+        "dimension": 1024,
+        "single_contamination_probability": 9.094947017729282e-13,
+        "two_contaminated_one_clean_probability": 8.271806125522754e-25,
+        "relative_shell_mse": 0.0014653801494817966,
+        "relative_shell_l2_norm": 0.03828028408308638,
+        "coordinate_variance_excess": 0.0009765624990905053,
+        "oracle_bilinear_ranking_variance": 0.0019588533352303634,
+        "conditional_rademacher_fourth_moment": 3143680.0,
+        "unconditional_fourth_moment_contribution": 3149825.2478884635
+      },
+      {
+        "dimension": 2048,
+        "single_contamination_probability": 5.684341886080802e-14,
+        "two_contaminated_one_clean_probability": 3.2311742677850807e-27,
+        "relative_shell_mse": 0.0007325603489226068,
+        "relative_shell_l2_norm": 0.027065852081961262,
+        "coordinate_variance_excess": 0.0004882812499431566,
+        "oracle_bilinear_ranking_variance": 0.000977993805998545,
+        "conditional_rademacher_fourth_moment": 12578816.0,
+        "unconditional_fourth_moment_contribution": 12591105.468811367
+      },
+      {
+        "dimension": 4096,
+        "single_contamination_probability": 3.552713678800501e-15,
+        "two_contaminated_one_clean_probability": 1.2621774483536144e-29,
+        "relative_shell_mse": 0.0003662463290101171,
+        "relative_shell_l2_norm": 0.01913756329865736,
+        "coordinate_variance_excess": 0.00024414062499644729,
+        "oracle_bilinear_ranking_variance": 0.00048863897792695,
+        "conditional_rademacher_fourth_moment": 50323456.0,
+        "unconditional_fourth_moment_contribution": 50348033.62484061
+      }
+    ],
+    "log_log_slopes_over_d_ge_128": {
+      "single_contamination_probability": -4.000000000000001,
+      "two_contaminated_one_clean_probability": -7.999999999202871,
+      "relative_shell_mse": -1.0006096753652547,
+      "relative_shell_l2_norm": -0.5003048376826273,
+      "coordinate_variance_excess": -0.9999998941021628,
+      "oracle_bilinear_ranking_variance": -1.006048819462844,
+      "unconditional_fourth_moment_contribution": 1.9973161650916456
+    },
+    "statement": "双节点污染事件为D^-8量级；其归一化bilinear四阶矩贡献为D^2量级。relative shell MSE为D^-1，L2范数误差为D^-1/2。"
+  },
+  "trace_semantics": {
+    "conservative_tie_case": {
+      "exact_value": 1.0,
+      "approximate_value": 0.0,
+      "conservative_flip": true,
+      "exact_action": true,
+      "approximate_action": true,
+      "action_disagreement": false,
+      "conclusion": "保守flip发生但tie-aware实际action一致，因此只能用事件包含，不能写事件相等。"
+    },
+    "witness_redundancy_case": {
+      "exact_witness_bits": [
+        true,
+        true
+      ],
+      "approximate_witness_bits": [
+        false,
+        true
+      ],
+      "witness_disagreements": [
+        true,
+        false
+      ],
+      "exact_candidate_or": true,
+      "approximate_candidate_or": true,
+      "candidate_action_disagreement": false,
+      "conclusion": "一个witness bit翻转可被另一个witness补偿；逐witness一致是充分条件而非必要条件。"
+    },
+    "saturation_boundary_case": {
+      "diversity_selected": [
+        1
+      ],
+      "standard_unsaturated_output": [
+        1
+      ],
+      "explicit_saturated_output": [
+        1,
+        2,
+        3
+      ],
+      "outputs_equal": false,
+      "conclusion": "饱和填充是额外输出映射，不属于原始RobustPrune状态本身。"
+    }
+  }
+}

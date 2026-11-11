@@ -1,0 +1,33 @@
+{
+  "protocol": "所有统计在同一原Probe26数据、同一旋转、同一查询及候选组上计算",
+  "rows": [
+    {
+      "code": "2bit",
+      "population": "fit80",
+      "distance_spearman": 0.7906138780856043,
+      "flip_rate": 0.036290322580645164,
+      "queries": 80
+    },
+    {
+      "code": "2bit",
+      "population": "heldout160",
+      "distance_spearman": 0.7465316875438911,
+      "flip_rate": 0.058266129032258064,
+      "queries": 160
+    },
+    {
+      "code": "rotated_2bit",
+      "population": "fit80",
+      "distance_spearman": 0.9390006209241704,
+      "flip_rate": 0.05241935483870968,
+      "queries": 80
+    },
+    {
+      "code": "rotated_2bit",
+      "population": "heldout160",
+      "distance_spearman": 0.9073056876330414,
+      "flip_rate": 0.08810483870967742,
+      "queries": 160
+    }
+  ]
+}

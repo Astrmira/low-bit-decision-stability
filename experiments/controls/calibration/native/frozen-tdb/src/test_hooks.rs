@@ -1,0 +1,262 @@
+//! 仅测试构建可用的确定性交错控制器。
+//!
+//! 启用 `test-hooks` feature 后，测试可以在指定执行点阻塞目标线程，再通过
+//! `WaitHandle` 精确等待到达并释放。默认生产构建不编译本模块，因而没有运行时开销。
+
+use std::cell::Cell;
+use std::collections::HashMap;
+use std::io;
+use std::sync::{Arc, Condvar, Mutex, OnceLock};
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum ConcurrencyPoint {
+    BeforeStatefulSearchLock,
+    StatefulSearchEntered,
+    BeforeClearSearchStateLock,
+    ClearSearchStateEntered,
+    BeforeUpdateVectorWriteLock,
+    UpdateVectorWriteLockAcquired,
+    BeforeQuiverBuildClaim,
+    QuiverBuildFollowerWaiting,
+    QuiverBuildStarted,
+    SearchLockAcquired,
+    QuiverCandidateProduced,
+    BeforeVectorRerank,
+    BeforeQuiverPublish,
+    BeforeMergedCachePublish,
+    AfterWalAppend,
+    BeforeMemtableApply,
+    BeforeCompactionSave,
+    BeforeWalClear,
+    AfterVecPersisted,
+    AfterTdbPersisted,
+    BeforeFlushMarkerRename,
+    AfterFlushMarkerRename,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum IoPoint {
+    MarkerCreate,
+    MarkerWrite,
+    MarkerSync,
+    MarkerRename,
+    MarkerMetadata,
+    WalFlush,
+    WalSync,
+    WalMigrationCreate,
+    WalMigrationWrite,
+    WalMigrationSync,
+    WalMigrationRename,
+}
+
+thread_local! {
+    static IO_FAILURE: Cell<Option<IoPoint>> = const { Cell::new(None) };
+}
+
+pub struct IoFailureGuard {
+    previous: Option<IoPoint>,
+}
+
+impl Drop for IoFailureGuard {
+    fn drop(&mut self) {
+        IO_FAILURE.set(self.previous);
+    }
+}
+
+pub fn fail_io_at(point: IoPoint) -> IoFailureGuard {
+    let previous = IO_FAILURE.replace(Some(point));
+    IoFailureGuard { previous }
+}
+
+pub fn io_result(point: IoPoint) -> io::Result<()> {
+    if IO_FAILURE.get() == Some(point) {
+        Err(io::Error::other(format!(
+            "deterministic I/O failure at {point:?}"
+        )))
+    } else {
+        Ok(())
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub enum QueryExecutionStrategy {
+    #[default]
+    Auto,
+    ForceSerial,
+    ForceParallel,
+    DisableFusion,
+}
+
+thread_local! {
+    static QUERY_STRATEGY: Cell<QueryExecutionStrategy> = const { Cell::new(QueryExecutionStrategy::Auto) };
+}
+
+pub struct QueryStrategyGuard {
+    previous: QueryExecutionStrategy,
+}
+
+impl Drop for QueryStrategyGuard {
+    fn drop(&mut self) {
+        QUERY_STRATEGY.set(self.previous);
+    }
+}
+
+pub fn force_query_strategy(strategy: QueryExecutionStrategy) -> QueryStrategyGuard {
+    let previous = QUERY_STRATEGY.replace(strategy);
+    QueryStrategyGuard { previous }
+}
+
+pub fn query_strategy() -> QueryExecutionStrategy {
+    QUERY_STRATEGY.get()
+}
+
+#[derive(Default)]
+struct GateState {
+    arrivals: usize,
+    released: bool,
+}
+
+#[derive(Default)]
+struct Gate {
+    state: Mutex<GateState>,
+    changed: Condvar,
+}
+
+impl Gate {
+    fn arrive_and_wait(&self) {
+        let mut state = self
+            .state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner());
+        state.arrivals += 1;
+        self.changed.notify_all();
+        while !state.released {
+            state = self
+                .changed
+                .wait(state)
+                .unwrap_or_else(|poison| poison.into_inner());
+        }
+    }
+
+    fn wait_until_arrived(&self) {
+        let mut state = self
+            .state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner());
+        while state.arrivals == 0 {
+            state = self
+                .changed
+                .wait(state)
+                .unwrap_or_else(|poison| poison.into_inner());
+        }
+    }
+
+    fn wait_until_arrivals(&self, expected: usize) {
+        let mut state = self
+            .state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner());
+        while state.arrivals < expected {
+            state = self
+                .changed
+                .wait(state)
+                .unwrap_or_else(|poison| poison.into_inner());
+        }
+    }
+
+    fn arrivals(&self) -> usize {
+        self.state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner())
+            .arrivals
+    }
+
+    fn is_arrived(&self) -> bool {
+        self.state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner())
+            .arrivals
+            > 0
+    }
+
+    fn release(&self) {
+        let mut state = self
+            .state
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner());
+        state.released = true;
+        self.changed.notify_all();
+    }
+}
+
+fn registry() -> &'static Mutex<HashMap<ConcurrencyPoint, Arc<Gate>>> {
+    static REGISTRY: OnceLock<Mutex<HashMap<ConcurrencyPoint, Arc<Gate>>>> = OnceLock::new();
+    REGISTRY.get_or_init(|| Mutex::new(HashMap::new()))
+}
+
+/// 某个交错点的测试端控制句柄。
+pub struct WaitHandle {
+    point: ConcurrencyPoint,
+    gate: Arc<Gate>,
+}
+
+impl WaitHandle {
+    /// 等待目标线程确定到达交错点。
+    pub fn wait_until_arrived(&self) {
+        self.gate.wait_until_arrived();
+    }
+
+    pub fn wait_until_arrivals(&self, expected: usize) {
+        self.gate.wait_until_arrivals(expected);
+    }
+
+    pub fn arrivals(&self) -> usize {
+        self.gate.arrivals()
+    }
+
+    pub fn is_arrived(&self) -> bool {
+        self.gate.is_arrived()
+    }
+
+    /// 释放目标线程并注销交错点。
+    pub fn release(self) {
+        self.gate.release();
+        registry()
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner())
+            .remove(&self.point);
+    }
+}
+
+impl Drop for WaitHandle {
+    fn drop(&mut self) {
+        self.gate.release();
+        registry()
+            .lock()
+            .unwrap_or_else(|poison| poison.into_inner())
+            .remove(&self.point);
+    }
+}
+
+/// 注册一次性阻塞点。同一交错点不能同时注册两次。
+pub fn pause_at(point: ConcurrencyPoint) -> WaitHandle {
+    let gate = Arc::new(Gate::default());
+    let previous = registry()
+        .lock()
+        .unwrap_or_else(|poison| poison.into_inner())
+        .insert(point, Arc::clone(&gate));
+    assert!(previous.is_none(), "同一个并发交错点不能重复注册");
+    WaitHandle { point, gate }
+}
+
+/// 由生产路径调用：未注册时快速返回，注册时通知测试并等待释放。
+pub fn hit(point: ConcurrencyPoint) {
+    let gate = registry()
+        .lock()
+        .unwrap_or_else(|poison| poison.into_inner())
+        .get(&point)
+        .cloned();
+    if let Some(gate) = gate {
+        gate.arrive_and_wait();
+    }
+}

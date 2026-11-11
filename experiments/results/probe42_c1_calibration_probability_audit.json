@@ -1,0 +1,83 @@
+{
+  "probe": 42,
+  "seed": 20260907,
+  "n": 200000,
+  "calibration": {
+    "origin_fit": {
+      "slope": 0.9013921898871471,
+      "residual_mean": 0.07769491503662428,
+      "exact_residual_cross_moment": 5.03490582559607e-16,
+      "exact_residual_covariance": -0.1165507487305972
+    },
+    "affine_fit": {
+      "intercept": 0.3500741466333275,
+      "slope": 0.7198190855773408,
+      "residual_mean": -4.470734893402551e-16,
+      "exact_residual_covariance": -1.3262893561183376e-15
+    },
+    "shared_edge_intercept": {
+      "edge_intercept": 0.35,
+      "ranking_difference_intercept": 0.0,
+      "standard_pruning_intercept": -0.07
+    }
+  },
+  "probability_space": {
+    "fixed_exact": [
+      0.12,
+      -0.08,
+      0.03
+    ],
+    "fixed_deterministic_approximate": [
+      0.1,
+      -0.02,
+      -0.01
+    ],
+    "fixed_flip": [
+      false,
+      false,
+      true
+    ],
+    "conditional_probabilities_given_data": [
+      0.0,
+      0.0,
+      1.0
+    ],
+    "statement": "固定数据与确定性量化器后，决策概率只能是0或1；跨样本频率属于数据分布层。"
+  },
+  "covariance_vs_mgf": {
+    "gaussian": {
+      "mean": -0.002930022794447815,
+      "variance": 1.0015054994734747,
+      "tail_at_3": 0.00283,
+      "log_mgf": {
+        "0.25": 0.03055619689131213,
+        "0.5": 0.12368433836566707,
+        "0.75": 0.27946633080558403
+      }
+    },
+    "rare_same_variance": {
+      "mean": 0.0005,
+      "variance": 0.9789997500000001,
+      "tail_at_3": 0.00979,
+      "log_mgf": {
+        "0.25": 0.04931157509680101,
+        "0.5": 0.5425774893414945,
+        "0.75": 2.291097499795472
+      }
+    },
+    "rare_probability": 0.01,
+    "rare_amplitude": 10.0,
+    "statement": "近似相同二阶矩不决定尾部或MGF，因此经验covariance不能自动充当sub-Gaussian proxy。"
+  },
+  "no_atom": {
+    "centered_continuous": {
+      "exact_zero_mass": 0.0,
+      "positive_probability": 0.500515
+    },
+    "shifted_continuous": {
+      "exact_zero_mass": 0.0,
+      "positive_probability": 0.02292
+    },
+    "statement": "无原子只排除精确近似tie，不控制错误方向概率。"
+  }
+}

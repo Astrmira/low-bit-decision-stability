@@ -1,0 +1,1058 @@
+[
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.22857142857142865,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": -0.11428571428571432,
+    "conditional_query_bootstrap95": [
+      -0.17142857142857149,
+      -0.05714285714285727
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": -0.11428571428571432,
+    "conditional_query_bootstrap95": [
+      -0.17142857142857149,
+      -0.05714285714285727
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.6285714285714287,
+    "conditional_query_bootstrap95": [
+      0.34285714285714297,
+      0.6285714285714287
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.6857142857142857,
+    "conditional_query_bootstrap95": [
+      0.4571428571428572,
+      0.6857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.6857142857142857,
+    "conditional_query_bootstrap95": [
+      0.4571428571428572,
+      0.6857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": -0.17142857142857149,
+    "conditional_query_bootstrap95": [
+      -0.17142857142857149,
+      -0.17142857142857126
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.05714285714285716,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.05714285714285716
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.05714285714285716,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.05714285714285716
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      -0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "cohere",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.22857142857142865,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.22857142857142865
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "minilm",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.34285714285714275,
+    "conditional_query_bootstrap95": [
+      0.34285714285714275,
+      0.34285714285714275
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.2857142857142857,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": -0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      -0.05714285714285705,
+      -0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": -0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      -0.05714285714285705,
+      -0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.34285714285714275,
+    "conditional_query_bootstrap95": [
+      0.34285714285714275,
+      0.34285714285714275
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.34285714285714275,
+    "conditional_query_bootstrap95": [
+      0.34285714285714275,
+      0.34285714285714275
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": -0.11428571428571421,
+    "conditional_query_bootstrap95": [
+      -0.11428571428571421,
+      -0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.17142857142857149,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.17142857142857149
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.17142857142857149,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.17142857142857149
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": -0.5714285714285714,
+    "conditional_query_bootstrap95": [
+      -0.7428571428571429,
+      -0.5714285714285714
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": -0.28571428571428575,
+    "conditional_query_bootstrap95": [
+      -0.5714285714285716,
+      -0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": -0.28571428571428575,
+    "conditional_query_bootstrap95": [
+      -0.5714285714285716,
+      -0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": -0.11428571428571421,
+    "conditional_query_bootstrap95": [
+      -0.11428571428571421,
+      -0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.17142857142857149,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.17142857142857149
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.17142857142857149,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.17142857142857149
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "sift128",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.2857142857142857,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.2857142857142857
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.17142857142857126,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.17142857142857126
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.11428571428571421,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.11428571428571421
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.17142857142857126,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.17142857142857126
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.17142857142857126,
+    "conditional_query_bootstrap95": [
+      0.17142857142857126,
+      0.17142857142857126
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "ranking",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.05714285714285705,
+    "conditional_query_bootstrap95": [
+      0.05714285714285705,
+      0.05714285714285705
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_mse",
+    "rho_difference": 0.22857142857142876,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_two",
+    "second": "distance_risk",
+    "rho_difference": 0.22857142857142876,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.11428571428571421,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.34285714285714275
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.34285714285714297,
+    "conditional_query_bootstrap95": [
+      0.22857142857142854,
+      0.6285714285714286
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "dist_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.34285714285714297,
+    "conditional_query_bootstrap95": [
+      0.22857142857142854,
+      0.6285714285714286
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "dist_mnr",
+    "rho_difference": 0.0,
+    "conditional_query_bootstrap95": [
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_mse",
+    "rho_difference": 0.22857142857142876,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_two",
+    "second": "distance_risk",
+    "rho_difference": 0.22857142857142876,
+    "conditional_query_bootstrap95": [
+      0.11428571428571421,
+      0.28571428571428575
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "dist_mnr",
+    "rho_difference": 0.11428571428571421,
+    "conditional_query_bootstrap95": [
+      0.05714285714285727,
+      0.17142857142857149
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_mse",
+    "rho_difference": 0.34285714285714297,
+    "conditional_query_bootstrap95": [
+      0.17142857142857149,
+      0.45714285714285724
+    ]
+  },
+  {
+    "dataset": "gist960",
+    "role": "pruning",
+    "first": "comp_opposing",
+    "second": "distance_risk",
+    "rho_difference": 0.34285714285714297,
+    "conditional_query_bootstrap95": [
+      0.17142857142857149,
+      0.45714285714285724
+    ]
+  }
+]

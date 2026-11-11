@@ -1,0 +1,1128 @@
+{
+  "sampling": "每个固定4K经验池内块间独立重抽，拟合、认证、验证使用独立种子",
+  "delta_per_reported_certificate": 0.05,
+  "results": [
+    {
+      "dataset": "cohere",
+      "code": "2bit",
+      "model": {
+        "intercept": -0.7489454282347998,
+        "slope": 0.00043366652674421246,
+        "distance_mse": 0.0006929084316794284,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.11392534971237188,
+              0.08568172454833983,
+              0.06391090154647827,
+              0.04094294309616088,
+              5.155801773071289e-05
+            ],
+            "tau_grid": [
+              0.03706057369709015,
+              0.05559086054563522,
+              0.0741211473941803,
+              0.09265143424272537,
+              0.11118172109127045,
+              0.1482422947883606,
+              0.18530286848545074
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.09346213649532602,
+                "cutoff": 0.04094294309616088,
+                "certification_acceptance": 0.8017893145161272,
+                "validation_acceptance": 0.8024823588709677,
+                "validation_failure": 0.006359425296380623,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.2135561356501259,
+                "cutoff": 0.06391090154647827,
+                "certification_acceptance": 0.5907888104838717,
+                "validation_acceptance": 0.5859375,
+                "validation_failure": 0.0013978494623655912,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.10607483244163445,
+              0.0771926417604698,
+              0.05550931542325932,
+              0.03295865603256021,
+              0.0
+            ],
+            "tau_grid": [
+              0.03706057369709015,
+              0.05559086054563522,
+              0.0741211473941803,
+              0.09265143424272537,
+              0.11118172109127045,
+              0.1482422947883606,
+              0.18530286848545074
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08949040443714658,
+                "cutoff": 0.03295865603256021,
+                "certification_acceptance": 0.8099168346774172,
+                "validation_acceptance": 0.820438508064516,
+                "validation_failure": 0.0035324834894793432,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.28517543960648273,
+                "cutoff": 0.0771926417604698,
+                "certification_acceptance": 0.42408014112903186,
+                "validation_acceptance": 0.41973286290322576,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.09197957277297977,
+              0.06610953092575071,
+              0.04497277498245239,
+              0.022589044570922815,
+              1.692771911587787e-06
+            ],
+            "tau_grid": [
+              0.027822506427764876,
+              0.041733759641647314,
+              0.05564501285552975,
+              0.06955626606941219,
+              0.08346751928329463,
+              0.1112900257110595,
+              0.13911253213882438
+            ],
+            "selected": {
+              "failure": {
+                "selector": 2,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.14785798246693407,
+                "cutoff": 0.04497277498245239,
+                "certification_acceptance": 0.5524149178300805,
+                "validation_acceptance": 0.5670761518729475,
+                "validation_failure": 0.02627311275784042,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 2,
+                "kind": "mechanism",
+                "bound": 0.28978045335363534,
+                "cutoff": 0.06610953092575071,
+                "certification_acceptance": 0.3625541518268383,
+                "validation_acceptance": 0.3760864965781918,
+                "validation_failure": 0.00862316040385464,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.09592636840631079,
+              0.06964617688561153,
+              0.04709551749491242,
+              0.024215271543887917,
+              6.673095088172154e-07
+            ],
+            "tau_grid": [
+              0.027822506427764876,
+              0.041733759641647314,
+              0.05564501285552975,
+              0.06955626606941219,
+              0.08346751928329463,
+              0.1112900257110595,
+              0.13911253213882438
+            ],
+            "selected": {
+              "failure": {
+                "selector": 2,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.14389908551076294,
+                "cutoff": 0.04709551749491242,
+                "certification_acceptance": 0.5603388633340826,
+                "validation_acceptance": 0.5738887163924735,
+                "validation_failure": 0.024151938322754512,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.41644253930574265,
+                "cutoff": 0.06964617688561153,
+                "certification_acceptance": 0.3614447672816196,
+                "validation_acceptance": 0.3756715626441607,
+                "validation_failure": 0.005196613369332473,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "cohere",
+      "code": "rotated_2bit",
+      "model": {
+        "intercept": -0.7022199504064183,
+        "slope": 0.0005096623992532876,
+        "distance_mse": 0.00026280652647222246,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.11392534971237188,
+              0.08568172454833983,
+              0.06391090154647827,
+              0.04094294309616088,
+              5.155801773071289e-05
+            ],
+            "tau_grid": [
+              0.03706057369709015,
+              0.05559086054563522,
+              0.0741211473941803,
+              0.09265143424272537,
+              0.11118172109127045,
+              0.1482422947883606,
+              0.18530286848545074
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08544704927231798,
+                "cutoff": 0.04094294309616088,
+                "certification_acceptance": 0.8017893145161272,
+                "validation_acceptance": 0.8024823588709677,
+                "validation_failure": 0.0020412970087147677,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.15052958131505065,
+                "cutoff": 0.06391090154647827,
+                "certification_acceptance": 0.5907888104838717,
+                "validation_acceptance": 0.5859375,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.1029518046491642,
+              0.07593969748873985,
+              0.05606286391786164,
+              0.035166705548476784,
+              0.0
+            ],
+            "tau_grid": [
+              0.03706057369709015,
+              0.05559086054563522,
+              0.0741211473941803,
+              0.09265143424272537,
+              0.11118172109127045,
+              0.1482422947883606,
+              0.18530286848545074
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08627824830416804,
+                "cutoff": 0.035166705548476784,
+                "certification_acceptance": 0.7787298387096768,
+                "validation_acceptance": 0.7752016129032258,
+                "validation_failure": 0.0008127438231469442,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.19946633347806272,
+                "cutoff": 0.05606286391786164,
+                "certification_acceptance": 0.5766129032258077,
+                "validation_acceptance": 0.5735887096774193,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.09197957277297977,
+              0.06610953092575071,
+              0.04497277498245239,
+              0.022589044570922815,
+              1.692771911587787e-06
+            ],
+            "tau_grid": [
+              0.027822506427764876,
+              0.041733759641647314,
+              0.05564501285552975,
+              0.06955626606941219,
+              0.08346751928329463,
+              0.1112900257110595,
+              0.13911253213882438
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.10824113972855894,
+                "cutoff": 0.022589044570922815,
+                "certification_acceptance": 0.7719624708991487,
+                "validation_acceptance": 0.78515441175499,
+                "validation_failure": 0.01869443408900739,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.19532406784071696,
+                "cutoff": 0.04497277498245239,
+                "certification_acceptance": 0.5524149178300805,
+                "validation_acceptance": 0.5670761518729475,
+                "validation_failure": 0.0020025429840185133,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.09002534686105301,
+              0.06515382177749257,
+              0.043811999182860294,
+              0.022546045199917708,
+              1.8967152922211294e-05
+            ],
+            "tau_grid": [
+              0.027822506427764876,
+              0.041733759641647314,
+              0.05564501285552975,
+              0.06955626606941219,
+              0.08346751928329463,
+              0.1112900257110595,
+              0.13911253213882438
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.10881520077442408,
+                "cutoff": 0.022546045199917708,
+                "certification_acceptance": 0.7669699977070555,
+                "validation_acceptance": 0.7777150742503001,
+                "validation_failure": 0.018374519971892548,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.28192950660379085,
+                "cutoff": 0.06515382177749257,
+                "certification_acceptance": 0.3573343139733342,
+                "validation_acceptance": 0.37414233623685217,
+                "validation_failure": 0.0001376987237776996,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "code": "2bit",
+      "model": {
+        "intercept": -0.8284934121135037,
+        "slope": 0.0011906201424820384,
+        "distance_mse": 0.0010236161678740582,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.31900558471679696,
+              0.25205121040344236,
+              0.19795701503753663,
+              0.13726634979248045,
+              0.0002619028091430664
+            ],
+            "tau_grid": [
+              0.11230237782001495,
+              0.16845356673002243,
+              0.2246047556400299,
+              0.2807559445500374,
+              0.33690713346004486,
+              0.4492095112800598,
+              0.5615118891000748
+            ],
+            "selected": {
+              "failure": {
+                "selector": 4,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08452420598862738,
+                "cutoff": 0.0002619028091430664,
+                "certification_acceptance": 0.9998739919354839,
+                "validation_acceptance": 0.9998739919354839,
+                "validation_failure": 0.02003780718336484,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.14272524393929767,
+                "cutoff": 0.13726634979248045,
+                "certification_acceptance": 0.7771547379032241,
+                "validation_acceptance": 0.7668850806451613,
+                "validation_failure": 0.00016431153466973383,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.279795733483279,
+              0.21788348607421315,
+              0.1678774400899674,
+              0.10834643296586566,
+              0.0
+            ],
+            "tau_grid": [
+              0.11230237782001495,
+              0.16845356673002243,
+              0.2246047556400299,
+              0.2807559445500374,
+              0.33690713346004486,
+              0.4492095112800598,
+              0.5615118891000748
+            ],
+            "selected": {
+              "failure": {
+                "selector": 4,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08457655928928405,
+                "cutoff": 0.0,
+                "certification_acceptance": 1.0,
+                "validation_acceptance": 1.0,
+                "validation_failure": 0.02016129032258064,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.16207627072149355,
+                "cutoff": 0.10834643296586566,
+                "certification_acceptance": 0.7912676411290305,
+                "validation_acceptance": 0.7755796370967742,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.2869032740592956,
+              0.2291516780853271,
+              0.17595062255859362,
+              0.11240923404693604,
+              2.574920654296875e-05
+            ],
+            "tau_grid": [
+              0.10128867626190186,
+              0.15193301439285278,
+              0.2025773525238037,
+              0.25322169065475464,
+              0.30386602878570557,
+              0.4051547050476074,
+              0.5064433813095093
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08375307864141603,
+                "cutoff": 0.11240923404693604,
+                "certification_acceptance": 0.8043706671853241,
+                "validation_acceptance": 0.8046720464849263,
+                "validation_failure": 0.00027680942415240746,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.1307616896407799,
+                "cutoff": 0.11240923404693604,
+                "certification_acceptance": 0.8043706671853241,
+                "validation_acceptance": 0.8046720464849263,
+                "validation_failure": 0.00027680942415240746,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.2831651112930278,
+              0.22530097236840074,
+              0.1745805542986658,
+              0.1140970510605781,
+              3.564141079914762e-05
+            ],
+            "tau_grid": [
+              0.10128867626190186,
+              0.15193301439285278,
+              0.2025773525238037,
+              0.25322169065475464,
+              0.30386602878570557,
+              0.4051547050476074,
+              0.5064433813095093
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08387194264984624,
+                "cutoff": 0.1140970510605781,
+                "certification_acceptance": 0.8019624585098648,
+                "validation_acceptance": 0.8042082888600134,
+                "validation_failure": 0.0003949814112319386,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.1650477119162787,
+                "cutoff": 0.1745805542986658,
+                "certification_acceptance": 0.607647292004362,
+                "validation_acceptance": 0.6085252088533512,
+                "validation_failure": 1.6128663775418977e-05,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "code": "rotated_2bit",
+      "model": {
+        "intercept": -0.8166564616728119,
+        "slope": 0.001181454914492729,
+        "distance_mse": 0.0009671404428508597,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.31900558471679696,
+              0.25205121040344236,
+              0.19795701503753663,
+              0.13726634979248045,
+              0.0002619028091430664
+            ],
+            "tau_grid": [
+              0.11230237782001495,
+              0.16845356673002243,
+              0.2246047556400299,
+              0.2807559445500374,
+              0.33690713346004486,
+              0.4492095112800598,
+              0.5615118891000748
+            ],
+            "selected": {
+              "failure": {
+                "selector": 4,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.0838310742936053,
+                "cutoff": 0.0002619028091430664,
+                "certification_acceptance": 0.9998739919354839,
+                "validation_acceptance": 0.9998739919354839,
+                "validation_failure": 0.016068052930056708,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.13859066753070418,
+                "cutoff": 0.13726634979248045,
+                "certification_acceptance": 0.7771547379032241,
+                "validation_acceptance": 0.7668850806451613,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.28236772456376236,
+              0.21975061409564756,
+              0.1701295076869529,
+              0.11105676196231662,
+              0.0
+            ],
+            "tau_grid": [
+              0.11230237782001495,
+              0.16845356673002243,
+              0.2246047556400299,
+              0.2807559445500374,
+              0.33690713346004486,
+              0.4492095112800598,
+              0.5615118891000748
+            ],
+            "selected": {
+              "failure": {
+                "selector": 4,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08388351493444532,
+                "cutoff": 0.0,
+                "certification_acceptance": 1.0,
+                "validation_acceptance": 1.0,
+                "validation_failure": 0.016129032258064516,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.15932999710167714,
+                "cutoff": 0.11105676196231662,
+                "certification_acceptance": 0.7827620967741923,
+                "validation_acceptance": 0.7728074596774193,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.2869032740592956,
+              0.2291516780853271,
+              0.17595062255859362,
+              0.11240923404693604,
+              2.574920654296875e-05
+            ],
+            "tau_grid": [
+              0.10128867626190186,
+              0.15193301439285278,
+              0.2025773525238037,
+              0.25322169065475464,
+              0.30386602878570557,
+              0.4051547050476074,
+              0.5064433813095093
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08354560232833509,
+                "cutoff": 0.11240923404693604,
+                "certification_acceptance": 0.8043706671853241,
+                "validation_acceptance": 0.8046720464849263,
+                "validation_failure": 0.00036964065206586866,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.1270967040914398,
+                "cutoff": 0.11240923404693604,
+                "certification_acceptance": 0.8043706671853241,
+                "validation_acceptance": 0.8046720464849263,
+                "validation_failure": 0.00036964065206586866,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.2808957555147037,
+              0.22631253846513966,
+              0.174564813210358,
+              0.11289286667383736,
+              5.422315166725422e-05
+            ],
+            "tau_grid": [
+              0.10128867626190186,
+              0.15193301439285278,
+              0.2025773525238037,
+              0.25322169065475464,
+              0.30386602878570557,
+              0.4051547050476074,
+              0.5064433813095093
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08366014555125623,
+                "cutoff": 0.11289286667383736,
+                "certification_acceptance": 0.8051750758092132,
+                "validation_acceptance": 0.8071515622028993,
+                "validation_failure": 0.00026467575188524723,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.1616776068388014,
+                "cutoff": 0.174564813210358,
+                "certification_acceptance": 0.6072046867615907,
+                "validation_acceptance": 0.6131920647080238,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "code": "2bit",
+      "model": {
+        "intercept": -1.6273186621034716,
+        "slope": 0.0009664062061395751,
+        "distance_mse": 0.0023165528305145377,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.13383796215057375,
+              0.09269235134124756,
+              0.06526768207550049,
+              0.03958425521850586,
+              0.0001698136329650879
+            ],
+            "tau_grid": [
+              0.03911030292510986,
+              0.058665454387664795,
+              0.07822060585021973,
+              0.09777575731277466,
+              0.11733090877532959,
+              0.15644121170043945,
+              0.19555151462554932
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.16338625986005717,
+                "cutoff": 0.03958425521850586,
+                "certification_acceptance": 0.7925907258064508,
+                "validation_acceptance": 0.8033644153225805,
+                "validation_failure": 0.0835228609520822,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 3,
+                "kind": "mechanism",
+                "bound": 0.46622485968003086,
+                "cutoff": 0.09269235134124756,
+                "certification_acceptance": 0.4112903225806436,
+                "validation_acceptance": 0.41872479838709675,
+                "validation_failure": 0.0403250075233223,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.10727108888149295,
+              0.07248046546046827,
+              0.044454685482420375,
+              0.023193748947349935,
+              0.0
+            ],
+            "tau_grid": [
+              0.03911030292510986,
+              0.058665454387664795,
+              0.07822060585021973,
+              0.09777575731277466,
+              0.11733090877532959,
+              0.15644121170043945,
+              0.19555151462554932
+            ],
+            "selected": {
+              "failure": {
+                "selector": 2,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.1404192902633526,
+                "cutoff": 0.044454685482420375,
+                "certification_acceptance": 0.6099420362903225,
+                "validation_acceptance": 0.6256300403225806,
+                "validation_failure": 0.03635448136958711,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.5517804168427399,
+                "cutoff": 0.07248046546046827,
+                "certification_acceptance": 0.3845136088709666,
+                "validation_acceptance": 0.39913054435483863,
+                "validation_failure": 0.013259668508287296,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.08922530651092532,
+              0.05720513343811031,
+              0.035561051368713396,
+              0.017789444923400875,
+              1.8835067749078949e-06
+            ],
+            "tau_grid": [
+              0.02277514040470123,
+              0.034162710607051845,
+              0.04555028080940246,
+              0.056937851011753075,
+              0.06832542121410369,
+              0.09110056161880492,
+              0.11387570202350615
+            ],
+            "selected": {
+              "failure": {
+                "selector": 2,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.22240138275211527,
+                "cutoff": 0.035561051368713396,
+                "certification_acceptance": 0.5866066378891766,
+                "validation_acceptance": 0.6096433114733792,
+                "validation_failure": 0.12076112873548933,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 3,
+                "kind": "mechanism",
+                "bound": 0.4953395467265624,
+                "cutoff": 0.05720513343811031,
+                "certification_acceptance": 0.3881258762159207,
+                "validation_acceptance": 0.4100451154332465,
+                "validation_failure": 0.07685582722881716,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.09202374863160223,
+              0.06129203127636362,
+              0.03887140729392545,
+              0.018919683833221134,
+              2.18778071143233e-05
+            ],
+            "tau_grid": [
+              0.02277514040470123,
+              0.034162710607051845,
+              0.04555028080940246,
+              0.056937851011753075,
+              0.06832542121410369,
+              0.09110056161880492,
+              0.11387570202350615
+            ],
+            "selected": {
+              "failure": {
+                "selector": 2,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.22165142999698692,
+                "cutoff": 0.03887140729392545,
+                "certification_acceptance": 0.5704758157602893,
+                "validation_acceptance": 0.5740675837928984,
+                "validation_failure": 0.10918933893997662,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 2,
+                "kind": "mechanism",
+                "bound": 0.6819331890145583,
+                "cutoff": 0.03887140729392545,
+                "certification_acceptance": 0.5704758157602893,
+                "validation_acceptance": 0.5740675837928984,
+                "validation_failure": 0.10918933893997662,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "code": "rotated_2bit",
+      "model": {
+        "intercept": -0.8480972099469246,
+        "slope": 0.0004542160898368015,
+        "distance_mse": 0.00020843746771871243,
+        "distance_count": 4096
+      },
+      "fit_blocks": 128,
+      "certification_blocks": 512,
+      "validation_blocks": 512,
+      "roles": {
+        "ranking": {
+          "margin": {
+            "cutoffs": [
+              0.13383796215057375,
+              0.09269235134124756,
+              0.06526768207550049,
+              0.03958425521850586,
+              0.0001698136329650879
+            ],
+            "tau_grid": [
+              0.03911030292510986,
+              0.058665454387664795,
+              0.07822060585021973,
+              0.09777575731277466,
+              0.11733090877532959,
+              0.15644121170043945,
+              0.19555151462554932
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08461042520186941,
+                "cutoff": 0.03958425521850586,
+                "certification_acceptance": 0.7925907258064508,
+                "validation_acceptance": 0.8033644153225805,
+                "validation_failure": 0.00015685044310250178,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 3,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.11983433100089293,
+                "cutoff": 0.03958425521850586,
+                "certification_acceptance": 0.7925907258064508,
+                "validation_acceptance": 0.8033644153225805,
+                "validation_failure": 0.00015685044310250178,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.13899012349006123,
+              0.09720224322507554,
+              0.06949506174503062,
+              0.04133366417514894,
+              0.0
+            ],
+            "tau_grid": [
+              0.03911030292510986,
+              0.058665454387664795,
+              0.07822060585021973,
+              0.09777575731277466,
+              0.11733090877532959,
+              0.15644121170043945,
+              0.19555151462554932
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.08562457960256757,
+                "cutoff": 0.04133366417514894,
+                "certification_acceptance": 0.7832031249999991,
+                "validation_acceptance": 0.7907636088709677,
+                "validation_failure": 7.967492630069317e-05,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 0,
+                "kind": "mechanism",
+                "bound": 0.1601592279632355,
+                "cutoff": 0.06949506174503062,
+                "certification_acceptance": 0.5839843750000007,
+                "validation_acceptance": 0.593813004032258,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        },
+        "pruning": {
+          "margin": {
+            "cutoffs": [
+              0.08922530651092532,
+              0.05720513343811031,
+              0.035561051368713396,
+              0.017789444923400875,
+              1.8835067749078949e-06
+            ],
+            "tau_grid": [
+              0.02277514040470123,
+              0.034162710607051845,
+              0.04555028080940246,
+              0.056937851011753075,
+              0.06832542121410369,
+              0.09110056161880492,
+              0.11387570202350615
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.1045666637089672,
+                "cutoff": 0.017789444923400875,
+                "certification_acceptance": 0.7846730519591184,
+                "validation_acceptance": 0.8008489813652304,
+                "validation_failure": 0.01688508635912952,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 2,
+                "tau": 1,
+                "kind": "mechanism",
+                "bound": 0.19618182276418866,
+                "cutoff": 0.035561051368713396,
+                "certification_acceptance": 0.5866066378891766,
+                "validation_acceptance": 0.6096433114733792,
+                "validation_failure": 0.0013187824117283627,
+                "validation_below_certificate": true
+              }
+            }
+          },
+          "quantized_margin": {
+            "cutoffs": [
+              0.09100975035897177,
+              0.05921462407039566,
+              0.03746677389860402,
+              0.018456327291697504,
+              1.5154044323117954e-05
+            ],
+            "tau_grid": [
+              0.02277514040470123,
+              0.034162710607051845,
+              0.04555028080940246,
+              0.056937851011753075,
+              0.06832542121410369,
+              0.09110056161880492,
+              0.11387570202350615
+            ],
+            "selected": {
+              "failure": {
+                "selector": 3,
+                "tau": null,
+                "kind": "failure",
+                "bound": 0.10370625944392702,
+                "cutoff": 0.018456327291697504,
+                "certification_acceptance": 0.7848792499721065,
+                "validation_acceptance": 0.7983822214511996,
+                "validation_failure": 0.016907642232757942,
+                "validation_below_certificate": true
+              },
+              "mechanism": {
+                "selector": 1,
+                "tau": 2,
+                "kind": "mechanism",
+                "bound": 0.2745152041255116,
+                "cutoff": 0.05921462407039566,
+                "certification_acceptance": 0.3888268359722216,
+                "validation_acceptance": 0.4126419422542495,
+                "validation_failure": 0.0,
+                "validation_below_certificate": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

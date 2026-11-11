@@ -1,0 +1,17 @@
+{
+  "seed": 20261109,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "pruning": "原4000向量、80拟合/160评估target、64候选、alpha1.2、M32；比例/仿射斜率/完整仿射；原抽样索引",
+  "calibration_replay": "原第一池2000向量及48target，重现原tau与risk后拆分B/T",
+  "three_pool_reanalysis": "全部24配置，原首池冻结评分与tau，第二池仅估计B/T及其和，独立第三池预定最难20%margin的flip作为预测目标",
+  "statistics": "12数据集整簇2000次bootstrap，整簇留一及eligible子集；不按结果选择对照",
+  "source_sha256": {
+    "10_pruning_replay.py": "e05a99ce206d47ebeb40efce6092097fd5bbe6189e1bbd4ea8fd2dddd33ec57c",
+    "16_p6_heldout_calibration.py": "6bc4eb31eb87ce86541caead691d2f9d6b9dcca1eaa7ffa64cf9ab23e9e0c6e1"
+  },
+  "supplement_script_sha256": "ae54b28d34f5c308b7266538a7438f3a9031a8c93cdb5aa9ad5562d0b5a1be60"
+}

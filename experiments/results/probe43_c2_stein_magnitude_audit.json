@@ -1,0 +1,92 @@
+{
+  "probe": 43,
+  "seed": 20260908,
+  "n": 300000,
+  "dimension": 8,
+  "stein": {
+    "exact_gaussian": {
+      "observed_covariance": 6.260564939211989,
+      "gaussian_identity_prediction": 6.26636264822855,
+      "absolute_error": 0.005797709016561292,
+      "relative_error": 0.0009260680262652214
+    },
+    "near_gaussian_mixture": {
+      "observed_covariance": 6.252457582600346,
+      "gaussian_identity_prediction": 6.16640109146774,
+      "absolute_error": 0.08605649113260672,
+      "relative_error": 0.01376362654136016
+    },
+    "contamination_probability": 0.01,
+    "statement": "精确Gaussian样本支持恒等式；小混合污染下使用均值协方差代入Gaussian公式不再是精确等式。"
+  },
+  "magnitude": {
+    "restricted_equal_weight_population_threshold": {
+      "one_bit_correlation": 0.797657671103586,
+      "two_bit_correlation": 0.9137192755044945,
+      "gain": 0.11606160440090851
+    },
+    "restricted_equal_weight_shared_threshold": {
+      "one_bit_correlation": 0.7963883786502662,
+      "two_bit_correlation": 0.9029164530036278,
+      "gain": 0.10652807435336153
+    },
+    "fixed_scorer_counterexample": {
+      "one_bit_correlation": 0.5649916590948467,
+      "two_bit_correlation": 0.4023929835887253,
+      "gain": -0.16259867550612145
+    },
+    "counterexample_sigma": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      8.0,
+      8.0,
+      8.0,
+      8.0
+    ],
+    "counterexample_target_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nuisance_scale_grid": [
+      {
+        "nuisance_scale": 1.0,
+        "one_bit_correlation": 0.5653503514064075,
+        "two_bit_correlation": 0.6467655119153526,
+        "gain": 0.08141516050894504
+      },
+      {
+        "nuisance_scale": 1.5,
+        "one_bit_correlation": 0.5637877501047265,
+        "two_bit_correlation": 0.6062673537215642,
+        "gain": 0.04247960361683767
+      },
+      {
+        "nuisance_scale": 2.0,
+        "one_bit_correlation": 0.5653679806699059,
+        "two_bit_correlation": 0.5719286836509456,
+        "gain": 0.006560702981039723
+      },
+      {
+        "nuisance_scale": 4.0,
+        "one_bit_correlation": 0.5653225036247987,
+        "two_bit_correlation": 0.455461601631748,
+        "gain": -0.10986090199305076
+      },
+      {
+        "nuisance_scale": 8.0,
+        "one_bit_correlation": 0.5643920168507562,
+        "two_bit_correlation": 0.4017522701694242,
+        "gain": -0.16263974668133202
+      }
+    ],
+    "statement": "更多magnitude信息不降低最优读出能力，但当前固定等权scorer可因放大目标无关高方差坐标而变差。"
+  }
+}

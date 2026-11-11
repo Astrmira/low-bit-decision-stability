@@ -1,0 +1,18 @@
+{
+  "seed": 20261109,
+  "blas_threads": 1,
+  "covariance": "原4K向量、80拟合/160评估查询、32候选，匹配样本比较margin拟合与edge仿射拟合",
+  "pruning": "原4K向量、80拟合/160评估target、64候选，原比例/仿射斜率/完整仿射三组，共同alpha1.2与M32",
+  "predictors": "既有24配置，20%精确margin分位点、残差尺度及二者标准化分位点；12数据集整簇2000次bootstrap及留一法",
+  "scope": "新的向量机制对照使用本地恢复的Cohere-1M，其他库只复核既有结果",
+  "source_sha256": {
+    "09_covariance_certificate.py": "7b67b64a94b243b38ccfaebd86b1c680eff429b04e1ac3640f45ac318e93f85f",
+    "10_pruning_replay.py": "e05a99ce206d47ebeb40efce6092097fd5bbe6189e1bbd4ea8fd2dddd33ec57c",
+    "16_p6_heldout_calibration.py": "6bc4eb31eb87ce86541caead691d2f9d6b9dcca1eaa7ffa64cf9ab23e9e0c6e1",
+    "25_c1_calibration_probability_audit.py": "c0a128acdd71ad6f525a430c77e13a0dbe312d3b57c6feafb2372351a4171a86",
+    "26_c2_stein_magnitude_audit.py": "4bcfacabd5105714047c10b27a515b026eb4c3dd623d67d059ad7da15117e327",
+    "27_c3_contamination_trace_audit.py": "94ec8f5a11acef7bd75e6817e16b6cafc2e7178a24337feb232f036196f092ee",
+    "29_candidate_selection_covariance.py": "f73e67896b02db19ba008731966cecaaca66656b893076f6472eb287273660f6"
+  },
+  "audit_script_sha256": "fbc0bd8f5636b6f6a6bb7b1358199e89427fcb79aad1cf4d2288024bdf260ada"
+}

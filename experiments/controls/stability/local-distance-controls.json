@@ -1,0 +1,1001 @@
+{
+  "results": [
+    {
+      "dataset": "cohere",
+      "records": [
+        {
+          "code": "sign",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0011948833882166313,
+                "distance_risk": 0.3625164810947096,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0010282946399948814,
+                "distance_risk": 0.20670179350559237,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0015998490956352775,
+                "distance_risk": 0.3290922843782145,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0015575089673935567,
+                "distance_risk": 0.3554605753171556,
+                "pair_count": 39980
+              }
+            }
+          }
+        },
+        {
+          "code": "shared_2bit",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0007968738702683376,
+                "distance_risk": 0.32033466090057994,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0007307719964631271,
+                "distance_risk": 0.1803986314577143,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.001051543910433905,
+                "distance_risk": 0.2778413274808955,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0010007807424301774,
+                "distance_risk": 0.3225034986763803,
+                "pair_count": 39980
+              }
+            }
+          }
+        },
+        {
+          "code": "rabitq",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.00034862212952269843,
+                "distance_risk": 0.09383042569672073,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0003991385377379662,
+                "distance_risk": 0.0642025540147898,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.00034277957725367794,
+                "distance_risk": 0.09230431907693537,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0003489408044082078,
+                "distance_risk": 0.09446424825292277,
+                "pair_count": 39980
+              }
+            }
+          }
+        },
+        {
+          "code": "bbq_like",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0008342271583384432,
+                "distance_risk": 0.1261583619398836,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0011442556085570898,
+                "distance_risk": 0.10704568396354153,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0007071198458114092,
+                "distance_risk": 0.1786537623416351,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0007633636397052715,
+                "distance_risk": 0.17635332341721577,
+                "pair_count": 39980
+              }
+            }
+          }
+        },
+        {
+          "code": "scalar_int4",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 6.783381207100146e-06,
+                "distance_risk": 0.0020996199264221582,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 8.62441296675251e-06,
+                "distance_risk": 0.0015238271992296104,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 6.082211174411917e-06,
+                "distance_risk": 0.0019141655499230747,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 5.830651246762202e-06,
+                "distance_risk": 0.001920180983030484,
+                "pair_count": 39980
+              }
+            }
+          }
+        },
+        {
+          "code": "pq4x16",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0036022057700250045,
+                "distance_risk": 0.07322236857526843,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.006173594006143718,
+                "distance_risk": 0.14489387900141293,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0022590302771907187,
+                "distance_risk": 0.2695377547275364,
+                "pair_count": 20708
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0026958035365627405,
+                "distance_risk": 0.20299382701229007,
+                "pair_count": 39980
+              }
+            }
+          }
+        }
+      ],
+      "statistics": {
+        "ranking": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.8857142857142858,
+              "conditional_query_bootstrap95": [
+                0.8857142857142858,
+                0.942857142857143
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.14285714285714288,
+              "conditional_query_bootstrap95": [
+                0.14285714285714288,
+                0.2571428571428572
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.8857142857142858,
+                1.0
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.3714285714285715,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.5428571428571429
+              ]
+            }
+          }
+        },
+        "pruning": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.7142857142857143,
+              "conditional_query_bootstrap95": [
+                0.7142857142857143,
+                0.8285714285714287
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.3714285714285715,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.5428571428571429
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.7142857142857143,
+              "conditional_query_bootstrap95": [
+                0.7142857142857143,
+                0.8285714285714287
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.3714285714285715,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.5428571428571429
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "records": [
+        {
+          "code": "sign",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.006439357299428721,
+                "distance_risk": 0.3283127426710376,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.011099683383387987,
+                "distance_risk": 0.11770880613870738,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.004085225994540725,
+                "distance_risk": 0.14818130035923682,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0051891485363486445,
+                "distance_risk": 0.1823710147025599,
+                "pair_count": 60696
+              }
+            }
+          }
+        },
+        {
+          "code": "shared_2bit",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0015984348900369956,
+                "distance_risk": 0.1454281686889739,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.002095222642668314,
+                "distance_risk": 0.040999954003190564,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0012500493160865606,
+                "distance_risk": 0.05215733611738427,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0014161397776928219,
+                "distance_risk": 0.07142960392656816,
+                "pair_count": 60696
+              }
+            }
+          }
+        },
+        {
+          "code": "rabitq",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0020564124149236632,
+                "distance_risk": 0.17504672229600593,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.003352405736976984,
+                "distance_risk": 0.054992980564182115,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.001557802551712361,
+                "distance_risk": 0.06347327894742827,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0017721799784130438,
+                "distance_risk": 0.0872601048580961,
+                "pair_count": 60696
+              }
+            }
+          }
+        },
+        {
+          "code": "bbq_like",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0022834699545537774,
+                "distance_risk": 0.16992704005131787,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0035862141831836847,
+                "distance_risk": 0.05602517767948212,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0016375102215171419,
+                "distance_risk": 0.06603063334672032,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0019304446809208127,
+                "distance_risk": 0.0870054701537415,
+                "pair_count": 60696
+              }
+            }
+          }
+        },
+        {
+          "code": "scalar_int4",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 5.92897651666253e-05,
+                "distance_risk": 0.009949878144612678,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 6.081740117569384e-05,
+                "distance_risk": 0.002926134774371536,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 5.939656780154209e-05,
+                "distance_risk": 0.0028688801424719967,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 6.0089198968657326e-05,
+                "distance_risk": 0.004559165839467916,
+                "pair_count": 60696
+              }
+            }
+          }
+        },
+        {
+          "code": "pq4x16",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.01514757558213519,
+                "distance_risk": 0.3504549486215103,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.03497653233569615,
+                "distance_risk": 0.34246495610858874,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.007527133041475727,
+                "distance_risk": 0.2813214046890684,
+                "pair_count": 30264
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.010898998582430304,
+                "distance_risk": 0.30697599994573443,
+                "pair_count": 60696
+              }
+            }
+          }
+        }
+      ],
+      "statistics": {
+        "ranking": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            },
+            "distance_risk": {
+              "spearman": 1.0,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            }
+          }
+        },
+        "pruning": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            },
+            "distance_risk": {
+              "spearman": 1.0,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                1.0
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "sift128",
+      "records": [
+        {
+          "code": "sign",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.12646697640198779,
+                "distance_risk": 1.0,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.15855568400559003,
+                "distance_risk": 1.0,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.11281650890624641,
+                "distance_risk": 1.0,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.12061512879225564,
+                "distance_risk": 1.0,
+                "pair_count": 37444
+              }
+            }
+          }
+        },
+        {
+          "code": "shared_2bit",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.07823704256709808,
+                "distance_risk": 1.2078014558268235,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.10155346983066928,
+                "distance_risk": 1.2337769045873088,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.06784369775946088,
+                "distance_risk": 1.0891812317403493,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.06973714569991751,
+                "distance_risk": 1.1357524587328487,
+                "pair_count": 37444
+              }
+            }
+          }
+        },
+        {
+          "code": "rabitq",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0020900099154354456,
+                "distance_risk": 0.2211671130978652,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0018926891619708546,
+                "distance_risk": 0.12917093703093185,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.002289215495782338,
+                "distance_risk": 0.16283521105611198,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0021502417483944647,
+                "distance_risk": 0.19337227532880963,
+                "pair_count": 37444
+              }
+            }
+          }
+        },
+        {
+          "code": "bbq_like",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.005035348427679972,
+                "distance_risk": 0.43741328492228293,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0062881065223636,
+                "distance_risk": 0.4123987334988941,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.005146175843693626,
+                "distance_risk": 0.30208954035111957,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0048016531225352765,
+                "distance_risk": 0.35805956400005734,
+                "pair_count": 37444
+              }
+            }
+          }
+        },
+        {
+          "code": "scalar_int4",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 2.4076634655153028e-05,
+                "distance_risk": 0.004722104027126139,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 2.2563342686092387e-05,
+                "distance_risk": 0.0027547170142645516,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 2.596081272515357e-05,
+                "distance_risk": 0.002725785080159193,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 2.5128561714102797e-05,
+                "distance_risk": 0.0036749583640480754,
+                "pair_count": 37444
+              }
+            }
+          }
+        },
+        {
+          "code": "pq4x16",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0022560835929505123,
+                "distance_risk": 0.13234463673924168,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0028213709719677803,
+                "distance_risk": 0.09722931450313543,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.001942740338515531,
+                "distance_risk": 0.11627031358674345,
+                "pair_count": 19692
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0020967719960516573,
+                "distance_risk": 0.12982679330472946,
+                "pair_count": 37444
+              }
+            }
+          }
+        }
+      ],
+      "statistics": {
+        "ranking": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            }
+          }
+        },
+        "pruning": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.6571428571428573,
+              "conditional_query_bootstrap95": [
+                0.6571428571428573,
+                0.8285714285714287
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.8285714285714287,
+              "conditional_query_bootstrap95": [
+                0.8285714285714287,
+                0.942857142857143
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.6571428571428573,
+              "conditional_query_bootstrap95": [
+                0.6571428571428573,
+                0.8285714285714287
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.8285714285714287,
+              "conditional_query_bootstrap95": [
+                0.8285714285714287,
+                0.942857142857143
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "records": [
+        {
+          "code": "sign",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.00953720255974984,
+                "distance_risk": 1.0,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.012278640544414944,
+                "distance_risk": 1.0,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.009367264213847008,
+                "distance_risk": 1.0,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.010626833217195798,
+                "distance_risk": 1.0,
+                "pair_count": 44910
+              }
+            }
+          }
+        },
+        {
+          "code": "shared_2bit",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.003058500532219626,
+                "distance_risk": 0.41605820690809125,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.004048068801741165,
+                "distance_risk": 0.4710641157302773,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.0024520761768629896,
+                "distance_risk": 0.40803325232128007,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0027019348523695157,
+                "distance_risk": 0.41353402387072846,
+                "pair_count": 44910
+              }
+            }
+          }
+        },
+        {
+          "code": "rabitq",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.00017689039842575424,
+                "distance_risk": 0.07936411530399501,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.00018256488789203132,
+                "distance_risk": 0.08780656838200918,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.00016886497002038315,
+                "distance_risk": 0.09123182130121299,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.00016113853873898142,
+                "distance_risk": 0.10332172713240906,
+                "pair_count": 44910
+              }
+            }
+          }
+        },
+        {
+          "code": "bbq_like",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.0005426415232931194,
+                "distance_risk": 0.1664396732144684,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.000915095221212997,
+                "distance_risk": 0.20902541861755541,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.000502229332369584,
+                "distance_risk": 0.14651947070819282,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0005288172194410555,
+                "distance_risk": 0.17041341326237636,
+                "pair_count": 44910
+              }
+            }
+          }
+        },
+        {
+          "code": "scalar_int4",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 3.262004623226835e-05,
+                "distance_risk": 0.005597804883336499,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 3.492510840291212e-05,
+                "distance_risk": 0.007811481186879021,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 1.3761646014327008e-05,
+                "distance_risk": 0.00369638475022227,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 1.1701953485649968e-05,
+                "distance_risk": 0.004139148041134133,
+                "pair_count": 44910
+              }
+            }
+          }
+        },
+        {
+          "code": "pq4x16",
+          "roles": {
+            "ranking": {
+              "unique": {
+                "distance_mse": 0.001869840541533759,
+                "distance_risk": 0.0786477797178935,
+                "pair_count": 4608
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0025974459903264813,
+                "distance_risk": 0.13010890772576467,
+                "pair_count": 9024
+              }
+            },
+            "pruning": {
+              "unique": {
+                "distance_mse": 0.001132390639417873,
+                "distance_risk": 0.18532390622502626,
+                "pair_count": 22606
+              },
+              "endpoint_weighted": {
+                "distance_mse": 0.0012564854899188927,
+                "distance_risk": 0.16184395440991806,
+                "pair_count": 44910
+              }
+            }
+          }
+        }
+      ],
+      "statistics": {
+        "ranking": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.942857142857143,
+              "conditional_query_bootstrap95": [
+                0.942857142857143,
+                0.942857142857143
+              ]
+            },
+            "distance_risk": {
+              "spearman": 1.0,
+              "conditional_query_bootstrap95": [
+                1.0,
+                1.0
+              ]
+            }
+          }
+        },
+        "pruning": {
+          "unique": {
+            "distance_mse": {
+              "spearman": 0.6,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.6571428571428573
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.6,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.6571428571428573
+              ]
+            }
+          },
+          "endpoint_weighted": {
+            "distance_mse": {
+              "spearman": 0.6,
+              "conditional_query_bootstrap95": [
+                0.3714285714285715,
+                0.6571428571428573
+              ]
+            },
+            "distance_risk": {
+              "spearman": 0.6571428571428573,
+              "conditional_query_bootstrap95": [
+                0.4285714285714286,
+                0.6571428571428573
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "scope": "只用拟合决策的唯一距离端点对计算局部指标，频率加权版本同时保留；距离映射与原结果相同"
+}

@@ -1,0 +1,92 @@
+{
+  "probe": 35,
+  "seed": 20260826,
+  "n": 500000,
+  "margin_zero": {
+    "epsilon": [
+      1e-12,
+      1e-11,
+      1e-10,
+      1e-09,
+      1e-08,
+      1e-07,
+      1e-06,
+      1e-05,
+      0.0001,
+      0.001,
+      0.01
+    ],
+    "exact_margin": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "positive_decision": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "negative_decision": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "arbitrarily_small_opposite_outcomes": true,
+    "statement": "At zero exact margin, residuals of arbitrarily small norm can select opposite decisions."
+  },
+  "matched_global_different_tail": {
+    "light_tail": {
+      "intercept": -5.455592942677655e-05,
+      "slope": 0.9749126630984707,
+      "spearman": 0.9860281862881956,
+      "mse": 0.025136191235181567,
+      "residual_variance": 0.025136191235181567,
+      "residual_abs_p99": 0.40878269095476993,
+      "residual_abs_p999": 0.5239291929200166,
+      "flip_rate": 0.050882,
+      "hard_margin_flip_rate": 0.23912
+    },
+    "boundary_coupled_tail": {
+      "intercept": 0.0004755976968630136,
+      "slope": 0.985671759443274,
+      "spearman": 0.9860281862903476,
+      "mse": 0.01700013022312354,
+      "residual_variance": 0.01700013022312354,
+      "residual_abs_p99": 0.4587052562134762,
+      "residual_abs_p999": 0.47010659314388153,
+      "flip_rate": 0.1,
+      "hard_margin_flip_rate": 0.5
+    },
+    "spearman_gap": 2.1520563109334034e-12,
+    "mse_ratio": 0.6763208500470633,
+    "flip_ratio": 1.965331551432727,
+    "hard_flip_ratio": 2.0910003345600536,
+    "boundary_fraction": 0.1,
+    "boundary_flip_level": 0.35,
+    "statement": "Similar global rank fidelity does not identify residual tail shape or decision-flip risk."
+  }
+}

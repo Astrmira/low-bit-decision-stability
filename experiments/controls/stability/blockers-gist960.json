@@ -1,0 +1,119 @@
+{
+  "dataset": "gist960",
+  "codes": {
+    "2bit": {
+      "edges": {
+        "count": 3701,
+        "failure_rate": 0.24723047824912187,
+        "all_sum_saturation": 0.9159686571196973,
+        "strongest_saturation": 0.9159686571196973,
+        "all_sum_mean": 131.75475763913363,
+        "strongest_mean": 18.23314973086397,
+        "mean_risk_reproduction_gap": 1.5963403576790824e-06,
+        "mean_risk_relative_tolerance": 1.1920928955078125e-07,
+        "old_table_reproduced": true,
+        "order_change_rate": 1.0,
+        "mean_order_inversion_fraction": 0.44320746527777777,
+        "fixed_order_jaccard": 0.45796445623314763,
+        "resorted_jaccard": 0.259517271212667,
+        "exact_pruned_steps": 5378,
+        "mean_blockers_on_pruned_steps": 2.2266641874302713
+      },
+      "paths": {
+        "1": {
+          "count": 600,
+          "failure_rate": 0.24,
+          "all_sum_saturation": 0.8466666666666667,
+          "strongest_saturation": 0.8466666666666667,
+          "all_sum_mean": 89.15151296017208,
+          "strongest_mean": 14.164051161473905,
+          "old_table_reproduced": true
+        },
+        "2": {
+          "count": 600,
+          "failure_rate": 0.46,
+          "all_sum_saturation": 0.9866666666666667,
+          "strongest_saturation": 0.9866666666666667,
+          "all_sum_mean": 202.24769504837687,
+          "strongest_mean": 31.0294000861289,
+          "old_table_reproduced": true
+        },
+        "3": {
+          "count": 600,
+          "failure_rate": 0.6083333333333333,
+          "all_sum_saturation": 0.9983333333333333,
+          "strongest_saturation": 0.9983333333333333,
+          "all_sum_mean": 312.3664219879411,
+          "strongest_mean": 48.585121530889644,
+          "old_table_reproduced": true
+        },
+        "4": {
+          "count": 600,
+          "failure_rate": 0.7233333333333334,
+          "all_sum_saturation": 1.0,
+          "strongest_saturation": 1.0,
+          "all_sum_mean": 431.19707355082534,
+          "strongest_mean": 65.8620891472699,
+          "old_table_reproduced": true
+        }
+      }
+    },
+    "rotated_2bit": {
+      "edges": {
+        "count": 3701,
+        "failure_rate": 0.24723047824912187,
+        "all_sum_saturation": 0.91272629019184,
+        "strongest_saturation": 0.91272629019184,
+        "all_sum_mean": 116.99865825991138,
+        "strongest_mean": 17.94682182398473,
+        "mean_risk_reproduction_gap": 1.6423746096450031e-06,
+        "mean_risk_relative_tolerance": 1.1920928955078125e-07,
+        "old_table_reproduced": true,
+        "order_change_rate": 1.0,
+        "mean_order_inversion_fraction": 0.2963355654761905,
+        "fixed_order_jaccard": 0.45807383123314765,
+        "resorted_jaccard": 0.35865833790386664,
+        "exact_pruned_steps": 5378,
+        "mean_blockers_on_pruned_steps": 2.2266641874302713
+      },
+      "paths": {
+        "1": {
+          "count": 600,
+          "failure_rate": 0.24,
+          "all_sum_saturation": 0.845,
+          "strongest_saturation": 0.845,
+          "all_sum_mean": 80.34039346734872,
+          "strongest_mean": 13.774413246539728,
+          "old_table_reproduced": true
+        },
+        "2": {
+          "count": 600,
+          "failure_rate": 0.46,
+          "all_sum_saturation": 0.985,
+          "strongest_saturation": 0.985,
+          "all_sum_mean": 181.88531609586468,
+          "strongest_mean": 30.206784233225264,
+          "old_table_reproduced": true
+        },
+        "3": {
+          "count": 600,
+          "failure_rate": 0.6083333333333333,
+          "all_sum_saturation": 0.9983333333333333,
+          "strongest_saturation": 0.9983333333333333,
+          "all_sum_mean": 280.37109517386824,
+          "strongest_mean": 47.39328703049029,
+          "old_table_reproduced": true
+        },
+        "4": {
+          "count": 600,
+          "failure_rate": 0.7233333333333334,
+          "all_sum_saturation": 1.0,
+          "strongest_saturation": 1.0,
+          "all_sum_mean": 386.27086072163377,
+          "strongest_mean": 64.31849112572036,
+          "old_table_reproduced": true
+        }
+      }
+    }
+  }
+}

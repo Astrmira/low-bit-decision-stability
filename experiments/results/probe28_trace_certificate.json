@@ -1,0 +1,345 @@
+{
+  "probe": 28,
+  "seed": 20260823,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "gist960"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "n_sample": 4000,
+  "n_calibration_targets": 80,
+  "n_evaluation_targets": 160,
+  "candidate_k": 64,
+  "max_k": 32,
+  "alpha": 1.2,
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 9.16522304963386e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0007199511126820017,
+              "residual_scale": 0.03192423373313049,
+              "distance_spearman": 0.7254232271569472
+            },
+            "sorting_mean": -0.000633799675432861,
+            "sorting_scale": 0.005233513701626665,
+            "pruning_mean": -0.01371162472699521,
+            "pruning_scale": 0.03308720501348185,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 30.36875,
+            "pruning_error_mean": 0.78125,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 86.07051234886082,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.00011477355859477075,
+              "distance_count": 25308,
+              "residual_mean": 0.0010504072277937467,
+              "residual_scale": 0.029479068675644454,
+              "distance_spearman": 0.920656382932306
+            },
+            "sorting_mean": -0.0007221798975970765,
+            "sorting_scale": 0.004200173363985613,
+            "pruning_mean": -0.009186371097904109,
+            "pruning_scale": 0.0317366117146913,
+            "sorting_count": 5040,
+            "pruning_count": 5328
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 30.6,
+            "pruning_error_mean": 0.78125,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 81.84702267561869,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005852305268160636,
+              "distance_count": 25308,
+              "residual_mean": 0.0037434743668005605,
+              "residual_scale": 0.06732075924620098,
+              "distance_spearman": 0.9584921853955465
+            },
+            "sorting_mean": -0.0019507038293642015,
+            "sorting_scale": 0.020682677760178587,
+            "pruning_mean": 0.05567925471405392,
+            "pruning_scale": 0.06005734147777704,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 29.9875,
+            "pruning_error_mean": 2.55625,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 67.09069994840928,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 0.0005851423581531199,
+              "distance_count": 25308,
+              "residual_mean": 0.0037491411694736635,
+              "residual_scale": 0.06720605037526813,
+              "distance_spearman": 0.9585331030370119
+            },
+            "sorting_mean": -0.0019259654976093602,
+            "sorting_scale": 0.020260039227275803,
+            "pruning_mean": 0.05668683025022288,
+            "pruning_scale": 0.060178177971411895,
+            "sorting_count": 5040,
+            "pruning_count": 6533
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 29.9625,
+            "pruning_error_mean": 2.55625,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 66.97820837882286,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "quantizers": {
+        "2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 7.610122110278672e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0004555052545026191,
+              "residual_scale": 0.029311477847560025,
+              "distance_spearman": 0.5999328543554413
+            },
+            "sorting_mean": -0.0005470637632463526,
+            "sorting_scale": 0.003286696126289438,
+            "pruning_mean": -0.005763284937764371,
+            "pruning_scale": 0.028904960311902938,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 31.0,
+            "pruning_error_mean": 1.5625,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 94.63228602723561,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        },
+        "rotated_2bit": {
+          "calibration": {
+            "distance_calibration": {
+              "slope": 6.541331112116326e-05,
+              "distance_count": 25308,
+              "residual_mean": 0.0008673189723532053,
+              "residual_scale": 0.027085727447076106,
+              "distance_spearman": 0.9086388718852892
+            },
+            "sorting_mean": -0.0004886509156186745,
+            "sorting_scale": 0.0024014907393500535,
+            "pruning_mean": -0.006239652637557451,
+            "pruning_scale": 0.02619010005382658,
+            "sorting_count": 5040,
+            "pruning_count": 5423
+          },
+          "evaluation": {
+            "target_count": 160,
+            "semantic_divergence_rate": 1.0,
+            "output_divergence_rate": 1.0,
+            "order_divergence_rate": 1.0,
+            "sorting_event_mean": 63.0,
+            "pruning_event_mean": 64.0,
+            "sorting_error_mean": 30.30625,
+            "pruning_error_mean": 1.5625,
+            "tie_event_mean": 0.0,
+            "first_divergence_counts": {
+              "sorting": 160,
+              "pruning": 0,
+              "None": 0
+            },
+            "strict_form": {
+              "mean_sum": 91.77001379021317,
+              "mean_clipped": 1.0,
+              "saturation_rate": 1.0,
+              "covers_semantic_empirically": true,
+              "status": "使用样本 residual scale 的 theorem-form plug-in diagnostic，不是已证明的条件 MGF certificate"
+            },
+            "heuristic_correlations": {
+              "top_1_logrisk": 0.0,
+              "top_3_logrisk": 0.0,
+              "top_5_logrisk": 0.0,
+              "top_10_logrisk": 0.0,
+              "all_logrisk": 0.0
+            },
+            "best_heuristic": "top_1_logrisk",
+            "best_heuristic_spearman": 0.0,
+            "event_identity_holds": true,
+            "output_subset_holds": true
+          }
+        }
+      }
+    }
+  ]
+}

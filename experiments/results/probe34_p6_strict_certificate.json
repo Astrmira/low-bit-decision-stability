@@ -1,0 +1,3598 @@
+{
+  "probe": 34,
+  "seed": 20260825,
+  "datasets": [
+    "cohere",
+    "minilm",
+    "bge_m3",
+    "wolt_clip",
+    "codesearch_jina",
+    "landmark_dino",
+    "glove100",
+    "sift128",
+    "gist960",
+    "sphere",
+    "random",
+    "msmarco_cohere"
+  ],
+  "quantizers": [
+    "2bit",
+    "rotated_2bit"
+  ],
+  "pool_size": 2000,
+  "block_counts": {
+    "coefficient_fit": 128,
+    "risk_calibration": 512,
+    "validation": 512,
+    "stress_quantile": 256,
+    "stress_evaluation": 512
+  },
+  "candidate_k": 32,
+  "max_k": 16,
+  "alpha": 1.2,
+  "delta_r": 0.05,
+  "tau_ratios": [
+    0.5,
+    0.75,
+    1.0,
+    1.25,
+    1.5,
+    2.0,
+    2.5
+  ],
+  "retention_targets": [
+    0.2,
+    0.4,
+    0.6,
+    0.8,
+    1.0
+  ],
+  "stress_fraction": 0.2,
+  "protocol": "five disjoint empirical pools; independent-with-replacement query/call blocks within each pool",
+  "estimand": "block-uniform selective risk; decision-weighted flip rate reported separately",
+  "status": "operational fitted-rule finite-sample certificate for the empirical-pool block distribution",
+  "aggregate": {
+    "ranking": {
+      "eligible_configuration_count": 24,
+      "issued_count": 24,
+      "abstention_rate": 0.0,
+      "issued_coverage_rate": 1.0,
+      "mean_selective_risk": 0.0036983026288331974,
+      "mean_certificate": 0.19763327417391738,
+      "mean_retained_coverage": 0.665356707829301,
+      "mean_stress_risk": 0.1301632652880626,
+      "records": [
+        {
+          "dataset": "cohere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0014652014652014654,
+          "certificate": 0.2335711479854342,
+          "coverage": 0.6020035282258064,
+          "stress_risk": 0.18474025974025976
+        },
+        {
+          "dataset": "cohere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.00010465724751439038,
+          "certificate": 0.1655799833384622,
+          "coverage": 0.6020035282258064,
+          "stress_risk": 0.14707792207792209
+        },
+        {
+          "dataset": "minilm",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.1670666418277292,
+          "coverage": 0.5980972782258065,
+          "stress_risk": 0.10569351907934586
+        },
+        {
+          "dataset": "minilm",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.00047839260086110676,
+          "certificate": 0.16560462153195327,
+          "coverage": 0.790196572580645,
+          "stress_risk": 0.08752271350696547
+        },
+        {
+          "dataset": "bge_m3",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11299955836650123,
+          "coverage": 0.8019153225806452,
+          "stress_risk": 0.04518779342723004
+        },
+        {
+          "dataset": "bge_m3",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11230545200019845,
+          "coverage": 0.8019153225806452,
+          "stress_risk": 0.04665492957746479
+        },
+        {
+          "dataset": "wolt_clip",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0006803382252891437,
+          "certificate": 0.18195623760905527,
+          "coverage": 0.6482484879032258,
+          "stress_risk": 0.1033599088838269
+        },
+        {
+          "dataset": "wolt_clip",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.1315194869035028,
+          "coverage": 0.8318422379032258,
+          "stress_risk": 0.08599088838268795
+        },
+        {
+          "dataset": "codesearch_jina",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11972802287780963,
+          "coverage": 0.8036794354838709,
+          "stress_risk": 0.07666256157635468
+        },
+        {
+          "dataset": "codesearch_jina",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11650716173760292,
+          "coverage": 0.8036794354838709,
+          "stress_risk": 0.062192118226600986
+        },
+        {
+          "dataset": "landmark_dino",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0008348639171814993,
+          "certificate": 0.14337932624170718,
+          "coverage": 0.7546622983870968,
+          "stress_risk": 0.08244142319930575
+        },
+        {
+          "dataset": "landmark_dino",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.1168611638175152,
+          "coverage": 0.7546622983870968,
+          "stress_risk": 0.037026323401793466
+        },
+        {
+          "dataset": "glove100",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.008921161825726139,
+          "certificate": 0.27893126652406547,
+          "coverage": 0.607358870967742,
+          "stress_risk": 0.23022468451831335
+        },
+        {
+          "dataset": "glove100",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.002697095435684647,
+          "certificate": 0.24831759216344998,
+          "coverage": 0.607358870967742,
+          "stress_risk": 0.21606648199445985
+        },
+        {
+          "dataset": "sift128",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.023382108915371853,
+          "certificate": 0.4716354827910974,
+          "coverage": 0.41765372983870963,
+          "stress_risk": 0.33731984053971176
+        },
+        {
+          "dataset": "sift128",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.15811777545181954,
+          "coverage": 0.5991053427419355,
+          "stress_risk": 0.11836859858938974
+        },
+        {
+          "dataset": "gist960",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.04703476482617588,
+          "certificate": 0.58250361768906,
+          "coverage": 0.400516633064516,
+          "stress_risk": 0.33345285048404444
+        },
+        {
+          "dataset": "gist960",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 8.091269520187717e-05,
+          "certificate": 0.1301888465225788,
+          "coverage": 0.7786668346774194,
+          "stress_risk": 0.11150950161348153
+        },
+        {
+          "dataset": "sphere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0020018478595626734,
+          "certificate": 0.2935550972884993,
+          "coverage": 0.40914818548387094,
+          "stress_risk": 0.2239193083573487
+        },
+        {
+          "dataset": "sphere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.001077918078226055,
+          "certificate": 0.3073949803461075,
+          "coverage": 0.40914818548387094,
+          "stress_risk": 0.21037463976945242
+        },
+        {
+          "dataset": "random",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.1149655371567462,
+          "coverage": 0.803679435483871,
+          "stress_risk": 0.06962025316455696
+        },
+        {
+          "dataset": "random",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11426097757560451,
+          "coverage": 0.803679435483871,
+          "stress_risk": 0.05791139240506329
+        },
+        {
+          "dataset": "msmarco_cohere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.1586201364279113,
+          "coverage": 0.5602948588709677,
+          "stress_risk": 0.08244076598506979
+        },
+        {
+          "dataset": "msmarco_cohere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11762846599960537,
+          "coverage": 0.7790448588709677,
+          "stress_risk": 0.06815968841285297
+        }
+      ]
+    },
+    "pruning": {
+      "eligible_configuration_count": 24,
+      "issued_count": 24,
+      "abstention_rate": 0.0,
+      "issued_coverage_rate": 1.0,
+      "mean_selective_risk": 0.002277592133345239,
+      "mean_certificate": 0.18289782873382396,
+      "mean_retained_coverage": 0.6784066061730027,
+      "mean_stress_risk": 0.1444212334903139,
+      "records": [
+        {
+          "dataset": "cohere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0003312540772414157,
+          "certificate": 0.22279430731494335,
+          "coverage": 0.5705955330368442,
+          "stress_risk": 0.15698928865700193
+        },
+        {
+          "dataset": "cohere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 7.986275286748174e-05,
+          "certificate": 0.1351634103704727,
+          "coverage": 0.7889038380959479,
+          "stress_risk": 0.07126157844081432
+        },
+        {
+          "dataset": "minilm",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 7.513695385093999e-05,
+          "certificate": 0.14072904082805812,
+          "coverage": 0.7877030279670518,
+          "stress_risk": 0.0973724824140985
+        },
+        {
+          "dataset": "minilm",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 7.513695385093999e-05,
+          "certificate": 0.14082901208951965,
+          "coverage": 0.7877030279670518,
+          "stress_risk": 0.09258004553425156
+        },
+        {
+          "dataset": "bge_m3",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.15596354322579684,
+          "coverage": 0.5919915442241767,
+          "stress_risk": 0.1761619897240334
+        },
+        {
+          "dataset": "bge_m3",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.15547953640929096,
+          "coverage": 0.5919915442241767,
+          "stress_risk": 0.17161717441411586
+        },
+        {
+          "dataset": "wolt_clip",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0017734780721377758,
+          "certificate": 0.2616971789701928,
+          "coverage": 0.5708226787066959,
+          "stress_risk": 0.25662326331752877
+        },
+        {
+          "dataset": "wolt_clip",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.00011037408745008481,
+          "certificate": 0.17964442110906978,
+          "coverage": 0.5708226787066959,
+          "stress_risk": 0.23458321356922057
+        },
+        {
+          "dataset": "codesearch_jina",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11626916928448536,
+          "coverage": 0.8060763568681228,
+          "stress_risk": 0.07498469227008818
+        },
+        {
+          "dataset": "codesearch_jina",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11421065078369051,
+          "coverage": 0.8060763568681228,
+          "stress_risk": 0.07375920453750626
+        },
+        {
+          "dataset": "landmark_dino",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.15271492060289824,
+          "coverage": 0.6227430253641089,
+          "stress_risk": 0.0742873507634803
+        },
+        {
+          "dataset": "landmark_dino",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11464724732740657,
+          "coverage": 0.8060611688838792,
+          "stress_risk": 0.053451350773661685
+        },
+        {
+          "dataset": "glove100",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0014711382495046835,
+          "certificate": 0.2278255182050108,
+          "coverage": 0.5955591351687715,
+          "stress_risk": 0.23337291937055912
+        },
+        {
+          "dataset": "glove100",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0010122868019087968,
+          "certificate": 0.2113821251770913,
+          "coverage": 0.5955591351687715,
+          "stress_risk": 0.21928778053659548
+        },
+        {
+          "dataset": "sift128",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.034335835564740985,
+          "certificate": 0.463256643350794,
+          "coverage": 0.4280327441406615,
+          "stress_risk": 0.38022112060272706
+        },
+        {
+          "dataset": "sift128",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.001639538796224052,
+          "certificate": 0.2901506591304307,
+          "coverage": 0.4280327441406615,
+          "stress_risk": 0.3223001141223702
+        },
+        {
+          "dataset": "gist960",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.01314869685829334,
+          "certificate": 0.46460252249259676,
+          "coverage": 0.3908271226202945,
+          "stress_risk": 0.3224945375211006
+        },
+        {
+          "dataset": "gist960",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0006094720322152396,
+          "certificate": 0.14454863905400833,
+          "coverage": 0.7761689545331393,
+          "stress_risk": 0.1724025392008399
+        },
+        {
+          "dataset": "sphere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11174907836776637,
+          "coverage": 0.8023563508064515,
+          "stress_risk": 0.0
+        },
+        {
+          "dataset": "sphere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11174907836776637,
+          "coverage": 0.8023563508064515,
+          "stress_risk": 0.0
+        },
+        {
+          "dataset": "random",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11739612943450078,
+          "coverage": 0.7900623362661117,
+          "stress_risk": 0.11036738216866657
+        },
+        {
+          "dataset": "random",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11722925070349678,
+          "coverage": 0.7900623362661117,
+          "stress_risk": 0.11558916351570783
+        },
+        {
+          "dataset": "msmarco_cohere",
+          "quantizer": "2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.12231603119438124,
+          "coverage": 0.7906252786608824,
+          "stress_risk": 0.03042944177342843
+        },
+        {
+          "dataset": "msmarco_cohere",
+          "quantizer": "rotated_2bit",
+          "abstained": false,
+          "covered": true,
+          "selective_risk": 0.0,
+          "certificate": 0.11719977581810614,
+          "coverage": 0.7906252786608824,
+          "stress_risk": 0.02597297053973725
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "dataset": "cohere",
+      "kind": "contrastive",
+      "dimension": 768,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.78430114920546,
+            "slope": 0.00044739226011717445,
+            "distance_mse": 0.0007945047424695041,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.030525928479885587,
+                "tau_grid": [
+                  0.03718617558479309,
+                  0.055779263377189636,
+                  0.07437235116958618,
+                  0.09296543896198273,
+                  0.11155852675437927,
+                  0.14874470233917236,
+                  0.18593087792396545
+                ],
+                "selector_cutoffs": [
+                  3.708082253111214,
+                  2.8128670496100043,
+                  2.1067879844659565,
+                  1.3445836515662442,
+                  0.002403639180601948
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.1067879844659565,
+                  "tau": 0.055779263377189636,
+                  "calibration_coverage": 0.6052797379032259,
+                  "calibration_union_mass": 0.041708669354838704,
+                  "certificate": 0.2335711479854342
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.03950352822580645,
+                "coverage": 0.6020035282258064,
+                "failure_mass": 0.0008820564516129032,
+                "selective_risk": 0.0014652014652014654,
+                "certificate": 0.2335711479854342,
+                "covered": true,
+                "looseness": 159.41230850005883,
+                "decision_weighted_flip_rate": 0.03950352822580645
+              },
+              "stress": {
+                "frozen_cutoff": 1.3123869926086635,
+                "coverage": 0.1940524193548387,
+                "conditional_flip_rate": 0.18474025974025976,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.02702793781564268,
+                "tau_grid": [
+                  0.04769247770309448,
+                  0.07153871655464172,
+                  0.09538495540618896,
+                  0.1192311942577362,
+                  0.14307743310928345,
+                  0.19076991081237793,
+                  0.2384623885154724
+                ],
+                "selector_cutoffs": [
+                  5.019647626855918,
+                  3.994009522991223,
+                  3.09120014084613,
+                  2.0829491320579945,
+                  0.00570378155738595
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 3.09120014084613,
+                  "tau": 0.07153871655464172,
+                  "calibration_coverage": 0.5862021823524505,
+                  "calibration_union_mass": 0.031806017403295625,
+                  "certificate": 0.22279430731494335
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.032176523421306856,
+                "coverage": 0.5705955330368442,
+                "failure_mass": 0.00018901209677419354,
+                "selective_risk": 0.0003312540772414157,
+                "certificate": 0.22279430731494335,
+                "covered": true,
+                "looseness": 672.5783095873335,
+                "decision_weighted_flip_rate": 0.033073322932917315
+              },
+              "stress": {
+                "frozen_cutoff": 2.0049176778106914,
+                "coverage": 0.20024578339727714,
+                "conditional_flip_rate": 0.15698928865700193,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.6996244199869809,
+            "slope": 0.0005051512449423189,
+            "distance_mse": 0.00024210752091544007,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.018531192864199613,
+                "tau_grid": [
+                  0.03718617558479309,
+                  0.055779263377189636,
+                  0.07437235116958618,
+                  0.09296543896198273,
+                  0.11155852675437927,
+                  0.14874470233917236,
+                  0.18593087792396545
+                ],
+                "selector_cutoffs": [
+                  6.108222740192978,
+                  4.633559156664166,
+                  3.470454374274724,
+                  2.214895969391625,
+                  0.003959449251659113
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 3.470454374274724,
+                  "tau": 0.055779263377189636,
+                  "calibration_coverage": 0.6052797379032259,
+                  "calibration_union_mass": 0.006048387096774193,
+                  "certificate": 0.1655799833384622
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.029548891129032258,
+                "coverage": 0.6020035282258064,
+                "failure_mass": 6.300403225806451e-05,
+                "selective_risk": 0.00010465724751439038,
+                "certificate": 0.1655799833384622,
+                "covered": true,
+                "looseness": 1582.116740799006,
+                "decision_weighted_flip_rate": 0.029548891129032258
+              },
+              "stress": {
+                "frozen_cutoff": 2.161859291405876,
+                "coverage": 0.1940524193548387,
+                "conditional_flip_rate": 0.14707792207792209,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.019587813757098293,
+                "tau_grid": [
+                  0.04769247770309448,
+                  0.07153871655464172,
+                  0.09538495540618896,
+                  0.1192311942577362,
+                  0.14307743310928345,
+                  0.19076991081237793,
+                  0.2384623885154724
+                ],
+                "selector_cutoffs": [
+                  6.926282105675797,
+                  5.5110714427419065,
+                  4.265344066395283,
+                  2.874124714097253,
+                  0.007870273587381415
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.874124714097253,
+                  "tau": 0.04769247770309448,
+                  "calibration_coverage": 0.8010528818262133,
+                  "calibration_union_mass": 0.01655674512634049,
+                  "certificate": 0.1351634103704727
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.013133880996795657,
+                "coverage": 0.7889038380959479,
+                "failure_mass": 6.300403225806451e-05,
+                "selective_risk": 7.986275286748174e-05,
+                "certificate": 0.1351634103704727,
+                "covered": true,
+                "looseness": 1692.4461719313974,
+                "decision_weighted_flip_rate": 0.014165366614664587
+              },
+              "stress": {
+                "frozen_cutoff": 2.7664542349302765,
+                "coverage": 0.20024578339727714,
+                "conditional_flip_rate": 0.07126157844081432,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "kind": "contrastive",
+      "dimension": 384,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.8373891156205232,
+            "slope": 0.0011957952595297063,
+            "distance_mse": 0.0009690178704194571,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.04470393152386512,
+                "tau_grid": [
+                  0.10477088391780853,
+                  0.1571563258767128,
+                  0.20954176783561707,
+                  0.26192720979452133,
+                  0.3143126517534256,
+                  0.41908353567123413,
+                  0.5238544195890427
+                ],
+                "selector_cutoffs": [
+                  6.724149955332693,
+                  5.25179484210615,
+                  4.118087268862955,
+                  2.8743242650748724,
+                  0.007262593893296165
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 4.118087268862955,
+                  "tau": 0.1571563258767128,
+                  "calibration_coverage": 0.572328629032258,
+                  "calibration_union_mass": 0.0013230846774193547,
+                  "certificate": 0.1670666418277292
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.018649193548387094,
+                "coverage": 0.5980972782258065,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.1670666418277292,
+                "covered": true,
+                "looseness": 167066641827.72922,
+                "decision_weighted_flip_rate": 0.018649193548387098
+              },
+              "stress": {
+                "frozen_cutoff": 2.844443497822461,
+                "coverage": 0.208039314516129,
+                "conditional_flip_rate": 0.10569351907934586,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.045696320858673665,
+                "tau_grid": [
+                  0.10175728797912598,
+                  0.15263593196868896,
+                  0.20351457595825195,
+                  0.25439321994781494,
+                  0.30527186393737793,
+                  0.4070291519165039,
+                  0.5087864398956299
+                ],
+                "selector_cutoffs": [
+                  6.386349814496269,
+                  5.0334177751259706,
+                  3.9230185880958617,
+                  2.6503600430671863,
+                  0.009272725062893623
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.6503600430671863,
+                  "tau": 0.10175728797912598,
+                  "calibration_coverage": 0.7945691989862217,
+                  "calibration_union_mass": 0.019652988105409865,
+                  "certificate": 0.14072904082805812
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.0175918767156713,
+                "coverage": 0.7877030279670518,
+                "failure_mass": 5.918560606060606e-05,
+                "selective_risk": 7.513695385093999e-05,
+                "certificate": 0.14072904082805812,
+                "covered": true,
+                "looseness": 1872.9670769890754,
+                "decision_weighted_flip_rate": 0.017833677492021777
+              },
+              "stress": {
+                "frozen_cutoff": 2.542425366811402,
+                "coverage": 0.18937350940994982,
+                "conditional_flip_rate": 0.0973724824140985,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.8108659492002944,
+            "slope": 0.0011771253129478482,
+            "distance_mse": 0.000961750226697637,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.0446738843996847,
+                "tau_grid": [
+                  0.10477088391780853,
+                  0.1571563258767128,
+                  0.20954176783561707,
+                  0.26192720979452133,
+                  0.3143126517534256,
+                  0.41908353567123413,
+                  0.5238544195890427
+                ],
+                "selector_cutoffs": [
+                  6.7286725387487225,
+                  5.255327136956068,
+                  4.120857045460985,
+                  2.876257501445249,
+                  0.007267478627711276
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.876257501445249,
+                  "tau": 0.10477088391780853,
+                  "calibration_coverage": 0.7756426411290323,
+                  "calibration_union_mass": 0.034274193548387094,
+                  "certificate": 0.16560462153195327
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.01675907258064516,
+                "coverage": 0.790196572580645,
+                "failure_mass": 0.0003780241935483871,
+                "selective_risk": 0.00047839260086110676,
+                "certificate": 0.16560462153195327,
+                "covered": true,
+                "looseness": 346.1688605422929,
+                "decision_weighted_flip_rate": 0.01675907258064516
+              },
+              "stress": {
+                "frozen_cutoff": 2.846356636743595,
+                "coverage": 0.208039314516129,
+                "conditional_flip_rate": 0.08752271350696547,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.044420364825928545,
+                "tau_grid": [
+                  0.10175728797912598,
+                  0.15263593196868896,
+                  0.20351457595825195,
+                  0.25439321994781494,
+                  0.30527186393737793,
+                  0.4070291519165039,
+                  0.5087864398956299
+                ],
+                "selector_cutoffs": [
+                  6.569794988910297,
+                  5.1780005537831535,
+                  4.035705623730705,
+                  2.726490504830622,
+                  0.009539080135175241
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.726490504830622,
+                  "tau": 0.10175728797912598,
+                  "calibration_coverage": 0.7945691989862217,
+                  "calibration_union_mass": 0.01972434494497487,
+                  "certificate": 0.14082901208951965
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.017137975339780037,
+                "coverage": 0.7877030279670518,
+                "failure_mass": 5.918560606060606e-05,
+                "selective_risk": 7.513695385093999e-05,
+                "certificate": 0.14082901208951965,
+                "covered": true,
+                "looseness": 1874.2975975430475,
+                "decision_weighted_flip_rate": 0.017333083036105375
+              },
+              "stress": {
+                "frozen_cutoff": 2.6154554510374024,
+                "coverage": 0.18937350940994982,
+                "conditional_flip_rate": 0.09258004553425156,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "bge_m3",
+      "kind": "contrastive",
+      "dimension": 1024,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.8452464493494183,
+            "slope": 0.00041705058864502023,
+            "distance_mse": 0.0003005576241664721,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.019978986007453917,
+                "tau_grid": [
+                  0.07216984033584595,
+                  0.10825476050376892,
+                  0.1443396806716919,
+                  0.18042460083961487,
+                  0.21650952100753784,
+                  0.2886793613433838,
+                  0.36084920167922974
+                ],
+                "selector_cutoffs": [
+                  10.391819182747223,
+                  8.114345561214712,
+                  6.364916537323847,
+                  4.363962836730492,
+                  0.0018317872527882973
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 4.363962836730492,
+                  "tau": 0.07216984033584595,
+                  "calibration_coverage": 0.8069556451612903,
+                  "calibration_union_mass": 0.0012600806451612903,
+                  "certificate": 0.11299955836650123
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.009954637096774192,
+                "coverage": 0.8019153225806452,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11299955836650123,
+                "covered": true,
+                "looseness": 112999558366.50124,
+                "decision_weighted_flip_rate": 0.009954637096774193
+              },
+              "stress": {
+                "frozen_cutoff": 4.446311518853968,
+                "coverage": 0.21471774193548387,
+                "conditional_flip_rate": 0.04518779342723004,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.0211494250902526,
+                "tau_grid": [
+                  0.05082639753818512,
+                  0.07623959630727767,
+                  0.10165279507637023,
+                  0.1270659938454628,
+                  0.15247919261455534,
+                  0.20330559015274047,
+                  0.2541319876909256
+                ],
+                "selector_cutoffs": [
+                  7.527514737767909,
+                  5.595167781014412,
+                  4.03434523683091,
+                  2.207393204228332,
+                  0.0016655935048792917
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 4.03434523683091,
+                  "tau": 0.07623959630727767,
+                  "calibration_coverage": 0.6012362860572518,
+                  "calibration_union_mass": 0.00037408644153225806,
+                  "certificate": 0.15596354322579684
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.036475537869591027,
+                "coverage": 0.5919915442241767,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.15596354322579684,
+                "covered": true,
+                "looseness": 155963543225.79684,
+                "decision_weighted_flip_rate": 0.0382555925749643
+              },
+              "stress": {
+                "frozen_cutoff": 2.060243908242172,
+                "coverage": 0.18277649830744172,
+                "conditional_flip_rate": 0.1761619897240334,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.8893888100070909,
+            "slope": 0.0004468385946637607,
+            "distance_mse": 0.0002714708876175339,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.019664530948235035,
+                "tau_grid": [
+                  0.07216984033584595,
+                  0.10825476050376892,
+                  0.1443396806716919,
+                  0.18042460083961487,
+                  0.21650952100753784,
+                  0.2886793613433838,
+                  0.36084920167922974
+                ],
+                "selector_cutoffs": [
+                  10.557994522759389,
+                  8.244101873261569,
+                  6.466697770343648,
+                  4.433746865440124,
+                  0.001861079320347307
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 4.433746865440124,
+                  "tau": 0.07216984033584595,
+                  "calibration_coverage": 0.8069556451612903,
+                  "calibration_union_mass": 0.0007560483870967742,
+                  "certificate": 0.11230545200019845
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.009450604838709676,
+                "coverage": 0.8019153225806452,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11230545200019845,
+                "covered": true,
+                "looseness": 112305452000.19846,
+                "decision_weighted_flip_rate": 0.009450604838709678
+              },
+              "stress": {
+                "frozen_cutoff": 4.517412383433314,
+                "coverage": 0.21471774193548387,
+                "conditional_flip_rate": 0.04665492957746479,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.02025283548067346,
+                "tau_grid": [
+                  0.05082639753818512,
+                  0.07623959630727767,
+                  0.10165279507637023,
+                  0.1270659938454628,
+                  0.15247919261455534,
+                  0.20330559015274047,
+                  0.2541319876909256
+                ],
+                "selector_cutoffs": [
+                  7.860756545132461,
+                  5.842864914637832,
+                  4.212945019772385,
+                  2.3051141289381256,
+                  0.0017393290483138063
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 4.212945019772385,
+                  "tau": 0.07623959630727767,
+                  "calibration_coverage": 0.6012362860572518,
+                  "calibration_union_mass": 0.00012218963831867058,
+                  "certificate": 0.15547953640929096
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.033065548530371386,
+                "coverage": 0.5919915442241767,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.15547953640929096,
+                "covered": true,
+                "looseness": 155479536409.29095,
+                "decision_weighted_flip_rate": 0.035042836744407425
+              },
+              "stress": {
+                "frozen_cutoff": 2.151450558446355,
+                "coverage": 0.18277649830744172,
+                "conditional_flip_rate": 0.17161717441411586,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "wolt_clip",
+      "kind": "multimodal",
+      "dimension": 512,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.7293263785399718,
+            "slope": 0.0006266070341940511,
+            "distance_mse": 0.00163017829767077,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.04073812634345954,
+                "tau_grid": [
+                  0.0656764954328537,
+                  0.09851474314928055,
+                  0.1313529908657074,
+                  0.16419123858213425,
+                  0.1970294862985611,
+                  0.2627059817314148,
+                  0.3283824771642685
+                ],
+                "selector_cutoffs": [
+                  5.120764614829338,
+                  3.74603715623231,
+                  2.7237011319440616,
+                  1.7888595036306685,
+                  0.00897914896484433
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.7237011319440616,
+                  "tau": 0.09851474314928055,
+                  "calibration_coverage": 0.6224798387096775,
+                  "calibration_union_mass": 0.01776713709677419,
+                  "certificate": 0.18195623760905527
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.020728326612903226,
+                "coverage": 0.6482484879032258,
+                "failure_mass": 0.0004410282258064516,
+                "selective_risk": 0.0006803382252891437,
+                "certificate": 0.18195623760905527,
+                "covered": true,
+                "looseness": 267.44967553708136,
+                "decision_weighted_flip_rate": 0.020728326612903226
+              },
+              "stress": {
+                "frozen_cutoff": 1.89657856575202,
+                "coverage": 0.22127016129032254,
+                "conditional_flip_rate": 0.1033599088838269,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.04210743252937811,
+                "tau_grid": [
+                  0.04610915780067443,
+                  0.06916373670101164,
+                  0.09221831560134885,
+                  0.11527289450168607,
+                  0.13832747340202328,
+                  0.1844366312026977,
+                  0.23054578900337214
+                ],
+                "selector_cutoffs": [
+                  3.5538153089940248,
+                  2.5708102093904337,
+                  1.8172070977983532,
+                  1.0381352979131688,
+                  0.0014231812831473295
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 1.8172070977983532,
+                  "tau": 0.06916373670101164,
+                  "calibration_coverage": 0.5712486559573188,
+                  "calibration_union_mass": 0.04755448620927964,
+                  "certificate": 0.2616971789701928
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.05479626280782708,
+                "coverage": 0.5708226787066959,
+                "failure_mass": 0.001012341503765272,
+                "selective_risk": 0.0017734780721377758,
+                "certificate": 0.2616971789701928,
+                "covered": true,
+                "looseness": 147.56155324477132,
+                "decision_weighted_flip_rate": 0.05767722473604826
+              },
+              "stress": {
+                "frozen_cutoff": 0.9714742453386094,
+                "coverage": 0.1910533282468133,
+                "conditional_flip_rate": 0.25662326331752877,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.8565586193382632,
+            "slope": 0.0008810991026754453,
+            "distance_mse": 0.000540047979821241,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.025836036181176678,
+                "tau_grid": [
+                  0.0656764954328537,
+                  0.09851474314928055,
+                  0.1313529908657074,
+                  0.16419123858213425,
+                  0.1970294862985611,
+                  0.2627059817314148,
+                  0.3283824771642685
+                ],
+                "selector_cutoffs": [
+                  8.074394786845104,
+                  5.906731740415739,
+                  4.294717659352165,
+                  2.8206642829637607,
+                  0.014158274993169349
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.8206642829637607,
+                  "tau": 0.0656764954328537,
+                  "calibration_coverage": 0.813445060483871,
+                  "calibration_union_mass": 0.015561995967741936,
+                  "certificate": 0.1315194869035028
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.011781754032258064,
+                "coverage": 0.8318422379032258,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.1315194869035028,
+                "covered": true,
+                "looseness": 131519486903.50279,
+                "decision_weighted_flip_rate": 0.011781754032258064
+              },
+              "stress": {
+                "frozen_cutoff": 2.990515135142693,
+                "coverage": 0.22127016129032254,
+                "conditional_flip_rate": 0.08599088838268795,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.02554841639100171,
+                "tau_grid": [
+                  0.04610915780067443,
+                  0.06916373670101164,
+                  0.09221831560134885,
+                  0.11527289450168607,
+                  0.13832747340202328,
+                  0.1844366312026977,
+                  0.23054578900337214
+                ],
+                "selector_cutoffs": [
+                  5.857194279878796,
+                  4.237061733339778,
+                  2.995016367801223,
+                  1.710994973005083,
+                  0.002345605650857733
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.995016367801223,
+                  "tau": 0.06916373670101164,
+                  "calibration_coverage": 0.5712486559573188,
+                  "calibration_union_mass": 0.007311466541643942,
+                  "certificate": 0.17964442110906978
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.04287011459106848,
+                "coverage": 0.5708226787066959,
+                "failure_mass": 6.300403225806451e-05,
+                "selective_risk": 0.00011037408745008481,
+                "certificate": 0.17964442110906978,
+                "covered": true,
+                "looseness": 1627.595980717046,
+                "decision_weighted_flip_rate": 0.04555052790346908
+              },
+              "stress": {
+                "frozen_cutoff": 1.6011280548109208,
+                "coverage": 0.1910533282468133,
+                "conditional_flip_rate": 0.23458321356922057,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "codesearch_jina",
+      "kind": "contrastive",
+      "dimension": 768,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.9389052208567579,
+            "slope": 0.000628767516807681,
+            "distance_mse": 0.0005764261479391699,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.03314591160409759,
+                "tau_grid": [
+                  0.09776937961578369,
+                  0.14665406942367554,
+                  0.19553875923156738,
+                  0.24442344903945923,
+                  0.2933081388473511,
+                  0.39107751846313477,
+                  0.48884689807891846
+                ],
+                "selector_cutoffs": [
+                  8.474342911655715,
+                  6.665074034332885,
+                  5.148102827489726,
+                  3.5306673337336982,
+                  0.0009063181403972354
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.5306673337336982,
+                  "tau": 0.09776937961578369,
+                  "calibration_coverage": 0.8045614919354838,
+                  "calibration_union_mass": 0.005859375,
+                  "certificate": 0.11972802287780963
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.011781754032258063,
+                "coverage": 0.8036794354838709,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11972802287780963,
+                "covered": true,
+                "looseness": 119728022877.80963,
+                "decision_weighted_flip_rate": 0.011781754032258064
+              },
+              "stress": {
+                "frozen_cutoff": 3.40374970627296,
+                "coverage": 0.20463709677419353,
+                "conditional_flip_rate": 0.07666256157635468,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.034667888112991686,
+                "tau_grid": [
+                  0.09810094833374017,
+                  0.14715142250061025,
+                  0.19620189666748034,
+                  0.24525237083435042,
+                  0.2943028450012205,
+                  0.39240379333496067,
+                  0.49050474166870084
+                ],
+                "selector_cutoffs": [
+                  8.209741463103523,
+                  6.451238253141594,
+                  4.9081585608658145,
+                  3.250451415019029,
+                  0.002371952040003327
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.250451415019029,
+                  "tau": 0.09810094833374017,
+                  "calibration_coverage": 0.8079266386551414,
+                  "calibration_union_mass": 0.0037472378178727505,
+                  "certificate": 0.11626916928448536
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.014853957571733788,
+                "coverage": 0.8060763568681228,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11626916928448536,
+                "covered": true,
+                "looseness": 116269169284.48537,
+                "decision_weighted_flip_rate": 0.015058735316170958
+              },
+              "stress": {
+                "frozen_cutoff": 3.341781953156278,
+                "coverage": 0.20150734697154304,
+                "conditional_flip_rate": 0.07498469227008818,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.9491955100113711,
+            "slope": 0.0006337387245395241,
+            "distance_mse": 0.0005024113755432607,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.031712425571100634,
+                "tau_grid": [
+                  0.09776937961578369,
+                  0.14665406942367554,
+                  0.19553875923156738,
+                  0.24442344903945923,
+                  0.2933081388473511,
+                  0.39107751846313477,
+                  0.48884689807891846
+                ],
+                "selector_cutoffs": [
+                  8.85740576427319,
+                  6.966353118636472,
+                  5.380810776085237,
+                  3.690262893484198,
+                  0.0009472861323535228
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.690262893484198,
+                  "tau": 0.09776937961578369,
+                  "calibration_coverage": 0.8045614919354838,
+                  "calibration_union_mass": 0.0035282258064516124,
+                  "certificate": 0.11650716173760292
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.011781754032258063,
+                "coverage": 0.8036794354838709,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11650716173760292,
+                "covered": true,
+                "looseness": 116507161737.60292,
+                "decision_weighted_flip_rate": 0.011781754032258064
+              },
+              "stress": {
+                "frozen_cutoff": 3.5576082514927303,
+                "coverage": 0.20463709677419353,
+                "conditional_flip_rate": 0.062192118226600986,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.03378051686534072,
+                "tau_grid": [
+                  0.09810094833374017,
+                  0.14715142250061025,
+                  0.19620189666748034,
+                  0.24525237083435042,
+                  0.2943028450012205,
+                  0.39240379333496067,
+                  0.49050474166870084
+                ],
+                "selector_cutoffs": [
+                  8.425400937884403,
+                  6.620704083413051,
+                  5.037089648663732,
+                  3.3358366428138613,
+                  0.0024342602056686537
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.3358366428138613,
+                  "tau": 0.09810094833374017,
+                  "calibration_coverage": 0.8079266386551414,
+                  "calibration_union_mass": 0.002250425277217742,
+                  "certificate": 0.11421065078369051
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.012672275698104571,
+                "coverage": 0.8060763568681228,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11421065078369051,
+                "covered": true,
+                "looseness": 114210650783.69052,
+                "decision_weighted_flip_rate": 0.012809297675581104
+              },
+              "stress": {
+                "frozen_cutoff": 3.4295663181193943,
+                "coverage": 0.20150734697154304,
+                "conditional_flip_rate": 0.07375920453750626,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "landmark_dino",
+      "kind": "ssl_vision",
+      "dimension": 768,
+      "source_total": 760757,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -1.302541898041169,
+            "slope": 0.0007415478041040659,
+            "distance_mse": 0.0015997017349977307,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.05172319607062623,
+                "tau_grid": [
+                  0.12839041650295258,
+                  0.19258562475442886,
+                  0.25678083300590515,
+                  0.32097604125738144,
+                  0.3851712495088577,
+                  0.5135616660118103,
+                  0.6419520825147629
+                ],
+                "selector_cutoffs": [
+                  7.0904915584100365,
+                  5.640815246711663,
+                  4.305155620832211,
+                  2.869662770784076,
+                  0.00886869685247299
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.869662770784076,
+                  "tau": 0.12839041650295258,
+                  "calibration_coverage": 0.7721774193548387,
+                  "calibration_union_mass": 0.018334173387096774,
+                  "certificate": 0.14337932624170718
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.01858618951612903,
+                "coverage": 0.7546622983870968,
+                "failure_mass": 0.000630040322580645,
+                "selective_risk": 0.0008348639171814993,
+                "certificate": 0.14337932624170718,
+                "covered": true,
+                "looseness": 171.73975697231688,
+                "decision_weighted_flip_rate": 0.01858618951612903
+              },
+              "stress": {
+                "frozen_cutoff": 2.7849125541028257,
+                "coverage": 0.217804939516129,
+                "conditional_flip_rate": 0.08244142319930575,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.045849416815504425,
+                "tau_grid": [
+                  0.0925410866737365,
+                  0.13881163001060476,
+                  0.185082173347473,
+                  0.23135271668434126,
+                  0.2776232600212095,
+                  0.370164346694946,
+                  0.46270543336868253
+                ],
+                "selector_cutoffs": [
+                  5.553299955174406,
+                  4.488981200596825,
+                  3.5974441699884387,
+                  2.554445611531034,
+                  0.003751825361573791
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 3.5974441699884387,
+                  "tau": 0.13881163001060476,
+                  "calibration_coverage": 0.6292351831121548,
+                  "calibration_union_mass": 0.0029592206401209678,
+                  "certificate": 0.15271492060289824
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.015935221238933102,
+                "coverage": 0.6227430253641089,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.15271492060289824,
+                "covered": true,
+                "looseness": 152714920602.89822,
+                "decision_weighted_flip_rate": 0.01614013137316234
+              },
+              "stress": {
+                "frozen_cutoff": 2.6476698657079685,
+                "coverage": 0.2091656865660012,
+                "conditional_flip_rate": 0.0742873507634803,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.9671705049586735,
+            "slope": 0.0006377869706922377,
+            "distance_mse": 0.0005011753554551361,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.02882190020261683,
+                "tau_grid": [
+                  0.12839041650295258,
+                  0.19258562475442886,
+                  0.25678083300590515,
+                  0.32097604125738144,
+                  0.3851712495088577,
+                  0.5135616660118103,
+                  0.6419520825147629
+                ],
+                "selector_cutoffs": [
+                  12.724451980423718,
+                  10.12289234758211,
+                  7.725944740820578,
+                  5.149838459865497,
+                  0.015915583045067856
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 5.149838459865497,
+                  "tau": 0.12839041650295258,
+                  "calibration_coverage": 0.7721774193548387,
+                  "calibration_union_mass": 0.0,
+                  "certificate": 0.1168611638175152
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.010710685483870967,
+                "coverage": 0.7546622983870968,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.1168611638175152,
+                "covered": true,
+                "looseness": 116861163817.5152,
+                "decision_weighted_flip_rate": 0.010710685483870967
+              },
+              "stress": {
+                "frozen_cutoff": 4.997747444227521,
+                "coverage": 0.217804939516129,
+                "conditional_flip_rate": 0.037026323401793466,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.03166997002358019,
+                "tau_grid": [
+                  0.0925410866737365,
+                  0.13881163001060476,
+                  0.185082173347473,
+                  0.23135271668434126,
+                  0.2776232600212095,
+                  0.370164346694946,
+                  0.46270543336868253
+                ],
+                "selector_cutoffs": [
+                  8.039652836953646,
+                  6.498811649960012,
+                  5.208110935927569,
+                  3.6981355362325803,
+                  0.005431612492645206
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.6981355362325803,
+                  "tau": 0.0925410866737365,
+                  "calibration_coverage": 0.8128866414223721,
+                  "calibration_union_mass": 0.003136538806665445,
+                  "certificate": 0.11464724732740657
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.010910154815163265,
+                "coverage": 0.8060611688838792,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11464724732740657,
+                "covered": true,
+                "looseness": 114647247327.40657,
+                "decision_weighted_flip_rate": 0.011072880825774163
+              },
+              "stress": {
+                "frozen_cutoff": 3.8330986474666715,
+                "coverage": 0.2091656865660012,
+                "conditional_flip_rate": 0.053451350773661685,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "glove100",
+      "kind": "word2vec",
+      "dimension": 100,
+      "source_total": 1183514,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.6878025221905545,
+            "slope": 0.00412408484503954,
+            "distance_mse": 0.0038432317312141117,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.07619924064634319,
+                "tau_grid": [
+                  0.10618418455123901,
+                  0.15927627682685852,
+                  0.21236836910247803,
+                  0.26546046137809753,
+                  0.31855255365371704,
+                  0.42473673820495605,
+                  0.5309209227561951
+                ],
+                "selector_cutoffs": [
+                  4.15191976948586,
+                  3.21183705133651,
+                  2.4199794206652108,
+                  1.5838133518536264,
+                  0.002836333277370243
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.4199794206652108,
+                  "tau": 0.15927627682685852,
+                  "calibration_coverage": 0.6055947580645161,
+                  "calibration_union_mass": 0.06558719758064516,
+                  "certificate": 0.27893126652406547
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.05941280241935483,
+                "coverage": 0.607358870967742,
+                "failure_mass": 0.005418346774193548,
+                "selective_risk": 0.008921161825726139,
+                "certificate": 0.27893126652406547,
+                "covered": true,
+                "looseness": 31.266248945255718,
+                "decision_weighted_flip_rate": 0.059412802419354836
+              },
+              "stress": {
+                "frozen_cutoff": 1.6241238585596471,
+                "coverage": 0.20470010080645157,
+                "conditional_flip_rate": 0.23022468451831335,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.08073228612631209,
+                "tau_grid": [
+                  0.10509792864322662,
+                  0.1576468929648399,
+                  0.21019585728645324,
+                  0.26274482160806656,
+                  0.3152937859296798,
+                  0.42039171457290647,
+                  0.5254896432161331
+                ],
+                "selector_cutoffs": [
+                  4.014602237125349,
+                  3.0209380340419187,
+                  2.2111387276279353,
+                  1.2996707896276267,
+                  0.004414443206568989
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.2111387276279353,
+                  "tau": 0.1576468929648399,
+                  "calibration_coverage": 0.6113394293385915,
+                  "calibration_union_mass": 0.04007573044656808,
+                  "certificate": 0.2278255182050108
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.04945671193066768,
+                "coverage": 0.5955591351687715,
+                "failure_mass": 0.0008761498235887096,
+                "selective_risk": 0.0014711382495046835,
+                "certificate": 0.2278255182050108,
+                "covered": true,
+                "looseness": 154.86343195938056,
+                "decision_weighted_flip_rate": 0.05109041901494732
+              },
+              "stress": {
+                "frozen_cutoff": 1.3198484983943144,
+                "coverage": 0.21528751341341107,
+                "conditional_flip_rate": 0.23337291937055912,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.6504734097635317,
+            "slope": 0.004061759959520768,
+            "distance_mse": 0.0032162008310625437,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.0747232314649417,
+                "tau_grid": [
+                  0.10618418455123901,
+                  0.15927627682685852,
+                  0.21236836910247803,
+                  0.26546046137809753,
+                  0.31855255365371704,
+                  0.42473673820495605,
+                  0.5309209227561951
+                ],
+                "selector_cutoffs": [
+                  4.233932706828898,
+                  3.2752805197732626,
+                  2.467781312709727,
+                  1.6150984422215264,
+                  0.0028923594137783993
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.467781312709727,
+                  "tau": 0.15927627682685852,
+                  "calibration_coverage": 0.6055947580645161,
+                  "calibration_union_mass": 0.049521169354838704,
+                  "certificate": 0.24831759216344998
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.051222278225806446,
+                "coverage": 0.607358870967742,
+                "failure_mass": 0.0016381048387096773,
+                "selective_risk": 0.002697095435684647,
+                "certificate": 0.24831759216344998,
+                "covered": true,
+                "looseness": 92.06852263290993,
+                "decision_weighted_flip_rate": 0.05122227822580645
+              },
+              "stress": {
+                "frozen_cutoff": 1.6562052030086218,
+                "coverage": 0.20470010080645157,
+                "conditional_flip_rate": 0.21606648199445985,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.08040712374647424,
+                "tau_grid": [
+                  0.10509792864322662,
+                  0.1576468929648399,
+                  0.21019585728645324,
+                  0.26274482160806656,
+                  0.3152937859296798,
+                  0.42039171457290647,
+                  0.5254896432161331
+                ],
+                "selector_cutoffs": [
+                  4.030837087430926,
+                  3.033154556095225,
+                  2.2200804618590224,
+                  1.3049265931842062,
+                  0.004432294993721989
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 2.2200804618590224,
+                  "tau": 0.1576468929648399,
+                  "calibration_coverage": 0.6113394293385915,
+                  "calibration_union_mass": 0.03135179097970332,
+                  "certificate": 0.2113821251770913
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.048136586092852554,
+                "coverage": 0.5955591351687715,
+                "failure_mass": 0.0006028766522875645,
+                "selective_risk": 0.0010122868019087968,
+                "certificate": 0.2113821251770913,
+                "covered": true,
+                "looseness": 208.81643895633445,
+                "decision_weighted_flip_rate": 0.04980396961529037
+              },
+              "stress": {
+                "frozen_cutoff": 1.325185899594194,
+                "coverage": 0.21528751341341107,
+                "conditional_flip_rate": 0.21928778053659548,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "sift128",
+      "kind": "euclidean",
+      "dimension": 128,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.5883920508505046,
+            "slope": 0.0028525653318984294,
+            "distance_mse": 0.02001719824592251,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.15822740065745466,
+                "tau_grid": [
+                  0.17503662407398224,
+                  0.26255493611097336,
+                  0.3500732481479645,
+                  0.4375915601849556,
+                  0.5251098722219467,
+                  0.700146496295929,
+                  0.8751831203699112
+                ],
+                "selector_cutoffs": [
+                  3.508399758475332,
+                  2.6942823916567273,
+                  1.7325340655592167,
+                  0.9229349429094126,
+                  0.0007929585945977937
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 3,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 2.6942823916567273,
+                  "tau": 0.4375915601849556,
+                  "calibration_coverage": 0.416015625,
+                  "calibration_union_mass": 0.07730594758064516,
+                  "certificate": 0.4716354827910974
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.135773689516129,
+                "coverage": 0.41765372983870963,
+                "failure_mass": 0.009765625,
+                "selective_risk": 0.023382108915371853,
+                "certificate": 0.4716354827910974,
+                "covered": true,
+                "looseness": 20.170784615626996,
+                "decision_weighted_flip_rate": 0.13577368951612903
+              },
+              "stress": {
+                "frozen_cutoff": 0.9105172489882531,
+                "coverage": 0.20545614919354838,
+                "conditional_flip_rate": 0.33731984053971176,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.10535886374948385,
+                "tau_grid": [
+                  0.06005188822746274,
+                  0.09007783234119411,
+                  0.12010377645492548,
+                  0.15012972056865687,
+                  0.18015566468238822,
+                  0.24020755290985096,
+                  0.30025944113731373
+                ],
+                "selector_cutoffs": [
+                  1.9099991446382407,
+                  1.3711391941467945,
+                  0.9373452849465325,
+                  0.4855852468149959,
+                  0.0009231578234916502
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 3,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 1.3711391941467945,
+                  "tau": 0.15012972056865687,
+                  "calibration_coverage": 0.4382378715093288,
+                  "calibration_union_mass": 0.08479179677019097,
+                  "certificate": 0.463256643350794
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.162888632396411,
+                "coverage": 0.4280327441406615,
+                "failure_mass": 0.014696861919138604,
+                "selective_risk": 0.034335835564740985,
+                "certificate": 0.463256643350794,
+                "covered": true,
+                "looseness": 13.491928643393962,
+                "decision_weighted_flip_rate": 0.17017770977992233
+              },
+              "stress": {
+                "frozen_cutoff": 0.5491144586504437,
+                "coverage": 0.20913684059953425,
+                "conditional_flip_rate": 0.38022112060272706,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.9703982467376171,
+            "slope": 0.0038253659784377213,
+            "distance_mse": 0.0027500072296247234,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.06573847289122486,
+                "tau_grid": [
+                  0.17503662407398224,
+                  0.26255493611097336,
+                  0.3500732481479645,
+                  0.4375915601849556,
+                  0.5251098722219467,
+                  0.700146496295929,
+                  0.8751831203699112
+                ],
+                "selector_cutoffs": [
+                  8.444445844815094,
+                  6.484928546703436,
+                  4.170074990904147,
+                  2.221432755733911,
+                  0.0019085897760327407
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 4.170074990904147,
+                  "tau": 0.26255493611097336,
+                  "calibration_coverage": 0.594569052419355,
+                  "calibration_union_mass": 0.0004410282258064516,
+                  "certificate": 0.15811777545181954
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.022807459677419352,
+                "coverage": 0.5991053427419355,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.15811777545181954,
+                "covered": true,
+                "looseness": 158117775451.81955,
+                "decision_weighted_flip_rate": 0.022807459677419355
+              },
+              "stress": {
+                "frozen_cutoff": 2.191544330510587,
+                "coverage": 0.20545614919354838,
+                "conditional_flip_rate": 0.11836859858938974,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.06212284220705538,
+                "tau_grid": [
+                  0.06005188822746274,
+                  0.09007783234119411,
+                  0.12010377645492548,
+                  0.15012972056865687,
+                  0.18015566468238822,
+                  0.24020755290985096,
+                  0.30025944113731373
+                ],
+                "selector_cutoffs": [
+                  3.2393131494346936,
+                  2.3254194818742935,
+                  1.5897153229683814,
+                  0.8235410364423127,
+                  0.0015656537255708586
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 2,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 2.3254194818742935,
+                  "tau": 0.12010377645492548,
+                  "calibration_coverage": 0.4382378715093288,
+                  "calibration_union_mass": 0.022916413586114147,
+                  "certificate": 0.2901506591304307
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.08575519254623659,
+                "coverage": 0.4280327441406615,
+                "failure_mass": 0.0007017762900728579,
+                "selective_risk": 0.001639538796224052,
+                "certificate": 0.2901506591304307,
+                "covered": true,
+                "looseness": 176.97090169422256,
+                "decision_weighted_flip_rate": 0.08926680004707543
+              },
+              "stress": {
+                "frozen_cutoff": 0.931285069652739,
+                "coverage": 0.20913684059953425,
+                "conditional_flip_rate": 0.3223001141223702,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "kind": "euclidean",
+      "dimension": 960,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -1.5846545393141755,
+            "slope": 0.0009432968402152525,
+            "distance_mse": 0.002307069269068897,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.04765550860455996,
+                "tau_grid": [
+                  0.03995995223522186,
+                  0.059939928352832794,
+                  0.07991990447044373,
+                  0.09989988058805466,
+                  0.11987985670566559,
+                  0.15983980894088745,
+                  0.19979976117610931
+                ],
+                "selector_cutoffs": [
+                  2.8866208253224124,
+                  1.9811659551334595,
+                  1.385297470210143,
+                  0.8614781058136146,
+                  6.003551389954089e-05
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 3,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 1.9811659551334595,
+                  "tau": 0.09989988058805466,
+                  "calibration_coverage": 0.39472026209677413,
+                  "calibration_union_mass": 0.1020665322580645,
+                  "certificate": 0.58250361768906
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.13142641129032256,
+                "coverage": 0.400516633064516,
+                "failure_mass": 0.01883820564516129,
+                "selective_risk": 0.04703476482617588,
+                "certificate": 0.58250361768906,
+                "covered": true,
+                "looseness": 12.38453343695436,
+                "decision_weighted_flip_rate": 0.1314264112903226
+              },
+              "stress": {
+                "frozen_cutoff": 0.7856359915482483,
+                "coverage": 0.17571824596774194,
+                "conditional_flip_rate": 0.33345285048404444,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.04574538516479155,
+                "tau_grid": [
+                  0.0374304860830307,
+                  0.056145729124546045,
+                  0.0748609721660614,
+                  0.09357621520757675,
+                  0.11229145824909209,
+                  0.1497219443321228,
+                  0.1871524304151535
+                ],
+                "selector_cutoffs": [
+                  2.783705922280215,
+                  1.9439610098314248,
+                  1.368240625847082,
+                  0.8184109420985621,
+                  0.00021994052518867753
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 3,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 1.9439610098314248,
+                  "tau": 0.09357621520757675,
+                  "calibration_coverage": 0.41375630881889736,
+                  "calibration_union_mass": 0.07389867498599151,
+                  "certificate": 0.46460252249259676
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.08942117239757194,
+                "coverage": 0.3908271226202945,
+                "failure_mass": 0.005138867359333292,
+                "selective_risk": 0.01314869685829334,
+                "certificate": 0.46460252249259676,
+                "covered": true,
+                "looseness": 35.33449188917575,
+                "decision_weighted_flip_rate": 0.09424784142040618
+              },
+              "stress": {
+                "frozen_cutoff": 0.7163445706242774,
+                "coverage": 0.19559051914350223,
+                "conditional_flip_rate": 0.3224945375211006,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.8343269974212223,
+            "slope": 0.0004546425167880456,
+            "distance_mse": 0.0002059804623048515,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.015588699413352424,
+                "tau_grid": [
+                  0.03995995223522186,
+                  0.059939928352832794,
+                  0.07991990447044373,
+                  0.09989988058805466,
+                  0.11987985670566559,
+                  0.15983980894088745,
+                  0.19979976117610931
+                ],
+                "selector_cutoffs": [
+                  8.824558093757645,
+                  6.056532922884794,
+                  4.2349303018138915,
+                  2.6335857915815586,
+                  0.00018353185685062056
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.6335857915815586,
+                  "tau": 0.03995995223522186,
+                  "calibration_coverage": 0.78125,
+                  "calibration_union_mass": 0.010395665322580645,
+                  "certificate": 0.1301888465225788
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.018082157258064516,
+                "coverage": 0.7786668346774194,
+                "failure_mass": 6.300403225806451e-05,
+                "selective_risk": 8.091269520187717e-05,
+                "certificate": 0.1301888465225788,
+                "covered": true,
+                "looseness": 1609.0039541725516,
+                "decision_weighted_flip_rate": 0.018082157258064516
+              },
+              "stress": {
+                "frozen_cutoff": 2.40173229097038,
+                "coverage": 0.17571824596774194,
+                "conditional_flip_rate": 0.11150950161348153,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.017046373583308228,
+                "tau_grid": [
+                  0.0374304860830307,
+                  0.056145729124546045,
+                  0.0748609721660614,
+                  0.09357621520757675,
+                  0.11229145824909209,
+                  0.1497219443321228,
+                  0.1871524304151535
+                ],
+                "selector_cutoffs": [
+                  7.470310267335244,
+                  5.216783775474276,
+                  3.6717894349551794,
+                  2.1962749781594813,
+                  0.0005902290002581288
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 2.1962749781594813,
+                  "tau": 0.0374304860830307,
+                  "calibration_coverage": 0.7962454814929607,
+                  "calibration_union_mass": 0.022621620545393857,
+                  "certificate": 0.14454863905400833
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.03439132749429621,
+                "coverage": 0.7761689545331393,
+                "failure_mass": 0.0004730532700616903,
+                "selective_risk": 0.0006094720322152396,
+                "certificate": 0.14454863905400833,
+                "covered": true,
+                "looseness": 237.17025788471275,
+                "decision_weighted_flip_rate": 0.03678706068344886
+              },
+              "stress": {
+                "frozen_cutoff": 1.9223712383027067,
+                "coverage": 0.19559051914350223,
+                "conditional_flip_rate": 0.1724025392008399,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "sphere",
+      "kind": "synthetic",
+      "dimension": 768,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -0.4891259106322571,
+            "slope": 0.00048467674250436704,
+            "distance_mse": 0.00039777210618519867,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.027086318133611856,
+                "tau_grid": [
+                  0.037075966596603394,
+                  0.05561394989490509,
+                  0.07415193319320679,
+                  0.09268991649150848,
+                  0.11122789978981018,
+                  0.14830386638641357,
+                  0.18537983298301697
+                ],
+                "selector_cutoffs": [
+                  3.942383939294185,
+                  3.114426480783599,
+                  2.3644013010090084,
+                  1.580714394061623,
+                  0.011447231794003754
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 2,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 3.114426480783599,
+                  "tau": 0.07415193319320679,
+                  "calibration_coverage": 0.413117439516129,
+                  "calibration_union_mass": 0.01675907258064516,
+                  "certificate": 0.2935550972884993
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.0544984879032258,
+                "coverage": 0.40914818548387094,
+                "failure_mass": 0.0008190524193548386,
+                "selective_risk": 0.0020018478595626734,
+                "certificate": 0.2935550972884993,
+                "covered": true,
+                "looseness": 146.64206167627034,
+                "decision_weighted_flip_rate": 0.054498487903225805
+              },
+              "stress": {
+                "frozen_cutoff": 1.7151504906024988,
+                "coverage": 0.21862399193548387,
+                "conditional_flip_rate": 0.2239193083573487,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.02978750003993691,
+                "tau_grid": [
+                  0.10066984891891478,
+                  0.15100477337837218,
+                  0.20133969783782957,
+                  0.251674622297287,
+                  0.30200954675674435,
+                  0.40267939567565914,
+                  0.503349244594574
+                ],
+                "selector_cutoffs": [
+                  8.269221222324372,
+                  7.202029648768459,
+                  6.279441034283768,
+                  5.250482236007392,
+                  0.8035188344794882
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 1,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 5.250482236007392,
+                  "tau": 0.15100477337837218,
+                  "calibration_coverage": 0.803805443548387,
+                  "calibration_union_mass": 0.0,
+                  "certificate": 0.11174907836776637
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 6.300403225806451e-05,
+                "coverage": 0.8023563508064515,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11174907836776637,
+                "covered": true,
+                "looseness": 111749078367.76637,
+                "decision_weighted_flip_rate": 6.300403225806451e-05
+              },
+              "stress": {
+                "frozen_cutoff": 5.2855087766486255,
+                "coverage": 0.19871471774193544,
+                "conditional_flip_rate": 0.0,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.47675375193155095,
+            "slope": 0.0004807464175178524,
+            "distance_mse": 0.00039533731915268946,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.026690635114257316,
+                "tau_grid": [
+                  0.037075966596603394,
+                  0.05561394989490509,
+                  0.07415193319320679,
+                  0.09268991649150848,
+                  0.11122789978981018,
+                  0.14830386638641357,
+                  0.18537983298301697
+                ],
+                "selector_cutoffs": [
+                  4.000828947210894,
+                  3.1605971945264097,
+                  2.3994530501241615,
+                  1.6041481505646815,
+                  0.011616934583769261
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 1,
+                  "tau_index": 2,
+                  "target_retention": 0.4,
+                  "selector_cutoff": 3.1605971945264097,
+                  "tau": 0.07415193319320679,
+                  "calibration_coverage": 0.413117439516129,
+                  "calibration_union_mass": 0.021358366935483868,
+                  "certificate": 0.3073949803461075
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.06470514112903225,
+                "coverage": 0.40914818548387094,
+                "failure_mass": 0.0004410282258064516,
+                "selective_risk": 0.001077918078226055,
+                "certificate": 0.3073949803461075,
+                "covered": true,
+                "looseness": 285.174714623946,
+                "decision_weighted_flip_rate": 0.06470514112903226
+              },
+              "stress": {
+                "frozen_cutoff": 1.740577233797774,
+                "coverage": 0.21862399193548387,
+                "conditional_flip_rate": 0.21037463976945242,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.030031657037209076,
+                "tau_grid": [
+                  0.10066984891891478,
+                  0.15100477337837218,
+                  0.20133969783782957,
+                  0.251674622297287,
+                  0.30200954675674435,
+                  0.40267939567565914,
+                  0.503349244594574
+                ],
+                "selector_cutoffs": [
+                  8.20199255688908,
+                  7.143477237520231,
+                  6.228389256968291,
+                  5.207795880892652,
+                  0.7969862363735939
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 1,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 5.207795880892652,
+                  "tau": 0.15100477337837218,
+                  "calibration_coverage": 0.803805443548387,
+                  "calibration_union_mass": 0.0,
+                  "certificate": 0.11174907836776637
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 6.300403225806451e-05,
+                "coverage": 0.8023563508064515,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11174907836776637,
+                "covered": true,
+                "looseness": 111749078367.76637,
+                "decision_weighted_flip_rate": 6.300403225806451e-05
+              },
+              "stress": {
+                "frozen_cutoff": 5.242537656195188,
+                "coverage": 0.19871471774193544,
+                "conditional_flip_rate": 0.0,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "random",
+      "kind": "random",
+      "dimension": 768,
+      "source_total": 1000000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -1.0058108187949442,
+            "slope": 0.0006523956717663787,
+            "distance_mse": 0.0005210475989493908,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.03260572288704768,
+                "tau_grid": [
+                  0.10637976229190826,
+                  0.1595696434378624,
+                  0.21275952458381653,
+                  0.26594940572977066,
+                  0.3191392868757248,
+                  0.42551904916763306,
+                  0.5318988114595413
+                ],
+                "selector_cutoffs": [
+                  9.594069730125739,
+                  7.44999094194839,
+                  5.6225261771260335,
+                  3.752429269273099,
+                  0.009147524300850153
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.752429269273099,
+                  "tau": 0.10637976229190826,
+                  "calibration_coverage": 0.7961819556451613,
+                  "calibration_union_mass": 0.0014490927419354839,
+                  "certificate": 0.1149655371567462
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.012600806451612902,
+                "coverage": 0.803679435483871,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.1149655371567462,
+                "covered": true,
+                "looseness": 114965537156.74622,
+                "decision_weighted_flip_rate": 0.012600806451612902
+              },
+              "stress": {
+                "frozen_cutoff": 3.68683618215212,
+                "coverage": 0.19909274193548385,
+                "conditional_flip_rate": 0.06962025316455696,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.03403844616277616,
+                "tau_grid": [
+                  0.10492137670516966,
+                  0.15738206505775448,
+                  0.2098427534103393,
+                  0.26230344176292414,
+                  0.31476413011550897,
+                  0.4196855068206786,
+                  0.5246068835258483
+                ],
+                "selector_cutoffs": [
+                  9.363120941009122,
+                  7.104117703791655,
+                  5.176489393500156,
+                  3.0713762644113882,
+                  0.002419316581842821
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.0713762644113882,
+                  "tau": 0.10492137670516966,
+                  "calibration_coverage": 0.7888039588474616,
+                  "calibration_union_mass": 0.0023217568436274356,
+                  "certificate": 0.11739612943450078
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.02422654734905035,
+                "coverage": 0.7900623362661117,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11739612943450078,
+                "covered": true,
+                "looseness": 117396129434.5008,
+                "decision_weighted_flip_rate": 0.02469968129443491
+              },
+              "stress": {
+                "frozen_cutoff": 2.910180366548018,
+                "coverage": 0.1912815569437949,
+                "conditional_flip_rate": 0.11036738216866657,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -1.0039021647274609,
+            "slope": 0.0006515484776212791,
+            "distance_mse": 0.0005202122463337535,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.03404140051707544,
+                "tau_grid": [
+                  0.10637976229190826,
+                  0.1595696434378624,
+                  0.21275952458381653,
+                  0.26594940572977066,
+                  0.3191392868757248,
+                  0.42551904916763306,
+                  0.5318988114595413
+                ],
+                "selector_cutoffs": [
+                  9.18944503539384,
+                  7.135791608877484,
+                  5.385399180758881,
+                  3.5941725971525003,
+                  0.008761732417749506
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.5941725971525003,
+                  "tau": 0.10637976229190826,
+                  "calibration_coverage": 0.7961819556451613,
+                  "calibration_union_mass": 0.0009450604838709678,
+                  "certificate": 0.11426097757560451
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.01089969758064516,
+                "coverage": 0.803679435483871,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11426097757560451,
+                "covered": true,
+                "looseness": 114260977575.6045,
+                "decision_weighted_flip_rate": 0.010899697580645162
+              },
+              "stress": {
+                "frozen_cutoff": 3.531345862955715,
+                "coverage": 0.19909274193548385,
+                "conditional_flip_rate": 0.05791139240506329,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.034135356696437844,
+                "tau_grid": [
+                  0.10492137670516966,
+                  0.15738206505775448,
+                  0.2098427534103393,
+                  0.26230344176292414,
+                  0.31476413011550897,
+                  0.4196855068206786,
+                  0.5246068835258483
+                ],
+                "selector_cutoffs": [
+                  9.336538970438216,
+                  7.083949060352763,
+                  5.161793301290565,
+                  3.0626566041627235,
+                  0.002412448123923135
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.0626566041627235,
+                  "tau": 0.10492137670516966,
+                  "calibration_coverage": 0.7888039588474616,
+                  "calibration_union_mass": 0.002203605319721605,
+                  "certificate": 0.11722925070349678
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.0223583507312438,
+                "coverage": 0.7900623362661117,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11722925070349678,
+                "covered": true,
+                "looseness": 117229250703.49678,
+                "decision_weighted_flip_rate": 0.02279970581024761
+              },
+              "stress": {
+                "frozen_cutoff": 2.901918342662287,
+                "coverage": 0.1912815569437949,
+                "conditional_flip_rate": 0.11558916351570783,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "dataset": "msmarco_cohere",
+      "kind": "contrastive",
+      "dimension": 1024,
+      "source_total": 100000,
+      "pool_size": 2000,
+      "quantizers": {
+        "2bit": {
+          "distance_calibration": {
+            "intercept": -1.0212958180233251,
+            "slope": 0.0004974113262667176,
+            "distance_mse": 0.000608815714559628,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.03424594722773508,
+                "tau_grid": [
+                  0.08357284963130951,
+                  0.12535927444696426,
+                  0.16714569926261902,
+                  0.20893212407827377,
+                  0.25071854889392853,
+                  0.33429139852523804,
+                  0.41786424815654755
+                ],
+                "selector_cutoffs": [
+                  7.02379041738068,
+                  5.47205317294186,
+                  4.293757721933187,
+                  2.949298968853221,
+                  0.014430382274038426
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 2,
+                  "tau_index": 1,
+                  "target_retention": 0.6,
+                  "selector_cutoff": 4.293757721933187,
+                  "tau": 0.12535927444696426,
+                  "calibration_coverage": 0.5953251008064516,
+                  "calibration_union_mass": 0.0008190524193548386,
+                  "certificate": 0.1586201364279113
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.018649193548387094,
+                "coverage": 0.5602948588709677,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.1586201364279113,
+                "covered": true,
+                "looseness": 158620136427.91132,
+                "decision_weighted_flip_rate": 0.018649193548387098
+              },
+              "stress": {
+                "frozen_cutoff": 2.7530596938266956,
+                "coverage": 0.19411542338709675,
+                "conditional_flip_rate": 0.08244076598506979,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.03535581119399786,
+                "tau_grid": [
+                  0.09057933688163755,
+                  0.13586900532245633,
+                  0.1811586737632751,
+                  0.22644834220409388,
+                  0.27173801064491265,
+                  0.3623173475265502,
+                  0.45289668440818776
+                ],
+                "selector_cutoffs": [
+                  6.925122961444297,
+                  5.643192567166945,
+                  4.599746761881453,
+                  3.4915228572650205,
+                  0.025642811724666245
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 3.4915228572650205,
+                  "tau": 0.09057933688163755,
+                  "calibration_coverage": 0.779856294325564,
+                  "calibration_union_mass": 0.004710645231294802,
+                  "certificate": 0.12231603119438124
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.006223764463973823,
+                "coverage": 0.7906252786608824,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.12231603119438124,
+                "covered": true,
+                "looseness": 122316031194.38124,
+                "decision_weighted_flip_rate": 0.0062932662051604785
+              },
+              "stress": {
+                "frozen_cutoff": 3.393917724067719,
+                "coverage": 0.1974853038321725,
+                "conditional_flip_rate": 0.03042944177342843,
+                "block_count": 512
+              }
+            }
+          }
+        },
+        "rotated_2bit": {
+          "distance_calibration": {
+            "intercept": -0.9077754619221474,
+            "slope": 0.00046282194559669386,
+            "distance_mse": 0.0003709034518042182,
+            "distance_count": 4096
+          },
+          "eligibility": {
+            "eligible": true,
+            "reasons": []
+          },
+          "roles": {
+            "ranking": {
+              "model": {
+                "residual_scale": 0.02493131044218734,
+                "tau_grid": [
+                  0.08357284963130951,
+                  0.12535927444696426,
+                  0.16714569926261902,
+                  0.20893212407827377,
+                  0.25071854889392853,
+                  0.33429139852523804,
+                  0.41786424815654755
+                ],
+                "selector_cutoffs": [
+                  9.64796281086245,
+                  7.516477909272953,
+                  5.89795713686934,
+                  4.051192458590218,
+                  0.019821746272772608
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 4.051192458590218,
+                  "tau": 0.08357284963130951,
+                  "calibration_coverage": 0.8003402217741935,
+                  "calibration_union_mass": 0.0038432459677419355,
+                  "certificate": 0.11762846599960537
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.012222782258064516,
+                "coverage": 0.7790448588709677,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11762846599960537,
+                "covered": true,
+                "looseness": 117628465999.60538,
+                "decision_weighted_flip_rate": 0.012222782258064516
+              },
+              "stress": {
+                "frozen_cutoff": 3.781635835317198,
+                "coverage": 0.19411542338709675,
+                "conditional_flip_rate": 0.06815968841285297,
+                "block_count": 512
+              }
+            },
+            "pruning": {
+              "model": {
+                "residual_scale": 0.027339129025036785,
+                "tau_grid": [
+                  0.09057933688163755,
+                  0.13586900532245633,
+                  0.1811586737632751,
+                  0.22644834220409388,
+                  0.27173801064491265,
+                  0.3623173475265502,
+                  0.45289668440818776
+                ],
+                "selector_cutoffs": [
+                  8.955784205700914,
+                  7.2979519849885985,
+                  5.948535445454443,
+                  4.515345854944401,
+                  0.03316208094962581
+                ],
+                "model_fit_block_count": 128
+              },
+              "certificate": {
+                "penalty": 0.0807956752574091,
+                "selected": {
+                  "selector_index": 3,
+                  "tau_index": 0,
+                  "target_retention": 0.8,
+                  "selector_cutoff": 4.515345854944401,
+                  "tau": 0.09057933688163755,
+                  "calibration_coverage": 0.779856294325564,
+                  "calibration_union_mass": 0.0011340725806451614,
+                  "certificate": 0.11719977581810614
+                },
+                "candidate_count": 35
+              },
+              "validation": {
+                "abstained": false,
+                "block_count": 512,
+                "block_uniform_flip_rate": 0.004978957523602366,
+                "coverage": 0.7906252786608824,
+                "failure_mass": 0.0,
+                "selective_risk": 0.0,
+                "certificate": 0.11719977581810614,
+                "covered": true,
+                "looseness": 117199775818.10614,
+                "decision_weighted_flip_rate": 0.005034612964128383
+              },
+              "stress": {
+                "frozen_cutoff": 4.389119863702013,
+                "coverage": 0.1974853038321725,
+                "conditional_flip_rate": 0.02597297053973725,
+                "block_count": 512
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

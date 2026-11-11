@@ -1,0 +1,2193 @@
+{
+  "probe": 38,
+  "seed": 20260828,
+  "n_fit": 1200,
+  "n_evaluation": 2400,
+  "n_role_samples": 20000,
+  "results": [
+    {
+      "dataset": "cohere",
+      "kind": "contrastive",
+      "dimension": 768,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.7259232180206965,
+            "slope": 0.00042358493318819855,
+            "threshold": 0.02298353798687458
+          },
+          "covariance_operator": 0.011564485446424248,
+          "ranking": {
+            "total_variance": 0.0012376843315705926,
+            "bounded_component_variance": 0.0021061325476417147,
+            "quadratic_component_variance": 0.002892826683819294,
+            "component_cross_covariance": -0.0018806374513216464,
+            "variance_identity_error": 2.752876268954929e-12,
+            "component_cauchy_proxy": 0.009935628729605791,
+            "component_cauchy_looseness": 8.027595143745344,
+            "coarse_proxy": 13.551950360445687,
+            "coarse_looseness": 10949.440026641187,
+            "replacement": {
+              "efron_stein_proxy": 0.0014948872860106857,
+              "node_mean_squared_differences": [
+                0.0005396984626270038,
+                0.0012196247964095458,
+                0.001230451312984822
+              ],
+              "absolute_difference_p95": 0.06297301694094126,
+              "absolute_difference_p99": 0.08542799625054669,
+              "absolute_difference_max": 0.18770440600872862,
+              "looseness": 1.207809816994054
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.32,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13065,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04485,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01185,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0026,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0015179787417459632,
+            "bounded_component_variance": 0.002590666764459006,
+            "quadratic_component_variance": 0.0035873197484761477,
+            "component_cross_covariance": -0.002330003714176344,
+            "variance_identity_error": 3.42836502026031e-10,
+            "component_cauchy_proxy": 0.012275051395602745,
+            "component_cauchy_looseness": 8.086444861200171,
+            "coarse_proxy": 16.397984146409975,
+            "coarse_looseness": 10802.51237744554,
+            "replacement": {
+              "efron_stein_proxy": 0.001868241943602514,
+              "node_mean_squared_differences": [
+                0.0012542885227973255,
+                0.0006984387327083188,
+                0.0017837566316993836
+              ],
+              "absolute_difference_p95": 0.07009894173888795,
+              "absolute_difference_p99": 0.09641273859327254,
+              "absolute_difference_max": 0.17719145270707576,
+              "looseness": 1.2307431535264333
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3201,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1376,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0443,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.011,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00195,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 0.9179762824090656,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.7019012776037995,
+            "slope": 0.0005105900027439879,
+            "threshold": 0.029062436893582344
+          },
+          "covariance_operator": 0.011564485992126883,
+          "ranking": {
+            "total_variance": 0.00039388830676257103,
+            "bounded_component_variance": 0.0026330188077929965,
+            "quadratic_component_variance": 0.002892826683819294,
+            "component_cross_covariance": -0.0025659785937800217,
+            "variance_identity_error": 2.7103238815599784e-12,
+            "component_cauchy_proxy": 0.011045579929493027,
+            "component_cauchy_looseness": 28.04241644104228,
+            "coarse_proxy": 19.688230511267083,
+            "coarse_looseness": 49984.29801861268,
+            "replacement": {
+              "efron_stein_proxy": 0.000641804305860483,
+              "node_mean_squared_differences": [
+                0.0004989916646645152,
+                0.0003936539299449371,
+                0.00039096301711151373
+              ],
+              "absolute_difference_p95": 0.04078550153288799,
+              "absolute_difference_p99": 0.05444017927907402,
+              "absolute_difference_max": 0.08983830830418749,
+              "looseness": 1.629406851743257
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3152,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1327,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04495,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01285,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00295,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 0.9628645165849329,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0004803303591464321,
+            "bounded_component_variance": 0.003223548249147537,
+            "quadratic_component_variance": 0.0035873197484761477,
+            "component_cross_covariance": -0.0031652686686352775,
+            "variance_identity_error": 3.0120669787568957e-10,
+            "component_cauchy_proxy": 0.013612014458135376,
+            "component_cauchy_looseness": 28.338859284939883,
+            "coarse_proxy": 23.822883128838896,
+            "coarse_looseness": 49596.87155975981,
+            "replacement": {
+              "efron_stein_proxy": 0.0007882139662092475,
+              "node_mean_squared_differences": [
+                0.00039069748081905906,
+                0.0006185016664019569,
+                0.0005672287851974791
+              ],
+              "absolute_difference_p95": 0.04534757825063626,
+              "absolute_difference_p99": 0.060876663762084664,
+              "absolute_difference_max": 0.11006305465205404,
+              "looseness": 1.640983025953092
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31195,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13555,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0466,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.013,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0024,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "minilm",
+      "kind": "contrastive",
+      "dimension": 384,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.8328877074442771,
+            "slope": 0.0011932384195342568,
+            "threshold": 0.040503837168216705
+          },
+          "covariance_operator": 0.031339364098452546,
+          "ranking": {
+            "total_variance": 0.001993891187360072,
+            "bounded_component_variance": 0.013024019858714066,
+            "quadratic_component_variance": 0.015079053118824959,
+            "component_cross_covariance": -0.013054591141961891,
+            "variance_identity_error": 4.937448288763746e-10,
+            "component_cauchy_proxy": 0.05613090823252657,
+            "component_cauchy_looseness": 28.151440052676264,
+            "coarse_proxy": 26.904843128811837,
+            "coarse_looseness": 13493.636613357054,
+            "replacement": {
+              "efron_stein_proxy": 0.003997179917277921,
+              "node_mean_squared_differences": [
+                0.003991791475736526,
+                0.0020135489923143934,
+                0.0019890193665049226
+              ],
+              "absolute_difference_p95": 0.10204664825619601,
+              "absolute_difference_p99": 0.14072633979327753,
+              "absolute_difference_max": 0.275069753050619,
+              "looseness": 2.0047131672065914
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31835,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1327,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04415,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01185,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00235,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.002472585655909762,
+            "bounded_component_variance": 0.01612173315400095,
+            "quadratic_component_variance": 0.018631713464856148,
+            "component_cross_covariance": -0.016140429707056425,
+            "variance_identity_error": 1.548834485578382e-09,
+            "component_cauchy_proxy": 0.06941613622495764,
+            "component_cauchy_looseness": 28.07431000784347,
+            "coarse_proxy": 32.55519025900665,
+            "coarse_looseness": 13166.456005759002,
+            "replacement": {
+              "efron_stein_proxy": 0.004870067647844374,
+              "node_mean_squared_differences": [
+                0.00199728995741687,
+                0.00482701399075573,
+                0.0029158313475161493
+              ],
+              "absolute_difference_p95": 0.11329826434685862,
+              "absolute_difference_p99": 0.15510831490936638,
+              "absolute_difference_max": 0.2906130038593292,
+              "looseness": 1.96962545511997
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3164,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1303,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0469,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.014,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.003,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.8334692407419614,
+            "slope": 0.0011924356560982373,
+            "threshold": 0.04075854644179344
+          },
+          "covariance_operator": 0.03133936411384637,
+          "ranking": {
+            "total_variance": 0.0018935128308128068,
+            "bounded_component_variance": 0.013325297843034122,
+            "quadratic_component_variance": 0.015079053118824959,
+            "component_cross_covariance": -0.013255419322627375,
+            "variance_identity_error": 5.142084772303407e-10,
+            "component_cauchy_proxy": 0.05675450962097599,
+            "component_cauchy_looseness": 29.973131788398614,
+            "coarse_proxy": 26.868696224352483,
+            "coarse_looseness": 14189.867524065767,
+            "replacement": {
+              "efron_stein_proxy": 0.0038549943013779617,
+              "node_mean_squared_differences": [
+                0.003838507861199473,
+                0.0019285817269321277,
+                0.001942899014624323
+              ],
+              "absolute_difference_p95": 0.10062857837825533,
+              "absolute_difference_p99": 0.13825247140667782,
+              "absolute_difference_max": 0.2385542980645251,
+              "looseness": 2.0358955263710423
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31495,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1314,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04535,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0133,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00305,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0023919324026686318,
+            "bounded_component_variance": 0.016338899378037085,
+            "quadratic_component_variance": 0.018631713464856148,
+            "component_cross_covariance": -0.016289339478293918,
+            "variance_identity_error": 1.4836367642247217e-09,
+            "component_cauchy_proxy": 0.06986598167846814,
+            "component_cauchy_looseness": 29.2090117599143,
+            "coarse_proxy": 32.51145250461572,
+            "coarse_looseness": 13592.128468322655,
+            "replacement": {
+              "efron_stein_proxy": 0.004737778551007305,
+              "node_mean_squared_differences": [
+                0.001944399368908001,
+                0.004719664287607211,
+                0.0028114934454993973
+              ],
+              "absolute_difference_p95": 0.11202390718177478,
+              "absolute_difference_p99": 0.15339797868421118,
+              "absolute_difference_max": 0.28098502655989854,
+              "looseness": 1.9807326267755136
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31855,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1319,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04545,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01255,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00265,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "bge_m3",
+      "kind": "contrastive",
+      "dimension": 1024,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.8496289365383132,
+            "slope": 0.00041820085850913013,
+            "threshold": 0.02397810108959675
+          },
+          "covariance_operator": 0.020733332172229817,
+          "ranking": {
+            "total_variance": 0.0004796827303873023,
+            "bounded_component_variance": 0.008417560885415563,
+            "quadratic_component_variance": 0.008806313388049603,
+            "component_cross_covariance": -0.008372095620909858,
+            "variance_identity_error": 3.012581494487264e-10,
+            "component_cauchy_proxy": 0.034443360807036104,
+            "component_cauchy_looseness": 71.80446287742332,
+            "coarse_proxy": 23.491300185042423,
+            "coarse_looseness": 48972.57853347197,
+            "replacement": {
+              "efron_stein_proxy": 0.0007939817657607502,
+              "node_mean_squared_differences": [
+                0.000635716363935144,
+                0.00048091690326798115,
+                0.00047133026431837524
+              ],
+              "absolute_difference_p95": 0.0450172566088861,
+              "absolute_difference_p99": 0.06042541612576413,
+              "absolute_difference_max": 0.14206284964833826,
+              "looseness": 1.6552227450833568
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.30905,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13145,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04765,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01355,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00295,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0005803098321940208,
+            "bounded_component_variance": 0.009920761408706034,
+            "quadratic_component_variance": 0.010356978513300419,
+            "component_cross_covariance": -0.009848714728639884,
+            "variance_identity_error": 6.325326639420106e-10,
+            "component_cauchy_proxy": 0.0405507873244616,
+            "component_cauchy_looseness": 69.87782228529232,
+            "coarse_proxy": 28.424732529274838,
+            "coarse_looseness": 48981.993673633486,
+            "replacement": {
+              "efron_stein_proxy": 0.0009699856237213084,
+              "node_mean_squared_differences": [
+                0.00047408784495815974,
+                0.0007833436002317349,
+                0.000682539802252722
+              ],
+              "absolute_difference_p95": 0.05015473943735591,
+              "absolute_difference_p99": 0.0675925221700688,
+              "absolute_difference_max": 0.14890246048411532,
+              "looseness": 1.6714961041656162
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31575,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13175,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0451,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01235,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00365,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.866206004016494,
+            "slope": 0.00043744173276680015,
+            "threshold": 0.024889767169952393
+          },
+          "covariance_operator": 0.020733332473239857,
+          "ranking": {
+            "total_variance": 0.00047882652606937487,
+            "bounded_component_variance": 0.00835690429820142,
+            "quadratic_component_variance": 0.008806313388049603,
+            "component_cross_covariance": -0.008342195429940271,
+            "variance_identity_error": 3.003011057596365e-10,
+            "component_cauchy_proxy": 0.0343205506029838,
+            "component_cauchy_looseness": 71.67637700592064,
+            "coarse_proxy": 25.70096845216512,
+            "coarse_looseness": 53674.90532143458,
+            "replacement": {
+              "efron_stein_proxy": 0.0007941537471942791,
+              "node_mean_squared_differences": [
+                0.0006410605709872569,
+                0.0004748486218429852,
+                0.00047239830155831625
+              ],
+              "absolute_difference_p95": 0.04484141409796294,
+              "absolute_difference_p99": 0.06049966715649328,
+              "absolute_difference_max": 0.14720366277528274,
+              "looseness": 1.6585416721028066
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3181,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.12825,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0441,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0141,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0038,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0005708419336339359,
+            "bounded_component_variance": 0.009885300104818648,
+            "quadratic_component_variance": 0.010356978513300419,
+            "component_cross_covariance": -0.009835718023774033,
+            "variance_identity_error": 6.369370627711674e-10,
+            "component_cauchy_proxy": 0.040479061048449554,
+            "component_cauchy_looseness": 70.9111553714405,
+            "coarse_proxy": 31.098431132518066,
+            "coarse_looseness": 54478.182663540225,
+            "replacement": {
+              "efron_stein_proxy": 0.0009726796570793799,
+              "node_mean_squared_differences": [
+                0.00047206743635605,
+                0.0007938026424769611,
+                0.0006794892353257487
+              ],
+              "absolute_difference_p95": 0.050282148000621925,
+              "absolute_difference_p99": 0.0679508472122357,
+              "absolute_difference_max": 0.14657262682318647,
+              "looseness": 1.7039386908515566
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.314,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13045,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0463,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01325,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00305,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "wolt_clip",
+      "kind": "multimodal",
+      "dimension": 512,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.6564477961696247,
+            "slope": 0.0005834829638990514,
+            "threshold": 0.027395114302635193
+          },
+          "covariance_operator": 0.032527459977445355,
+          "ranking": {
+            "total_variance": 0.0018797597675744078,
+            "bounded_component_variance": 0.009060272464396902,
+            "quadratic_component_variance": 0.010499033145606518,
+            "component_cross_covariance": -0.008839773147007034,
+            "variance_identity_error": 4.5158505342264565e-10,
+            "component_cauchy_proxy": 0.03906562262905436,
+            "component_cauchy_looseness": 20.78224212632426,
+            "coarse_proxy": 11.444298388380338,
+            "coarse_looseness": 6088.170725745321,
+            "replacement": {
+              "efron_stein_proxy": 0.0025623855018276896,
+              "node_mean_squared_differences": [
+                0.0013586901129117323,
+                0.0019028884272592312,
+                0.0018631924634844158
+              ],
+              "absolute_difference_p95": 0.08235797221435703,
+              "absolute_difference_p99": 0.11686946022672239,
+              "absolute_difference_max": 0.23154343769134744,
+              "looseness": 1.3631451986729792
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.28865,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1237,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04725,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0196,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00755,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.002337327753615664,
+            "bounded_component_variance": 0.010883789101656034,
+            "quadratic_component_variance": 0.012742113322019577,
+            "component_cross_covariance": -0.010644287280077068,
+            "variance_identity_error": 1.0990581274933353e-10,
+            "component_cauchy_proxy": 0.04717860707569066,
+            "component_cauchy_looseness": 20.184848702844103,
+            "coarse_proxy": 13.847983899694164,
+            "coarse_looseness": 5924.707768635533,
+            "replacement": {
+              "efron_stein_proxy": 0.0031630706517861034,
+              "node_mean_squared_differences": [
+                0.0018709718387973958,
+                0.001738055430524306,
+                0.0027171140342505053
+              ],
+              "absolute_difference_p95": 0.09172689796629642,
+              "absolute_difference_p99": 0.13282039702316342,
+              "absolute_difference_max": 0.31983261673523367,
+              "looseness": 1.3532850268401937
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.28475,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.122,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04965,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0204,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0087,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.817161213118144,
+            "slope": 0.0008535322668573053,
+            "threshold": 0.03553292527794838
+          },
+          "covariance_operator": 0.03252745945292852,
+          "ranking": {
+            "total_variance": 0.0007979488432291021,
+            "bounded_component_variance": 0.01013452641566255,
+            "quadratic_component_variance": 0.010499033145606518,
+            "component_cross_covariance": -0.00991780558471936,
+            "variance_identity_error": 4.5139875301178356e-10,
+            "component_cauchy_proxy": 0.041263899234000194,
+            "component_cauchy_looseness": 51.71246200071595,
+            "coarse_proxy": 24.46559774753382,
+            "coarse_looseness": 30660.609329951003,
+            "replacement": {
+              "efron_stein_proxy": 0.001306487734882064,
+              "node_mean_squared_differences": [
+                0.0010383609885166352,
+                0.0007841448593053435,
+                0.0007904696219421488
+              ],
+              "absolute_difference_p95": 0.05784670591004625,
+              "absolute_difference_p99": 0.07729556213116061,
+              "absolute_difference_max": 0.15963780180350073,
+              "looseness": 1.637307636909442
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31235,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.133,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04725,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01295,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00255,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.000966756910846888,
+            "bounded_component_variance": 0.012339228842628036,
+            "quadratic_component_variance": 0.012742113322019577,
+            "component_cross_covariance": -0.012057292623080307,
+            "variance_identity_error": 7.640112934664822e-12,
+            "component_cauchy_proxy": 0.050159448330711974,
+            "component_cauchy_looseness": 51.88424077234869,
+            "coarse_proxy": 29.60375612427873,
+            "coarse_looseness": 30621.71657851979,
+            "replacement": {
+              "efron_stein_proxy": 0.001584006486600779,
+              "node_mean_squared_differences": [
+                0.0007867172537566651,
+                0.0012710929714720462,
+                0.0011102027479728464
+              ],
+              "absolute_difference_p95": 0.06438463570295769,
+              "absolute_difference_p99": 0.08616481588921004,
+              "absolute_difference_max": 0.1564461228925138,
+              "looseness": 1.6384744384326921
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3165,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1289,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0465,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01425,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0034,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "sift128",
+      "kind": "euclidean",
+      "dimension": 128,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.5310998043120136,
+            "slope": 0.002710191094200075,
+            "threshold": 0.0523177832365036
+          },
+          "covariance_operator": 0.18997185675361322,
+          "ranking": {
+            "total_variance": 0.03793648304722073,
+            "bounded_component_variance": 0.032985255785594525,
+            "quadratic_component_variance": 0.08533304929733276,
+            "component_cross_covariance": -0.04019091201218356,
+            "variance_identity_error": 1.9886605626129317e-09,
+            "component_cauchy_proxy": 0.2244264095431855,
+            "component_cauchy_looseness": 5.9158464759064495,
+            "coarse_proxy": 15.57473961468964,
+            "coarse_looseness": 410.5477989433885,
+            "replacement": {
+              "efron_stein_proxy": 0.07056871354322286,
+              "node_mean_squared_differences": [
+                0.06513240214077899,
+                0.03793840640744454,
+                0.038066618538222186
+              ],
+              "absolute_difference_p95": 0.44604115337051076,
+              "absolute_difference_p99": 0.6272397410203163,
+              "absolute_difference_max": 0.9988915011298423,
+              "looseness": 1.8601806987586007
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3202,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.14135,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0452,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0104,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0024,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0468121425961818,
+            "bounded_component_variance": 0.04093644173694157,
+            "quadratic_component_variance": 0.10468856245279312,
+            "component_cross_covariance": -0.04940643141964271,
+            "variance_identity_error": 1.2457325448966827e-09,
+            "component_cauchy_proxy": 0.27655364486660006,
+            "component_cauchy_looseness": 5.907733112159599,
+            "coarse_proxy": 18.84724415324766,
+            "coarse_looseness": 402.6144309571706,
+            "replacement": {
+              "efron_stein_proxy": 0.08762196111086634,
+              "node_mean_squared_differences": [
+                0.038432338768193165,
+                0.08207598313504054,
+                0.05473560031849899
+              ],
+              "absolute_difference_p95": 0.501243569414492,
+              "absolute_difference_p99": 0.6963300970319836,
+              "absolute_difference_max": 1.1431982730133239,
+              "looseness": 1.8717784799282648
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.324,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13935,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0448,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.00875,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00125,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.8747708875153838,
+            "slope": 0.0036377309303035304,
+            "threshold": 0.07128234952688217
+          },
+          "covariance_operator": 0.18997185978134112,
+          "ranking": {
+            "total_variance": 0.00420148910969441,
+            "bounded_component_variance": 0.08070425420695979,
+            "quadratic_component_variance": 0.08533304929733276,
+            "component_cross_covariance": -0.08091790824009079,
+            "variance_identity_error": 2.08558344292481e-09,
+            "component_cauchy_proxy": 0.3320100735932078,
+            "component_cauchy_looseness": 79.02200027774346,
+            "coarse_proxy": 27.92266689718728,
+            "coarse_looseness": 6645.897720586548,
+            "replacement": {
+              "efron_stein_proxy": 0.007518477183722755,
+              "node_mean_squared_differences": [
+                0.006771537671016071,
+                0.004141507343799944,
+                0.004123909352629495
+              ],
+              "absolute_difference_p95": 0.14041013564281568,
+              "absolute_difference_p99": 0.19286785431762726,
+              "absolute_difference_max": 0.3485573647633644,
+              "looseness": 1.7894791554677152
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3128,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1323,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04715,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01385,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00295,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0051553885587132375,
+            "bounded_component_variance": 0.09954337921009643,
+            "quadratic_component_variance": 0.10468856245279312,
+            "component_cross_covariance": -0.09953827835407321,
+            "variance_identity_error": 3.6039701067219765e-09,
+            "component_cauchy_proxy": 0.40839906214215027,
+            "component_cauchy_looseness": 79.21790132615821,
+            "coarse_proxy": 33.788236165026866,
+            "coarse_looseness": 6553.964998025341,
+            "replacement": {
+              "efron_stein_proxy": 0.009405081667965116,
+              "node_mean_squared_differences": [
+                0.004189866155625369,
+                0.008541129158798148,
+                0.006079168021506714
+              ],
+              "absolute_difference_p95": 0.15740800175640468,
+              "absolute_difference_p99": 0.21775217778149772,
+              "absolute_difference_max": 0.40960317319144,
+              "looseness": 1.824320623140884
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31525,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1342,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04695,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01385,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0035,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "gist960",
+      "kind": "euclidean",
+      "dimension": 960,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.6950780874133581,
+            "slope": 0.0004899385602789715,
+            "threshold": 0.027750562876462936
+          },
+          "covariance_operator": 0.02267561728197756,
+          "ranking": {
+            "total_variance": 0.002485160090340114,
+            "bounded_component_variance": 0.0044397942699115085,
+            "quadratic_component_variance": 0.007765074726194143,
+            "component_cross_covariance": -0.00485985422069776,
+            "variance_identity_error": 4.643700181328203e-10,
+            "component_cauchy_proxy": 0.023948008997790284,
+            "component_cauchy_looseness": 9.636404950681792,
+            "coarse_proxy": 28.332127477611706,
+            "coarse_looseness": 11400.5240900735,
+            "replacement": {
+              "efron_stein_proxy": 0.004138415622841323,
+              "node_mean_squared_differences": [
+                0.003272411527915473,
+                0.002511646681384933,
+                0.0024927730363822407
+              ],
+              "absolute_difference_p95": 0.1079637938089229,
+              "absolute_difference_p99": 0.16486574774042706,
+              "absolute_difference_max": 0.474551500848873,
+              "looseness": 1.6652511196069255
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.2545,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1167,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0563,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0249,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.01235,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0030738301453952146,
+            "bounded_component_variance": 0.005499393534860174,
+            "quadratic_component_variance": 0.009608752094209194,
+            "component_cross_covariance": -0.006017157599579459,
+            "variance_identity_error": 2.845152360236858e-10,
+            "component_cauchy_proxy": 0.0296466887672202,
+            "component_cauchy_looseness": 9.644868898053053,
+            "coarse_proxy": 34.282229885719,
+            "coarse_looseness": 11152.935674430766,
+            "replacement": {
+              "efron_stein_proxy": 0.005104795172105034,
+              "node_mean_squared_differences": [
+                0.0024937270258539816,
+                0.0040548315327838995,
+                0.0036610317855721858
+              ],
+              "absolute_difference_p95": 0.11937662559572858,
+              "absolute_difference_p99": 0.18567533414630844,
+              "absolute_difference_max": 0.5404436834142123,
+              "looseness": 1.660727799079051
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.2575,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.11835,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0547,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.02475,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0118,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.8172674294942622,
+            "slope": 0.00045031449948231136,
+            "threshold": 0.025882922112941742
+          },
+          "covariance_operator": 0.022675617207290534,
+          "ranking": {
+            "total_variance": 0.00032535592145487767,
+            "bounded_component_variance": 0.007302221778981432,
+            "quadratic_component_variance": 0.007765074726194143,
+            "component_cross_covariance": -0.007370970056196472,
+            "variance_identity_error": 4.713277540068124e-10,
+            "component_cauchy_proxy": 0.030127482132322823,
+            "component_cauchy_looseness": 92.59853638932798,
+            "coarse_proxy": 23.93715487221239,
+            "coarse_looseness": 73572.21213363452,
+            "replacement": {
+              "efron_stein_proxy": 0.0005138891411410485,
+              "node_mean_squared_differences": [
+                0.0003792925907034975,
+                0.000323977965567948,
+                0.0003245077260106514
+              ],
+              "absolute_difference_p95": 0.03642577616306192,
+              "absolute_difference_p99": 0.04996788917663783,
+              "absolute_difference_max": 0.10570391632740672,
+              "looseness": 1.5794676145530604
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.30515,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1294,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0474,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0147,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0045,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.00040090458013760006,
+            "bounded_component_variance": 0.009063124752198072,
+            "quadratic_component_variance": 0.009608752094209194,
+            "component_cross_covariance": -0.009135486073772712,
+            "variance_identity_error": 1.1872424386921016e-10,
+            "component_cauchy_proxy": 0.03733577986188207,
+            "component_cauchy_looseness": 93.12884339976245,
+            "coarse_proxy": 28.9643130331991,
+            "coarse_looseness": 72247.39867840336,
+            "replacement": {
+              "efron_stein_proxy": 0.0006372778524674799,
+              "node_mean_squared_differences": [
+                0.000327698945607536,
+                0.00047131403291591665,
+                0.00047554272641150703
+              ],
+              "absolute_difference_p95": 0.040666603461207707,
+              "absolute_difference_p99": 0.055899634797441575,
+              "absolute_difference_max": 0.1319981046567527,
+              "looseness": 1.5895998300861287
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31015,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.1305,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04635,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0141,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00385,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    },
+    {
+      "dataset": "random",
+      "kind": "random",
+      "dimension": 768,
+      "source_total": 1000000,
+      "fit_size": 1200,
+      "evaluation_size": 2400,
+      "quantizers": [
+        {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -1.0109613264748973,
+            "slope": 0.000653974538010344,
+            "threshold": 0.028793329373002052
+          },
+          "covariance_operator": 0.04130308525803514,
+          "ranking": {
+            "total_variance": 0.001039790053124054,
+            "bounded_component_variance": 0.022178116335079334,
+            "quadratic_component_variance": 0.02301483042538166,
+            "component_cross_covariance": -0.022076578161828567,
+            "variance_identity_error": 3.836798086274268e-10,
+            "component_cauchy_proxy": 0.09037814728480248,
+            "component_cauchy_looseness": 86.91961133236552,
+            "coarse_proxy": 32.336161224933186,
+            "coarse_looseness": 31098.740681139465,
+            "replacement": {
+              "efron_stein_proxy": 0.0020906973742625067,
+              "node_mean_squared_differences": [
+                0.0020803582156819324,
+                0.0010498983966729786,
+                0.0010511381361701026
+              ],
+              "absolute_difference_p95": 0.07350141864530702,
+              "absolute_difference_p99": 0.10162684477925538,
+              "absolute_difference_max": 0.2348659754835869,
+              "looseness": 2.01069183916599
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3166,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.12885,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04495,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0132,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0031,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.001308689413028155,
+            "bounded_component_variance": 0.026852137194347304,
+            "quadratic_component_variance": 0.02787146531045437,
+            "component_cross_covariance": -0.02670745683652127,
+            "variance_identity_error": 5.812690257508274e-10,
+            "component_cauchy_proxy": 0.10943771075208329,
+            "component_cauchy_looseness": 83.62389858328355,
+            "coarse_proxy": 39.127333677987366,
+            "coarse_looseness": 29898.1051489148,
+            "replacement": {
+              "efron_stein_proxy": 0.0025844464959131454,
+              "node_mean_squared_differences": [
+                0.0010656503572882123,
+                0.0025661574669987503,
+                0.0015370851675393284
+              ],
+              "absolute_difference_p95": 0.08225589253688649,
+              "absolute_difference_p99": 0.1139522374118315,
+              "absolute_difference_max": 0.2644017143102911,
+              "looseness": 1.9748356410502605
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31865,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.131,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0446,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.01425,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00315,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        },
+        {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -1.0052869623559715,
+            "slope": 0.0006523531184842216,
+            "threshold": 0.02881648950278759
+          },
+          "covariance_operator": 0.041303085985579344,
+          "ranking": {
+            "total_variance": 0.0010543149176993965,
+            "bounded_component_variance": 0.022199924745366036,
+            "quadratic_component_variance": 0.02301483042538166,
+            "component_cross_covariance": -0.022080219933461688,
+            "variance_identity_error": 3.861249234845404e-10,
+            "component_cauchy_proxy": 0.09042216622118648,
+            "component_cauchy_looseness": 85.76390668785682,
+            "coarse_proxy": 32.17624963995127,
+            "coarse_looseness": 30518.6326208516,
+            "replacement": {
+              "efron_stein_proxy": 0.0020829146543151697,
+              "node_mean_squared_differences": [
+                0.002064909824854604,
+                0.0010495986454811797,
+                0.0010513208382945552
+              ],
+              "absolute_difference_p95": 0.07377049839356954,
+              "absolute_difference_p99": 0.10032192436764631,
+              "absolute_difference_max": 0.22358437448616253,
+              "looseness": 1.9756095824388638
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.31255,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13355,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.04615,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0122,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.0024,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          },
+          "pruning": {
+            "total_variance": 0.0012992813523280537,
+            "bounded_component_variance": 0.026976707043960674,
+            "quadratic_component_variance": 0.02787146531045437,
+            "component_cross_covariance": -0.026774445809683044,
+            "variance_identity_error": 6.172791015314483e-10,
+            "component_cauchy_proxy": 0.10968904596401541,
+            "component_cauchy_looseness": 84.42285865757594,
+            "coarse_proxy": 38.93384066016196,
+            "coarse_looseness": 29965.67340122312,
+            "replacement": {
+              "efron_stein_proxy": 0.0025802711633600146,
+              "node_mean_squared_differences": [
+                0.0010824304518550442,
+                0.002580840780074284,
+                0.0014972710947907014
+              ],
+              "absolute_difference_p95": 0.08245515739066617,
+              "absolute_difference_p99": 0.11397590494909111,
+              "absolute_difference_max": 0.253494685706621,
+              "looseness": 1.9859218011069597
+            },
+            "tail_audit": [
+              {
+                "sd_multiple": 1.0,
+                "empirical_tail": 0.3151,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 1.5,
+                "empirical_tail": 0.13515,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.0,
+                "empirical_tail": 0.0445,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 2.5,
+                "empirical_tail": 0.0117,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              },
+              {
+                "sd_multiple": 3.0,
+                "empirical_tail": 0.00255,
+                "candidate_bounds": {
+                  "component_cauchy": 1.0,
+                  "efron_stein": 1.0,
+                  "coarse": 1.0
+                }
+              }
+            ],
+            "status": "component and replacement proxies are empirical diagnostics, not theorem certificates"
+          }
+        }
+      ]
+    }
+  ]
+}

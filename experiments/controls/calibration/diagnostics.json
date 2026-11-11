@@ -1,0 +1,683 @@
+{
+  "qq_method": "每一坐标的排序样本对正态Blom分位数做含截距线性拟合，汇总R²；四库均4000向量",
+  "qq": [
+    {
+      "dataset": "Cohere",
+      "input_scale": "保留原始半径的归档向量",
+      "n": 4000,
+      "dim": 768,
+      "valid_coordinates": 768,
+      "qq_r2_mean": 0.9984392460108921,
+      "qq_r2_median": 0.9988997778914417,
+      "norm_cv": 0.04388431528705856
+    },
+    {
+      "dataset": "minilm",
+      "input_scale": "归档的单位范数输入",
+      "n": 4000,
+      "dim": 384,
+      "valid_coordinates": 384,
+      "qq_r2_mean": 0.9993493739891756,
+      "qq_r2_median": 0.9995072544358992,
+      "norm_cv": 3.3149944410341264e-08
+    },
+    {
+      "dataset": "gist960",
+      "input_scale": "归档的单位范数输入",
+      "n": 4000,
+      "dim": 960,
+      "valid_coordinates": 960,
+      "qq_r2_mean": 0.9180698503203139,
+      "qq_r2_median": 0.9182286615626571,
+      "norm_cv": 3.310217476188377e-08
+    },
+    {
+      "dataset": "Wolt",
+      "input_scale": "归档的单位范数输入",
+      "n": 4000,
+      "dim": 512,
+      "valid_coordinates": 512,
+      "qq_r2_mean": 0.9968756793932427,
+      "qq_r2_median": 0.9983610650285781,
+      "norm_cv": 3.290460105909822e-08
+    }
+  ],
+  "gate_source_sha256": "d9b0ca41f39dcd4d91c8a5368379623bda0a02f8a4c097d38df47cd9fb84952b",
+  "gate_records": [
+    {
+      "dataset": "cohere",
+      "code": "1bit",
+      "slope": 0.0005770604397071992,
+      "score_correlation": 0.5574875929392341,
+      "residual_margin_correlation": -0.31117582754993994,
+      "left_tail_ratio": 1.8506529548651,
+      "original_eligible": true,
+      "passes_of_27": 18
+    },
+    {
+      "dataset": "cohere",
+      "code": "2bit",
+      "slope": 0.00027182079250641914,
+      "score_correlation": 0.7258765112408685,
+      "residual_margin_correlation": -0.1744459880642501,
+      "left_tail_ratio": 1.8181853591657122,
+      "original_eligible": true,
+      "passes_of_27": 18
+    },
+    {
+      "dataset": "cohere",
+      "code": "rotated_1bit",
+      "slope": 0.0008468305798937945,
+      "score_correlation": 0.5741755612877101,
+      "residual_margin_correlation": -0.2287130167802823,
+      "left_tail_ratio": 1.3636390193742844,
+      "original_eligible": true,
+      "passes_of_27": 27
+    },
+    {
+      "dataset": "cohere",
+      "code": "rotated_2bit",
+      "slope": 0.00047685643099002086,
+      "score_correlation": 0.7120899126429642,
+      "residual_margin_correlation": -0.17785422478116217,
+      "left_tail_ratio": 1.6883149763681615,
+      "original_eligible": true,
+      "passes_of_27": 18
+    },
+    {
+      "dataset": "minilm",
+      "code": "1bit",
+      "slope": 0.003169122722191128,
+      "score_correlation": 0.6228488679752621,
+      "residual_margin_correlation": -0.13809604441014245,
+      "left_tail_ratio": 0.9264743936994524,
+      "original_eligible": true,
+      "passes_of_27": 27
+    },
+    {
+      "dataset": "minilm",
+      "code": "2bit",
+      "slope": 0.0012496685058594726,
+      "score_correlation": 0.8082380365416227,
+      "residual_margin_correlation": -0.057397387777190244,
+      "left_tail_ratio": 0.9035110444907023,
+      "original_eligible": true,
+      "passes_of_27": 27
+    },
+    {
+      "dataset": "minilm",
+      "code": "rotated_1bit",
+      "slope": 0.0032056911502923342,
+      "score_correlation": 0.6779671701157624,
+      "residual_margin_correlation": -0.09954668780518251,
+      "left_tail_ratio": 0.9098648493042797,
+      "original_eligible": true,
+      "passes_of_27": 27
+    },
+    {
+      "dataset": "minilm",
+      "code": "rotated_2bit",
+      "slope": 0.0012484786962269334,
+      "score_correlation": 0.8438569662994119,
+      "residual_margin_correlation": 0.019555888288976402,
+      "left_tail_ratio": 1.0389630623804071,
+      "original_eligible": true,
+      "passes_of_27": 27
+    },
+    {
+      "dataset": "gist960",
+      "code": "1bit",
+      "slope": 0.0,
+      "score_correlation": 0.0,
+      "residual_margin_correlation": -1.0,
+      "left_tail_ratio": 7.69482018075489,
+      "original_eligible": false,
+      "passes_of_27": 0
+    },
+    {
+      "dataset": "gist960",
+      "code": "2bit",
+      "slope": 0.00014867784490739977,
+      "score_correlation": -0.013160606769760257,
+      "residual_margin_correlation": -0.8575685145377268,
+      "left_tail_ratio": 7.824690563552441,
+      "original_eligible": false,
+      "passes_of_27": 0
+    },
+    {
+      "dataset": "gist960",
+      "code": "rotated_1bit",
+      "slope": 0.0005158082169476746,
+      "score_correlation": 0.5096658916877879,
+      "residual_margin_correlation": -0.3806163853281712,
+      "left_tail_ratio": 1.883120550564488,
+      "original_eligible": true,
+      "passes_of_27": 18
+    },
+    {
+      "dataset": "gist960",
+      "code": "rotated_2bit",
+      "slope": 0.000344684219700819,
+      "score_correlation": 0.6687671004475703,
+      "residual_margin_correlation": -0.19828863494457194,
+      "left_tail_ratio": 0.7573735337784228,
+      "original_eligible": true,
+      "passes_of_27": 27
+    }
+  ],
+  "gate_variants": [
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.05,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.1,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.4,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.5,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 1.5,
+      "eligible": [
+        false,
+        false,
+        true,
+        false,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 2.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "minimum_score": 0.15,
+      "maximum_dependence": 0.6,
+      "maximum_tail": 3.0,
+      "eligible": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    }
+  ]
+}

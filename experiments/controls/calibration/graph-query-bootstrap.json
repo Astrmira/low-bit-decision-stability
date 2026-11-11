@@ -1,0 +1,41 @@
+[
+  {
+    "ef": 64,
+    "original": 0.9328733766233768,
+    "rotated": 0.8622564935064935,
+    "delta": -0.07061688311688312,
+    "paired_query_ci95": [
+      -0.0843344155844156,
+      -0.056980519480519486
+    ],
+    "query_count": 616,
+    "bootstrap_repetitions": 10000,
+    "conditional_on_builds": 2
+  },
+  {
+    "ef": 128,
+    "original": 0.9568993506493507,
+    "rotated": 0.8870129870129871,
+    "delta": -0.06988636363636364,
+    "paired_query_ci95": [
+      -0.0818181818181818,
+      -0.058360389610389606
+    ],
+    "query_count": 616,
+    "bootstrap_repetitions": 10000,
+    "conditional_on_builds": 2
+  },
+  {
+    "ef": 256,
+    "original": 0.9610389610389612,
+    "rotated": 0.899594155844156,
+    "delta": -0.061444805194805184,
+    "paired_query_ci95": [
+      -0.07199675324675324,
+      -0.051298701298701295
+    ],
+    "query_count": 616,
+    "bootstrap_repetitions": 10000,
+    "conditional_on_builds": 2
+  }
+]

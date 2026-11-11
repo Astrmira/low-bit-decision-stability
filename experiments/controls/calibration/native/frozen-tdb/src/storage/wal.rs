@@ -1,0 +1,764 @@
+//! Write-Ahead Log 的版本化格式、写入与崩溃恢复。
+//!
+//! 每条记录采用 `len + bincode + CRC32`，事务通过 Begin/Commit 封条过滤未提交操作。
+//! 恢复只消费连续且校验成功的前缀，遇到截断、CRC 或反序列化错误立即停止，绝不
+//! 跨过损坏边界猜测后续字节。旧版本头只允许持有 Writer 排他锁的打开流程升级；
+//! WAL v2 通过独立历史类型解码并原子转写为 v3，未知非空版本始终 fail-closed。
+
+use crate::error::{Result, TriviumError};
+use crate::node::NodeId;
+use crate::storage::fs::robust_rename_and_sync;
+use serde::{Deserialize, Serialize};
+use std::fs::{File, OpenOptions};
+use std::io::{BufReader, BufWriter, Read, Write};
+use std::path::{Path, PathBuf};
+
+const WAL_MAGIC: &[u8; 4] = b"TVWL";
+pub const WAL_VERSION: u16 = 3;
+const LEGACY_WAL_VERSION_V2: u16 = 2;
+const WAL_HEADER_SIZE: u64 = 6;
+const MAX_WAL_ENTRY_SIZE: usize = 256 * 1024 * 1024;
+
+/// WAL 条目：记录每一次变更操作
+///
+/// 注意：payload 使用 String（JSON 字符串）而非 serde_json::Value，
+/// 因为 bincode 不支持 serde_json::Value 的 deserialize_any 方法。
+#[derive(Debug, Serialize, Deserialize)]
+pub enum WalEntry<T> {
+    TxBegin {
+        tx_id: u64,
+    },
+    TxCommit {
+        tx_id: u64,
+    },
+    Insert {
+        id: NodeId,
+        vector: Vec<T>,
+        payload: String, // JSON 字符串
+    },
+    Link {
+        src: NodeId,
+        dst: NodeId,
+        label: String,
+        weight: f32,
+        #[serde(default)]
+        metadata: String,
+    },
+    Delete {
+        id: NodeId,
+    },
+    Unlink {
+        src: NodeId,
+        dst: NodeId,
+    },
+    UpdatePayload {
+        id: NodeId,
+        payload: String, // JSON 字符串
+    },
+    UpdateVector {
+        id: NodeId,
+        vector: Vec<T>,
+    },
+    /// 仅删除指定标签边；追加在旧变体之后，保持历史 discriminant。
+    UnlinkLabel {
+        src: NodeId,
+        dst: NodeId,
+        label: String,
+    },
+}
+
+/// WAL v2 的精确磁盘枚举布局；仅用于迁移，禁止用于新写入。
+#[derive(Debug, Deserialize)]
+enum WalEntryV2<T> {
+    TxBegin {
+        tx_id: u64,
+    },
+    TxCommit {
+        tx_id: u64,
+    },
+    Insert {
+        id: NodeId,
+        vector: Vec<T>,
+        payload: String,
+    },
+    Link {
+        src: NodeId,
+        dst: NodeId,
+        label: String,
+        weight: f32,
+    },
+    Delete {
+        id: NodeId,
+    },
+    Unlink {
+        src: NodeId,
+        dst: NodeId,
+    },
+    UpdatePayload {
+        id: NodeId,
+        payload: String,
+    },
+    UpdateVector {
+        id: NodeId,
+        vector: Vec<T>,
+    },
+    UnlinkLabel {
+        src: NodeId,
+        dst: NodeId,
+        label: String,
+    },
+}
+
+impl<T> From<WalEntryV2<T>> for WalEntry<T> {
+    fn from(entry: WalEntryV2<T>) -> Self {
+        match entry {
+            WalEntryV2::TxBegin { tx_id } => Self::TxBegin { tx_id },
+            WalEntryV2::TxCommit { tx_id } => Self::TxCommit { tx_id },
+            WalEntryV2::Insert {
+                id,
+                vector,
+                payload,
+            } => Self::Insert {
+                id,
+                vector,
+                payload,
+            },
+            WalEntryV2::Link {
+                src,
+                dst,
+                label,
+                weight,
+            } => Self::Link {
+                src,
+                dst,
+                label,
+                weight,
+                metadata: "null".into(),
+            },
+            WalEntryV2::Delete { id } => Self::Delete { id },
+            WalEntryV2::Unlink { src, dst } => Self::Unlink { src, dst },
+            WalEntryV2::UpdatePayload { id, payload } => Self::UpdatePayload { id, payload },
+            WalEntryV2::UpdateVector { id, vector } => Self::UpdateVector { id, vector },
+            WalEntryV2::UnlinkLabel { src, dst, label } => Self::UnlinkLabel { src, dst, label },
+        }
+    }
+}
+
+fn decode_legacy_v2_frames<T: serde::de::DeserializeOwned>(
+    bytes: &[u8],
+) -> Result<Vec<WalEntry<T>>> {
+    let mut offset = 0usize;
+    let mut entries = Vec::new();
+    while offset < bytes.len() {
+        let len_end = offset
+            .checked_add(4)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 帧偏移溢出".into()))?;
+        let len_bytes = bytes
+            .get(offset..len_end)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 尾部长度字段被截断".into()))?;
+        let len = u32::from_le_bytes(
+            len_bytes
+                .try_into()
+                .map_err(|_| TriviumError::CorruptedFile("WAL v2 长度字段无效".into()))?,
+        ) as usize;
+        if len > MAX_WAL_ENTRY_SIZE {
+            return Err(TriviumError::CorruptedFile(format!(
+                "WAL v2 单条记录超过上限：{} 字节",
+                len
+            )));
+        }
+        let data_end = len_end
+            .checked_add(len)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 数据长度溢出".into()))?;
+        let crc_end = data_end
+            .checked_add(4)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 CRC 偏移溢出".into()))?;
+        let data = bytes
+            .get(len_end..data_end)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 记录数据被截断".into()))?;
+        let crc_bytes = bytes
+            .get(data_end..crc_end)
+            .ok_or_else(|| TriviumError::CorruptedFile("WAL v2 记录 CRC 被截断".into()))?;
+        let stored_crc = u32::from_le_bytes(
+            crc_bytes
+                .try_into()
+                .map_err(|_| TriviumError::CorruptedFile("WAL v2 CRC 字段无效".into()))?,
+        );
+        if crc32fast::hash(data) != stored_crc {
+            return Err(TriviumError::CorruptedFile(
+                "WAL v2 记录 CRC 不匹配，拒绝迁移".into(),
+            ));
+        }
+        let entry = bincode::deserialize::<WalEntryV2<T>>(data).map_err(|error| {
+            TriviumError::CorruptedFile(format!("WAL v2 记录无法解码，拒绝迁移：{error}"))
+        })?;
+        entries.push(entry.into());
+        offset = crc_end;
+    }
+    Ok(entries)
+}
+
+fn write_framed_entry<T: serde::Serialize>(
+    writer: &mut impl Write,
+    entry: &WalEntry<T>,
+) -> Result<()> {
+    let data = bincode::serialize(entry).map_err(TriviumError::Serialization)?;
+    let len = u32::try_from(data.len())
+        .map_err(|_| TriviumError::InvalidInput("WAL 记录超过 u32 长度上限".into()))?;
+    writer.write_all(&len.to_le_bytes())?;
+    writer.write_all(&data)?;
+    writer.write_all(&crc32fast::hash(&data).to_le_bytes())?;
+    Ok(())
+}
+
+/// WAL 磁盘同步模式
+///
+/// 控制每条 WAL 写入后是否强制落盘，在速度和安全之间权衡。
+#[derive(Debug, Clone, Copy, PartialEq, Default)]
+pub enum SyncMode {
+    /// 每条 WAL 写入后立即 fsync（最安全，防 OS 崩溃丢数据）
+    /// 适用于：金融数据、不可丢失的关键业务
+    Full,
+    /// 每条写入 flush 到 OS 缓冲区，但不 fsync（平衡模式）
+    /// 进程崩溃不丢数据，OS 崩溃可能丢最近几条
+    /// 适用于：大多数生产场景
+    #[default]
+    Normal,
+    /// 不主动 flush，完全依赖 OS 缓冲（最快，仅用于测试）
+    Off,
+}
+
+impl SyncMode {
+    /// 从字符串解析同步模式（"full" / "normal" / "off"）
+    ///
+    /// 供 Python/Node.js 绑定层统一调用，避免各绑定各自维护一份解析逻辑。
+    pub fn parse(s: &str) -> std::result::Result<Self, String> {
+        match s {
+            "full" => Ok(SyncMode::Full),
+            "normal" => Ok(SyncMode::Normal),
+            "off" => Ok(SyncMode::Off),
+            other => Err(format!(
+                "不支持的同步模式 (Unsupported sync_mode): '{}'。请使用 'full', 'normal' 或 'off'",
+                other
+            )),
+        }
+    }
+}
+
+/// Write-Ahead Logger
+/// 每次变更先追加写入 .wal 文件，保证崩溃时可恢复。
+///
+/// 磁盘格式（每条记录）：
+///   [len: u32][bincode data: len bytes][crc32: u32]
+pub struct Wal {
+    wal_path: PathBuf,
+    writer: Option<BufWriter<File>>,
+    sync_mode: SyncMode,
+    cumulative_written_bytes: u64,
+    cumulative_logical_bytes: u64,
+    group_commit_active: bool,
+    group_commit_pending: bool,
+    cumulative_sync_count: u64,
+}
+
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
+pub struct WalStats {
+    pub written_bytes: u64,
+    pub logical_bytes: u64,
+    pub sync_count: u64,
+}
+
+impl Wal {
+    pub fn disabled(db_path: &str, sync_mode: SyncMode) -> Self {
+        Self {
+            wal_path: PathBuf::from(format!("{}.wal", db_path)),
+            writer: None,
+            sync_mode,
+            cumulative_written_bytes: 0,
+            cumulative_logical_bytes: 0,
+            group_commit_active: false,
+            group_commit_pending: false,
+            cumulative_sync_count: 0,
+        }
+    }
+    /// 将受支持的旧 WAL 原子迁移到当前版本。
+    ///
+    /// WAL v2 与 v3 共享帧、CRC 和事务封条格式，唯一记录差异是 v3 的 Link
+    /// 新增 metadata。迁移必须完整验证每个物理帧和反序列化结果；任何截断、CRC
+    /// 错误或未知记录都会拒绝迁移并保持原文件不变。
+    pub fn upgrade_legacy_wal<T>(db_path: &str) -> Result<bool>
+    where
+        T: serde::de::DeserializeOwned + serde::Serialize,
+    {
+        let wal_path = PathBuf::from(format!("{}.wal", db_path));
+        let Ok(bytes) = std::fs::read(&wal_path) else {
+            return Ok(false);
+        };
+        if bytes.len() < WAL_HEADER_SIZE as usize || &bytes[0..4] != WAL_MAGIC {
+            return Ok(false);
+        }
+        let found = u16::from_le_bytes([bytes[4], bytes[5]]);
+        if found == WAL_VERSION {
+            return Ok(false);
+        }
+        if found != LEGACY_WAL_VERSION_V2 {
+            return Ok(false);
+        }
+        let entries = decode_legacy_v2_frames::<T>(&bytes[WAL_HEADER_SIZE as usize..])?;
+        let tmp_path = PathBuf::from(format!("{}.upgrade.tmp", wal_path.to_string_lossy()));
+        let write_result = (|| -> Result<()> {
+            #[cfg(feature = "test-hooks")]
+            crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalMigrationCreate)?;
+            let mut tmp = OpenOptions::new()
+                .write(true)
+                .create(true)
+                .truncate(true)
+                .open(&tmp_path)?;
+            #[cfg(feature = "test-hooks")]
+            crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalMigrationWrite)?;
+            tmp.write_all(WAL_MAGIC)?;
+            tmp.write_all(&WAL_VERSION.to_le_bytes())?;
+            for entry in &entries {
+                write_framed_entry(&mut tmp, entry)?;
+            }
+            #[cfg(feature = "test-hooks")]
+            crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalMigrationSync)?;
+            tmp.sync_all()?;
+            #[cfg(feature = "test-hooks")]
+            crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalMigrationRename)?;
+            robust_rename_and_sync(&tmp_path, &wal_path)?;
+            Ok(())
+        })();
+        if let Err(error) = write_result {
+            let _ = std::fs::remove_file(&tmp_path);
+            return Err(error);
+        }
+        tracing::info!(
+            found_version = found,
+            current_version = WAL_VERSION,
+            entry_count = entries.len(),
+            wal_path = %wal_path.display(),
+            "已原子迁移旧 WAL (Atomically migrated legacy WAL)"
+        );
+        Ok(true)
+    }
+
+    /// 兼容旧调用名；只处理历史空 WAL，非空迁移必须携带真实向量类型。
+    pub fn upgrade_empty_legacy_wal(db_path: &str) -> Result<bool> {
+        let wal_path = PathBuf::from(format!("{}.wal", db_path));
+        if std::fs::metadata(&wal_path).map(|meta| meta.len()).ok() != Some(WAL_HEADER_SIZE) {
+            return Ok(false);
+        }
+        Self::upgrade_legacy_wal::<u8>(db_path)
+    }
+
+    /// 创建或打开 WAL 文件（追加模式）
+    pub fn open(db_path: &str) -> Result<Self> {
+        Self::open_with_sync(db_path, SyncMode::default())
+    }
+
+    /// 创建或打开 WAL 文件，指定同步模式
+    pub fn open_with_sync(db_path: &str, sync_mode: SyncMode) -> Result<Self> {
+        let wal_path = PathBuf::from(format!("{}.wal", db_path));
+        let existing_len = std::fs::metadata(&wal_path)
+            .map(|meta| meta.len())
+            .unwrap_or(0);
+        let mut file = OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(&wal_path)?;
+        if existing_len == 0 {
+            file.write_all(WAL_MAGIC)?;
+            file.write_all(&WAL_VERSION.to_le_bytes())?;
+            file.flush()?;
+        }
+        Ok(Self {
+            wal_path,
+            writer: Some(BufWriter::new(file)),
+            sync_mode,
+            cumulative_written_bytes: if existing_len == 0 {
+                WAL_HEADER_SIZE
+            } else {
+                0
+            },
+            cumulative_logical_bytes: 0,
+            group_commit_active: false,
+            group_commit_pending: false,
+            cumulative_sync_count: 0,
+        })
+    }
+
+    /// 动态修改同步模式
+    pub fn set_sync_mode(&mut self, mode: SyncMode) {
+        self.sync_mode = mode;
+    }
+
+    /// 追加一条操作日志
+    ///
+    /// 格式: [len: u32][bincode bytes][crc32: u32]
+    /// 写入后立即 fsync，保证即使 OS 崩溃数据也不丢失
+    pub fn append<T: serde::Serialize>(&mut self, entry: &WalEntry<T>) -> Result<()> {
+        let data = bincode::serialize(entry).map_err(TriviumError::Serialization)?;
+        let checksum = crc32fast::hash(&data);
+        let len = data.len() as u32;
+        {
+            let writer = self.writer.as_mut().ok_or(TriviumError::WalClosed)?;
+            writer.write_all(&len.to_le_bytes())?;
+            writer.write_all(&data)?;
+            writer.write_all(&checksum.to_le_bytes())?;
+        }
+        self.cumulative_written_bytes = self
+            .cumulative_written_bytes
+            .saturating_add(8u64.saturating_add(data.len() as u64));
+        self.cumulative_logical_bytes = self
+            .cumulative_logical_bytes
+            .saturating_add(data.len() as u64);
+        if self.group_commit_active {
+            self.group_commit_pending = true;
+        } else {
+            self.sync_writer()?;
+        }
+        Ok(())
+    }
+
+    /// 批量追加一个事务的所有日志（附带事务边界）
+    ///
+    /// 会自动打上 TxBegin 和 TxCommit 封条，并且仅在整个 Batch 写入完毕后才做一次 fsync。
+    pub fn append_batch<T: serde::Serialize>(
+        &mut self,
+        tx_id: u64,
+        entries: &[WalEntry<T>],
+    ) -> Result<()> {
+        if self.writer.is_none() {
+            return Err(TriviumError::WalClosed);
+        }
+        let batch_bytes = {
+            let writer = self.writer.as_mut().ok_or(TriviumError::WalClosed)?;
+            let mut write_single = |entry: &WalEntry<T>| -> Result<u64> {
+                let data = bincode::serialize(entry).map_err(TriviumError::Serialization)?;
+                let checksum = crc32fast::hash(&data);
+                let len = data.len() as u32;
+                writer.write_all(&len.to_le_bytes())?;
+                writer.write_all(&data)?;
+                writer.write_all(&checksum.to_le_bytes())?;
+                Ok(8u64.saturating_add(data.len() as u64))
+            };
+
+            let mut batch_bytes = write_single(&WalEntry::TxBegin { tx_id })?;
+            for entry in entries {
+                batch_bytes = batch_bytes.saturating_add(write_single(entry)?);
+            }
+            batch_bytes.saturating_add(write_single(&WalEntry::TxCommit { tx_id })?)
+        };
+
+        // 字节已经写入 BufWriter；必须先更新指标，避免后续 flush/sync 失败时漏报。
+        self.cumulative_written_bytes = self.cumulative_written_bytes.saturating_add(batch_bytes);
+        self.cumulative_logical_bytes = self
+            .cumulative_logical_bytes
+            .saturating_add(batch_bytes.saturating_sub(8 * (entries.len() as u64 + 2)));
+
+        // Group Commit 中只追加完整事务帧，组尾统一执行同步。
+        if self.group_commit_active {
+            self.group_commit_pending = true;
+        } else {
+            self.sync_writer()?;
+        }
+        Ok(())
+    }
+
+    /// 开始一个多事务 Group Commit。组内每个 `append_batch` 仍写入独立事务封条。
+    pub fn begin_group_commit(&mut self) -> Result<()> {
+        if self.writer.is_none() {
+            return Err(TriviumError::WalClosed);
+        }
+        if self.group_commit_active {
+            return Err(TriviumError::InvalidInput(
+                "WAL Group Commit 不允许嵌套 (WAL group commit cannot be nested)".into(),
+            ));
+        }
+        self.group_commit_active = true;
+        self.group_commit_pending = false;
+        Ok(())
+    }
+
+    /// 同步并结束当前 Group Commit；成功返回是否执行了物理同步调用。
+    pub fn finish_group_commit(&mut self) -> Result<bool> {
+        if !self.group_commit_active {
+            return Err(TriviumError::InvalidInput(
+                "WAL Group Commit 尚未开始 (WAL group commit is not active)".into(),
+            ));
+        }
+        self.group_commit_active = false;
+        let pending = std::mem::take(&mut self.group_commit_pending);
+        if !pending {
+            return Ok(false);
+        }
+        self.sync_writer()
+    }
+
+    pub fn stats(&self) -> WalStats {
+        WalStats {
+            written_bytes: self.cumulative_written_bytes,
+            logical_bytes: self.cumulative_logical_bytes,
+            sync_count: self.cumulative_sync_count,
+        }
+    }
+
+    fn sync_writer(&mut self) -> Result<bool> {
+        let Some(writer) = self.writer.as_mut() else {
+            return Err(TriviumError::WalClosed);
+        };
+        match self.sync_mode {
+            SyncMode::Full => {
+                #[cfg(feature = "test-hooks")]
+                crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalFlush)?;
+                writer.flush()?;
+                #[cfg(feature = "test-hooks")]
+                crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalSync)?;
+                writer.get_ref().sync_data()?;
+                self.cumulative_sync_count = self.cumulative_sync_count.saturating_add(1);
+                Ok(true)
+            }
+            SyncMode::Normal => {
+                #[cfg(feature = "test-hooks")]
+                crate::test_hooks::io_result(crate::test_hooks::IoPoint::WalFlush)?;
+                writer.flush()?;
+                Ok(false)
+            }
+            SyncMode::Off => Ok(false),
+        }
+    }
+
+    /// 读取 WAL 文件中的所有条目（用于崩溃恢复）
+    ///
+    /// 每条记录都会校验 CRC32：
+    ///   - 校验通过 → 回放
+    ///   - 校验失败 / 截断 → 安全停止，丢弃后续残缺数据
+    pub fn read_entries<T: serde::de::DeserializeOwned>(
+        db_path: &str,
+    ) -> Result<(Vec<WalEntry<T>>, u64)> {
+        let wal_path = format!("{}.wal", db_path);
+        if !Path::new(&wal_path).exists() {
+            return Ok((Vec::new(), 0));
+        }
+
+        let mut file = File::open(&wal_path)?;
+        let mut prefix = [0u8; WAL_HEADER_SIZE as usize];
+        let read = file.read(&mut prefix)?;
+        if read >= 4 && &prefix[0..4] == WAL_MAGIC {
+            if read < WAL_HEADER_SIZE as usize {
+                return Err(TriviumError::CorruptedFile(
+                    "WAL 版本头被截断 (WAL header truncated)".into(),
+                ));
+            }
+            let version = u16::from_le_bytes([prefix[4], prefix[5]]);
+            if version != WAL_VERSION {
+                return Err(TriviumError::UnsupportedWalVersion {
+                    found: version,
+                    supported: WAL_VERSION,
+                });
+            }
+            let (entries, offset) = Self::read_entries_from_reader(BufReader::new(file))?;
+            return Ok((entries, offset + WAL_HEADER_SIZE));
+        }
+
+        Err(TriviumError::UnsupportedWalVersion {
+            found: 0,
+            supported: WAL_VERSION,
+        })
+    }
+
+    /// 从任意 `Read` 源解析 WAL 条目流
+    ///
+    /// 此方法是 `read_entries` 的核心实现，独立出来便于：
+    /// - 模糊测试（fuzzing）：传入 `Cursor<&[u8]>` 测试畸形数据
+    /// - 单元测试：无需真实文件即可验证解析逻辑
+    pub fn read_entries_from_reader<T: serde::de::DeserializeOwned>(
+        mut reader: impl Read,
+    ) -> Result<(Vec<WalEntry<T>>, u64)> {
+        let mut entries_with_offset = Vec::new();
+        let mut physical_offset: u64 = 0;
+
+        loop {
+            // 读取 len
+            let mut len_buf = [0u8; 4];
+            match reader.read_exact(&mut len_buf) {
+                Ok(_) => {}
+                Err(e) if e.kind() == std::io::ErrorKind::UnexpectedEof => break,
+                Err(e) => return Err(TriviumError::Io(e)),
+            }
+            let len = u32::from_le_bytes(len_buf) as usize;
+
+            // 合理性检查：单条不超过 256MB
+            if len > 256 * 1024 * 1024 {
+                break; // 损坏的 len 字段
+            }
+
+            // 读取 data
+            let mut data = vec![0u8; len];
+            match reader.read_exact(&mut data) {
+                Ok(_) => {}
+                Err(_) => break, // 截断的写入，安全丢弃
+            }
+
+            // 读取 CRC32
+            let mut crc_buf = [0u8; 4];
+            match reader.read_exact(&mut crc_buf) {
+                Ok(_) => {}
+                Err(_) => break, // CRC 不完整，丢弃该条
+            }
+            let stored_crc = u32::from_le_bytes(crc_buf);
+            let computed_crc = crc32fast::hash(&data);
+
+            if stored_crc != computed_crc {
+                // CRC 不匹配 → 数据损坏，停止回放
+                tracing::error!(
+                    "WAL CRC 校验不匹配 (CRC mismatch)，第 {} 条记录: 存储={:#010x}, 计算={:#010x}。停止恢复 (Stopping recovery)",
+                    entries_with_offset.len(),
+                    stored_crc,
+                    computed_crc
+                );
+                break;
+            }
+
+            // 成功读取一条物理上合法的记录，推进物理游标
+            physical_offset += 4 + (len as u64) + 4;
+
+            // 反序列化
+            match bincode::deserialize::<WalEntry<T>>(&data) {
+                Ok(entry) => entries_with_offset.push((entry, physical_offset)),
+                Err(e) => {
+                    tracing::error!(
+                        "WAL 反序列化错误 (Deserialize error)，第 {} 条记录: {}。停止恢复 (Stopping recovery)",
+                        entries_with_offset.len(),
+                        e
+                    );
+                    break;
+                }
+            }
+        }
+
+        // ====== 事务回放过滤（The Magic of ACID） ======
+        let mut committed = Vec::new();
+        let mut pending_tx = Vec::new();
+        let mut in_tx = false;
+        let mut current_tx_id = 0;
+        let mut safe_commit_offset = 0;
+
+        for (entry, offset) in entries_with_offset {
+            match entry {
+                WalEntry::TxBegin { tx_id } => {
+                    in_tx = true;
+                    current_tx_id = tx_id;
+                    pending_tx.clear(); // 清空，准备接纳新事务
+                    // 游标不推进：未提交事务不能视为安全边界
+                }
+                WalEntry::TxCommit { tx_id } => {
+                    if in_tx && tx_id == current_tx_id {
+                        // 发现正确的封条，安全转正！
+                        committed.append(&mut pending_tx);
+                        in_tx = false;
+                        safe_commit_offset = offset; // 整个事务完美闭环，安全推进物理游标
+                    }
+                }
+                other => {
+                    if in_tx {
+                        // 如果处于事务包裹区，先暂存在 pending 里，游标暂时不动
+                        pending_tx.push(other);
+                    } else {
+                        // 兼容向后/独立的操作（旧版本数据或单个操作），立刻安全推进！
+                        committed.push(other);
+                        safe_commit_offset = offset;
+                    }
+                }
+            }
+        }
+
+        if in_tx && !pending_tx.is_empty() {
+            tracing::warn!(
+                "丢弃了一个不完整事务 ({} 个操作)，缺少 TxCommit (Discarded partial transaction, {} ops, missing TxCommit)。WAL 截断至偏移 {}",
+                pending_tx.len(),
+                pending_tx.len(),
+                safe_commit_offset
+            );
+        }
+
+        Ok((committed, safe_commit_offset))
+    }
+
+    pub fn cumulative_written_bytes(&self) -> u64 {
+        self.cumulative_written_bytes
+    }
+
+    pub fn cumulative_logical_bytes(&self) -> u64 {
+        self.cumulative_logical_bytes
+    }
+
+    /// flush 成功后清除 WAL 文件
+    ///
+    /// 使用 truncate（截断）语义而非 remove + create：
+    ///   - 避免 Windows 杀毒软件对"新建文件"的扫描锁定
+    ///   - 文件 inode/句柄不变，减少系统调用次数
+    pub fn clear(&mut self) -> Result<()> {
+        // 关闭当前 writer
+        self.writer.take();
+        let mode = self.sync_mode;
+
+        // 截断清空 WAL（而非删除重建）
+        // 对于已存在的文件，truncate 不会触发杀软的"新文件扫描"
+        {
+            let mut file = OpenOptions::new()
+                .write(true)
+                .truncate(true)
+                .open(&self.wal_path)?;
+            file.write_all(WAL_MAGIC)?;
+            file.write_all(&WAL_VERSION.to_le_bytes())?;
+            file.sync_all()?;
+        }
+
+        // 重新以追加模式打开
+        let file = OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(&self.wal_path)?;
+        self.writer = Some(BufWriter::new(file));
+        self.sync_mode = mode;
+        Ok(())
+    }
+
+    /// 显式 flush BufWriter 中缓冲的数据到磁盘
+    ///
+    /// 在 Database 的 Drop 中调用，确保已写入的 WAL 条目不会因为
+    /// BufWriter 的析构链（Arc<Mutex<Wal>>）而静默丢失。
+    pub fn flush_writer(&mut self) {
+        if let Some(ref mut writer) = self.writer {
+            let _ = writer.flush();
+            let _ = writer.get_ref().sync_all();
+        }
+    }
+
+    #[cfg(test)]
+    pub(crate) fn close_writer_for_test(&mut self) {
+        self.writer = None;
+    }
+
+    /// WAL 文件是否存在且非空（用于判断是否需要恢复）
+    pub fn needs_recovery(db_path: &str) -> bool {
+        let wal_path = format!("{}.wal", db_path);
+        let Ok(meta) = std::fs::metadata(&wal_path) else {
+            return false;
+        };
+        if meta.len() == 0 {
+            return false;
+        }
+        if meta.len() != WAL_HEADER_SIZE {
+            return true;
+        }
+        let Ok(bytes) = std::fs::read(&wal_path) else {
+            return true;
+        };
+        bytes.len() != WAL_HEADER_SIZE as usize
+            || &bytes[0..4] != WAL_MAGIC
+            || u16::from_le_bytes([bytes[4], bytes[5]]) != WAL_VERSION
+    }
+}

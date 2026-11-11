@@ -1,0 +1,1435 @@
+{
+  "probe": 32,
+  "seed": 20260823,
+  "n_sample": 4000,
+  "pair_samples": 12000,
+  "h_ratios": [
+    0.005,
+    0.01,
+    0.02,
+    0.05,
+    0.1
+  ],
+  "eta_values": [
+    0.01,
+    0.05,
+    0.1
+  ],
+  "results": [
+    {
+      "dataset": "cohere",
+      "dimension": 768,
+      "source_total": 1000000,
+      "artifact_norm_audit": {
+        "mean": 13.820117950439453,
+        "std": 0.6064863801002502,
+        "min": 12.38154125213623,
+        "max": 16.244897842407227,
+        "fraction_within_1e_5_of_one": 0.0,
+        "pre_normalization_shell_identifiable": true
+      },
+      "quantizers": {
+        "2bit": {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.7768102740464958,
+            "slope": 0.0004453008801079975,
+            "residual_mean": 1.1078175414051354e-16,
+            "residual_scale": 0.02774795720468394,
+            "spearman": 0.8000181261422302
+          },
+          "threshold": {
+            "threshold_mean": 0.02302834577858448,
+            "threshold_std": 0.0010747105116024613,
+            "threshold_cv": 0.04666902869939804,
+            "threshold_quantiles": [
+              0.02065278498455882,
+              0.023056309670209885,
+              0.02528362527489662
+            ],
+            "magnitude_flip_fraction": 0.018339192708333334,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.011658227000328012,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.0001151417288929224,
+                "empirical_threshold_tail": 0.92325,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.92325,
+                "boundary_fraction": 0.004772786458333333,
+                "boundary_coordinate_p90": 0.0065,
+                "boundary_coordinate_p99": 0.008,
+                "boundary_coordinate_max": 0.0155,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.0002302834577858448,
+                "empirical_threshold_tail": 0.84325,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.84325,
+                "boundary_fraction": 0.009568033854166666,
+                "boundary_coordinate_p90": 0.012,
+                "boundary_coordinate_p99": 0.015997500000000033,
+                "boundary_coordinate_max": 0.0335,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0004605669155716896,
+                "empirical_threshold_tail": 0.704,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.704,
+                "boundary_fraction": 0.019166341145833335,
+                "boundary_coordinate_p90": 0.023,
+                "boundary_coordinate_p99": 0.03216500000000002,
+                "boundary_coordinate_max": 0.067,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0011514172889292241,
+                "empirical_threshold_tail": 0.3035,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.3035,
+                "boundary_fraction": 0.04789583333333333,
+                "boundary_coordinate_p90": 0.05525,
+                "boundary_coordinate_p99": 0.08749750000000002,
+                "boundary_coordinate_max": 0.167,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.0023028345778584483,
+                "empirical_threshold_tail": 0.02125,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.02125,
+                "boundary_fraction": 0.09536328125,
+                "boundary_coordinate_p90": 0.10825,
+                "boundary_coordinate_p99": 0.1775425000000005,
+                "boundary_coordinate_max": 0.317,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": true,
+            "center": 13.820117950439453,
+            "std": 0.6064863801002502,
+            "coefficient_of_variation": 0.043884314596652985,
+            "relative_deviation_quantiles": [
+              0.07064720392227171,
+              0.08207215666770933,
+              0.11474760890007017
+            ],
+            "eta_tail": [
+              {
+                "eta": 0.01,
+                "empirical_tail": 0.8375
+              },
+              {
+                "eta": 0.05,
+                "empirical_tail": 0.253
+              },
+              {
+                "eta": 0.1,
+                "empirical_tail": 0.02025
+              }
+            ],
+            "status": "observable radial diagnostic, not a theorem-certified shell bound"
+          },
+          "single_edge": {
+            "actual_variance": 0.000810724979989848,
+            "oracle_variance": 0.0011479579932110761,
+            "threshold_remainder_variance": 5.301529485430112e-05,
+            "threshold_to_actual_variance_ratio": 0.06539245263537455
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.0011649705958421599,
+            "shared_first_covariance": 0.0004896582599403139,
+            "chain_covariance": 0.000488626740107576,
+            "kappa1_estimate": 0.0004891425000239449,
+            "kappa2_estimate": 0.00018668559579427006,
+            "ranking_predicted_variance": 0.00135165619163643,
+            "ranking_empirical_variance": 0.0013114595548646953,
+            "pruning_predicted_variance": 0.0016685862537974025,
+            "pruning_empirical_variance": 0.0015956516843934091
+          },
+          "ranking": {
+            "mean": 6.380068058923664e-05,
+            "variance": 0.0013114595548646953,
+            "threshold_remainder_mean": -0.00011603798767480914,
+            "threshold_remainder_variance": 6.108656900064076e-05,
+            "threshold_to_full_variance_ratio": 0.04657907197675122,
+            "absolute_quantiles": [
+              0.01291372552313197,
+              0.015585530803780001,
+              0.020929141365075843
+            ],
+            "coarse_variance_proxy": 14.976574753930002,
+            "coarse_proxy_looseness": 11419.776308294275,
+            "d3": {
+              "variance": 0.0013113502665684565,
+              "skewness": 0.004113699740618106,
+              "excess_kurtosis": 0.011034018983842042,
+              "cumulants_2_to_6": {
+                "2": 0.0013113502665684565,
+                "3": 1.9532433776169757e-07,
+                "4": 1.810688187789688e-08,
+                "5": 2.21319788371981e-08,
+                "6": 4.540685074708395e-09
+              },
+              "empirical_required_b": 0.009903188441854335,
+              "b_over_sd": 0.27347377688709573,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                6.556783964169199e-06,
+                2.6227267030276558e-05,
+                5.901164751891119e-05,
+                0.00010491012601364369,
+                0.00016392290559451295
+              ],
+              "candidate_envelope": [
+                6.563251044030307e-06,
+                2.6279054617359033e-05,
+                5.918660281986804e-05,
+                0.0001053252436195761,
+                0.00016473448162827506
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.03297444547417616
+          },
+          "pruning": {
+            "mean": -0.00020505588365638127,
+            "variance": 0.0015956516843934091,
+            "threshold_remainder_mean": 0.0002074434149983088,
+            "threshold_remainder_variance": 7.478829307814096e-05,
+            "threshold_to_full_variance_ratio": 0.04687006181212531,
+            "absolute_quantiles": [
+              0.014249628163456006,
+              0.01727767414819011,
+              0.023958077951570515
+            ],
+            "coarse_variance_proxy": 18.121782738186788,
+            "coarse_proxy_looseness": 11356.979042124614,
+            "d3": {
+              "variance": 0.0015955187134197096,
+              "skewness": 0.01568903943203301,
+              "excess_kurtosis": 0.05721689484324921,
+              "cumulants_2_to_6": {
+                "2": 0.0015955187134197096,
+                "3": 9.997580641422135e-07,
+                "4": 1.443224860539527e-07,
+                "5": -3.440852881294945e-08,
+                "6": 4.448164618526765e-09
+              },
+              "empirical_required_b": 0.009380891481738023,
+              "b_over_sd": 0.23485140404225313,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                7.977760792027624e-06,
+                3.191171680915969e-05,
+                7.180288903160109e-05,
+                0.0001276523121925277,
+                0.00019946103444520857
+              ],
+              "candidate_envelope": [
+                7.98508428801639e-06,
+                3.1970356357117914e-05,
+                7.200097209562955e-05,
+                0.00012812225747106933,
+                0.00020037970933165492
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.036421465460383225
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": true,
+            "overall": "empirically-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        },
+        "rotated_2bit": {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.7236986343522247,
+            "slope": 0.0005210518460896928,
+            "residual_mean": 1.2811973704174306e-16,
+            "residual_scale": 0.01618605009636826,
+            "spearman": 0.937299342957664
+          },
+          "threshold": {
+            "threshold_mean": 0.029072651639580727,
+            "threshold_std": 0.0002452315529808402,
+            "threshold_cv": 0.008435128256678581,
+            "threshold_quantiles": [
+              0.0284702973254025,
+              0.029072469100356102,
+              0.02962734252214432
+            ],
+            "magnitude_flip_fraction": 0.0031315104166666666,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.011658227591931154,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.00014536325819790365,
+                "empirical_threshold_tail": 0.55,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.55,
+                "boundary_fraction": 0.004681966145833333,
+                "boundary_coordinate_p90": 0.00675,
+                "boundary_coordinate_p99": 0.00825,
+                "boundary_coordinate_max": 0.00925,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.0002907265163958073,
+                "empirical_threshold_tail": 0.236,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.236,
+                "boundary_fraction": 0.00937890625,
+                "boundary_coordinate_p90": 0.0125,
+                "boundary_coordinate_p99": 0.0155,
+                "boundary_coordinate_max": 0.01675,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0005814530327916146,
+                "empirical_threshold_tail": 0.0185,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0185,
+                "boundary_fraction": 0.018795247395833332,
+                "boundary_coordinate_p90": 0.02475,
+                "boundary_coordinate_p99": 0.02883250000000001,
+                "boundary_coordinate_max": 0.032,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0014536325819790364,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.046975260416666664,
+                "boundary_coordinate_p90": 0.0605,
+                "boundary_coordinate_p99": 0.06733250000000002,
+                "boundary_coordinate_max": 0.07225,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.002907265163958073,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.09366634114583333,
+                "boundary_coordinate_p90": 0.12,
+                "boundary_coordinate_p99": 0.12924750000000004,
+                "boundary_coordinate_max": 0.13925,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": true,
+            "center": 13.820117950439453,
+            "std": 0.6064863801002502,
+            "coefficient_of_variation": 0.043884314596652985,
+            "relative_deviation_quantiles": [
+              0.07064720392227171,
+              0.08207215666770933,
+              0.11474760890007017
+            ],
+            "eta_tail": [
+              {
+                "eta": 0.01,
+                "empirical_tail": 0.8375
+              },
+              {
+                "eta": 0.05,
+                "empirical_tail": 0.253
+              },
+              {
+                "eta": 0.1,
+                "empirical_tail": 0.02025
+              }
+            ],
+            "status": "observable radial diagnostic, not a theorem-certified shell bound"
+          },
+          "single_edge": {
+            "actual_variance": 0.00025836944459749916,
+            "oracle_variance": 0.00027831917993758595,
+            "threshold_remainder_variance": 7.123778487479951e-06,
+            "threshold_to_actual_variance_ratio": 0.027572062550112027
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.00028509739591645565,
+            "shared_first_covariance": 8.047471137705086e-05,
+            "chain_covariance": 8.59729128118804e-05,
+            "kappa1_estimate": 8.322381209446562e-05,
+            "kappa2_estimate": 0.00011864977172752441,
+            "ranking_predicted_variance": 0.00040374716764398006,
+            "ranking_empirical_variance": 0.0004010006348800776,
+            "pruning_predicted_variance": 0.0004959004970094343,
+            "pruning_empirical_variance": 0.00048590265039464463
+          },
+          "ranking": {
+            "mean": 0.0004574288436990968,
+            "variance": 0.0004010006348800776,
+            "threshold_remainder_mean": -3.039469102189979e-05,
+            "threshold_remainder_variance": 8.393858874557301e-06,
+            "threshold_to_full_variance_ratio": 0.020932283254532877,
+            "absolute_quantiles": [
+              0.004689466614807181,
+              0.0057315703069866775,
+              0.008336829537435086
+            ],
+            "coarse_variance_proxy": 20.503152206329727,
+            "coarse_proxy_looseness": 51129.97442625336,
+            "d3": {
+              "variance": 0.00040096721816050427,
+              "skewness": 0.002650180490826824,
+              "excess_kurtosis": -0.026162651020883665,
+              "cumulants_2_to_6": {
+                "2": 0.00040096721816050427,
+                "3": 2.1275729584200904e-08,
+                "4": -4.28492087090619e-09,
+                "5": 2.063792136985209e-10,
+                "6": 1.6924037986040393e-11
+              },
+              "empirical_required_b": 0.0032905853192292636,
+              "b_over_sd": 0.16433070636611222,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                2.0048396189784046e-06,
+                8.019372445846468e-06,
+                1.804361911604893e-05,
+                3.20775998410433e-05,
+                5.0121334409999885e-05
+              ],
+              "candidate_envelope": [
+                2.005496016377448e-06,
+                8.024625506186682e-06,
+                1.806135454565669e-05,
+                3.2119654438181546e-05,
+                5.020350172293473e-05
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.03297444714748254
+          },
+          "pruning": {
+            "mean": -3.387710327796989e-05,
+            "variance": 0.00048590265039464463,
+            "threshold_remainder_mean": -7.051568317080011e-06,
+            "threshold_remainder_variance": 1.0163247000385628e-05,
+            "threshold_to_full_variance_ratio": 0.020916220547739665,
+            "absolute_quantiles": [
+              0.005210518460896995,
+              0.006565253260729872,
+              0.009066302121960537
+            ],
+            "coarse_variance_proxy": 24.808941455422048,
+            "coarse_proxy_looseness": 51057.4318441616,
+            "d3": {
+              "variance": 0.0004858621585071117,
+              "skewness": 0.011833377282571736,
+              "excess_kurtosis": 0.10770564903495305,
+              "cumulants_2_to_6": {
+                "2": 0.0004858621585071117,
+                "3": 1.267138341353613e-07,
+                "4": 2.5296601127940568e-08,
+                "5": 8.132509235433848e-10,
+                "6": 3.095764580727143e-11
+              },
+              "empirical_required_b": 0.0036474394225202416,
+              "b_over_sd": 0.1654746800889293,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                2.4293320168792404e-06,
+                9.71741381056851e-06,
+                2.186437589910689e-05,
+                3.887035134738509e-05,
+                6.073547577395422e-05
+              ],
+              "candidate_envelope": [
+                2.4301971922399064e-06,
+                9.724336956136572e-06,
+                2.1887747402643995e-05,
+                3.8925764427659014e-05,
+                6.084373172624474e-05
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.036421467308610525
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": true,
+            "overall": "empirically-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        }
+      }
+    },
+    {
+      "dataset": "minilm",
+      "dimension": 384,
+      "source_total": 1000000,
+      "artifact_norm_audit": {
+        "mean": 1.0,
+        "std": 3.6346271770071326e-08,
+        "min": 0.9999998807907104,
+        "max": 1.0000001192092896,
+        "fraction_within_1e_5_of_one": 1.0,
+        "pre_normalization_shell_identifiable": false
+      },
+      "quantizers": {
+        "2bit": {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -0.8538014043977924,
+            "slope": 0.0012064069102206815,
+            "residual_mean": 5.89713463246729e-17,
+            "residual_scale": 0.032180805623143204,
+            "spearman": 0.9168807388984076
+          },
+          "threshold": {
+            "threshold_mean": 0.04049132391810417,
+            "threshold_std": 0.0005507406312972307,
+            "threshold_cv": 0.013601447455585003,
+            "threshold_quantiles": [
+              0.03918428409844637,
+              0.040505290031433105,
+              0.04181851357221603
+            ],
+            "magnitude_flip_fraction": 0.005091145833333333,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.030980054256385735,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.00020245661959052087,
+                "empirical_threshold_tail": 0.7065,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.7065,
+                "boundary_fraction": 0.004517578125,
+                "boundary_coordinate_p90": 0.006,
+                "boundary_coordinate_p99": 0.007,
+                "boundary_coordinate_max": 0.00775,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.00040491323918104174,
+                "empirical_threshold_tail": 0.45775,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.45775,
+                "boundary_fraction": 0.009174479166666666,
+                "boundary_coordinate_p90": 0.01125,
+                "boundary_coordinate_p99": 0.01275,
+                "boundary_coordinate_max": 0.014,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0008098264783620835,
+                "empirical_threshold_tail": 0.135,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.135,
+                "boundary_fraction": 0.018442057291666668,
+                "boundary_coordinate_p90": 0.0215,
+                "boundary_coordinate_p99": 0.023792500000000005,
+                "boundary_coordinate_max": 0.02525,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0020245661959052085,
+                "empirical_threshold_tail": 0.00025,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.00025,
+                "boundary_fraction": 0.045867838541666664,
+                "boundary_coordinate_p90": 0.050925,
+                "boundary_coordinate_p99": 0.05575,
+                "boundary_coordinate_max": 0.05775,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.004049132391810417,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.09153971354166666,
+                "boundary_coordinate_p90": 0.09875,
+                "boundary_coordinate_p99": 0.103585,
+                "boundary_coordinate_max": 0.1075,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": false,
+            "reason": "source artifacts are already unit-normalized; pre-normalization norms are unavailable"
+          },
+          "single_edge": {
+            "actual_variance": 0.0010227035869399183,
+            "oracle_variance": 0.00102529734990253,
+            "threshold_remainder_variance": 1.3096360939459942e-05,
+            "threshold_to_actual_variance_ratio": 0.012805627267472686
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.001014626354593995,
+            "shared_first_covariance": 2.696522616677379e-05,
+            "chain_covariance": 1.465516946550703e-05,
+            "kappa1_estimate": 2.081019781614041e-05,
+            "kappa2_estimate": 0.0009730059589617142,
+            "ranking_predicted_variance": 0.001987632313555709,
+            "ranking_empirical_variance": 0.001981932442013619,
+            "pruning_predicted_variance": 0.002425743830450611,
+            "pruning_empirical_variance": 0.002448924840204292
+          },
+          "ranking": {
+            "mean": -0.0001714748062842517,
+            "variance": 0.001981932442013619,
+            "threshold_remainder_mean": 1.5884357651237987e-05,
+            "threshold_remainder_variance": 2.5879472394728658e-05,
+            "threshold_to_full_variance_ratio": 0.013057696542085679,
+            "absolute_quantiles": [
+              0.008444848371544689,
+              0.010857662191986028,
+              0.01447688292264826
+            ],
+            "coarse_variance_proxy": 27.500794158300746,
+            "coarse_proxy_looseness": 13875.747515571358,
+            "d3": {
+              "variance": 0.001981767280976784,
+              "skewness": 0.050635682716252864,
+              "excess_kurtosis": 0.059043506888984076,
+              "cumulants_2_to_6": {
+                "2": 0.001981767280976784,
+                "3": 4.466644194848057e-06,
+                "4": 2.2982741512930035e-07,
+                "5": 2.0176037463927473e-08,
+                "6": 6.98437146102934e-10
+              },
+              "empirical_required_b": 0.0055936210839450965,
+              "b_over_sd": 0.12565122200915368,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                9.909581805026685e-06,
+                3.964131652065689e-05,
+                8.919970551875961e-05,
+                0.00015858927355780206,
+                0.0002478145689876199
+              ],
+              "candidate_envelope": [
+                9.91438213457815e-06,
+                3.967973630145193e-05,
+                8.932943013910815e-05,
+                0.00015889690611182308,
+                0.00024841568171952245
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.08762482578487008
+          },
+          "pruning": {
+            "mean": -0.0007590517142578841,
+            "variance": 0.002448924840204292,
+            "threshold_remainder_mean": 1.419538797692987e-05,
+            "threshold_remainder_variance": 3.097555906131191e-05,
+            "threshold_to_full_variance_ratio": 0.012648636067870459,
+            "absolute_quantiles": [
+              0.009168692517677091,
+              0.011340224956074292,
+              0.016165852596956982
+            ],
+            "coarse_variance_proxy": 33.276287445702465,
+            "coarse_proxy_looseness": 13588.121162153153,
+            "d3": {
+              "variance": 0.002448720763134275,
+              "skewness": -0.04320618897495706,
+              "excess_kurtosis": 0.10032945591803522,
+              "cumulants_2_to_6": {
+                "2": 0.0024487207631342747,
+                "3": -5.23480567192103e-06,
+                "4": 5.983503283490024e-07,
+                "5": -9.890514380896664e-09,
+                "6": -1.8964082953779417e-09
+              },
+              "empirical_required_b": 0.006810398433228261,
+              "b_over_sd": 0.13762676087229622,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                1.2242733840459735e-05,
+                4.8967475385110204e-05,
+                0.00011016907945649024,
+                0.00019584246050927123,
+                0.0003059825925277315
+              ],
+              "candidate_envelope": [
+                1.2251947880336201e-05,
+                4.9041213303134175e-05,
+                0.00011041803157781969,
+                0.00019643277523662453,
+                0.0003071359545034536
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.0967847834862029
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": false,
+            "overall": "partial-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        },
+        "rotated_2bit": {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.8445690014109807,
+            "slope": 0.0011992709070739738,
+            "residual_mean": -6.3117104135794e-16,
+            "residual_scale": 0.031047311467347325,
+            "spearman": 0.9227766289794439
+          },
+          "threshold": {
+            "threshold_mean": 0.040734343230724335,
+            "threshold_std": 0.0005556236137636006,
+            "threshold_cv": 0.013640176504850388,
+            "threshold_quantiles": [
+              0.039367078468203545,
+              0.04074528627097607,
+              0.04196706309914589
+            ],
+            "magnitude_flip_fraction": 0.005156901041666667,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.030980054267434998,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.00020367171615362167,
+                "empirical_threshold_tail": 0.7075,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.7075,
+                "boundary_fraction": 0.004664713541666666,
+                "boundary_coordinate_p90": 0.00625,
+                "boundary_coordinate_p99": 0.007292500000000004,
+                "boundary_coordinate_max": 0.008,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.00040734343230724334,
+                "empirical_threshold_tail": 0.46,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.46,
+                "boundary_fraction": 0.009293619791666667,
+                "boundary_coordinate_p90": 0.01125,
+                "boundary_coordinate_p99": 0.01275,
+                "boundary_coordinate_max": 0.0135,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0008146868646144867,
+                "empirical_threshold_tail": 0.138,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.138,
+                "boundary_fraction": 0.018621744791666665,
+                "boundary_coordinate_p90": 0.0215,
+                "boundary_coordinate_p99": 0.024,
+                "boundary_coordinate_max": 0.02425,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0020367171615362166,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.046356119791666664,
+                "boundary_coordinate_p90": 0.05075,
+                "boundary_coordinate_p99": 0.0540425,
+                "boundary_coordinate_max": 0.05625,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.004073434323072433,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.092625,
+                "boundary_coordinate_p90": 0.09875,
+                "boundary_coordinate_p99": 0.10325,
+                "boundary_coordinate_max": 0.107,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": false,
+            "reason": "source artifacts are already unit-normalized; pre-normalization norms are unavailable"
+          },
+          "single_edge": {
+            "actual_variance": 0.0009686047196808706,
+            "oracle_variance": 0.0009714694347558332,
+            "threshold_remainder_variance": 1.3359834837846477e-05,
+            "threshold_to_actual_variance_ratio": 0.013792865723644404
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.0009747478271330885,
+            "shared_first_covariance": 7.843311091354533e-06,
+            "chain_covariance": 1.3556694436606174e-05,
+            "kappa1_estimate": 1.0700002763980353e-05,
+            "kappa2_estimate": 0.0009533478216051278,
+            "ranking_predicted_variance": 0.0019280956487382163,
+            "ranking_empirical_variance": 0.001945570334104379,
+            "pruning_predicted_variance": 0.002352704691571183,
+            "pruning_empirical_variance": 0.00231810751437535
+          },
+          "ranking": {
+            "mean": -6.271475647220356e-05,
+            "variance": 0.001945570334104379,
+            "threshold_remainder_mean": 0.00010533596133799778,
+            "threshold_remainder_variance": 2.658053964616075e-05,
+            "threshold_to_full_variance_ratio": 0.013662081077319057,
+            "absolute_quantiles": [
+              0.008394896349517955,
+              0.010793438163665625,
+              0.01559052179196141
+            ],
+            "coarse_variance_proxy": 27.17677930828771,
+            "coarse_proxy_looseness": 13968.541168571133,
+            "d3": {
+              "variance": 0.0019454082032432036,
+              "skewness": -0.0028230476548444764,
+              "excess_kurtosis": 0.005751667894470902,
+              "cumulants_2_to_6": {
+                "2": 0.0019454082032432036,
+                "3": -2.4220328632356367e-07,
+                "4": 1.9866619795625402e-08,
+                "5": 2.9940679269406442e-09,
+                "6": 8.69088164065472e-10
+              },
+              "empirical_required_b": 0.005935231294190742,
+              "b_over_sd": 0.13456504982169845,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                9.727000732057817e-06,
+                3.8907842459620645e-05,
+                8.754228599758274e-05,
+                0.0001556300942092831,
+                0.00024317103203821966
+              ],
+              "candidate_envelope": [
+                9.732817668616762e-06,
+                3.895440474528223e-05,
+                8.769952423416022e-05,
+                0.00015600302186640424,
+                0.00024389982634638984
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.08762482581612212
+          },
+          "pruning": {
+            "mean": -1.2003911726856072e-05,
+            "variance": 0.00231810751437535,
+            "threshold_remainder_mean": 2.7803097195665648e-05,
+            "threshold_remainder_variance": 3.1983501424474054e-05,
+            "threshold_to_full_variance_ratio": 0.013797246773988612,
+            "absolute_quantiles": [
+              0.00935431307517689,
+              0.011513000707910143,
+              0.016310084336206017
+            ],
+            "coarse_variance_proxy": 32.884229477185684,
+            "coarse_proxy_looseness": 14185.808584485285,
+            "d3": {
+              "variance": 0.002317914338749152,
+              "skewness": -0.02496363037847329,
+              "excess_kurtosis": 0.011887278158644321,
+              "cumulants_2_to_6": {
+                "2": 0.002317914338749152,
+                "3": -2.7854766653860744e-06,
+                "4": 6.115435113145999e-08,
+                "5": 1.3563737124672146e-08,
+                "6": 1.9205633477538077e-09
+              },
+              "empirical_required_b": 0.006926393938639685,
+              "b_over_sd": 0.14386610884755682,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                1.1589107703442736e-05,
+                4.635457691943429e-05,
+                0.00010429363151513021,
+                0.0001854035017485045,
+                0.0002896814244095769
+              ],
+              "candidate_envelope": [
+                1.1597604651601921e-05,
+                4.642259501112324e-05,
+                0.00010452333618436998,
+                0.00018594832764773998,
+                0.00029074620371519167
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.0967847835207219
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": false,
+            "overall": "partial-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        }
+      }
+    },
+    {
+      "dataset": "gist960",
+      "dimension": 960,
+      "source_total": 1000000,
+      "artifact_norm_audit": {
+        "mean": 1.0,
+        "std": 3.623611277703276e-08,
+        "min": 0.9999998807907104,
+        "max": 1.0000001192092896,
+        "fraction_within_1e_5_of_one": 1.0,
+        "pre_normalization_shell_identifiable": false
+      },
+      "quantizers": {
+        "2bit": {
+          "quantizer": "2bit",
+          "calibration": {
+            "intercept": -1.5412595367742326,
+            "slope": 0.0009211914186744403,
+            "residual_mean": 9.382124706765656e-16,
+            "residual_scale": 0.04918051598538909,
+            "spearman": 0.7592379644608561
+          },
+          "threshold": {
+            "threshold_mean": 0.027680635452270508,
+            "threshold_std": 0.0019617131911218166,
+            "threshold_cv": 0.07086951285600662,
+            "threshold_quantiles": [
+              0.021109869703650475,
+              0.028149744495749474,
+              0.030243011210113763
+            ],
+            "magnitude_flip_fraction": 0.03445989583333333,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.02297219080914295,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.00013840317726135254,
+                "empirical_threshold_tail": 0.9485,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.9485,
+                "boundary_fraction": 0.006969270833333333,
+                "boundary_coordinate_p90": 0.009,
+                "boundary_coordinate_p99": 0.0105,
+                "boundary_coordinate_max": 0.012,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.0002768063545227051,
+                "empirical_threshold_tail": 0.88375,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.88375,
+                "boundary_fraction": 0.01384296875,
+                "boundary_coordinate_p90": 0.01675,
+                "boundary_coordinate_p99": 0.0195,
+                "boundary_coordinate_max": 0.022,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0005536127090454102,
+                "empirical_threshold_tail": 0.77625,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.77625,
+                "boundary_fraction": 0.027632552083333334,
+                "boundary_coordinate_p90": 0.03275,
+                "boundary_coordinate_p99": 0.0365,
+                "boundary_coordinate_max": 0.0395,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0013840317726135254,
+                "empirical_threshold_tail": 0.4505,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.4505,
+                "boundary_fraction": 0.06890546875,
+                "boundary_coordinate_p90": 0.079,
+                "boundary_coordinate_p99": 0.08525,
+                "boundary_coordinate_max": 0.09125,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.002768063545227051,
+                "empirical_threshold_tail": 0.09575,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.09575,
+                "boundary_fraction": 0.13784140625,
+                "boundary_coordinate_p90": 0.15525,
+                "boundary_coordinate_p99": 0.1675575,
+                "boundary_coordinate_max": 0.18025,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": false,
+            "reason": "source artifacts are already unit-normalized; pre-normalization norms are unavailable"
+          },
+          "single_edge": {
+            "actual_variance": 0.0023712504767593834,
+            "oracle_variance": 0.004834827644817983,
+            "threshold_remainder_variance": 0.005404138872952034,
+            "threshold_to_actual_variance_ratio": 2.2790248967445565
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.004851030852020935,
+            "shared_first_covariance": 0.002221219337194629,
+            "chain_covariance": 0.0022168095274467782,
+            "kappa1_estimate": 0.0022190144323207036,
+            "kappa2_estimate": 0.0004130019873795276,
+            "ranking_predicted_variance": 0.005264032839400462,
+            "ranking_empirical_variance": 0.005265021285965582,
+            "pruning_predicted_variance": 0.006510880641361392,
+            "pruning_empirical_variance": 0.006469073390909367
+          },
+          "ranking": {
+            "mean": 0.00011425485684747379,
+            "variance": 0.005265021285965582,
+            "threshold_remainder_mean": -1.2282552248983707e-06,
+            "threshold_remainder_variance": 0.005303232528401644,
+            "threshold_to_full_variance_ratio": 1.0072575665625356,
+            "absolute_quantiles": [
+              0.11975488442767701,
+              0.14186347847586367,
+              0.1851686870677495
+            ],
+            "coarse_variance_proxy": 100.12010281656674,
+            "coarse_proxy_looseness": 19016.086997301692,
+            "d3": {
+              "variance": 0.005264582534191752,
+              "skewness": -0.0028048576692509745,
+              "excess_kurtosis": 0.14283313114250085,
+              "cumulants_2_to_6": {
+                "2": 0.005264582534191752,
+                "3": -1.0712786358034234e-06,
+                "4": 3.943232633398669e-06,
+                "5": 3.3879448549365874e-07,
+                "6": 7.39540753771499e-08
+              },
+              "empirical_required_b": 0.014054775666170706,
+              "b_over_sd": 0.1937054985089097,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                2.6322750583042398e-05,
+                0.0001052904861046089,
+                0.00023690273106168058,
+                0.0004211594112129291,
+                0.0006580608571540303
+              ],
+              "candidate_envelope": [
+                2.635996100480792e-05,
+                0.00010558845509369093,
+                0.00023790934277108895,
+                0.00042354775018041906,
+                0.0006627300780611557
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.06497516759942505
+          },
+          "pruning": {
+            "mean": 0.004682632756269871,
+            "variance": 0.006469073390909367,
+            "threshold_remainder_mean": -0.003354057955393636,
+            "threshold_remainder_variance": 0.006418365945582069,
+            "threshold_to_full_variance_ratio": 0.992161559737666,
+            "absolute_quantiles": [
+              0.1315645584150837,
+              0.1560498263234501,
+              0.204136018378256
+            ],
+            "coarse_variance_proxy": 121.14568020611185,
+            "coarse_proxy_looseness": 18726.898411193048,
+            "d3": {
+              "variance": 0.006468534301460125,
+              "skewness": -0.08780656068757367,
+              "excess_kurtosis": 0.2669029755802259,
+              "cumulants_2_to_6": {
+                "2": 0.006468534301460125,
+                "3": -4.56753098988462e-05,
+                "4": 1.114216531914811e-05,
+                "5": -1.176571983744713e-06,
+                "6": 2.0345064993627873e-07
+              },
+              "empirical_required_b": 0.017192446193904923,
+              "b_over_sd": 0.21376408052919532,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                3.233510528361655e-05,
+                0.0001293105253075133,
+                0.00029088224153124564,
+                0.0005170073265353958,
+                0.0008076439327567853
+              ],
+              "candidate_envelope": [
+                3.2398372234441706e-05,
+                0.00012981706059506885,
+                0.00029259316121999944,
+                0.0005210661045028633,
+                0.0008155776753325682
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.07176741832878981
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": false,
+            "overall": "partial-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        },
+        "rotated_2bit": {
+          "quantizer": "rotated_2bit",
+          "calibration": {
+            "intercept": -0.8551916642605892,
+            "slope": 0.00045716106050299295,
+            "residual_mean": 6.90466202731462e-17,
+            "residual_scale": 0.014313117280144477,
+            "spearman": 0.9793006839005821
+          },
+          "threshold": {
+            "threshold_mean": 0.025584349408745766,
+            "threshold_std": 0.0001897925540106371,
+            "threshold_cv": 0.007418307010084391,
+            "threshold_quantiles": [
+              0.025150983184576033,
+              0.025581303983926773,
+              0.02605536974966526
+            ],
+            "magnitude_flip_fraction": 0.00267265625,
+            "positive_scale_code_mismatch": 0,
+            "sample_covariance_operator_norm": 0.02297219079937992,
+            "h_audit": [
+              {
+                "h_ratio": 0.005,
+                "h": 0.00012792174704372882,
+                "empirical_threshold_tail": 0.50075,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.50075,
+                "boundary_fraction": 0.004554427083333333,
+                "boundary_coordinate_p90": 0.007025000000000006,
+                "boundary_coordinate_p99": 0.009,
+                "boundary_coordinate_max": 0.011,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.01,
+                "h": 0.00025584349408745764,
+                "empirical_threshold_tail": 0.16625,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.16625,
+                "boundary_fraction": 0.009106510416666666,
+                "boundary_coordinate_p90": 0.014,
+                "boundary_coordinate_p99": 0.01675,
+                "boundary_coordinate_max": 0.01875,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.02,
+                "h": 0.0005116869881749153,
+                "empirical_threshold_tail": 0.01,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.01,
+                "boundary_fraction": 0.018179427083333335,
+                "boundary_coordinate_p90": 0.02725,
+                "boundary_coordinate_p99": 0.03135249999999999,
+                "boundary_coordinate_max": 0.035,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.05,
+                "h": 0.0012792174704372883,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.04543385416666667,
+                "boundary_coordinate_p90": 0.06725,
+                "boundary_coordinate_p99": 0.07560249999999999,
+                "boundary_coordinate_max": 0.07925,
+                "flip_inclusion_holds": true
+              },
+              {
+                "h_ratio": 0.1,
+                "h": 0.0025584349408745767,
+                "empirical_threshold_tail": 0.0,
+                "plugin_gaussian_envelope": 1.0,
+                "tail_to_envelope_ratio": 0.0,
+                "boundary_fraction": 0.09071302083333334,
+                "boundary_coordinate_p90": 0.1335,
+                "boundary_coordinate_p99": 0.1495,
+                "boundary_coordinate_max": 0.16175,
+                "flip_inclusion_holds": true
+              }
+            ],
+            "status": "normalized-artifact plug-in diagnostic"
+          },
+          "shell": {
+            "identifiable": false,
+            "reason": "source artifacts are already unit-normalized; pre-normalization norms are unavailable"
+          },
+          "single_edge": {
+            "actual_variance": 0.00020612394521183407,
+            "oracle_variance": 0.00022810662970277248,
+            "threshold_remainder_variance": 6.351418400468182e-06,
+            "threshold_to_actual_variance_ratio": 0.03081358836762422
+          },
+          "oracle_covariance": {
+            "edge_variance": 0.00022775627759602816,
+            "shared_first_covariance": 6.57333088936128e-05,
+            "chain_covariance": 6.387328152689526e-05,
+            "kappa1_estimate": 6.480329521025402e-05,
+            "kappa2_estimate": 9.814968717552011e-05,
+            "ranking_predicted_variance": 0.00032590596477154827,
+            "ranking_empirical_variance": 0.0003186764899078299,
+            "pruning_predicted_variance": 0.0004001974088296991,
+            "pruning_empirical_variance": 0.00039470118301508205
+          },
+          "ranking": {
+            "mean": -2.202941082120139e-06,
+            "variance": 0.0003186764899078299,
+            "threshold_remainder_mean": -1.1848090818034961e-05,
+            "threshold_remainder_variance": 7.330787060128216e-06,
+            "threshold_to_full_variance_ratio": 0.023003852785778087,
+            "absolute_quantiles": [
+              0.004571610605029974,
+              0.005485932726035925,
+              0.007771738028550912
+            ],
+            "coarse_variance_proxy": 24.670124082296244,
+            "coarse_proxy_looseness": 77414.3209918985,
+            "d3": {
+              "variance": 0.00031864993353367094,
+              "skewness": 0.021389860729585833,
+              "excess_kurtosis": 0.4065391317147733,
+              "cumulants_2_to_6": {
+                "2": 0.00031864993353367094,
+                "3": 1.216534453545141e-07,
+                "4": 4.1211118704520463e-08,
+                "5": 2.034925743568955e-09,
+                "6": 1.722466140840194e-10
+              },
+              "empirical_required_b": 0.006224917358462854,
+              "b_over_sd": 0.34871985387909576,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                1.5932701150529749e-06,
+                6.373163628264206e-06,
+                1.4339808399772835e-05,
+                2.5493336452658832e-05,
+                3.983388399281251e-05
+              ],
+              "candidate_envelope": [
+                1.594242070181982e-06,
+                6.380942839041842e-06,
+                1.4366075298464711e-05,
+                2.555562735001268e-05,
+                3.995560185147541e-05
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.06497516757181103
+          },
+          "pruning": {
+            "mean": -0.0002164276040386292,
+            "variance": 0.00039470118301508205,
+            "threshold_remainder_mean": -1.613778543575538e-05,
+            "threshold_remainder_variance": 8.88712687925141e-06,
+            "threshold_to_full_variance_ratio": 0.02251608878231262,
+            "absolute_quantiles": [
+              0.004937339453432266,
+              0.006034525998639538,
+              0.008503195725355739
+            ],
+            "coarse_variance_proxy": 29.851205937649127,
+            "coarse_proxy_looseness": 75629.88717089422,
+            "d3": {
+              "variance": 0.00039466829124983077,
+              "skewness": -0.02560964455391571,
+              "excess_kurtosis": 0.3006843939930586,
+              "cumulants_2_to_6": {
+                "2": 0.00039466829124983077,
+                "3": -2.0076944189770526e-07,
+                "4": 4.673813377366492e-08,
+                "5": -1.5825413019040782e-09,
+                "6": 1.5880342948464713e-10
+              },
+              "empirical_required_b": 0.0057820425757091004,
+              "b_over_sd": 0.2910483674376719,
+              "mgf_lambdas": [
+                0.1,
+                0.2,
+                0.3,
+                0.4,
+                0.5
+              ],
+              "empirical_log_mgf": [
+                1.973308189249026e-06,
+                7.89310124410178e-06,
+                1.7759185386014703e-05,
+                3.157137147909855e-05,
+                4.932947501475743e-05
+              ],
+              "candidate_envelope": [
+                1.974483110790315e-06,
+                7.902504348315955e-06,
+                1.7790933486706907e-05,
+                3.164665622545623e-05,
+                4.9476574235594065e-05
+              ],
+              "empirical_d3_compatible": true,
+              "status": "falsification diagnostic only"
+            },
+            "coarse_scale_proxy": 0.07176741829828914
+          },
+          "empirical_eligibility": {
+            "positive_slope": true,
+            "threshold_identity": true,
+            "boundary_inclusion": true,
+            "ranking_d3_compatible": true,
+            "pruning_d3_compatible": true,
+            "shell_identifiable": false,
+            "overall": "partial-eligible",
+            "status": "empirical falsification diagnostic, not theorem-certified eligibility"
+          }
+        }
+      }
+    }
+  ]
+}
